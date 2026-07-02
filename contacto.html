@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Newzelland Cerámicas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>NEWZELLAND</h1>
+                    <p class="tagline">Cerámicas Practika</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="container">
+            <h1>Contacto</h1>
+            <p class="subtitle">¿Tienes preguntas? Nos encantaría saber de ti</p>
+
+            <div class="contact-layout">
+                <!-- Formulario -->
+                <section class="contact-form-section">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Asunto *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                    <div id="form-message"></div>
+                </section>
+
+                <!-- Información de contacto -->
+                <aside class="contact-info-section">
+                    <div class="contact-card">
+                        <h3>📍 Ubicación</h3>
+                        <p>Onda, Castellón</p>
+                        <p>España</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📞 Teléfono</h3>
+                        <p><a href="tel:+34123456789">+34 123 456 789</a></p>
+                        <p><strong>Horario:</strong> Lun-Vie 09:00 - 18:00</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:info@newzelland.es">info@newzelland.es</a></p>
+                        <p><a href="mailto:ventas@newzelland.es">ventas@newzelland.es</a></p>
+                    </div>
+
+                    <div class="contact-card whatsapp-card">
+                        <h3>💬 WhatsApp</h3>
+                        <p>Disponible 24/7</p>
+                        <a href="https://wa.me/34123456789?text=Hola,%20quisiera%20información%20sobre%20vuestros%20productos" class="btn btn-whatsapp" target="_blank">
+                            Abrir WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📋 Solicita Presupuesto</h3>
+                        <p>Completa el formulario con detalles sobre tu proyecto y nos pondremos en contacto para enviarte un presupuesto personalizado</p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Mapa (Placeholder) -->
+            <section class="map-section">
+                <h2>Ubicación</h2>
+                <div class="map-placeholder">
+                    <p>📍 Onda, Castellón, España</p>
+                    <p style="font-size: 0.9em; color: #666;">Mapa interactivo disponible próximamente</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newzelland Cerámicas</h4>
+                    <p>Comercializadora oficial de Practika Cerámica</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34123456789" class="whatsapp-button" target="_blank">💬 WhatsApp</a>
+
+    <script src="js/nav.js"></script>
+    <script src="js/contacto.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda | Newzelland Cerámicas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>NEWZELLAND</h1>
+                    <p class="tagline">Cerámicas Practika</p>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="productos.html">Productos ▼</a>
+                        <div class="dropdown-menu">
+                            <a href="productos.html?serie=calacata">Calacata</a>
+                            <a href="productos.html?serie=atlas">Atlas</a>
+                            <a href="productos.html?serie=artic">Artic</a>
+                            <a href="productos.html?serie=provence">Provence</a>
+                        </div>
+                    </li>
+                    <li><a href="tienda.html" class="active">Tienda</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="tienda.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tienda-page">
+        <div class="container">
+            <h1>Tu Carrito de Compra</h1>
+
+            <div class="tienda-layout">
+                <!-- Carrito -->
+                <div class="cart-section">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <tr class="empty-cart">
+                                <td colspan="5">Tu carrito está vacío</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Resumen y checkout -->
+                <aside class="checkout-section">
+                    <div class="order-summary">
+                        <h3>Resumen del Pedido</h3>
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">€0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Envío:</span>
+                            <span id="shipping">Consultar</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">€0.00</span>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">Proceder al Pago</button>
+                        <a href="productos.html" class="btn btn-secondary btn-block">Seguir comprando</a>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Información de Envío</h4>
+                        <p>El cálculo del envío dependerá de tu ubicación. Nos pondremos en contacto para confirmar los costes de envío una vez procesado tu pedido.</p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Formulario Checkout (oculto hasta que se clickee "Proceder al Pago") -->
+            <section class="checkout-form" id="checkout-form" style="display:none;">
+                <h2>Información de Facturación y Envío</h2>
+                <form id="payment-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" placeholder="Teléfono" required>
+                        <input type="text" placeholder="Código postal" required>
+                    </div>
+                    <textarea placeholder="Dirección de envío" rows="3" required></textarea>
+
+                    <h3>Método de Pago</h3>
+                    <div class="payment-methods">
+                        <label>
+                            <input type="radio" name="payment" value="stripe" checked> Tarjeta de crédito (Stripe)
+                        </label>
+                        <label>
+                            <input type="radio" name="payment" value="paypal"> PayPal
+                        </label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="submitCheckout()">Confirmar Pago</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelCheckout()">Cancelar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newzelland Cerámicas</h4>
+                    <p>Comercializadora oficial de Practika Cerámica</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="descargas.html">Descargas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/34123456789" class="whatsapp-button" target="_blank">💬 WhatsApp</a>
+
+    <script src="js/nav.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/tienda.js"></script>
+</body>
+</html>

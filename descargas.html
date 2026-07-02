@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargas | Newzelland Cerámicas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>NEWZELLAND</h1>
+                    <p class="tagline">Cerámicas Practika</p>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="productos.html">Productos ▼</a>
+                        <div class="dropdown-menu">
+                            <a href="productos.html?serie=calacata">Calacata</a>
+                            <a href="productos.html?serie=atlas">Atlas</a>
+                            <a href="productos.html?serie=artic">Artic</a>
+                            <a href="productos.html?serie=provence">Provence</a>
+                            <a href="productos.html?serie=stahl">Stahl</a>
+                            <a href="productos.html?serie=keyburn">Keyburn</a>
+                            <a href="productos.html?serie=crema-marfil">Crema Marfil</a>
+                            <a href="productos.html?serie=travertino">Travertino</a>
+                            <a href="productos.html?serie=bigas">Bigas</a>
+                        </div>
+                    </li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="descargas.html" class="active">Descargas</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="tienda.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="downloads-page">
+        <div class="container">
+            <h1>Descargas</h1>
+            <p class="subtitle">Catálogos, fichas técnicas y documentación de nuestras colecciones</p>
+
+            <!-- TAB 1: Catálogos Generales -->
+            <section class="downloads-section">
+                <h2>📚 Catálogos Generales</h2>
+                <div class="downloads-grid">
+                    <div class="download-card">
+                        <div class="card-header">
+                            <h3>Catálogo General 2024</h3>
+                            <span class="badge">PDF</span>
+                        </div>
+                        <p class="card-desc">Catálogo completo de todas nuestras colecciones y series disponibles</p>
+                        <div class="card-meta">
+                            <span>📅 Julio 2024</span>
+                        </div>
+                        <a href="assets/descargas/CATALOGO-GENERAL-2024.pdf" class="btn btn-download" download>
+                            ⬇️ Descargar PDF
+                        </a>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="card-header">
+                            <h3>Novedades 2024</h3>
+                            <span class="badge">PDF</span>
+                        </div>
+                        <p class="card-desc">Nuevas colecciones, acabados y tendencias de esta temporada</p>
+                        <div class="card-meta">
+                            <span>📅 Junio 2024</span>
+                        </div>
+                        <a href="assets/descargas/NOVEDADES-2024.pdf" class="btn btn-download" download>
+                            ⬇️ Descargar PDF
+                        </a>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="card-header">
+                            <h3>Especificaciones Técnicas</h3>
+                            <span class="badge">PDF</span>
+                        </div>
+                        <p class="card-desc">Normas, estándares y características técnicas de nuestros productos</p>
+                        <div class="card-meta">
+                            <span>📅 Enero 2024</span>
+                        </div>
+                        <a href="assets/descargas/AREA-TECNICA.pdf" class="btn btn-download" download>
+                            ⬇️ Descargar PDF
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: Por Familia/Serie -->
+            <section class="downloads-section">
+                <h2>🎨 Fichas Técnicas por Familia</h2>
+                <p class="section-desc">Descarga las fichas técnicas específicas de cada colección</p>
+
+                <!-- Búsqueda -->
+                <div class="search-box">
+                    <input type="text" id="search-familia" placeholder="Buscar familia (ej: Calacata, Atlas...)" onkeyup="filterFamilias()">
+                </div>
+
+                <!-- Grid de familias -->
+                <div class="familias-grid" id="familias-grid">
+                    <!-- Se rellena con JavaScript desde catalogo.json -->
+                </div>
+            </section>
+
+            <!-- Sección de información técnica -->
+            <section class="info-section">
+                <div class="info-box">
+                    <h3>ℹ️ Información importante</h3>
+                    <ul>
+                        <li>Todos los PDFs están optimizados para web y son de descarga gratuita</li>
+                        <li>Las fichas técnicas contienen especificaciones completas de cada producto</li>
+                        <li>Para consultas específicas, <a href="contacto.html">contacta con nuestro equipo</a></li>
+                        <li>Disponemos de muestras físicas para solicitar directamente</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newzelland Cerámicas</h4>
+                    <p>Comercializadora oficial de Practika Cerámica</p>
+                    <p><strong>Ubicación:</strong> Onda, Castellón, España</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="descargas.html">Descargas</a></li>
+                        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 123 456 789</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@newzelland.es">info@newzelland.es</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Newzelland Cerámicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/34123456789?text=Hola,%20quisiera%20más%20información%20sobre%20vuestros%20catálogos%20y%20fichas%20técnicas" class="whatsapp-button" target="_blank">
+        💬 WhatsApp
+    </a>
+
+    <script src="js/nav.js"></script>
+    <script src="js/descargas.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

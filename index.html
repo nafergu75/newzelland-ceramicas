@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newzelland Cerámicas | Azulejos y Porcelánico Practika</title>
+    <meta name="description" content="Newzelland Cerámicas - Comercializadora oficial de Practika. Azulejos y porcelánico de alta calidad en Castellón, España.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>NEWZELLAND</h1>
+                    <p class="tagline">Cerámicas Practika</p>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="productos.html">Productos ▼</a>
+                        <div class="dropdown-menu">
+                            <a href="productos.html?serie=calacata">Calacata</a>
+                            <a href="productos.html?serie=atlas">Atlas</a>
+                            <a href="productos.html?serie=artic">Artic</a>
+                            <a href="productos.html?serie=provence">Provence</a>
+                            <a href="productos.html?serie=stahl">Stahl</a>
+                            <a href="productos.html?serie=keyburn">Keyburn</a>
+                            <a href="productos.html?serie=crema-marfil">Crema Marfil</a>
+                            <a href="productos.html?serie=travertino">Travertino</a>
+                            <a href="productos.html?serie=bigas">Bigas</a>
+                        </div>
+                    </li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="tienda.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero con Carrusel -->
+    <section class="hero">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="assets/img/calacata-ambiente.jpg" alt="Calacata">
+                <div class="carousel-caption">
+                    <h2>Calacata</h2>
+                    <p>Elegancia inspirada en mármol</p>
+                    <a href="productos.html?serie=calacata" class="btn">Descubre la serie</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/img/atlas-ambiente.jpg" alt="Atlas">
+                <div class="carousel-caption">
+                    <h2>Atlas</h2>
+                    <p>Versátil y moderna</p>
+                    <a href="productos.html?serie=atlas" class="btn">Descubre la serie</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/img/artic-ambiente.jpg" alt="Artic">
+                <div class="carousel-caption">
+                    <h2>Artic</h2>
+                    <p>Diseño industrial contemporáneo</p>
+                    <a href="productos.html?serie=artic" class="btn">Descubre la serie</a>
+                </div>
+            </div>
+            <button class="carousel-prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-next" onclick="changeSlide(1)">❯</button>
+        </div>
+    </section>
+
+    <!-- Sección: Somos comercializadores oficiales -->
+    <section class="company-info">
+        <div class="container">
+            <div class="info-content">
+                <h2>Comercializadores Oficiales de Practika Cerámica</h2>
+                <p>Somos la comercializadora oficial de Practika Cerámica en España. Ofrecemos una amplia gama de azulejos y porcelánico de la máxima calidad para proyectos residenciales y comerciales.</p>
+                <p><strong>Calidad, variedad y servicio profesional a tu disposición.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías destacadas -->
+    <section class="featured-categories">
+        <div class="container">
+            <h2>Nuestras Colecciones</h2>
+            <div class="categories-grid">
+                <a href="productos.html?serie=calacata" class="category-card">
+                    <img src="assets/img/calacata-ambiente.jpg" alt="Calacata">
+                    <h3>Calacata</h3>
+                </a>
+                <a href="productos.html?serie=atlas" class="category-card">
+                    <img src="assets/img/atlas-ambiente.jpg" alt="Atlas">
+                    <h3>Atlas</h3>
+                </a>
+                <a href="productos.html?serie=artic" class="category-card">
+                    <img src="assets/img/artic-ambiente.jpg" alt="Artic">
+                    <h3>Artic</h3>
+                </a>
+                <a href="productos.html?serie=provence" class="category-card">
+                    <img src="assets/img/provence-ambiente.jpg" alt="Provence">
+                    <h3>Provence</h3>
+                </a>
+                <a href="productos.html?serie=crema-marfil" class="category-card">
+                    <img src="assets/img/crema-marfil-ambiente.jpg" alt="Crema Marfil">
+                    <h3>Crema Marfil</h3>
+                </a>
+                <a href="productos.html?serie=travertino" class="category-card">
+                    <img src="assets/img/travertino-ambiente.jpg" alt="Travertino">
+                    <h3>Travertino</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Descargas -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Descarga nuestros catálogos y fichas técnicas</h2>
+            <p>Accede a toda la información técnica de nuestras colecciones</p>
+            <a href="descargas.html" class="btn btn-large">Ir a Descargas</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newzelland Cerámicas</h4>
+                    <p>Comercializadora oficial de Practika Cerámica</p>
+                    <p><strong>Ubicación:</strong> Onda, Castellón, España</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="descargas.html">Descargas</a></li>
+                        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 123 456 789</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@newzelland.es">info@newzelland.es</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/34123456789" target="_blank">+34 123 456 789</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Newzelland Cerámicas. Todos los derechos reservados.</p>
+                <p><a href="#">Aviso Legal</a> | <a href="#">Política de Privacidad</a> | <a href="#">Política de Cookies</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/34123456789?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos" class="whatsapp-button" title="Contacta por WhatsApp" target="_blank">
+        💬 WhatsApp
+    </a>
+
+    <script src="js/nav.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "STRIPE_KEY": "@stripe_key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
+    "PAYPAL_ID": "@paypal_id",
+    "PAYPAL_SECRET": "@paypal_secret",
+    "WHATSAPP_TOKEN": "@whatsapp_token",
+    "DATABASE_URL": "@database_url",
+    "ADMIN_EMAIL": "@admin_email"
+  }
+}

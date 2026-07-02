@@ -1,0 +1,21 @@
+{
+  "name": "newzelland-ceramicas-backend",
+  "version": "1.0.0",
+  "description": "Backend para Newzelland Cerámicas - tienda de Practika",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "nodemon api/index.js",
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^12.4.0",
+    "pg": "^8.10.0",
+    "dotenv": "^16.0.3",
+    "axios": "^1.4.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

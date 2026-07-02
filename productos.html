@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Newzelland Cerámicas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>NEWZELLAND</h1>
+                    <p class="tagline">Cerámicas Practika</p>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="productos.html" class="active">Productos ▼</a>
+                        <div class="dropdown-menu">
+                            <a href="productos.html?serie=calacata">Calacata</a>
+                            <a href="productos.html?serie=atlas">Atlas</a>
+                            <a href="productos.html?serie=artic">Artic</a>
+                            <a href="productos.html?serie=provence">Provence</a>
+                            <a href="productos.html?serie=stahl">Stahl</a>
+                            <a href="productos.html?serie=keyburn">Keyburn</a>
+                            <a href="productos.html?serie=crema-marfil">Crema Marfil</a>
+                            <a href="productos.html?serie=travertino">Travertino</a>
+                            <a href="productos.html?serie=bigas">Bigas</a>
+                        </div>
+                    </li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="tienda.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-page">
+        <div class="container">
+            <h1>Nuestros Productos</h1>
+
+            <div class="products-layout">
+                <!-- Filtros (sidebar) -->
+                <aside class="filters">
+                    <h3>Filtros</h3>
+
+                    <div class="filter-group">
+                        <h4>Serie</h4>
+                        <div id="filter-series"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Formato</h4>
+                        <div id="filter-formatos"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Acabado</h4>
+                        <div id="filter-acabados"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Tipo</h4>
+                        <div id="filter-tipos"></div>
+                    </div>
+
+                    <button class="btn-reset-filters" onclick="resetFilters()">Limpiar filtros</button>
+                </aside>
+
+                <!-- Grid de productos -->
+                <div class="products-grid">
+                    <div id="products-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newzelland Cerámicas</h4>
+                    <p>Comercializadora oficial de Practika Cerámica</p>
+                    <p><strong>Ubicación:</strong> Onda, Castellón, España</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="descargas.html">Descargas</a></li>
+                        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 123 456 789</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@newzelland.es">info@newzelland.es</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Newzelland Cerámicas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/34123456789?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos" class="whatsapp-button" target="_blank">
+        💬 WhatsApp
+    </a>
+
+    <script src="js/nav.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>
