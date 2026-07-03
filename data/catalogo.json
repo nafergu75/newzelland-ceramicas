@@ -7,30 +7,15 @@
       "nombre": "Calacata",
       "descripcion": "Inspirado en mármol Calacata, acabado elegante y sofisticado",
       "imagen": "/assets/img/calacata-ambiente.jpg",
-      "formatos": [
-        "20x50",
-        "30x60",
-        "60x120",
-        "120x120"
-      ],
-      "acabados": [
-        "Mate",
-        "Brillo"
-      ],
-      "tipo": [
-        "Pavimento",
-        "Revestimiento"
-      ],
+      "formatos": ["20x50", "30x60", "60x120", "120x120"],
+      "acabados": ["Mate", "Brillo"],
+      "tipo": ["Pavimento", "Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Blanco",
-        "Beige",
-        "Gris"
-      ],
+      "colores": ["Blanco", "Beige", "Gris"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Calacata-ficha-tecnica.pdf",
-        "instalacion": "/assets/descargas/Calacata-instalacion.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/calacata",
+        "instalacion": "https://www.practikaceramica.com/productos/calacata"
       }
     },
     {
@@ -38,31 +23,15 @@
       "nombre": "Atlas",
       "descripcion": "Colección versátil con múltiples acabados y formatos",
       "imagen": "/assets/img/atlas-ambiente.jpg",
-      "formatos": [
-        "25x50",
-        "30x60",
-        "45x45",
-        "60x120"
-      ],
-      "acabados": [
-        "Mate",
-        "Brillo",
-        "Relieve"
-      ],
-      "tipo": [
-        "Pavimento",
-        "Revestimiento"
-      ],
+      "formatos": ["25x50", "30x60", "45x45", "60x120"],
+      "acabados": ["Mate", "Brillo", "Relieve"],
+      "tipo": ["Pavimento", "Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Blanco",
-        "Gris",
-        "Negro"
-      ],
+      "colores": ["Blanco", "Gris", "Negro"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Atlas-ficha-tecnica.pdf",
-        "instalacion": "/assets/descargas/Atlas-instalacion.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/atlas",
+        "instalacion": "https://www.practikaceramica.com/productos/atlas"
       }
     },
     {
@@ -70,28 +39,14 @@
       "nombre": "Artic",
       "descripcion": "Acabado industrial con texturas contemporáneas",
       "imagen": "/assets/img/artic-ambiente.jpg",
-      "formatos": [
-        "30x60",
-        "60x60",
-        "60x120"
-      ],
-      "acabados": [
-        "Mate",
-        "Relieve"
-      ],
-      "tipo": [
-        "Pavimento",
-        "Revestimiento"
-      ],
+      "formatos": ["30x60", "60x60", "60x120"],
+      "acabados": ["Mate", "Relieve"],
+      "tipo": ["Pavimento", "Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Cemento",
-        "Gris",
-        "Negro"
-      ],
+      "colores": ["Cemento", "Gris", "Negro"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Artic-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/artic"
       }
     },
     {
@@ -99,27 +54,14 @@
       "nombre": "Provence",
       "descripcion": "Estilo rústico con acabados naturales",
       "imagen": "/assets/img/provence-ambiente.jpg",
-      "formatos": [
-        "30x60",
-        "45x45",
-        "60x60"
-      ],
-      "acabados": [
-        "Mate",
-        "Relieve"
-      ],
-      "tipo": [
-        "Pavimento"
-      ],
+      "formatos": ["30x60", "45x45", "60x60"],
+      "acabados": ["Mate", "Relieve"],
+      "tipo": ["Pavimento"],
       "material": "Porcelánico",
-      "colores": [
-        "Marfil",
-        "Beige",
-        "Tierra"
-      ],
+      "colores": ["Marfil", "Beige", "Tierra"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Provence-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/provence"
       }
     },
     {
@@ -127,26 +69,14 @@
       "nombre": "Stahl",
       "descripcion": "Efecto acero y metal, diseño moderno",
       "imagen": "/assets/img/stahl-ambiente.jpg",
-      "formatos": [
-        "20x60",
-        "30x60",
-        "60x120"
-      ],
-      "acabados": [
-        "Brillo"
-      ],
-      "tipo": [
-        "Revestimiento"
-      ],
+      "formatos": ["20x60", "30x60", "60x120"],
+      "acabados": ["Brillo"],
+      "tipo": ["Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Gris",
-        "Plata",
-        "Negro"
-      ],
+      "colores": ["Gris", "Plata", "Negro"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Stahl-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/stahl"
       }
     },
     {
@@ -154,27 +84,14 @@
       "nombre": "Keyburn",
       "descripcion": "Acabados variados con relieve y brillo",
       "imagen": "/assets/img/keyburn-ambiente.jpg",
-      "formatos": [
-        "25x50",
-        "30x60",
-        "60x120"
-      ],
-      "acabados": [
-        "Brillo",
-        "Relieve"
-      ],
-      "tipo": [
-        "Revestimiento"
-      ],
+      "formatos": ["25x50", "30x60", "60x120"],
+      "acabados": ["Brillo", "Relieve"],
+      "tipo": ["Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Blanco",
-        "Crema",
-        "Gris"
-      ],
+      "colores": ["Blanco", "Crema", "Gris"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Keyburn-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/keyburn"
       }
     },
     {
@@ -182,27 +99,14 @@
       "nombre": "Crema Marfil",
       "descripcion": "Elegancia en tonos cálidos, inspirado en piedra natural",
       "imagen": "/assets/img/crema-marfil-ambiente.jpg",
-      "formatos": [
-        "30x60",
-        "45x45",
-        "60x60"
-      ],
-      "acabados": [
-        "Pulido",
-        "Mate"
-      ],
-      "tipo": [
-        "Pavimento",
-        "Revestimiento"
-      ],
+      "formatos": ["30x60", "45x45", "60x60"],
+      "acabados": ["Pulido", "Mate"],
+      "tipo": ["Pavimento", "Revestimiento"],
       "material": "Porcelánico",
-      "colores": [
-        "Crema",
-        "Marfil"
-      ],
+      "colores": ["Crema", "Marfil"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Crema-Marfil-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/crema-marfil"
       }
     },
     {
@@ -210,24 +114,14 @@
       "nombre": "Travertino",
       "descripcion": "Acabado natural con características de piedra travertino",
       "imagen": "/assets/img/travertino-ambiente.jpg",
-      "formatos": [
-        "30x60",
-        "45x45"
-      ],
-      "acabados": [
-        "Mate"
-      ],
-      "tipo": [
-        "Pavimento"
-      ],
+      "formatos": ["30x60", "45x45"],
+      "acabados": ["Mate"],
+      "tipo": ["Pavimento"],
       "material": "Porcelánico",
-      "colores": [
-        "Beige",
-        "Marrón claro"
-      ],
+      "colores": ["Beige", "Marrón claro"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Travertino-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/travertino"
       }
     },
     {
@@ -235,25 +129,14 @@
       "nombre": "Bigas",
       "descripcion": "Efecto madera con acabados modernos",
       "imagen": "/assets/img/bigas-ambiente.jpg",
-      "formatos": [
-        "20x120",
-        "30x120",
-        "60x120"
-      ],
-      "acabados": [
-        "Mate"
-      ],
-      "tipo": [
-        "Pavimento"
-      ],
+      "formatos": ["20x120", "30x120", "60x120"],
+      "acabados": ["Mate"],
+      "tipo": ["Pavimento"],
       "material": "Porcelánico",
-      "colores": [
-        "Roble",
-        "Castaño"
-      ],
+      "colores": ["Roble", "Castaño"],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "/assets/descargas/Bigas-ficha-tecnica.pdf"
+        "tecnica": "https://www.practikaceramica.com/productos/bigas"
       }
     }
   ],
@@ -263,7 +146,7 @@
         "id": "catalogo-general-2024",
         "titulo": "Catálogo General 2024",
         "descripcion": "Catálogo completo de todas nuestras colecciones",
-        "archivo": "/assets/descargas/CATALOGO-GENERAL-2024.pdf",
+        "archivo": "https://www.practikaceramica.com/descargas/catalogo-general",
         "fecha": "2024-07-01",
         "tamaño": "PDF"
       },
@@ -271,7 +154,7 @@
         "id": "novedades-2024",
         "titulo": "Novedades 2024",
         "descripcion": "Nuevas colecciones y acabados de esta temporada",
-        "archivo": "/assets/descargas/NOVEDADES-2024.pdf",
+        "archivo": "https://www.practikaceramica.com/descargas/novedades",
         "fecha": "2024-06-15",
         "tamaño": "PDF"
       },
@@ -279,46 +162,24 @@
         "id": "area-tecnica",
         "titulo": "Área Técnica",
         "descripcion": "Especificaciones técnicas y normas de calidad",
-        "archivo": "/assets/descargas/AREA-TECNICA.pdf",
+        "archivo": "https://www.practikaceramica.com/descargas/area-tecnica",
         "fecha": "2024-01-01",
         "tamaño": "PDF"
       }
     ],
-    "por_familia": "Las fichas técnicas de cada familia están disponibles en la sección de Productos o directamente en el catálogo específico de cada serie"
+    "por_familia": "Las fichas técnicas de cada familia están disponibles en la sección de Productos"
   },
   "formatos_disponibles": [
-    "20x20",
-    "20x50",
-    "20x60",
-    "20x120",
-    "23x120",
-    "25x40",
-    "25x50",
-    "25x75",
-    "30x60",
-    "30x90",
-    "30x120",
-    "40x120",
-    "45x45",
-    "45x90",
-    "60x60",
-    "60x120",
-    "120x120",
-    "120x260",
-    "333x333"
+    "20x20", "20x50", "20x60", "20x120",
+    "23x120", "25x40", "25x50", "25x75",
+    "30x60", "30x90", "30x120",
+    "40x120", "45x45", "45x90",
+    "60x60", "60x120", "120x120", "120x260", "333x333"
   ],
   "acabados_disponibles": [
-    "Mate",
-    "Brillo",
-    "Pulido",
-    "Relieve",
-    "Sin relieve",
-    "Rectificado",
-    "Destonificado"
+    "Mate", "Brillo", "Pulido", "Relieve", "Sin relieve", "Rectificado", "Destonificado"
   ],
   "tipos_producto": [
-    "Pavimento",
-    "Revestimiento",
-    "Fachada"
+    "Pavimento", "Revestimiento", "Fachada"
   ]
 }
