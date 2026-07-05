@@ -52,67 +52,30 @@
             <h1>Descargas</h1>
             <p class="subtitle">Catálogos, fichas técnicas y documentación de nuestras colecciones</p>
 
-            <!-- TAB 1: Catálogos Generales -->
+            <!-- Catálogos Generales -->
             <section class="downloads-section">
                 <h2>📚 Catálogos Generales</h2>
-                <div class="downloads-grid">
-                    <div class="download-card">
-                        <div class="card-header">
-                            <h3>Catálogo General 2024</h3>
-                            <span class="badge">PDF</span>
-                        </div>
-                        <p class="card-desc">Catálogo completo de todas nuestras colecciones y series disponibles</p>
-                        <div class="card-meta">
-                            <span>📅 Julio 2024</span>
-                        </div>
-                        <a href="assets/descargas/CATALOGO-GENERAL-2024.pdf" class="btn btn-download" download>
-                            ⬇️ Descargar PDF
-                        </a>
-                    </div>
-
-                    <div class="download-card">
-                        <div class="card-header">
-                            <h3>Novedades 2024</h3>
-                            <span class="badge">PDF</span>
-                        </div>
-                        <p class="card-desc">Nuevas colecciones, acabados y tendencias de esta temporada</p>
-                        <div class="card-meta">
-                            <span>📅 Junio 2024</span>
-                        </div>
-                        <a href="assets/descargas/NOVEDADES-2024.pdf" class="btn btn-download" download>
-                            ⬇️ Descargar PDF
-                        </a>
-                    </div>
-
-                    <div class="download-card">
-                        <div class="card-header">
-                            <h3>Especificaciones Técnicas</h3>
-                            <span class="badge">PDF</span>
-                        </div>
-                        <p class="card-desc">Normas, estándares y características técnicas de nuestros productos</p>
-                        <div class="card-meta">
-                            <span>📅 Enero 2024</span>
-                        </div>
-                        <a href="assets/descargas/AREA-TECNICA.pdf" class="btn btn-download" download>
-                            ⬇️ Descargar PDF
-                        </a>
-                    </div>
+                <div class="downloads-grid" id="generales-grid">
+                    <!-- Se rellena con JavaScript desde data/descargas.json -->
                 </div>
             </section>
 
-            <!-- TAB 2: Por Familia/Serie -->
+            <!-- Por Familia/Serie -->
             <section class="downloads-section">
-                <h2>🎨 Fichas Técnicas por Familia</h2>
-                <p class="section-desc">Descarga las fichas técnicas específicas de cada colección</p>
+                <h2>🎨 Catálogos y Paneles Técnicos por Serie</h2>
+                <p class="section-desc">Descarga el catálogo y el panel técnico de cada serie <span id="contador-series" style="color: #999;"></span></p>
 
                 <!-- Búsqueda -->
                 <div class="search-box">
-                    <input type="text" id="search-familia" placeholder="Buscar familia (ej: Calacata, Atlas...)" onkeyup="filterFamilias()">
+                    <input type="text" id="search-familia" placeholder="Buscar serie (ej: Atlas, Carrara, Bigas...)" onkeyup="filterFamilias()">
                 </div>
+
+                <!-- Filtros por material -->
+                <div id="filtros-material" class="filtros-material"></div>
 
                 <!-- Grid de familias -->
                 <div class="familias-grid" id="familias-grid">
-                    <!-- Se rellena con JavaScript desde catalogo.json -->
+                    <!-- Se rellena con JavaScript desde data/descargas.json -->
                 </div>
             </section>
 

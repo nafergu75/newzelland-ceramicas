@@ -609,6 +609,34 @@ section {
     font-size: 1rem;
 }
 
+.filtros-material {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filtro-material-btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: #fff;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtro-material-btn:hover {
+    border-color: var(--secondary-color);
+}
+
+.filtro-material-btn.activo {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
 .downloads-grid,
 .familias-grid {
     display: grid;

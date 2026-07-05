@@ -1,0 +1,2849 @@
+{
+  "actualizado": "2026-07-05",
+  "generales": [
+    {
+      "titulo": "Catalogo general 2026",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/66361c28-340f-49f5-af6a-d1676b047a2b/d2379433-b222-42e2-89d8-93a85c047aa5.pdf"
+    },
+    {
+      "titulo": "Catalogo novedades 2025",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/ebc57937-0ec0-413a-bec3-3497dcbfb194/77b460eb-9f45-46a7-ac33-07e9b44069a5.pdf"
+    },
+    {
+      "titulo": "Paneles tecnicos",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/4b716ab6-ab0b-4950-8e89-20ba1fb5df81/011107d2-e9e5-40bb-b95c-3cc40a37ceeb.pdf"
+    },
+    {
+      "titulo": "Area tecnica",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/84d03a83-b88d-4941-ad8b-d9c09af58099/1bde4bca-4a7c-4028-b8c2-7a7c55f01a7e.pdf"
+    },
+    {
+      "titulo": "Declaracion de prestaciones Gres",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/de729fda-5fac-4acd-b48b-9d8f78d3b03c/4f3c977a-458c-4fce-99df-3bf2e3fc8715.pdf"
+    },
+    {
+      "titulo": "Declaracion de prestaciones Porcelánico",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/bf1187eb-9703-4ab4-9875-763796d3c9ea/d995843e-12cf-492e-b8ba-5169369bbb54.pdf"
+    },
+    {
+      "titulo": "Declaracion de prestaciones Revestimiento",
+      "archivo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/site/descargas/catalogos/0fb1bf21-0b77-49ac-9ee5-52a40434d3a9/96a27c8f-fcb2-4f06-a206-9834f60c2c67.pdf"
+    }
+  ],
+  "series": [
+    {
+      "slug": "alpina",
+      "nombre": "Alpina",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/alpina/ambientes/alpina-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "23x120"
+      ],
+      "colores": [
+        "Ceniza",
+        "Haya",
+        "Nieve",
+        "Teka"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/catalogos/alpina-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/paneles-tecnicos/alpina-panel-tecnico-01.pdf"
+      ]
+    },
+    {
+      "slug": "aneto",
+      "nombre": "Aneto",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/aneto/ambientes/aneto-ambiente-01",
+      "materiales": [
+        "Gres",
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Arena",
+        "Arena",
+        "Beige",
+        "Beige",
+        "Cuero",
+        "Cuero",
+        "Gris",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/catalogos/aneto-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/aneto/paneles-tecnicos/aneto-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "ardesia-c3",
+      "nombre": "Ardesia c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ardesia-c3/ambientes/ardesia-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Natural"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ardesia-c3/catalogos/ardesia-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ardesia-c3/paneles-tecnicos/ardesia-c3-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "atlas",
+      "nombre": "Atlas",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/atlas/ambientes/atlas-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "22,5x90"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Miel",
+        "Natural"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/catalogos/atlas-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/paneles-tecnicos/atlas-panel-tecnico-01.pdf"
+      ]
+    },
+    {
+      "slug": "bali-c3",
+      "nombre": "Bali c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bali/ambientes/bali-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Azul",
+        "Bali 1",
+        "Bali 2",
+        "Bali 4",
+        "Bali 5",
+        "Bali 6",
+        "Bali multicolor",
+        "Verde"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/catalogos/bali-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bali/paneles-tecnicos/bali-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bali-c3/paneles-tecnicos/bali-c3-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "berna",
+      "nombre": "Berna",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/berna/ambientes/berna-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Azul",
+        "Blanco",
+        "Gris",
+        "Verde"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/catalogos/berna-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/berna/paneles-tecnicos/berna-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "bigas",
+      "nombre": "Bigas",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bigas/ambientes/bigas-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "23x120"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Miel",
+        "Roble"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bigas/catalogos/bigas-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bigas/paneles-tecnicos/bigas-panel-tecnico-01.pdf"
+      ]
+    },
+    {
+      "slug": "blancos",
+      "nombre": "Blancos",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/blancos/ambientes/blancos-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "10x10",
+        "15x15",
+        "20x50",
+        "25x50",
+        "25x80"
+      ],
+      "colores": [
+        "Blanco brillo"
+      ],
+      "acabados": [
+        "Brillo",
+        "Mate"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/blancos/catalogos/blancos-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/blancos/paneles-tecnicos/blancos-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/blancos/paneles-tecnicos/blancos-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "bosco",
+      "nombre": "Bosco",
+      "imagen": "/images/placeholder-product.jpg",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Beige",
+        "Caldera",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bosco/catalogos/bosco-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bosco/paneles-tecnicos/bosco-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "brando",
+      "nombre": "Brando",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brando/ambientes/brando-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60"
+      ],
+      "colores": [
+        "Blanc",
+        "Clair",
+        "Fonce",
+        "Ombre"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/catalogos/brando-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brando/paneles-tecnicos/brando-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "brandon",
+      "nombre": "Brandon",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brandon/ambientes/brandon-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Green"
+      ],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brandon/catalogos/brandon-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "brick",
+      "nombre": "Brick",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brick/ambientes/brick-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Beige",
+        "Gris",
+        "Marron"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brick/catalogos/brick-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brick/paneles-tecnicos/brick-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "calacata",
+      "nombre": "Calacata",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/calacata/ambientes/calacata-ambiente-01",
+      "materiales": [
+        "Pasta Blanca",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x90",
+        "60x60"
+      ],
+      "colores": [
+        "Calacata"
+      ],
+      "acabados": [
+        "Brillo",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/calacata/paneles-tecnicos/calacata-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "canyon",
+      "nombre": "Canyon",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/canyon/ambientes/canyon-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60"
+      ],
+      "colores": [
+        "Basalt",
+        "Beige",
+        "Chert"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/canyon/catalogos/canyon-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "carlotta-silver",
+      "nombre": "Carlotta silver",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/carlotta-silver/ambientes/carlotta-silver-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Carlotta silver"
+      ],
+      "acabados": [
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carlotta-silver/catalogos/carlotta-silver-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "carrara",
+      "nombre": "Carrara",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/carrara/ambientes/carrara-ambiente-01",
+      "materiales": [
+        "Gres",
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "20x60",
+        "30x60",
+        "45x45",
+        "60x120",
+        "100x100"
+      ],
+      "colores": [
+        "Blanco",
+        "Blanco brillo",
+        "Carrara",
+        "Gold",
+        "Negro",
+        "Negro brillo"
+      ],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/catalogos/carrara-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/carrara/paneles-tecnicos/carrara-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "ceppo-di-gre",
+      "nombre": "Ceppo di gre",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ceppo-di-gre/ambientes/ceppo-di-gre-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60",
+        "60x120"
+      ],
+      "colores": [
+        "Cold",
+        "Warm"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/catalogos/ceppo-di-gre-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "cober",
+      "nombre": "Cober",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/cober/ambientes/cober-ambiente-02",
+      "materiales": [
+        "Pasta Blanca",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x90",
+        "60x60",
+        "60x120"
+      ],
+      "colores": [
+        "Pearl",
+        "Sand",
+        "White"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/catalogos/cober-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/cober/paneles-tecnicos/cober-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/cober/paneles-tecnicos/cober-panel-tecnico-02",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/cober/paneles-tecnicos/cober-panel-tecnico-03"
+      ]
+    },
+    {
+      "slug": "concrete",
+      "nombre": "Concrete",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/concrete/ambientes/concrete-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Beige",
+        "Gris",
+        "Marfil",
+        "Perla"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/catalogos/concrete-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/concrete/paneles-tecnicos/concrete-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "crema-marfil",
+      "nombre": "Crema marfil",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/crema-marfil/ambientes/crema-marfil-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Crema marfil"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/crema-marfil/catalogos/crema-marfil-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/crema-marfil/paneles-tecnicos/crema-marfil-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "curia-c3",
+      "nombre": "Curia c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/curia-c3/ambientes/curia-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "22,5x90"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Haya",
+        "Roble",
+        "Wengue"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/catalogos/curia-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/curia-c3/paneles-tecnicos/curia-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "diamond",
+      "nombre": "Diamond",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/diamond/ambientes/diamond-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Diamond"
+      ],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/diamond/catalogos/diamond-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/diamond/paneles-tecnicos/diamond-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "eden",
+      "nombre": "Eden",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/eden/ambientes/eden-ambiente-05",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "25x80"
+      ],
+      "colores": [
+        "Gold",
+        "White"
+      ],
+      "acabados": [
+        "Brillo",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/catalogos/eden-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "elvis",
+      "nombre": "Elvis",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/elvis/ambientes/elvis-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "100x100"
+      ],
+      "colores": [
+        "Elvis"
+      ],
+      "acabados": [
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/elvis/catalogos/elvis-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "enate",
+      "nombre": "Enate",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enate/ambientes/enate-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "22,5x90"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Haya",
+        "Roble"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/catalogos/enate-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enate/paneles-tecnicos/enate-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "enjoy",
+      "nombre": "Enjoy",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enjoy/ambientes/enjoy-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Azul",
+        "Blanco",
+        "Gris",
+        "Verde"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/catalogos/enjoy-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enjoy/paneles-tecnicos/enjoy-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enjoy/paneles-tecnicos/enjoy-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "forest",
+      "nombre": "Forest",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/forest/ambientes/forest-ambiente-02",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "19x57"
+      ],
+      "colores": [
+        "Arena",
+        "Blanco",
+        "Gris",
+        "Nogal",
+        "Roble"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/catalogos/forest-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/forest/paneles-tecnicos/forest-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "foresta",
+      "nombre": "Foresta",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/foresta/ambientes/foresta-ambiente-02",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Blanco"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/foresta/catalogos/foresta-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/foresta/paneles-tecnicos/foresta-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "fresno",
+      "nombre": "Fresno",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fresno/ambientes/fresno-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "19x57"
+      ],
+      "colores": [
+        "Arena 1",
+        "Arena 2",
+        "Arena 3",
+        "Gris 1",
+        "Gris 2",
+        "Gris 3"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/catalogos/fresno-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fresno/paneles-tecnicos/fresno-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "fusta",
+      "nombre": "Fusta",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fusta/ambientes/fusta-ambiente-04",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "19x57"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Haya",
+        "Roble",
+        "Smoke"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/catalogos/fusta-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fusta/paneles-tecnicos/fusta-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "garden",
+      "nombre": "Garden",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/garden/ambientes/garden-ambiente-01",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "45x45"
+      ],
+      "colores": [
+        "Grey",
+        "Marfil",
+        "White"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/catalogos/garden-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/garden/paneles-tecnicos/garden-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/garden/paneles-tecnicos/garden-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "haina",
+      "nombre": "Haina",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/haina/ambientes/haina-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Gris",
+        "Marfil",
+        "Marron",
+        "Perla"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/catalogos/haina-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/haina/paneles-tecnicos/haina-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "hidraulicos",
+      "nombre": "Hidráulicos",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/hidraulicos/ambientes/hidraulicos-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Beige"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/hidraulicos/catalogos/hidraulicos-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/hidraulicos/paneles-tecnicos/hidraulicos-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "inca",
+      "nombre": "Inca",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/inca/ambientes/inca-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Cuero",
+        "Gris",
+        "Miel"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/inca/catalogos/inca-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/inca/paneles-tecnicos/inca-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "irati",
+      "nombre": "Irati",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/irati/ambientes/irati-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Gris",
+        "Marfil",
+        "Marron",
+        "Perla"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/catalogos/irati-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/irati/paneles-tecnicos/irati-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "jaca",
+      "nombre": "Jaca",
+      "imagen": "/images/placeholder-product.jpg",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "25x50"
+      ],
+      "colores": [
+        "Beige",
+        "Gris"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/jaca/catalogos/jaca-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/jaca/paneles-tecnicos/jaca-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "kamen",
+      "nombre": "Kamen",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kamen/ambientes/kamen-ambiente-01",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Beige",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/catalogos/kamen-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kamen/paneles-tecnicos/kamen-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "kaster",
+      "nombre": "Kaster",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kaster/ambientes/kaster-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Arena",
+        "Cacao",
+        "Grafito",
+        "Gris",
+        "Sendra"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/catalogos/kaster-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kaster/paneles-tecnicos/kaster-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "keops",
+      "nombre": "Keops",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keops/ambientes/keops-ambiente-03",
+      "materiales": [
+        "Gres",
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "25x80",
+        "45x45"
+      ],
+      "colores": [
+        "Marfil",
+        "Perla"
+      ],
+      "acabados": [
+        "Brillo",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/catalogos/keops-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keops/paneles-tecnicos/keops-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "keyburn-c3",
+      "nombre": "Keyburn c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keyburn-c3/ambientes/keyburn-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Black",
+        "Grey",
+        "White"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Brillo",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keyburn-c3/catalogos/keyburn-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keyburn-c3/paneles-tecnicos/keyburn-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "kite",
+      "nombre": "Kite",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kite/ambientes/kite-ambiente-02",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Beige",
+        "Gris",
+        "Marfil",
+        "Perla"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/catalogos/kite-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kite/paneles-tecnicos/kite-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "koral",
+      "nombre": "Koral",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/koral/ambientes/koral-ambiente-01",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60",
+        "75x75"
+      ],
+      "colores": [
+        "Grey"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/koral/catalogos/koral-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/koral/paneles-tecnicos/koral-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "kronos",
+      "nombre": "Kronos",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kronos/ambientes/kronos-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "25x80"
+      ],
+      "colores": [
+        "Beige",
+        "Grafito",
+        "Grey",
+        "Marfil",
+        "White"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/catalogos/kronos-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kronos/paneles-tecnicos/kronos-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "land-kaster-c3",
+      "nombre": "Land kaster c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/land-kaster-c3/ambientes/land-kaster-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60",
+        "60x120"
+      ],
+      "colores": [
+        "Coal",
+        "Coal",
+        "Grey",
+        "Grey",
+        "Sand",
+        "Sand",
+        "White",
+        "White"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/catalogos/land-kaster-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/land-kaster-c3/paneles-tecnicos/land-kaster-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "legend",
+      "nombre": "Legend",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/legend/ambientes/legend-ambiente-02",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60",
+        "120x20"
+      ],
+      "colores": [
+        "Beige",
+        "Cuero",
+        "Gris",
+        "Marfil",
+        "Perla"
+      ],
+      "acabados": [
+        "Brillo",
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/catalogos/legend-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/legend/paneles-tecnicos/legend-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "life",
+      "nombre": "Life",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/life/ambientes/life-ambiente-02",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Azul",
+        "Blanco",
+        "Gris",
+        "Verde"
+      ],
+      "acabados": [
+        "Brillo",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/catalogos/life-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/life/paneles-tecnicos/life-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/life/paneles-tecnicos/life-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "magnum",
+      "nombre": "Magnum",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/magnum/ambientes/magnum-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "90x90"
+      ],
+      "colores": [
+        "Plomo",
+        "White"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/catalogos/magnum-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/magnum/paneles-tecnicos/magnum-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "masip",
+      "nombre": "Masip",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/masip/ambientes/masip-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Blanco",
+        "Crema",
+        "Gris"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/masip/catalogos/masip-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/masip/paneles-tecnicos/masip-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "melissa",
+      "nombre": "Melissa",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/melissa/ambientes/melissa-ambiente-01",
+      "materiales": [
+        "Gres",
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Beige",
+        "Beige",
+        "Cotto",
+        "Cotto",
+        "Gris",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/catalogos/melissa-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/paneles-tecnicos/melissa-panel-tecnico-01.pdf"
+      ]
+    },
+    {
+      "slug": "metro",
+      "nombre": "Metro",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/metro/ambientes/metro-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "10x20"
+      ],
+      "colores": [
+        "Alga",
+        "Beige",
+        "Blanco",
+        "Carrara",
+        "Celeste",
+        "Cobalto",
+        "Crema marfil",
+        "Fuego",
+        "Gris",
+        "Marengo",
+        "Negro",
+        "Perla",
+        "Rosa",
+        "Sage",
+        "Verde"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/catalogos/metro-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/metro/paneles-tecnicos/metro-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "mijas",
+      "nombre": "Mijas",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mijas/ambientes/mijas-ambiente-02",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "45x45"
+      ],
+      "colores": [
+        "Alhambra grey",
+        "Azul",
+        "Celeste",
+        "Ivory"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mijas/catalogos/mijas-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mijas/paneles-tecnicos/mijas-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "mogan",
+      "nombre": "Mogan",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mogan/ambientes/mogan-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "22,5x90"
+      ],
+      "colores": [
+        "Greige",
+        "Honey",
+        "Natural",
+        "Nut"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/catalogos/mogan-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mogan/paneles-tecnicos/mogan-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "morella",
+      "nombre": "Morella",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/morella/ambientes/morella-ambiente-01",
+      "materiales": [
+        "Gres",
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Arena",
+        "Arena",
+        "Beige",
+        "Beige",
+        "Gris",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/morella/catalogos/morella-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/morella/paneles-tecnicos/morella-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "mulhacen",
+      "nombre": "Mulhacén",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mulhacen/ambientes/mulhacen-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Arena",
+        "Beige",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mulhacen/catalogos/mulhacen-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mulhacen/paneles-tecnicos/mulhacen-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "murano",
+      "nombre": "Murano",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/murano/ambientes/murano-ambiente-02",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Azul",
+        "Blanco",
+        "Gris",
+        "Verde"
+      ],
+      "acabados": [
+        "Brillo",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/catalogos/murano-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/murano/paneles-tecnicos/murano-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "napoli",
+      "nombre": "Napoli",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/napoli/ambientes/napoli-ambiente-01",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Dark grey mate"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/napoli/catalogos/napoli-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/napoli/paneles-tecnicos/napoli-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "new-calacatta",
+      "nombre": "New calacatta",
+      "imagen": "/images/placeholder-product.jpg",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/new-calacatta/catalogos/new-calacatta-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "pietra",
+      "nombre": "Pietra",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pietra/ambientes/pietra-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60",
+        "80x80"
+      ],
+      "colores": [
+        "Gray",
+        "Marengo",
+        "Sand"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra/catalogos/pietra-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra/paneles-tecnicos/pietra-panel-tecnico-01.pdf"
+      ]
+    },
+    {
+      "slug": "pietra-serena",
+      "nombre": "Pietra serena",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pietra-serena/ambientes/pietra-serena-ambiente-01",
+      "materiales": [
+        "Pasta Blanca",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x90",
+        "60x60",
+        "60x120",
+        "90x90"
+      ],
+      "colores": [
+        "Grey",
+        "Light",
+        "Sand",
+        "Taupe"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/catalogos/pietra-serena-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pietra-serena/paneles-tecnicos/pietra-serena-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pietra-serena/paneles-tecnicos/pietra-serena-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "pinada",
+      "nombre": "Pinada",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pinada/ambientes/pinada-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "20x60"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Haya",
+        "Natural"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/catalogos/pinada-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pinada/paneles-tecnicos/pinada-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "pizarra",
+      "nombre": "Pizarra",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pizarra/ambientes/pizarra-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Azabache",
+        "Canteiza",
+        "Gris",
+        "Oxido"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/catalogos/pizarra-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pizarra/paneles-tecnicos/pizarra-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "pobla-c3",
+      "nombre": "Pobla c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pobla-c3/ambientes/pobla-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Cotto",
+        "Iron",
+        "Paja"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Brillo",
+        "Destonificado",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pobla-c3/catalogos/pobla-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pobla-c3/paneles-tecnicos/pobla-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "polaris",
+      "nombre": "Polaris",
+      "imagen": "/images/placeholder-product.jpg",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60",
+        "60x120"
+      ],
+      "colores": [
+        "Polaris",
+        "Polaris"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/polaris/catalogos/polaris-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/polaris/paneles-tecnicos/polaris-panel-tecnico-02"
+      ]
+    },
+    {
+      "slug": "provence",
+      "nombre": "Provence",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/provence/ambientes/provence-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Grey",
+        "Natural",
+        "Natural"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence/catalogos/provence-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "provence-c3",
+      "nombre": "Provence c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/provence-c3/ambientes/provence-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Grey",
+        "Natural"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence-c3/catalogos/provence-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/provence-c3/paneles-tecnicos/provence-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "ritz",
+      "nombre": "Ritz",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ritz/ambientes/ritz-ambiente-01",
+      "materiales": [
+        "Pasta Roja",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60",
+        "60x60"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ritz/catalogos/ritz-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ritz/paneles-tecnicos/ritz-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "samario",
+      "nombre": "Samario",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/samario/ambientes/samario-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120",
+        "100x100"
+      ],
+      "colores": [
+        "Samario"
+      ],
+      "acabados": [
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/samario/catalogos/samario-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "sanit-dark",
+      "nombre": "Sanit dark",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/sanit-dark/ambientes/sanit-dark-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "100x100"
+      ],
+      "colores": [
+        "Sanit dark"
+      ],
+      "acabados": [
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sanit-dark/catalogos/sanit-dark-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": []
+    },
+    {
+      "slug": "shadow",
+      "nombre": "Shadow",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shadow/ambientes/shadow-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Shadow"
+      ],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shadow/catalogos/shadow-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shadow/paneles-tecnicos/shadow-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "shiman",
+      "nombre": "Shiman",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shiman/ambientes/shiman-ambiente-01",
+      "materiales": [
+        "Pasta Blanca"
+      ],
+      "formatos": [
+        "30x90"
+      ],
+      "colores": [
+        "Perla",
+        "White"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shiman/catalogos/shiman-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shiman/paneles-tecnicos/shiman-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "silos-c3-cotto-provenzal",
+      "nombre": "Silos c3/cotto provenzal",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/silos-c3-cotto-provenzal/ambientes/silos-c3-cotto-provenzal-ambiente-01",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Maestre",
+        "Massai"
+      ],
+      "acabados": [
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/silos-c3-cotto-provenzal/catalogos/silos-c3-cotto-provenzal-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/silos-c3-cotto-provenzal/paneles-tecnicos/silos-c3-cotto-provenzal-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "sonora",
+      "nombre": "Sonora",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/sonora/ambientes/sonora-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60"
+      ],
+      "colores": [
+        "Cotto"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Destonificado",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sonora/catalogos/sonora-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/sonora/paneles-tecnicos/sonora-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "stahl-c3",
+      "nombre": "Stahl c3",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/stahl-c3/ambientes/stahl-c3-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "33,3x33,3"
+      ],
+      "colores": [
+        "Caldera",
+        "Gris"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Brillo",
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/stahl-c3/catalogos/stahl-c3-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/stahl-c3/paneles-tecnicos/stahl-c3-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "star",
+      "nombre": "Star",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/star/ambientes/star-ambiente-02",
+      "materiales": [
+        "Gres"
+      ],
+      "formatos": [
+        "45x45"
+      ],
+      "colores": [
+        "Black",
+        "Blue",
+        "Grey",
+        "Ronda black"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/star/catalogos/star-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/star/paneles-tecnicos/star-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "tablero",
+      "nombre": "Tablero",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tablero/ambientes/tablero-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "23x120"
+      ],
+      "colores": [
+        "Basein",
+        "Grey",
+        "Oak",
+        "White"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/catalogos/tablero-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tablero/paneles-tecnicos/tablero-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "tadan",
+      "nombre": "Tadan",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tadan/ambientes/tadan-ambiente-01",
+      "materiales": [
+        "Pasta Blanca"
+      ],
+      "formatos": [
+        "30x90"
+      ],
+      "colores": [
+        "Blanco",
+        "Bone",
+        "Ceniza",
+        "Crema"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/catalogos/tadan-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tadan/paneles-tecnicos/tadan-panel-tecnico-01",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tadan/paneles-tecnicos/tadan-panel-tecnico-02",
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tadan/paneles-tecnicos/tadan-panel-tecnico-03"
+      ]
+    },
+    {
+      "slug": "taracea",
+      "nombre": "Taracea",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/taracea/ambientes/taracea-ambiente-01",
+      "materiales": [
+        "Pasta Blanca"
+      ],
+      "formatos": [
+        "30x90"
+      ],
+      "colores": [
+        "Bion natural",
+        "Bion negro",
+        "Satha natural"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/taracea/catalogos/taracea-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/taracea/paneles-tecnicos/taracea-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "tea",
+      "nombre": "Tea",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tea/ambientes/tea-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "22,5x90"
+      ],
+      "colores": [
+        "Gris",
+        "Roble",
+        "Tilo"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tea/catalogos/tea-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tea/paneles-tecnicos/tea-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "technikal-c2",
+      "nombre": "Technikal c2",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/technikal-c2/ambientes/technikal-c2-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Blanco",
+        "Negro",
+        "Perla"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/technikal-c2/catalogos/technikal-c2-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/technikal-c2/paneles-tecnicos/technikal-c2-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "terry",
+      "nombre": "Terry",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/terry/ambientes/terry-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "23x120"
+      ],
+      "colores": [
+        "Bianco",
+        "Miele",
+        "Natural",
+        "Taupe"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/catalogos/terry-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/terry/paneles-tecnicos/terry-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "timber",
+      "nombre": "Timber",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/timber/ambientes/timber-ambiente-01",
+      "materiales": [
+        "Pasta Roja"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Blanco",
+        "Gris",
+        "Haya",
+        "Roble"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/catalogos/timber-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/timber/paneles-tecnicos/timber-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "tokyo",
+      "nombre": "Tokyo",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tokyo/ambientes/tokyo-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x60",
+        "80x80"
+      ],
+      "colores": [
+        "Beige",
+        "Gray",
+        "Silver"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/catalogos/tokyo-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tokyo/paneles-tecnicos/tokyo-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "toledo",
+      "nombre": "Toledo",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/toledo/ambientes/toledo-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Gris",
+        "Perla"
+      ],
+      "acabados": [
+        "Mate"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/toledo/catalogos/toledo-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/toledo/paneles-tecnicos/toledo-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "torcal",
+      "nombre": "Torcal",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/torcal/ambientes/torcal-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Torcal 1",
+        "Torcal 2",
+        "Torcal 3"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/catalogos/torcal-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/paneles-tecnicos/torcal-panel-tecnico-01.pdf",
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/paneles-tecnicos/torcal-panel-tecnico-02.pdf"
+      ]
+    },
+    {
+      "slug": "tosca",
+      "nombre": "Tosca",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tosca/ambientes/tosca-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Beige",
+        "Dark",
+        "Grey",
+        "Warm"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tosca/paneles-tecnicos/tosca-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "travertino-caliza-brillo",
+      "nombre": "Travertino caliza brillo",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/travertino-caliza-brillo/ambientes/travertino-caliza-brillo-ambiente-01",
+      "materiales": [
+        "Gres",
+        "Porcelánico"
+      ],
+      "formatos": [
+        "45x45",
+        "60x60"
+      ],
+      "colores": [
+        "Travertino",
+        "Travertino"
+      ],
+      "acabados": [
+        "Brillo"
+      ],
+      "superficie": [
+        "Pavimento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/travertino-caliza-brillo/catalogos/travertino-caliza-brillo-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/travertino-caliza-brillo/paneles-tecnicos/travertino-caliza-brillo-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "urbion",
+      "nombre": "Urbion",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/urbion/ambientes/urbion-ambiente-02",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "30x60"
+      ],
+      "colores": [
+        "Urbion 1",
+        "Urbion 2",
+        "Urbion 3",
+        "Urbion 4",
+        "Urbion 5",
+        "Urbion 6"
+      ],
+      "acabados": [
+        "Antideslizante",
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/catalogos/urbion-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/urbion/paneles-tecnicos/urbion-panel-tecnico-01",
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/paneles-tecnicos/urbion-panel-tecnico-02.pdf"
+      ]
+    },
+    {
+      "slug": "verdi",
+      "nombre": "Verdi",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/verdi/ambientes/verdi-ambiente-01",
+      "materiales": [
+        "Pasta Blanca"
+      ],
+      "formatos": [
+        "30x90"
+      ],
+      "colores": [
+        "Concrete",
+        "White"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/verdi/catalogos/verdi-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/verdi/paneles-tecnicos/verdi-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "wahkan",
+      "nombre": "Wahkan",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/wahkan/ambientes/wahkan-ambiente-01",
+      "materiales": [
+        "Pasta Blanca"
+      ],
+      "formatos": [
+        "30x90"
+      ],
+      "colores": [
+        "Concrete",
+        "Perla",
+        "Plumb"
+      ],
+      "acabados": [
+        "Mate",
+        "Relieve"
+      ],
+      "superficie": [
+        "Revestimiento"
+      ],
+      "nuevo": false,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/wahkan/catalogos/wahkan-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/wahkan/paneles-tecnicos/wahkan-panel-tecnico-01"
+      ]
+    },
+    {
+      "slug": "walter-light-grey",
+      "nombre": "Walter light grey",
+      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/walter-light-grey/ambientes/walter-light-grey-ambiente-01",
+      "materiales": [
+        "Porcelánico"
+      ],
+      "formatos": [
+        "60x120"
+      ],
+      "colores": [
+        "Grey"
+      ],
+      "acabados": [
+        "Brillo",
+        "Pulido"
+      ],
+      "superficie": [
+        "Pavimento",
+        "Revestimiento"
+      ],
+      "nuevo": true,
+      "catalogos": [
+        "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/walter-light-grey/catalogos/walter-light-grey-catalogo-01.pdf"
+      ],
+      "panelesTecnicos": [
+        "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/walter-light-grey/paneles-tecnicos/walter-light-grey-panel-tecnico-01"
+      ]
+    }
+  ]
+}

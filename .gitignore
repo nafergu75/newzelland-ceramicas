@@ -8,3 +8,8 @@ build/
 .vercel/
 backend/node_modules/
 backend/.env
+
+.vercel
+
+# PDFs de Practika: copia local (668 MB), la web enlaza al CDN de Practika
+assets/descargas/
