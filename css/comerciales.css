@@ -1,0 +1,559 @@
+/* ============================================================
+   COMERCIALES.CSS — Mobile-first responsive design
+   Sección "Trabaja con nosotros" para colaboradores comerciales
+   Paleta cerámica: arena, cemento y azul tinta
+   ============================================================ */
+
+/* --- Variables de color cerámica --- */
+.com {
+    --com-arena: #ece4d4;
+    --com-arena-claro: #f7f3eb;
+    --com-cemento: #8a857b;
+    --com-cemento-claro: #d9d2c4;
+    --com-tinta: #26374a;
+    --com-tinta-suave: #3b5068;
+    --com-verde-wa: #2e7d5b;
+    background-color: var(--com-arena-claro);
+    color: var(--com-tinta);
+}
+
+/* === MOBILE-FIRST: BASE === */
+
+/* --- Tipografía base móvil --- */
+.com body {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.com h1,
+.com h2,
+.com h3,
+.com h4,
+.com h5,
+.com h6 {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    color: var(--com-tinta);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.com h1 {
+    font-size: 1.75rem;
+}
+
+.com h2 {
+    font-size: 1.35rem;
+}
+
+.com h3 {
+    font-size: 1.15rem;
+}
+
+.com p {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: #6b665c;
+}
+
+/* --- Header & navegación --- */
+.com .header {
+    border-bottom: 1px solid var(--com-cemento-claro);
+}
+
+.com .logo h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: 1px;
+    font-size: 1.35rem;
+}
+
+/* --- Cabecera de página (hero) --- */
+.com-hero {
+    background-color: var(--com-arena);
+    border-bottom: 1px solid var(--com-cemento-claro);
+    padding: 1.5rem 1rem;
+}
+
+.com-hero h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.com-lead {
+    max-width: 100%;
+    color: #575349;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+/* --- Contenido principal --- */
+.com-page {
+    padding-top: 0;
+}
+
+.com-contenido {
+    padding: 1.5rem 1rem 2rem;
+}
+
+/* --- Sección informativa --- */
+.com-info {
+    margin-bottom: 2.5rem;
+}
+
+.com-info h2 {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--com-cemento-claro);
+}
+
+.com-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.com-block {
+    background: #fff;
+    border: 1px solid var(--com-cemento-claro);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.com-block h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--com-tinta);
+}
+
+.com-block p {
+    font-size: 0.95rem;
+    color: #6b665c;
+}
+
+.com-closing {
+    background-color: var(--com-arena);
+    padding: 1.25rem;
+    border-left: 3px solid var(--com-tinta);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* === FORMULARIO === */
+.com-form-section {
+    background: #fff;
+    border: 1px solid var(--com-cemento-claro);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.com-form-section h2 {
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--com-cemento-claro);
+    padding-bottom: 0.6rem;
+}
+
+.com-form-desc {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Grupos de formulario --- */
+.com-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.com-form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--com-tinta);
+}
+
+.required {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.com-form-group input,
+.com-form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--com-cemento-claro);
+    border-radius: 6px;
+    font-family: 'Outfit', -apple-system, sans-serif;
+    font-size: 1rem;
+    background: #fff;
+    color: var(--com-tinta);
+    min-height: 44px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.com-form-group input:focus,
+.com-form-group textarea:focus {
+    outline: none;
+    border-color: var(--com-tinta-suave);
+    box-shadow: 0 0 0 3px rgba(38, 55, 74, 0.1);
+}
+
+.com-form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- Validación de error --- */
+.com-error {
+    display: block;
+    color: #d32f2f;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    min-height: 1.2rem;
+}
+
+/* --- Consentimiento GDPR --- */
+.com-form-consent {
+    background-color: var(--com-arena-claro);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--com-cemento-claro);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.com-consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #6b665c;
+}
+
+.com-consent-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--com-tinta);
+}
+
+.com-consent-label a {
+    color: var(--com-tinta);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.com-consent-label a:hover {
+    color: var(--com-tinta-suave);
+}
+
+/* --- Botón de envío --- */
+.com-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--com-tinta);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    letter-spacing: 0.5px;
+}
+
+.com-submit:active {
+    transform: scale(0.98);
+}
+
+.com-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* --- Mensajes de estado --- */
+.com-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.com-message:not(:empty) {
+    display: block;
+}
+
+.com-message-success {
+    background-color: #e8f5e9;
+    color: #2e7d5b;
+    border: 1px solid #c8e6c9;
+}
+
+.com-message-error {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+/* === FAQ === */
+.com-faq {
+    margin-top: 2.5rem;
+}
+
+.com-faq h2 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--com-cemento-claro);
+    padding-bottom: 0.6rem;
+}
+
+.com-faq-item {
+    background: #fff;
+    border: 1px solid var(--com-cemento-claro);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.com-faq-item summary {
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--com-tinta);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.com-faq-item summary:hover {
+    background-color: var(--com-arena-claro);
+}
+
+.com-faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.com-faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.com-faq-item p {
+    padding: 0 1.25rem 1.25rem;
+    color: #6b665c;
+    font-size: 0.95rem;
+    margin: 0;
+    border-top: 1px solid var(--com-cemento-claro);
+}
+
+/* --- Footer --- */
+.com .footer {
+    background-color: var(--com-tinta);
+    color: #fff;
+    padding: 1.5rem 1rem;
+}
+
+.com .footer h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: 0.3px;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.com .footer-section {
+    margin-bottom: 1.5rem;
+}
+
+.com .footer-section p {
+    color: #e8e3d9;
+    font-size: 0.95rem;
+}
+
+.com .footer-section a {
+    color: #fff;
+}
+
+.com .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #d0cac0;
+}
+
+/* --- WhatsApp button --- */
+.com .whatsapp-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--com-verde-wa);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    box-shadow: 0 4px 12px rgba(38, 55, 74, 0.2);
+    transition: all 0.3s ease;
+    min-height: 44px;
+    text-decoration: none;
+    z-index: 99;
+}
+
+.com .whatsapp-button:active {
+    transform: scale(0.95);
+}
+
+.com .whatsapp-button svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+/* === BREAKPOINT: TABLET (min-width: 640px) === */
+@media (min-width: 640px) {
+    .com h1 {
+        font-size: 2rem;
+    }
+
+    .com h2 {
+        font-size: 1.5rem;
+    }
+
+    .com-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .com-hero h1 {
+        font-size: 2rem;
+    }
+
+    .com-contenido {
+        padding: 2rem 1.5rem;
+    }
+
+    .com-blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .com-block:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+    }
+
+    .com-form-section {
+        padding: 2rem;
+    }
+
+    .com-form-group input,
+    .com-form-group textarea {
+        padding: 0.85rem 1.1rem;
+    }
+
+    .com-submit {
+        padding: 1.1rem;
+        font-size: 1.05rem;
+    }
+
+    .com-faq-item summary {
+        padding: 1.5rem;
+    }
+
+    .com-faq-item p {
+        padding: 0 1.5rem 1.5rem;
+    }
+}
+
+/* === BREAKPOINT: ESCRITORIO (min-width: 1024px) === */
+@media (min-width: 1024px) {
+    .com h1 {
+        font-size: 2.7rem;
+    }
+
+    .com h2 {
+        font-size: 1.7rem;
+    }
+
+    .com-hero {
+        padding: 3.2rem 2rem;
+    }
+
+    .com-hero h1 {
+        font-size: 2.7rem;
+        line-height: 1.15;
+    }
+
+    .com-hero .com-lead {
+        max-width: 620px;
+        font-size: 1.08rem;
+    }
+
+    .com-contenido {
+        padding: 2.5rem;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+
+    .com-blocks {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .com-block:nth-child(3) {
+        grid-column: auto;
+        max-width: 100%;
+    }
+
+    .com-form-section {
+        padding: 2.5rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+    }
+
+    .com-faq {
+        max-width: 800px;
+        margin: 2.5rem auto 0;
+    }
+
+    .com-faq-item summary {
+        padding: 1.5rem 2rem;
+    }
+
+    .com-faq-item p {
+        padding: 0 2rem 1.5rem;
+    }
+}
+
+/* === ACCESIBILIDAD === */
+.com a:focus-visible,
+.com button:focus-visible {
+    outline: 2px solid var(--com-tinta);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .com * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
