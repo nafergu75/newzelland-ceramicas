@@ -57,6 +57,7 @@ function renderPacking() {
         }
         if (items.length === 0) return '';
 
+        const fmt = n => String(n).replace('.', ',');
         return `
         <section class="downloads-section">
             <h2>${cat.nombre} <span style="font-size: 0.9rem; color: #999; font-weight: 400;">(${cat.codigo})</span></h2>
@@ -64,27 +65,27 @@ function renderPacking() {
                 <table class="packing-table">
                     <thead>
                         <tr>
-                            <th rowspan="2">Formato</th>
-                            <th rowspan="2">Variante</th>
-                            <th colspan="3">Caja</th>
-                            <th colspan="3">Palet</th>
+                            <th rowspan="2" class="col-formato">Formato</th>
+                            <th rowspan="2" class="col-variante">Variante</th>
+                            <th colspan="3" class="grupo sep">📦 Caja</th>
+                            <th colspan="3" class="grupo sep">🚛 Palet</th>
                         </tr>
                         <tr>
-                            <th>Piezas</th><th>m²</th><th>Kg</th>
-                            <th>Cajas</th><th>m²</th><th>Kg</th>
+                            <th class="sep">Piezas</th><th>m²</th><th>Kg</th>
+                            <th class="sep">Cajas</th><th>m²</th><th>Kg</th>
                         </tr>
                     </thead>
                     <tbody>
                         ${items.map(it => `
                         <tr>
-                            <td><strong>${it.format}</strong></td>
-                            <td>${it.variant || '—'}</td>
-                            <td>${it.box.pieces}</td>
-                            <td>${it.box.m2}</td>
-                            <td>${it.box.kg}</td>
-                            <td>${it.pallet.boxes}</td>
-                            <td>${it.pallet.m2}</td>
-                            <td>${it.pallet.kg}</td>
+                            <td class="col-formato"><strong>${it.format}</strong></td>
+                            <td class="col-variante">${it.variant || '—'}</td>
+                            <td class="sep">${fmt(it.box.pieces)}</td>
+                            <td>${fmt(it.box.m2)}</td>
+                            <td>${fmt(it.box.kg)}</td>
+                            <td class="sep">${fmt(it.pallet.boxes)}</td>
+                            <td>${fmt(it.pallet.m2)}</td>
+                            <td>${fmt(it.pallet.kg)}</td>
                         </tr>
                         `).join('')}
                     </tbody>

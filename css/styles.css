@@ -617,24 +617,60 @@ section {
 
 .packing-table {
     width: 100%;
+    min-width: 720px;
     border-collapse: collapse;
     background: #fff;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .packing-table th {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 0.6rem 0.9rem;
+    padding: 0.75rem 1.25rem;
     text-align: center;
     font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.15);
+    white-space: nowrap;
+}
+
+.packing-table th.grupo {
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    padding: 0.85rem 1.25rem;
+}
+
+.packing-table thead tr:last-child th {
+    background-color: #3d3d52;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .packing-table td {
-    padding: 0.55rem 0.9rem;
+    padding: 0.8rem 1.25rem;
     text-align: center;
-    border: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    min-width: 80px;
+    white-space: nowrap;
+}
+
+.packing-table .col-formato {
+    text-align: left;
+    min-width: 130px;
+    font-size: 1.05rem;
+}
+
+.packing-table .col-variante {
+    text-align: left;
+    min-width: 130px;
+    color: var(--text-light);
+}
+
+.packing-table th.sep,
+.packing-table td.sep {
+    border-left: 3px solid #d5cfc5;
 }
 
 .packing-table tbody tr:nth-child(even) {
