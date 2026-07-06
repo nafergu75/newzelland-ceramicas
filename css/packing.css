@@ -1,0 +1,241 @@
+/* ============================================================
+   PACKING.CSS — rediseño editorial de packing.html (NUEVO)
+   Solo lo carga packing.html; todo va scoped bajo body.pk
+   Paleta cerámica: arena, cemento y azul tinta
+   ============================================================ */
+
+.pk {
+    --pk-arena: #ece4d4;        /* beige arena */
+    --pk-arena-claro: #f7f3eb;  /* crema de fondo */
+    --pk-cemento: #8a857b;      /* gris cemento */
+    --pk-cemento-claro: #d9d2c4;
+    --pk-tinta: #26374a;        /* azul oscuro para texto y detalles */
+    --pk-tinta-suave: #3b5068;
+    --pk-verde-wa: #2e7d5b;     /* verde apagado para WhatsApp */
+    background-color: var(--pk-arena-claro);
+    color: var(--pk-tinta);
+}
+
+/* --- Tipografía editorial: serif suave en títulos --- */
+.pk h1,
+.pk h2 {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    color: var(--pk-tinta);
+}
+
+/* --- Header: sutil acabado de marca (solo esta página) --- */
+.pk .header {
+    border-bottom: 1px solid var(--pk-cemento-claro);
+}
+
+.pk .logo h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: 1px;
+}
+
+/* --- Cabecera de página (nuevo bloque de presentación) --- */
+.pk-hero {
+    background-color: var(--pk-arena);
+    border-bottom: 1px solid var(--pk-cemento-claro);
+    padding: 3.2rem 0 2.6rem;
+}
+
+.pk-hero h1 {
+    font-size: 2.7rem;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.9rem;
+}
+
+.pk-hero .pk-lead {
+    max-width: 620px;
+    color: #575349;
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.pk-hero .pk-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.3rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pk-cemento);
+}
+
+.pk-hero .pk-meta svg {
+    color: var(--pk-cemento);
+    flex-shrink: 0;
+}
+
+/* --- Contenido principal --- */
+.pk .downloads-page {
+    padding-top: 0;
+}
+
+.pk .pk-contenido {
+    padding-top: 2.5rem;
+}
+
+/* --- Buscador y filtros, tono cerámica --- */
+.pk .search-box input {
+    width: 100%;
+    max-width: 460px;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--pk-cemento-claro);
+    border-radius: 6px;
+    background: #fff;
+    font-size: 1rem;
+    color: var(--pk-tinta);
+}
+
+.pk .search-box input:focus {
+    outline: none;
+    border-color: var(--pk-tinta-suave);
+}
+
+.pk .filtro-material-btn {
+    background: transparent;
+    border: 1px solid var(--pk-cemento-claro);
+    border-radius: 4px;
+    color: var(--pk-tinta);
+    font-size: 0.9rem;
+}
+
+.pk .filtro-material-btn:hover {
+    border-color: var(--pk-tinta-suave);
+}
+
+.pk .filtro-material-btn.activo {
+    background-color: var(--pk-tinta);
+    border-color: var(--pk-tinta);
+    color: #fff;
+}
+
+/* --- Tablas: maquetación editorial, ancho contenido y centrado --- */
+.pk .downloads-section {
+    max-width: 1020px;
+    margin: 0 auto 3rem;
+}
+
+.pk .downloads-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--pk-cemento-claro);
+}
+
+.pk .packing-table {
+    min-width: 680px;
+    font-size: 0.97rem;
+    border: 1px solid var(--pk-cemento-claro);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(38, 55, 74, 0.07);
+}
+
+.pk .packing-table th {
+    background-color: var(--pk-tinta);
+    font-weight: 500;
+}
+
+.pk .packing-table th.grupo {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    letter-spacing: 0.3px;
+}
+
+.pk .packing-table th.grupo svg {
+    vertical-align: -3px;
+    margin-right: 0.4rem;
+}
+
+.pk .packing-table thead tr:last-child th {
+    background-color: var(--pk-tinta-suave);
+    font-size: 0.83rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.pk .packing-table td {
+    border-bottom: 1px solid #eee8da;
+    color: #3d4854;
+}
+
+.pk .packing-table th.sep,
+.pk .packing-table td.sep {
+    border-left: 2px solid var(--pk-cemento-claro);
+}
+
+.pk .packing-table .col-formato strong {
+    color: var(--pk-tinta);
+}
+
+.pk .packing-table .col-variante {
+    color: var(--pk-cemento);
+}
+
+.pk .packing-table tbody tr:nth-child(even) {
+    background-color: var(--pk-arena-claro);
+}
+
+.pk .packing-table tbody tr:hover {
+    background-color: var(--pk-arena);
+}
+
+/* --- Botón de WhatsApp rediseñado: SVG + texto claro --- */
+.pk .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background-color: var(--pk-verde-wa);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.8rem 1.35rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    box-shadow: 0 3px 10px rgba(38, 55, 74, 0.22);
+}
+
+.pk .whatsapp-button:hover {
+    background-color: #256b4d;
+}
+
+.pk .whatsapp-button svg {
+    flex-shrink: 0;
+}
+
+/* --- Footer: mismo esqueleto, acabado de marca --- */
+.pk .footer {
+    background-color: var(--pk-tinta);
+}
+
+.pk .footer h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: 0.3px;
+}
+
+/* --- Móvil --- */
+@media (max-width: 768px) {
+    .pk-hero {
+        padding: 2.2rem 0 1.8rem;
+    }
+
+    .pk-hero h1 {
+        font-size: 2rem;
+    }
+
+    .pk .packing-table td,
+    .pk .packing-table th {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .pk .whatsapp-button {
+        padding: 0.7rem 1.1rem;
+        font-size: 0.9rem;
+    }
+}
