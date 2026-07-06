@@ -503,8 +503,8 @@ section {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
 }
 
 .product-card {
@@ -522,23 +522,29 @@ section {
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     background-color: var(--accent-color);
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.03);
 }
 
 .product-info {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .product-name {
     font-weight: 600;
+    font-size: 1.35rem;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
 .product-desc {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-light);
     margin-bottom: 0.75rem;
 }
@@ -552,9 +558,9 @@ section {
 
 .format-badge {
     background-color: var(--accent-color);
-    padding: 0.25rem 0.5rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 3px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--text-dark);
 }
 
