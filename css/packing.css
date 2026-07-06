@@ -1,30 +1,63 @@
 /* ============================================================
-   PACKING.CSS — rediseño editorial de packing.html (NUEVO)
-   Solo lo carga packing.html; todo va scoped bajo body.pk
+   PACKING.CSS — Mobile-first responsive design
+   Scope: body.pk (solo packing.html)
    Paleta cerámica: arena, cemento y azul tinta
    ============================================================ */
 
+/* --- Variables de color cerámica --- */
 .pk {
-    --pk-arena: #ece4d4;        /* beige arena */
-    --pk-arena-claro: #f7f3eb;  /* crema de fondo */
-    --pk-cemento: #8a857b;      /* gris cemento */
+    --pk-arena: #ece4d4;
+    --pk-arena-claro: #f7f3eb;
+    --pk-cemento: #8a857b;
     --pk-cemento-claro: #d9d2c4;
-    --pk-tinta: #26374a;        /* azul oscuro para texto y detalles */
+    --pk-tinta: #26374a;
     --pk-tinta-suave: #3b5068;
-    --pk-verde-wa: #2e7d5b;     /* verde apagado para WhatsApp */
+    --pk-verde-wa: #2e7d5b;
     background-color: var(--pk-arena-claro);
     color: var(--pk-tinta);
 }
 
-/* --- Tipografía editorial: serif suave en títulos --- */
+/* === MOBILE-FIRST: BASE === */
+
+/* --- Tipografía base móvil --- */
+.pk body {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 .pk h1,
-.pk h2 {
+.pk h2,
+.pk h3,
+.pk h4,
+.pk h5,
+.pk h6 {
     font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
     font-weight: 600;
     color: var(--pk-tinta);
+    line-height: 1.3;
+    margin-bottom: 1rem;
 }
 
-/* --- Header: sutil acabado de marca (solo esta página) --- */
+.pk h1 {
+    font-size: 1.75rem; /* ~ 28px en móvil */
+}
+
+.pk h2 {
+    font-size: 1.35rem; /* ~ 21px */
+}
+
+.pk h3 {
+    font-size: 1.15rem; /* ~ 18px */
+}
+
+.pk p {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: #6b665c;
+}
+
+/* --- Header: navegación adaptada --- */
 .pk .header {
     border-bottom: 1px solid var(--pk-cemento-claro);
 }
@@ -32,36 +65,60 @@
 .pk .logo h1 {
     font-family: 'Fraunces', Georgia, serif;
     letter-spacing: 1px;
+    font-size: 1.35rem;
 }
 
-/* --- Cabecera de página (nuevo bloque de presentación) --- */
+.pk .logo p.tagline {
+    font-size: 0.85rem;
+}
+
+/* Navegación móvil: enlaces con tap targets cómodos (min 44px altura) */
+.pk .nav-menu {
+    display: none; /* Hidden en móvil por defecto, se muestra en breakpoints */
+}
+
+.pk .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pk .cart-icon {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* --- Cabecera de página (hero) --- */
 .pk-hero {
     background-color: var(--pk-arena);
     border-bottom: 1px solid var(--pk-cemento-claro);
-    padding: 3.2rem 0 2.6rem;
+    padding: 1.5rem 1rem; /* padding horizontal para no pegar al borde */
 }
 
 .pk-hero h1 {
-    font-size: 2.7rem;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.9rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.8rem;
 }
 
 .pk-hero .pk-lead {
-    max-width: 620px;
+    max-width: 100%;
     color: #575349;
-    font-size: 1.08rem;
+    font-size: 1rem;
     line-height: 1.65;
+    margin-bottom: 1rem;
 }
 
 .pk-hero .pk-meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem;
-    margin-top: 1.3rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--pk-cemento);
 }
@@ -69,6 +126,8 @@
 .pk-hero .pk-meta svg {
     color: var(--pk-cemento);
     flex-shrink: 0;
+    width: 14px;
+    height: 14px;
 }
 
 /* --- Contenido principal --- */
@@ -77,36 +136,61 @@
 }
 
 .pk .pk-contenido {
-    padding-top: 2.5rem;
+    padding: 1.5rem 1rem 2rem; /* padding lateral para no pegar al borde */
 }
 
-/* --- Buscador y filtros, tono cerámica --- */
+.pk .container {
+    padding: 0;
+}
+
+/* --- Buscador: full width en móvil --- */
+.pk .search-box {
+    margin-bottom: 1.5rem;
+}
+
 .pk .search-box input {
     width: 100%;
-    max-width: 460px;
-    padding: 0.85rem 1.1rem;
+    max-width: 100%; /* full width en móvil */
+    padding: 0.75rem 1rem;
     border: 1px solid var(--pk-cemento-claro);
     border-radius: 6px;
     background: #fff;
     font-size: 1rem;
     color: var(--pk-tinta);
+    min-height: 44px;
 }
 
 .pk .search-box input:focus {
     outline: none;
     border-color: var(--pk-tinta-suave);
+    box-shadow: 0 0 0 3px rgba(38, 55, 74, 0.1);
+}
+
+/* --- Filtros: bloques apilados en móvil --- */
+.pk #filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
 }
 
 .pk .filtro-material-btn {
-    background: transparent;
+    padding: 0.6rem 1rem;
+    background: #fff;
     border: 1px solid var(--pk-cemento-claro);
     border-radius: 4px;
     color: var(--pk-tinta);
     font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
 }
 
-.pk .filtro-material-btn:hover {
-    border-color: var(--pk-tinta-suave);
+.pk .filtro-material-btn:active {
+    background-color: var(--pk-cemento-claro);
 }
 
 .pk .filtro-material-btn.activo {
@@ -115,53 +199,77 @@
     color: #fff;
 }
 
-/* --- Tablas: maquetación editorial, ancho contenido y centrado --- */
+/* --- Secciones de tablas --- */
 .pk .downloads-section {
-    max-width: 1020px;
-    margin: 0 auto 3rem;
+    margin-bottom: 2rem;
+    padding: 0;
 }
 
 .pk .downloads-section h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.6rem;
     border-bottom: 2px solid var(--pk-cemento-claro);
 }
 
+/* === TABLAS MÓVIL-FIRST ===
+   Contenedor wrapper para permitir scroll horizontal sin romper layout */
+.pk .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -1rem 1.5rem; /* extiende al borde para scroll full */
+    padding: 0 1rem;
+}
+
 .pk .packing-table {
-    min-width: 680px;
-    font-size: 0.97rem;
+    width: 100%;
+    min-width: 320px; /* ancho mínimo legible */
+    font-size: 0.9rem;
+    border-collapse: collapse;
+    background: #fff;
     border: 1px solid var(--pk-cemento-claro);
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(38, 55, 74, 0.07);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(38, 55, 74, 0.08);
 }
 
 .pk .packing-table th {
     background-color: var(--pk-tinta);
-    font-weight: 500;
+    color: #fff;
+    padding: 0.7rem 0.6rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .pk .packing-table th.grupo {
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 600;
-    font-size: 1.02rem;
-    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
 }
 
 .pk .packing-table th.grupo svg {
-    vertical-align: -3px;
-    margin-right: 0.4rem;
+    vertical-align: -2px;
+    margin-right: 0.3rem;
+    width: 16px;
+    height: 16px;
 }
 
 .pk .packing-table thead tr:last-child th {
     background-color: var(--pk-tinta-suave);
-    font-size: 0.83rem;
-    letter-spacing: 0.06em;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    padding: 0.6rem 0.5rem;
 }
 
 .pk .packing-table td {
-    border-bottom: 1px solid #eee8da;
+    padding: 0.7rem 0.6rem;
+    border-bottom: 1px solid #f0ebe0;
+    text-align: center;
+    font-size: 0.95rem;
     color: #3d4854;
 }
 
@@ -170,12 +278,17 @@
     border-left: 2px solid var(--pk-cemento-claro);
 }
 
-.pk .packing-table .col-formato strong {
-    color: var(--pk-tinta);
+.pk .packing-table .col-formato {
+    text-align: left;
+    min-width: 85px;
+    font-weight: 600;
 }
 
 .pk .packing-table .col-variante {
+    text-align: left;
+    min-width: 70px;
     color: var(--pk-cemento);
+    font-size: 0.85rem;
 }
 
 .pk .packing-table tbody tr:nth-child(even) {
@@ -186,56 +299,269 @@
     background-color: var(--pk-arena);
 }
 
-/* --- Botón de WhatsApp rediseñado: SVG + texto claro --- */
+/* --- Botón de WhatsApp: tap target cómodo --- */
 .pk .whatsapp-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
     background-color: var(--pk-verde-wa);
     color: #fff;
+    padding: 0.75rem 1rem;
     border-radius: 999px;
-    padding: 0.8rem 1.35rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.2px;
-    box-shadow: 0 3px 10px rgba(38, 55, 74, 0.22);
+    letter-spacing: 0.1px;
+    box-shadow: 0 4px 12px rgba(38, 55, 74, 0.2);
+    transition: all 0.3s ease;
+    min-height: 44px;
+    text-decoration: none;
+    z-index: 99;
 }
 
-.pk .whatsapp-button:hover {
-    background-color: #256b4d;
+.pk .whatsapp-button:active {
+    transform: scale(0.95);
 }
 
 .pk .whatsapp-button svg {
     flex-shrink: 0;
+    width: 18px;
+    height: 18px;
 }
 
-/* --- Footer: mismo esqueleto, acabado de marca --- */
+/* --- Footer: padding móvil --- */
 .pk .footer {
     background-color: var(--pk-tinta);
+    color: #fff;
+    padding: 1.5rem 1rem;
 }
 
 .pk .footer h4 {
     font-family: 'Fraunces', Georgia, serif;
     letter-spacing: 0.3px;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
 }
 
-/* --- Móvil --- */
-@media (max-width: 768px) {
+.pk .footer-section {
+    margin-bottom: 1.5rem;
+}
+
+.pk .footer-section p {
+    color: #e8e3d9;
+    font-size: 0.95rem;
+}
+
+.pk .footer-section a {
+    color: #fff;
+}
+
+.pk .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #d0cac0;
+}
+
+/* === BREAKPOINT: TABLET (min-width: 640px) === */
+@media (min-width: 640px) {
+    .pk h1 {
+        font-size: 2rem;
+    }
+
+    .pk h2 {
+        font-size: 1.5rem;
+    }
+
     .pk-hero {
-        padding: 2.2rem 0 1.8rem;
+        padding: 2rem 1.5rem;
     }
 
     .pk-hero h1 {
         font-size: 2rem;
     }
 
-    .pk .packing-table td,
+    .pk .pk-contenido {
+        padding: 2rem 1.5rem;
+    }
+
+    .pk .search-box input {
+        max-width: 100%;
+    }
+
+    .pk #filtros-categoria {
+        gap: 0.8rem;
+    }
+
+    .pk .filtro-material-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .pk .packing-table {
+        font-size: 0.98rem;
+    }
+
+    .pk .packing-table th,
+    .pk .packing-table td {
+        padding: 0.85rem 0.75rem;
+    }
+
     .pk .packing-table th {
-        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
     }
 
     .pk .whatsapp-button {
-        padding: 0.7rem 1.1rem;
-        font-size: 0.9rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* === BREAKPOINT: ESCRITORIO (min-width: 1024px) === */
+@media (min-width: 1024px) {
+    /* Mostrar navegación en escritorio */
+    .pk .nav-menu {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .pk .nav-menu li {
+        list-style: none;
+    }
+
+    .pk .nav-menu a {
+        padding: 0.8rem 1rem;
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+    .pk h1 {
+        font-size: 2.7rem;
+    }
+
+    .pk h2 {
+        font-size: 1.7rem;
+    }
+
+    .pk-hero {
+        padding: 3.2rem 2rem;
+    }
+
+    .pk-hero h1 {
+        font-size: 2.7rem;
+        line-height: 1.15;
+    }
+
+    .pk-hero .pk-lead {
+        max-width: 620px;
+        font-size: 1.08rem;
+    }
+
+    .pk .pk-contenido {
+        padding: 2.5rem 2rem;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+
+    .pk .downloads-section {
+        max-width: 1020px;
+        margin: 0 auto 3rem;
+    }
+
+    .pk .downloads-section h2 {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Sin necesidad de scroll horizontal en escritorio */
+    .pk .table-wrapper {
+        overflow-x: visible;
+        margin: 0 0 1.5rem;
+        padding: 0;
+    }
+
+    .pk .packing-table {
+        min-width: 100%;
+        font-size: 0.97rem;
+    }
+
+    .pk .packing-table th {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .pk .packing-table td {
+        padding: 0.85rem 1.25rem;
+    }
+
+    .pk .packing-table th.grupo {
+        font-size: 1.02rem;
+    }
+
+    .pk .packing-table thead tr:last-child th {
+        font-size: 0.83rem;
+    }
+
+    .pk .whatsapp-button {
+        padding: 0.8rem 1.35rem;
+        font-size: 0.95rem;
+    }
+
+    /* Mostrar navegación completa y dropdown */
+    .pk .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .pk .dropdown {
+        position: relative;
+    }
+
+    .pk .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid var(--pk-cemento-claro);
+        border-radius: 4px;
+        min-width: 200px;
+        z-index: 100;
+    }
+
+    .pk .dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .pk .dropdown-menu a {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .pk .dropdown-menu a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* === ACCESIBILIDAD === */
+
+/* Focus visible para navegación táctil */
+.pk a:focus-visible,
+.pk button:focus-visible {
+    outline: 2px solid var(--pk-tinta);
+    outline-offset: 2px;
+}
+
+/* Reduce motion para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+    .pk * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

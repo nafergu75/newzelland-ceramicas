@@ -61,10 +61,11 @@ function renderPacking() {
         // nuevo: iconos SVG minimalistas (caja y camión) en lugar de emojis
         const icoCaja = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>';
         const icoPalet = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="6" width="12" height="8" rx="1"/><path d="M13.5 9H18l3.5 3.5V14h-8"/><circle cx="6" cy="17.5" r="1.7"/><circle cx="17.5" cy="17.5" r="1.7"/></svg>';
+        // nuevo: wrapper para scroll responsivo en móvil
         return `
         <section class="downloads-section">
             <h2>${cat.nombre} <span style="font-size: 0.9rem; color: #999; font-weight: 400;">(${cat.codigo})</span></h2>
-            <div style="overflow-x: auto;">
+            <div class="table-wrapper">
                 <table class="packing-table">
                     <thead>
                         <tr>
