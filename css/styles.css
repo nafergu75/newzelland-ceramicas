@@ -15,30 +15,35 @@ html {
 body {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: #3d4854;
+    background-color: #fbf9f4;
 }
 
 /* ============================================
    COLORES Y VARIABLES
+   Paleta cerámica: arena, cemento y azul tinta
    ============================================ */
 
 :root {
-    --primary-color: #1a1f3d;
-    --secondary-color: #d4af37;
-    --accent-color: #f5f5f5;
-    --text-dark: #1a1a1a;
-    --text-light: #666;
-    --border-color: #e0e0e0;
-    --success-color: #25d366;
+    --primary-color: #26374a;       /* azul tinta */
+    --secondary-color: #b08d57;     /* latón/arena tostada */
+    --accent-color: #f7f3eb;        /* crema */
+    --arena: #ece4d4;               /* beige arena */
+    --cemento: #8a857b;             /* gris cemento */
+    --text-dark: #26374a;
+    --text-light: #6b665c;
+    --border-color: #d9d2c4;
+    --success-color: #2e7d5b;       /* verde apagado (WhatsApp/descargas) */
 }
 
 /* ============================================
    TIPOGRAFÍA
+   Serif editorial (Fraunces) en títulos
    ============================================ */
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
     line-height: 1.2;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -350,7 +355,7 @@ a:hover {
 }
 
 .btn-download:hover {
-    background-color: #1ea853;
+    background-color: #256b4d;
 }
 
 .btn-whatsapp {
@@ -643,7 +648,7 @@ section {
 }
 
 .packing-table thead tr:last-child th {
-    background-color: #3d3d52;
+    background-color: #3b5068;
     font-weight: 500;
     font-size: 0.9rem;
 }
