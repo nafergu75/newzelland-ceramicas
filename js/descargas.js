@@ -30,7 +30,7 @@ function renderGenerales() {
                 <span class="badge">PDF</span>
             </div>
             <a href="${g.archivo}" class="btn btn-download" target="_blank" rel="noopener">
-                ⬇️ Descargar PDF
+                Descargar PDF
             </a>
         </div>
     `).join('');
@@ -92,12 +92,12 @@ function renderFamilias() {
             <div style="margin-top: 1rem;">
                 ${familia.catalogos.map((url, i) => `
                     <a href="${url}" class="btn btn-download" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.5rem;">
-                        ⬇️ Catálogo${familia.catalogos.length > 1 ? ' ' + (i + 1) : ''}
+                        Catálogo${familia.catalogos.length > 1 ? ' ' + (i + 1) : ''}
                     </a>
                 `).join('')}
                 ${familia.panelesTecnicos.map((url, i) => `
                     <a href="${url}" class="btn btn-download" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.5rem; background-color: #666;">
-                        ⬇️ Panel técnico${familia.panelesTecnicos.length > 1 ? ' ' + (i + 1) : ''}
+                        Panel técnico${familia.panelesTecnicos.length > 1 ? ' ' + (i + 1) : ''}
                     </a>
                 `).join('')}
             </div>
