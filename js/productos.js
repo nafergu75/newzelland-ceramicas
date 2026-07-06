@@ -10,6 +10,7 @@ async function loadCatalogo() {
         const response = await fetch('data/catalogo.json');
         catalogo = await response.json();
         renderFilters();
+        aplicarSerieDesdeURL();
         renderProducts();
     } catch (error) {
         console.error('Error cargando catálogo:', error);
@@ -60,6 +61,17 @@ function renderFilters() {
                 ${t}
             </label>
         `).join('');
+    }
+}
+
+// Si la URL trae ?serie=slug (enlaces del menú y la portada), pre-marca ese filtro
+function aplicarSerieDesdeURL() {
+    const serie = new URLSearchParams(window.location.search).get('serie');
+    if (!serie) return;
+    const checkbox = document.querySelector(`#filter-series input[value="${serie}"]`);
+    if (checkbox) {
+        checkbox.checked = true;
+        filtrosActivos.series = [serie];
     }
 }
 
