@@ -1,5 +1,5 @@
 // ============================================
-// BACKEND API - NEWZELLAND CERÁMICAS
+// BACKEND API - NEWZELAND CERÁMICAS
 // Vercel Serverless Function
 // ============================================
 

@@ -1,4 +1,4 @@
-# Newzelland Cerámicas - Comercializadora Oficial de Practika
+# Newzeland Cerámicas - Comercializadora Oficial de Practika
 
 Web de comercialización de productos Practika Cerámica: azulejos, porcelánico y revestimientos.
 
@@ -29,7 +29,7 @@ Web de comercialización de productos Practika Cerámica: azulejos, porcelánico
 ## 📁 Estructura de Carpetas
 
 ```
-newzelland-ceramicas/
+newzeland-ceramicas/
 ├── index.html                 # Página de inicio
 ├── productos.html             # Catálogo filtrable
 ├── descargas.html            # Catálogos y fichas técnicas (★ CRÍTICA)
@@ -80,9 +80,9 @@ newzelland-ceramicas/
 # Inicializar repo
 git init
 git add .
-git commit -m "Initial commit: Newzelland Cerámicas web"
+git commit -m "Initial commit: Newzeland Cerámicas web"
 git branch -M main
-git remote add origin https://github.com/tu-usuario/newzelland-ceramicas.git
+git remote add origin https://github.com/tu-usuario/newzeland-ceramicas.git
 git push -u origin main
 ```
 
@@ -164,14 +164,14 @@ npm start  # http://localhost:3000
 
 ## 👥 Contacto
 
-- **Email:** info@newzelland.es
+- **Email:** info@newzeland.es
 - **Teléfono:** +34 123 456 789
 - **WhatsApp:** +34 123 456 789
 - **Ubicación:** Onda, Castellón, España
 
 ## 📄 Licencia
 
-© 2024 Newzelland Cerámicas. Todos los derechos reservados.
+© 2024 Newzeland Cerámicas. Todos los derechos reservados.
 
 ---
 
