@@ -615,6 +615,36 @@ section {
     font-size: 1rem;
 }
 
+.packing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 0.95rem;
+}
+
+.packing-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.6rem 0.9rem;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.packing-table td {
+    padding: 0.55rem 0.9rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.packing-table tbody tr:nth-child(even) {
+    background-color: var(--accent-color);
+}
+
+.packing-table tbody tr:hover {
+    background-color: #f0ede8;
+}
+
 .filtros-material {
     display: flex;
     flex-wrap: wrap;

@@ -304,7 +304,7 @@
     {
       "slug": "bosco",
       "nombre": "Bosco",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/bosco-portada.jpg",
       "materiales": [
         "Porcelánico"
       ],
@@ -1122,7 +1122,7 @@
     {
       "slug": "jaca",
       "nombre": "Jaca",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/jaca-portada.jpg",
       "materiales": [
         "Pasta Roja"
       ],
@@ -1813,7 +1813,7 @@
     {
       "slug": "new-calacatta",
       "nombre": "New calacatta",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/new-calacatta-portada.jpg",
       "materiales": [
         "Porcelánico"
       ],
@@ -2001,7 +2001,7 @@
     {
       "slug": "polaris",
       "nombre": "Polaris",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/polaris-portada.jpg",
       "materiales": [
         "Pasta Roja",
         "Porcelánico"

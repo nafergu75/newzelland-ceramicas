@@ -1,0 +1,709 @@
+{
+  "actualizado": "2026-07-06",
+  "categorias": [
+    {
+      "id": "gres-pasta-roja",
+      "nombre": "Gres pavimento pasta roja",
+      "codigo": "BIIa",
+      "items": [
+        {
+          "format": "33,3×33,3",
+          "formatNormalized": "33,3x33,3",
+          "variant": "9mm",
+          "box": {
+            "pieces": 14,
+            "m2": 1.55,
+            "kg": 27.05
+          },
+          "pallet": {
+            "boxes": 46,
+            "m2": 71.3,
+            "kg": 1260
+          }
+        },
+        {
+          "format": "33,3×33,3",
+          "formatNormalized": "33,3x33,3",
+          "variant": "ESP",
+          "box": {
+            "pieces": 10,
+            "m2": 1.11,
+            "kg": 23
+          },
+          "pallet": {
+            "boxes": 54,
+            "m2": 59.94,
+            "kg": 1255
+          }
+        },
+        {
+          "format": "19×57",
+          "formatNormalized": "19x57",
+          "box": {
+            "pieces": 13,
+            "m2": 1.41,
+            "kg": 26.5
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 67.68,
+            "kg": 1235
+          }
+        },
+        {
+          "format": "20×60",
+          "formatNormalized": "20x60",
+          "box": {
+            "pieces": 14,
+            "m2": 1.68,
+            "kg": 28.5
+          },
+          "pallet": {
+            "boxes": 40,
+            "m2": 67.2,
+            "kg": 1170
+          }
+        },
+        {
+          "format": "45×45",
+          "formatNormalized": "45x45",
+          "box": {
+            "pieces": 9,
+            "m2": 1.82,
+            "kg": 27
+          },
+          "pallet": {
+            "boxes": 52,
+            "m2": 94.24,
+            "kg": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "gres-antihielo",
+      "nombre": "Gres antihielo",
+      "codigo": "BIIa",
+      "items": [
+        {
+          "format": "33,3×33,3",
+          "formatNormalized": "33,3x33,3",
+          "variant": "10,5mm",
+          "box": {
+            "pieces": 11,
+            "m2": 1.22,
+            "kg": 27
+          },
+          "pallet": {
+            "boxes": 54,
+            "m2": 65.88,
+            "kg": 1473
+          }
+        }
+      ]
+    },
+    {
+      "id": "azulejo-pasta-roja",
+      "nombre": "Azulejo pasta roja",
+      "codigo": "BIII",
+      "items": [
+        {
+          "format": "10×10",
+          "formatNormalized": "10x10",
+          "box": {
+            "pieces": 50,
+            "m2": 0.5,
+            "kg": 28
+          },
+          "pallet": {
+            "boxes": 200,
+            "m2": 100,
+            "kg": 1400
+          }
+        },
+        {
+          "format": "15×15",
+          "formatNormalized": "15x15",
+          "box": {
+            "pieces": 44,
+            "m2": 1,
+            "kg": 30.55
+          },
+          "pallet": {
+            "boxes": 126,
+            "m2": 126,
+            "kg": 1345
+          }
+        },
+        {
+          "format": "10×20",
+          "formatNormalized": "10x20",
+          "box": {
+            "pieces": 50,
+            "m2": 1,
+            "kg": 12.92
+          },
+          "pallet": {
+            "boxes": 96,
+            "m2": 96,
+            "kg": 1256
+          }
+        },
+        {
+          "format": "20×20",
+          "formatNormalized": "20x20",
+          "box": {
+            "pieces": 25,
+            "m2": 1,
+            "kg": 17.65
+          },
+          "pallet": {
+            "boxes": 90,
+            "m2": 126,
+            "kg": 1589
+          }
+        },
+        {
+          "format": "20×50",
+          "formatNormalized": "20x50",
+          "box": {
+            "pieces": 15,
+            "m2": 1.5,
+            "kg": 21.86
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 72,
+            "kg": 1065
+          }
+        },
+        {
+          "format": "20×60",
+          "formatNormalized": "20x60",
+          "box": {
+            "pieces": 12,
+            "m2": 1.44,
+            "kg": 21.45
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 69.12,
+            "kg": 1045
+          }
+        },
+        {
+          "format": "25×40",
+          "formatNormalized": "25x40",
+          "box": {
+            "pieces": 15,
+            "m2": 1.5,
+            "kg": 21.54
+          },
+          "pallet": {
+            "boxes": 60,
+            "m2": 90,
+            "kg": 1310
+          }
+        },
+        {
+          "format": "25×50",
+          "formatNormalized": "25x50",
+          "box": {
+            "pieces": 12,
+            "m2": 1.5,
+            "kg": 21.9
+          },
+          "pallet": {
+            "boxes": 56,
+            "m2": 84,
+            "kg": 1226
+          }
+        },
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "box": {
+            "pieces": 9,
+            "m2": 1.44,
+            "kg": 21.2
+          },
+          "pallet": {
+            "boxes": 60,
+            "m2": 86.4,
+            "kg": 1290
+          }
+        },
+        {
+          "format": "25×80",
+          "formatNormalized": "25x80",
+          "box": {
+            "pieces": 9,
+            "m2": 1.2,
+            "kg": 23.02
+          },
+          "pallet": {
+            "boxes": 64,
+            "m2": 76.8,
+            "kg": 1475
+          }
+        }
+      ]
+    },
+    {
+      "id": "azulejo-pasta-blanca",
+      "nombre": "Azulejo pasta blanca",
+      "codigo": "BIII",
+      "items": [
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "variant": "XS PB",
+          "box": {
+            "pieces": 9,
+            "m2": 1.62,
+            "kg": 20
+          },
+          "pallet": {
+            "boxes": 60,
+            "m2": 97.2,
+            "kg": 1200
+          }
+        },
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "variant": "RC PB",
+          "box": {
+            "pieces": 9,
+            "m2": 1.62,
+            "kg": 24
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 77.76,
+            "kg": 1170
+          }
+        },
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "variant": "RC PB Relieve",
+          "box": {
+            "pieces": 9,
+            "m2": 1.44,
+            "kg": 24
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 69.12,
+            "kg": 714
+          }
+        },
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "variant": "XS RC PB Relieve",
+          "box": {
+            "pieces": 9,
+            "m2": 1.62,
+            "kg": 20
+          },
+          "pallet": {
+            "boxes": 60,
+            "m2": 97.2,
+            "kg": 1240
+          }
+        },
+        {
+          "format": "30×90",
+          "formatNormalized": "30x90",
+          "variant": "RC",
+          "box": {
+            "pieces": 5,
+            "m2": 1.35,
+            "kg": 22
+          },
+          "pallet": {
+            "boxes": 63,
+            "m2": 85.05,
+            "kg": 1239
+          }
+        },
+        {
+          "format": "30×90",
+          "formatNormalized": "30x90",
+          "variant": "RC Relieve",
+          "box": {
+            "pieces": 4,
+            "m2": 1.08,
+            "kg": 22
+          },
+          "pallet": {
+            "boxes": 63,
+            "m2": 68.04,
+            "kg": 1219
+          }
+        },
+        {
+          "format": "30×90",
+          "formatNormalized": "30x90",
+          "variant": "XS RC Fino",
+          "box": {
+            "pieces": 6,
+            "m2": 1.62,
+            "kg": 19.5
+          },
+          "pallet": {
+            "boxes": 63,
+            "m2": 102.06,
+            "kg": 1240
+          }
+        },
+        {
+          "format": "30×90",
+          "formatNormalized": "30x90",
+          "variant": "XS RC Relieve",
+          "box": {
+            "pieces": 6,
+            "m2": 1.35,
+            "kg": 19
+          },
+          "pallet": {
+            "boxes": 63,
+            "m2": 85.05,
+            "kg": 1210
+          }
+        },
+        {
+          "format": "40×120",
+          "formatNormalized": "40x120",
+          "variant": "XS RC Base",
+          "box": {
+            "pieces": 5,
+            "m2": 2.4,
+            "kg": 30
+          },
+          "pallet": {
+            "boxes": 20,
+            "m2": 48,
+            "kg": 409
+          }
+        },
+        {
+          "format": "40×120",
+          "formatNormalized": "40x120",
+          "variant": "XS RC Base (4pz)",
+          "box": {
+            "pieces": 4,
+            "m2": 1.92,
+            "kg": 28
+          },
+          "pallet": {
+            "boxes": 20,
+            "m2": 38.4,
+            "kg": 560
+          }
+        }
+      ]
+    },
+    {
+      "id": "porcelanico",
+      "nombre": "Porcelánico",
+      "codigo": "BIa/BIb",
+      "items": [
+        {
+          "format": "30×60",
+          "formatNormalized": "30x60",
+          "variant": "SL",
+          "box": {
+            "pieces": 8,
+            "m2": 1.44,
+            "kg": 30
+          },
+          "pallet": {
+            "boxes": 40,
+            "m2": 57.6,
+            "kg": 1080
+          }
+        },
+        {
+          "format": "60×60",
+          "formatNormalized": "60x60",
+          "variant": "SL RC",
+          "box": {
+            "pieces": 4,
+            "m2": 1.44,
+            "kg": 27
+          },
+          "pallet": {
+            "boxes": 40,
+            "m2": 57.6,
+            "kg": 1140
+          }
+        },
+        {
+          "format": "60×60",
+          "formatNormalized": "60x60",
+          "variant": "SL",
+          "box": {
+            "pieces": 4,
+            "m2": 1.44,
+            "kg": 30
+          },
+          "pallet": {
+            "boxes": 32,
+            "m2": 46.08,
+            "kg": 960
+          }
+        },
+        {
+          "format": "60×60",
+          "formatNormalized": "60x60",
+          "variant": "RC 20MM",
+          "box": {
+            "pieces": 2,
+            "m2": 0.72,
+            "kg": 32
+          },
+          "pallet": {
+            "boxes": 32,
+            "m2": 23.04,
+            "kg": 1024
+          }
+        },
+        {
+          "format": "60×60",
+          "formatNormalized": "60x60",
+          "variant": "XS",
+          "box": {
+            "pieces": 5,
+            "m2": 1.8,
+            "kg": 28
+          },
+          "pallet": {
+            "boxes": 32,
+            "m2": 57.6,
+            "kg": 911
+          }
+        },
+        {
+          "format": "60×60",
+          "formatNormalized": "60x60",
+          "variant": "XS RC",
+          "box": {
+            "pieces": 5,
+            "m2": 1.8,
+            "kg": 28
+          },
+          "pallet": {
+            "boxes": 32,
+            "m2": 57.6,
+            "kg": 911
+          }
+        },
+        {
+          "format": "75×75",
+          "formatNormalized": "75x75",
+          "variant": "SL RC",
+          "box": {
+            "pieces": 2,
+            "m2": 1.125,
+            "kg": 23.5
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 54,
+            "kg": 1005
+          }
+        },
+        {
+          "format": "80×80",
+          "formatNormalized": "80x80",
+          "variant": "RC 20MM",
+          "box": {
+            "pieces": 2,
+            "m2": 0.64,
+            "kg": 27.5
+          },
+          "pallet": {
+            "boxes": 48,
+            "m2": 30.72,
+            "kg": 1320
+          }
+        },
+        {
+          "format": "22,5×90",
+          "formatNormalized": "22,5x90",
+          "variant": "SL",
+          "box": {
+            "pieces": 6,
+            "m2": 1.215,
+            "kg": 22.5
+          },
+          "pallet": {
+            "boxes": 60,
+            "m2": 73.2,
+            "kg": 1353
+          }
+        },
+        {
+          "format": "90×90",
+          "formatNormalized": "90x90",
+          "variant": "SL RC",
+          "box": {
+            "pieces": 2,
+            "m2": 1.62,
+            "kg": 32.5
+          },
+          "pallet": {
+            "boxes": 30,
+            "m2": 46.6,
+            "kg": 1035
+          }
+        },
+        {
+          "format": "100×100",
+          "formatNormalized": "100x100",
+          "variant": "RC Pulido",
+          "box": {
+            "pieces": 2,
+            "m2": 2,
+            "kg": 52.35
+          },
+          "pallet": {
+            "boxes": 28,
+            "m2": 56,
+            "kg": 1466
+          }
+        },
+        {
+          "format": "20×120",
+          "formatNormalized": "20x120",
+          "variant": "SL RC SPZ",
+          "box": {
+            "pieces": 5,
+            "m2": 1.2,
+            "kg": 23.5
+          },
+          "pallet": {
+            "boxes": 45,
+            "m2": 54,
+            "kg": 1075
+          }
+        },
+        {
+          "format": "23×120",
+          "formatNormalized": "23x120",
+          "variant": "SL",
+          "box": {
+            "pieces": 5,
+            "m2": 1.38,
+            "kg": 27
+          },
+          "pallet": {
+            "boxes": 45,
+            "m2": 62.1,
+            "kg": 1270
+          }
+        },
+        {
+          "format": "60×120",
+          "formatNormalized": "60x120",
+          "variant": "SL RC",
+          "box": {
+            "pieces": 2,
+            "m2": 1.44,
+            "kg": 28
+          },
+          "pallet": {
+            "boxes": 36,
+            "m2": 51.84,
+            "kg": 1062
+          }
+        },
+        {
+          "format": "60×120",
+          "formatNormalized": "60x120",
+          "variant": "RC Pulido",
+          "box": {
+            "pieces": 2,
+            "m2": 1.44,
+            "kg": 34
+          },
+          "pallet": {
+            "boxes": 32,
+            "m2": 46.08,
+            "kg": 960
+          }
+        },
+        {
+          "format": "120×120",
+          "formatNormalized": "120x120",
+          "variant": "RC Pulido",
+          "box": {
+            "pieces": 2,
+            "m2": 1.44,
+            "kg": 39
+          },
+          "pallet": {
+            "boxes": 36,
+            "m2": 51.84,
+            "kg": 1250
+          }
+        },
+        {
+          "format": "120×120",
+          "formatNormalized": "120x120",
+          "variant": "SL RC",
+          "box": {
+            "pieces": 2,
+            "m2": 1.44,
+            "kg": 30.13
+          },
+          "pallet": {
+            "boxes": 40,
+            "m2": 57.6,
+            "kg": 1265
+          }
+        }
+      ]
+    },
+    {
+      "id": "lamina-ceramica",
+      "nombre": "Lámina cerámica",
+      "codigo": "BIa",
+      "items": [
+        {
+          "format": "120×280",
+          "formatNormalized": "120x280",
+          "variant": "RC Absolut Mate",
+          "box": {
+            "pieces": 2,
+            "m2": 3.12,
+            "kg": 43.8
+          },
+          "pallet": {
+            "boxes": 24,
+            "m2": 74.88,
+            "kg": 1171
+          }
+        },
+        {
+          "format": "120×280",
+          "formatNormalized": "120x280",
+          "variant": "RC Absolut Pulido",
+          "box": {
+            "pieces": 2,
+            "m2": 3.12,
+            "kg": 43.57
+          },
+          "pallet": {
+            "boxes": 20,
+            "m2": 62.4,
+            "kg": 972
+          }
+        }
+      ]
+    }
+  ]
+}

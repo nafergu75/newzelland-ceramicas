@@ -249,7 +249,7 @@
       "id": "bosco",
       "nombre": "Bosco",
       "descripcion": "Porcelánico · 33,3x33,3",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/bosco-portada.jpg",
       "formatos": [
         "33,3x33,3"
       ],
@@ -991,7 +991,7 @@
       "id": "jaca",
       "nombre": "Jaca",
       "descripcion": "Pasta Roja · 25x50",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/jaca-portada.jpg",
       "formatos": [
         "25x50"
       ],
@@ -1610,7 +1610,7 @@
       "id": "new-calacatta",
       "nombre": "New calacatta",
       "descripcion": "Porcelánico · 60x120",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/new-calacatta-portada.jpg",
       "formatos": [
         "60x120"
       ],
@@ -1780,7 +1780,7 @@
       "id": "polaris",
       "nombre": "Polaris",
       "descripcion": "Pasta Roja, Porcelánico · 30x60, 60x60, 60x120",
-      "imagen": "/images/placeholder-product.jpg",
+      "imagen": "assets/img/polaris-portada.jpg",
       "formatos": [
         "30x60",
         "60x60",

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargas | Newzelland Cerámicas</title>
+    <title>Packing List | Newzelland Cerámicas</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
@@ -35,8 +35,8 @@
                         </div>
                     </li>
                     <li><a href="tienda.html">Tienda</a></li>
-                    <li><a href="descargas.html" class="active">Descargas</a></li>
-                    <li><a href="packing.html">Packing</a></li>
+                    <li><a href="descargas.html">Descargas</a></li>
+                    <li><a href="packing.html" class="active">Packing</a></li>
                     <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -50,48 +50,17 @@
 
     <main class="downloads-page">
         <div class="container">
-            <h1>Descargas</h1>
-            <p class="subtitle">Catálogos, fichas técnicas y documentación de nuestras colecciones</p>
+            <h1>Packing List</h1>
+            <p class="subtitle">Datos de embalaje por formato: piezas, superficie y peso por caja y por palet</p>
 
-            <!-- Catálogos Generales -->
-            <section class="downloads-section">
-                <h2>📚 Catálogos Generales</h2>
-                <div class="downloads-grid" id="generales-grid">
-                    <!-- Se rellena con JavaScript desde data/descargas.json -->
-                </div>
-            </section>
+            <!-- Búsqueda y filtro -->
+            <div class="search-box">
+                <input type="text" id="search-formato" placeholder="Buscar formato (ej: 60x120, 30x60...)" onkeyup="renderPacking()">
+            </div>
+            <div id="filtros-categoria" class="filtros-material"></div>
 
-            <!-- Por Familia/Serie -->
-            <section class="downloads-section">
-                <h2>🎨 Catálogos y Paneles Técnicos por Serie</h2>
-                <p class="section-desc">Descarga el catálogo y el panel técnico de cada serie <span id="contador-series" style="color: #999;"></span></p>
-
-                <!-- Búsqueda -->
-                <div class="search-box">
-                    <input type="text" id="search-familia" placeholder="Buscar serie (ej: Atlas, Carrara, Bigas...)" onkeyup="filterFamilias()">
-                </div>
-
-                <!-- Filtros por material -->
-                <div id="filtros-material" class="filtros-material"></div>
-
-                <!-- Grid de familias -->
-                <div class="familias-grid" id="familias-grid">
-                    <!-- Se rellena con JavaScript desde data/descargas.json -->
-                </div>
-            </section>
-
-            <!-- Sección de información técnica -->
-            <section class="info-section">
-                <div class="info-box">
-                    <h3>ℹ️ Información importante</h3>
-                    <ul>
-                        <li>Todos los PDFs están optimizados para web y son de descarga gratuita</li>
-                        <li>Las fichas técnicas contienen especificaciones completas de cada producto</li>
-                        <li>Para consultas específicas, <a href="contacto.html">contacta con nuestro equipo</a></li>
-                        <li>Disponemos de muestras físicas para solicitar directamente</li>
-                    </ul>
-                </div>
-            </section>
+            <!-- Tablas por categoría -->
+            <div id="packing-container"></div>
         </div>
     </main>
 
@@ -126,12 +95,12 @@
     </footer>
 
     <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/34123456789?text=Hola,%20quisiera%20más%20información%20sobre%20vuestros%20catálogos%20y%20fichas%20técnicas" class="whatsapp-button" target="_blank">
+    <a href="https://wa.me/34123456789?text=Hola,%20quisiera%20información%20sobre%20embalaje%20y%20logística" class="whatsapp-button" target="_blank">
         💬 WhatsApp
     </a>
 
     <script src="js/nav.js"></script>
-    <script src="js/descargas.js"></script>
+    <script src="js/packing.js"></script>
     <script src="js/carrito.js"></script>
 </body>
 </html>
