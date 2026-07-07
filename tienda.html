@@ -107,7 +107,28 @@
                     </div>
                     <div class="form-row">
                         <input type="tel" placeholder="Teléfono" required>
-                        <input type="text" placeholder="Código postal" required>
+                        <input type="text" id="codigo-postal" placeholder="Código postal (5 dígitos)" required maxlength="5" pattern="[0-9]{5}" onchange="validarCodigoPostal()">
+                    </div>
+                    <div id="desglose-envio" style="display:none; background: #f5e5e0; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+                        <h4 style="margin-top: 0;">Desglose de envío</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Provincia:</span>
+                            <span id="provincia-destino">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Subtotal:</span>
+                            <span id="subtotal-base">0.00€</span>
+                        </div>
+                        <div id="recargo-info" style="display:none;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #d62828; font-weight: 600;">
+                                <span>Recargo por distancia (3€/m²):</span>
+                                <span id="importe-recargo">0.00€</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; padding-top: 0.5rem; border-top: 1px solid #d9d2c4;">
+                            <span>Total a pagar:</span>
+                            <span id="total-con-recargo">0.00€</span>
+                        </div>
                     </div>
                     <textarea placeholder="Dirección de envío" rows="3" required></textarea>
 
@@ -237,6 +258,87 @@
             actualizarResumen();
         }
 
+        // Provincias con recargo (código postal 2 primeros dígitos)
+        const provinciasConRecargo = {
+            '15': 'A Coruña',
+            '27': 'Lugo',
+            '32': 'Ourense',
+            '36': 'Pontevedra',
+            '33': 'Asturias',
+            '39': 'Cantabria',
+            '48': 'Bizkaia',
+            '20': 'Gipuzkoa',
+            '01': 'Araba/Álava',
+            '31': 'Navarra',
+            '26': 'La Rioja',
+            '09': 'Burgos',
+            '24': 'León',
+            '34': 'Palencia',
+            '49': 'Zamora',
+            '37': 'Salamanca',
+            '05': 'Ávila',
+            '10': 'Cáceres',
+            '06': 'Badajoz',
+            '21': 'Huelva',
+            '11': 'Cádiz'
+        };
+
+        let recargo = 0;
+        let provinciaDetectada = '';
+
+        function validarCodigoPostal() {
+            const cpInput = document.getElementById('codigo-postal');
+            const cp = cpInput.value.trim();
+            const desgloseDiv = document.getElementById('desglose-envio');
+
+            if (!cp) {
+                desgloseDiv.style.display = 'none';
+                return;
+            }
+
+            if (!/^\d{5}$/.test(cp)) {
+                alert('El código postal debe tener exactamente 5 dígitos');
+                cpInput.value = '';
+                desgloseDiv.style.display = 'none';
+                return;
+            }
+
+            const codigoProvincial = cp.substring(0, 2);
+
+            if (codigoProvincial < '01' || codigoProvincial > '52') {
+                alert('Código postal no válido para España');
+                cpInput.value = '';
+                desgloseDiv.style.display = 'none';
+                return;
+            }
+
+            const totales = carrito.calcularTotales();
+            const subtotalBase = totales.total_precio;
+
+            if (provinciasConRecargo[codigoProvincial]) {
+                provinciaDetectada = provinciasConRecargo[codigoProvincial];
+                recargo = totales.total_metros * 3;
+            } else {
+                provinciaDetectada = 'Provincia válida (sin recargo)';
+                recargo = 0;
+            }
+
+            const totalConRecargo = subtotalBase + recargo;
+
+            document.getElementById('provincia-destino').textContent = provinciaDetectada;
+            document.getElementById('subtotal-base').textContent = subtotalBase.toFixed(2) + '€';
+
+            if (recargo > 0) {
+                document.getElementById('recargo-info').style.display = 'block';
+                document.getElementById('importe-recargo').textContent = recargo.toFixed(2) + '€';
+            } else {
+                document.getElementById('recargo-info').style.display = 'none';
+            }
+
+            document.getElementById('total-con-recargo').textContent = totalConRecargo.toFixed(2) + '€';
+            desgloseDiv.style.display = 'block';
+        }
+
         function actualizarResumen() {
             const totales = carrito.calcularTotales();
             document.getElementById('total-cajas').textContent = totales.total_cajas;
@@ -259,9 +361,45 @@
         }
 
         function submitCheckout() {
-            const pedido = carrito.exportarPedido();
-            console.log('Pedido:', pedido);
-            alert(`Pedido procesado:\n\n${pedido.resumen.total_cajas} cajas\n${pedido.resumen.total_metros} m²\n${pedido.resumen.total_precio}€\n\nPróximamente: integración con pago`);
+            const cpInput = document.getElementById('codigo-postal');
+            const cp = cpInput.value.trim();
+
+            if (!cp || !/^\d{5}$/.test(cp)) {
+                alert('Por favor, introduce un código postal válido (5 dígitos)');
+                return;
+            }
+
+            if (!provinciaDetectada) {
+                alert('Por favor, valida el código postal primero');
+                return;
+            }
+
+            const totales = carrito.calcularTotales();
+            const totalConRecargo = totales.total_precio + recargo;
+
+            const resumenFinal = `
+📦 RESUMEN DEL PEDIDO
+━━━━━━━━━━━━━━━━━━━━
+Cajas: ${totales.total_cajas}
+Metros cuadrados: ${totales.total_metros.toFixed(2)} m²
+
+📍 ENVÍO
+━━━━━━━━━━━━━━━━━━━━
+Código postal: ${cp}
+Provincia: ${provinciaDetectada}
+
+💰 DESGLOSE
+━━━━━━━━━━━━━━━━━━━━
+Subtotal: ${totales.total_precio.toFixed(2)}€
+${recargo > 0 ? `Recargo (3€/m²): ${recargo.toFixed(2)}€` : 'Recargo: 0.00€'}
+━━━━━━━━━━━━━━━━━━━━
+TOTAL A PAGAR: ${totalConRecargo.toFixed(2)}€
+
+¿Confirmas esta compra?`;
+
+            if (confirm(resumenFinal)) {
+                alert(`✅ Pedido procesado correctamente\n\nPróximamente: integración con pasarela de pago`);
+            }
         }
 
         // Escucha cambios en el carrito
