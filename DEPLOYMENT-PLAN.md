@@ -42,14 +42,38 @@ NODE_ENV=production
 #### 5. Archivos creados
 - `.env.production` - Configuración para producción
 
-## FASE 2 - Setup BD y Variables de Entorno
+## FASE 2 - Setup BD y Variables de Entorno ✅ COMPLETADA
 
-### Pendiente:
-1. Conectar base de datos PostgreSQL
-2. Configurar variables en Vercel Dashboard
-3. Generar JWT_SECRET seguro
-4. Configurar Stripe keys
-5. Configurar SMTP credentials
+### Cambios realizados:
+
+#### 1. Documentación de Variables
+- **Archivo**: `backend/.env.example` - Actualizado con todas las variables requeridas
+- **Archivo**: `frontend/.env.example` - Configuración de Vite + API URL
+- Incluye comentarios para cada sección
+
+#### 2. Guía de Configuración Vercel
+- **Archivo**: `VERCEL-ENV-SETUP.md`
+- Instrucciones paso a paso para Vercel Dashboard
+- Guía de setup con Vercel CLI
+- Cómo generar secretos seguros
+- Instrucciones para Stripe, WhatsApp, SMTP
+- Verificación post-deploy
+
+#### 3. Guía de Setup de Base de Datos
+- **Archivo**: `DATABASE-SETUP.md`
+- 3 opciones:
+  1. PostgreSQL Local (desarrollo)
+  2. Vercel Postgres (producción managed)
+  3. Supabase (PostgreSQL + extras)
+- Comandos SQL de setup
+- Estructura de tablas (users, orders, order_items)
+- Troubleshooting
+
+#### 4. Próximos pasos:
+1. Elegir opción de BD (local vs cloud)
+2. Crear la BD siguiendo DATABASE-SETUP.md
+3. Copiar variables a .env local
+4. Agregar variables a Vercel Dashboard (VERCEL-ENV-SETUP.md)
 
 ## FASE 3 - Probar Localmente
 
