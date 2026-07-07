@@ -9,7 +9,6 @@ class CarritoBoxes {
   constructor() {
     this.items = [];
     this.tarifa = null;
-    this.init();
   }
 
   async init() {
@@ -178,4 +177,9 @@ class CarritoBoxes {
 
 // Instancia global
 const carrito = new CarritoBoxes();
-carrito.cargarCarrito();
+
+// Carga tarifa e items del carrito
+document.addEventListener('DOMContentLoaded', () => {
+  carrito.init();
+  carrito.cargarCarrito();
+});
