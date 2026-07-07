@@ -1,434 +1,1174 @@
-﻿{
-    "productos":  [
-                      {
-                          "id":  "10x10-AZULEJO-1",
-                          "formato":  "10x10",
-                          "serie":  "AZULEJO",
-                          "metros_por_caja":  13.55,
-                          "precio_coste_caja":  12.15,
-                          "precio_venta_caja":  23.22,
-                          "margen_euros":  11.07,
-                          "margen_porcentaje":  91.1
-                      },
-                      {
-                          "id":  "15x15-AZULEJO-2",
-                          "formato":  "15x15",
-                          "serie":  "AZULEJO",
-                          "metros_por_caja":  8.55,
-                          "precio_coste_caja":  7.15,
-                          "precio_venta_caja":  15.65,
-                          "margen_euros":  8.5,
-                          "margen_porcentaje":  118.9
-                      },
-                      {
-                          "id":  "10x20-METRO BISEL-3",
-                          "formato":  "10x20",
-                          "serie":  "METRO BISEL",
-                          "metros_por_caja":  8.55,
-                          "precio_coste_caja":  7.65,
-                          "precio_venta_caja":  16.41,
-                          "margen_euros":  8.76,
-                          "margen_porcentaje":  114.5
-                      },
-                      {
-                          "id":  "10x20-METRO BISEL-4",
-                          "formato":  "10x20",
-                          "serie":  "METRO BISEL",
-                          "metros_por_caja":  9.35,
-                          "precio_coste_caja":  8.05,
-                          "precio_venta_caja":  17.02,
-                          "margen_euros":  8.97,
-                          "margen_porcentaje":  111.4
-                      },
-                      {
-                          "id":  "10x20-METRO BISEL-5",
-                          "formato":  "10x20",
-                          "serie":  "METRO BISEL",
-                          "metros_por_caja":  9.95,
-                          "precio_coste_caja":  8.69,
-                          "precio_venta_caja":  17.98,
-                          "margen_euros":  9.29,
-                          "margen_porcentaje":  106.9
-                      },
-                      {
-                          "id":  "10x20-METRO BISEL-6",
-                          "formato":  "10x20",
-                          "serie":  "METRO BISEL",
-                          "metros_por_caja":  10.65,
-                          "precio_coste_caja":  9.35,
-                          "precio_venta_caja":  18.98,
-                          "margen_euros":  9.63,
-                          "margen_porcentaje":  103
-                      },
-                      {
-                          "id":  "20X20-AZULEJO-7",
-                          "formato":  "20X20",
-                          "serie":  "AZULEJO",
-                          "metros_por_caja":  6.95,
-                          "precio_coste_caja":  5.95,
-                          "precio_venta_caja":  13.84,
-                          "margen_euros":  7.89,
-                          "margen_porcentaje":  132.6
-                      },
-                      {
-                          "id":  "25X40-AZULEJO-8",
-                          "formato":  "25X40",
-                          "serie":  "AZULEJO",
-                          "metros_por_caja":  7.25,
-                          "precio_coste_caja":  5.95,
-                          "precio_venta_caja":  13.84,
-                          "margen_euros":  7.89,
-                          "margen_porcentaje":  132.6
-                      },
-                      {
-                          "id":  "25X50-AZULEJO-9",
-                          "formato":  "25X50",
-                          "serie":  "AZULEJO",
-                          "metros_por_caja":  7.55,
-                          "precio_coste_caja":  6.35,
-                          "precio_venta_caja":  14.44,
-                          "margen_euros":  8.09,
-                          "margen_porcentaje":  127.5
-                      },
-                      {
-                          "id":  "20x60-BASES-10",
-                          "formato":  "20x60",
-                          "serie":  "BASES",
-                          "metros_por_caja":  7.75,
-                          "precio_coste_caja":  6.45,
-                          "precio_venta_caja":  14.6,
-                          "margen_euros":  8.15,
-                          "margen_porcentaje":  126.3
-                      },
-                      {
-                          "id":  "20x60-DECORADOS-11",
-                          "formato":  "20x60",
-                          "serie":  "DECORADOS",
-                          "metros_por_caja":  7.95,
-                          "precio_coste_caja":  6.95,
-                          "precio_venta_caja":  15.35,
-                          "margen_euros":  8.4,
-                          "margen_porcentaje":  120.9
-                      },
-                      {
-                          "id":  "25x80-BASES-12",
-                          "formato":  "25x80",
-                          "serie":  "BASES",
-                          "metros_por_caja":  9.15,
-                          "precio_coste_caja":  7.55,
-                          "precio_venta_caja":  16.26,
-                          "margen_euros":  8.71,
-                          "margen_porcentaje":  115.4
-                      },
-                      {
-                          "id":  "25x80-RELIEVE-13",
-                          "formato":  "25x80",
-                          "serie":  "RELIEVE",
-                          "metros_por_caja":  9.15,
-                          "precio_coste_caja":  7.95,
-                          "precio_venta_caja":  16.86,
-                          "margen_euros":  8.91,
-                          "margen_porcentaje":  112.1
-                      },
-                      {
-                          "id":  "30X60-BASES-14",
-                          "formato":  "30X60",
-                          "serie":  "BASES",
-                          "metros_por_caja":  7.95,
-                          "precio_coste_caja":  6.55,
-                          "precio_venta_caja":  14.75,
-                          "margen_euros":  8.2,
-                          "margen_porcentaje":  125.1
-                      },
-                      {
-                          "id":  "30X60-BASES-15",
-                          "formato":  "30X60",
-                          "serie":  "BASES",
-                          "metros_por_caja":  7.95,
-                          "precio_coste_caja":  6.55,
-                          "precio_venta_caja":  14.75,
-                          "margen_euros":  8.2,
-                          "margen_porcentaje":  125.1
-                      },
-                      {
-                          "id":  "30X60-RELIEVE-16",
-                          "formato":  "30X60",
-                          "serie":  "RELIEVE",
-                          "metros_por_caja":  8.35,
-                          "precio_coste_caja":  6.95,
-                          "precio_venta_caja":  15.35,
-                          "margen_euros":  8.4,
-                          "margen_porcentaje":  120.9
-                      },
-                      {
-                          "id":  "30X60-DECORADOS-17",
-                          "formato":  "30X60",
-                          "serie":  "DECORADOS",
-                          "metros_por_caja":  8.55,
-                          "precio_coste_caja":  7.15,
-                          "precio_venta_caja":  15.65,
-                          "margen_euros":  8.5,
-                          "margen_porcentaje":  118.9
-                      },
-                      {
-                          "id":  "30X60 REC-BASES-18",
-                          "formato":  "30X60 REC",
-                          "serie":  "BASES",
-                          "metros_por_caja":  11.85,
-                          "precio_coste_caja":  9.45,
-                          "precio_venta_caja":  19.13,
-                          "margen_euros":  9.68,
-                          "margen_porcentaje":  102.5
-                      },
-                      {
-                          "id":  "25X75-BASES-19",
-                          "formato":  "25X75",
-                          "serie":  "BASES",
-                          "metros_por_caja":  10.75,
-                          "precio_coste_caja":  9.05,
-                          "precio_venta_caja":  18.53,
-                          "margen_euros":  9.48,
-                          "margen_porcentaje":  104.7
-                      },
-                      {
-                          "id":  "25X75-DECORADOS-20",
-                          "formato":  "25X75",
-                          "serie":  "DECORADOS",
-                          "metros_por_caja":  10.95,
-                          "precio_coste_caja":  9.25,
-                          "precio_venta_caja":  18.83,
-                          "margen_euros":  9.58,
-                          "margen_porcentaje":  103.6
-                      },
-                      {
-                          "id":  "30X90 REC-BASES-21",
-                          "formato":  "30X90 REC",
-                          "serie":  "BASES",
-                          "metros_por_caja":  12.55,
-                          "precio_coste_caja":  10.75,
-                          "precio_venta_caja":  21.1,
-                          "margen_euros":  10.35,
-                          "margen_porcentaje":  96.3
-                      },
-                      {
-                          "id":  "30X90 REC-RELIEVE-22",
-                          "formato":  "30X90 REC",
-                          "serie":  "RELIEVE",
-                          "metros_por_caja":  12.55,
-                          "precio_coste_caja":  10.75,
-                          "precio_venta_caja":  21.1,
-                          "margen_euros":  10.35,
-                          "margen_porcentaje":  96.3
-                      },
-                      {
-                          "id":  "30X90 REC-DECORADOS-23",
-                          "formato":  "30X90 REC",
-                          "serie":  "DECORADOS",
-                          "metros_por_caja":  12.55,
-                          "precio_coste_caja":  10.75,
-                          "precio_venta_caja":  21.1,
-                          "margen_euros":  10.35,
-                          "margen_porcentaje":  96.3
-                      },
-                      {
-                          "id":  "40X120 REC-BASES-24",
-                          "formato":  "40X120 REC",
-                          "serie":  "BASES",
-                          "metros_por_caja":  13.95,
-                          "precio_coste_caja":  11.95,
-                          "precio_venta_caja":  22.91,
-                          "margen_euros":  10.96,
-                          "margen_porcentaje":  91.8
-                      },
-                      {
-                          "id":  "33X33-9 MM.-25",
-                          "formato":  "33X33",
-                          "serie":  "9 MM.",
-                          "metros_por_caja":  7.45,
-                          "precio_coste_caja":  5.75,
-                          "precio_venta_caja":  13.54,
-                          "margen_euros":  7.79,
-                          "margen_porcentaje":  135.4
-                      },
-                      {
-                          "id":  "33X33 ESP.-12 MM-26",
-                          "formato":  "33X33 ESP.",
-                          "serie":  "12 MM",
-                          "metros_por_caja":  8.25,
-                          "precio_coste_caja":  6.25,
-                          "precio_venta_caja":  14.29,
-                          "margen_euros":  8.04,
-                          "margen_porcentaje":  128.7
-                      },
-                      {
-                          "id":  "45 X 45-HIDRAULICOS-27",
-                          "formato":  "45 X 45",
-                          "serie":  "HIDRAULICOS",
-                          "metros_por_caja":  8.25,
-                          "precio_coste_caja":  6.45,
-                          "precio_venta_caja":  14.6,
-                          "margen_euros":  8.15,
-                          "margen_porcentaje":  126.3
-                      },
-                      {
-                          "id":  "45 X 45-BRILLO-28",
-                          "formato":  "45 X 45",
-                          "serie":  "BRILLO",
-                          "metros_por_caja":  8.25,
-                          "precio_coste_caja":  6.45,
-                          "precio_venta_caja":  14.6,
-                          "margen_euros":  8.15,
-                          "margen_porcentaje":  126.3
-                      },
-                      {
-                          "id":  "19X57-TAB.MADERA-29",
-                          "formato":  "19X57",
-                          "serie":  "TAB.MADERA",
-                          "metros_por_caja":  7.45,
-                          "precio_coste_caja":  5.75,
-                          "precio_venta_caja":  13.54,
-                          "margen_euros":  7.79,
-                          "margen_porcentaje":  135.4
-                      },
-                      {
-                          "id":  "20X60-TAB.MADERA-30",
-                          "formato":  "20X60",
-                          "serie":  "TAB.MADERA",
-                          "metros_por_caja":  8.25,
-                          "precio_coste_caja":  6.75,
-                          "precio_venta_caja":  15.05,
-                          "margen_euros":  8.3,
-                          "margen_porcentaje":  123
-                      },
-                      {
-                          "id":  "33,3X33,3 PRC.-VARIOS-31",
-                          "formato":  "33,3X33,3 PRC.",
-                          "serie":  "VARIOS",
-                          "metros_por_caja":  9.35,
-                          "precio_coste_caja":  7.55,
-                          "precio_venta_caja":  16.26,
-                          "margen_euros":  8.71,
-                          "margen_porcentaje":  115.4
-                      },
-                      {
-                          "id":  "60X60 PRC.-MATE-32",
-                          "formato":  "60X60 PRC.",
-                          "serie":  "MATE",
-                          "metros_por_caja":  10.65,
-                          "precio_coste_caja":  8.95,
-                          "precio_venta_caja":  18.38,
-                          "margen_euros":  9.43,
-                          "margen_porcentaje":  105.3
-                      },
-                      {
-                          "id":  "60X60 PRC. REC-BRILLO-33",
-                          "formato":  "60X60 PRC. REC",
-                          "serie":  "BRILLO",
-                          "metros_por_caja":  12.55,
-                          "precio_coste_caja":  11.05,
-                          "precio_venta_caja":  21.55,
-                          "margen_euros":  10.5,
-                          "margen_porcentaje":  95.1
-                      },
-                      {
-                          "id":  "30X60 PRC.-MATE C3-34",
-                          "formato":  "30X60 PRC.",
-                          "serie":  "MATE C3",
-                          "metros_por_caja":  10.65,
-                          "precio_coste_caja":  8.95,
-                          "precio_venta_caja":  18.38,
-                          "margen_euros":  9.43,
-                          "margen_porcentaje":  105.3
-                      },
-                      {
-                          "id":  "75X75 PRC. REC.-TODOS-35",
-                          "formato":  "75X75 PRC. REC.",
-                          "serie":  "TODOS",
-                          "metros_por_caja":  13.15,
-                          "precio_coste_caja":  11.65,
-                          "precio_venta_caja":  22.46,
-                          "margen_euros":  10.81,
-                          "margen_porcentaje":  92.8
-                      },
-                      {
-                          "id":  "22,5X90 PRC.-TAB.MADERA-36",
-                          "formato":  "22,5X90 PRC.",
-                          "serie":  "TAB.MADERA",
-                          "metros_por_caja":  10.65,
-                          "precio_coste_caja":  8.95,
-                          "precio_venta_caja":  18.38,
-                          "margen_euros":  9.43,
-                          "margen_porcentaje":  105.3
-                      },
-                      {
-                          "id":  "20X120 PRC RT SL-TAB.MADERA-37",
-                          "formato":  "20X120 PRC RT SL",
-                          "serie":  "TAB.MADERA",
-                          "metros_por_caja":  13.45,
-                          "precio_coste_caja":  11.45,
-                          "precio_venta_caja":  22.16,
-                          "margen_euros":  10.71,
-                          "margen_porcentaje":  93.5
-                      },
-                      {
-                          "id":  "23X120 PRC.-TAB.MADERA-38",
-                          "formato":  "23X120 PRC.",
-                          "serie":  "TAB.MADERA",
-                          "metros_por_caja":  11.35,
-                          "precio_coste_caja":  9.35,
-                          "precio_venta_caja":  18.98,
-                          "margen_euros":  9.63,
-                          "margen_porcentaje":  103
-                      },
-                      {
-                          "id":  "90X90 PRC. RC.-MATE-39",
-                          "formato":  "90X90 PRC. RC.",
-                          "serie":  "MATE",
-                          "metros_por_caja":  14.85,
-                          "precio_coste_caja":  12.85,
-                          "precio_venta_caja":  24.28,
-                          "margen_euros":  11.43,
-                          "margen_porcentaje":  88.9
-                      },
-                      {
-                          "id":  "60X120 PRC. REC-BRILLO-40",
-                          "formato":  "60X120 PRC. REC",
-                          "serie":  "BRILLO",
-                          "metros_por_caja":  13.45,
-                          "precio_coste_caja":  11.55,
-                          "precio_venta_caja":  22.31,
-                          "margen_euros":  10.76,
-                          "margen_porcentaje":  93.2
-                      },
-                      {
-                          "id":  "60X120 PRC. REC-MONOCOLOR-41",
-                          "formato":  "60X120 PRC. REC",
-                          "serie":  "MONOCOLOR",
-                          "metros_por_caja":  15.25,
-                          "precio_coste_caja":  13.65,
-                          "precio_venta_caja":  25.49,
-                          "margen_euros":  11.84,
-                          "margen_porcentaje":  86.7
-                      },
-                      {
-                          "id":  "60X120 PRC. REC-NANO-POLSH-42",
-                          "formato":  "60X120 PRC. REC",
-                          "serie":  "NANO-POLSH",
-                          "metros_por_caja":  14.25,
-                          "precio_coste_caja":  11.95,
-                          "precio_venta_caja":  22.91,
-                          "margen_euros":  10.96,
-                          "margen_porcentaje":  91.8
-                      },
-                      {
-                          "id":  "100X100 PRC. REC-NANO-POLSH-43",
-                          "formato":  "100X100 PRC. REC",
-                          "serie":  "NANO-POLSH",
-                          "metros_por_caja":  18.45,
-                          "precio_coste_caja":  16.45,
-                          "precio_venta_caja":  29.72,
-                          "margen_euros":  13.27,
-                          "margen_porcentaje":  80.7
-                      }
-                  ]
+{
+  "productos": [
+    {
+      "id": "100x100-Calacatta-Gold-1",
+      "formato": "100x100",
+      "serie": "Calacatta Gold",
+      "metros_por_caja": 10,
+      "precio_coste_caja": 16.45,
+      "precio_venta_caja": 32.44,
+      "margen_euros": 15.99,
+      "margen_porcentaje": 97.2
+    },
+    {
+      "id": "100x100-Carrara-2",
+      "formato": "100x100",
+      "serie": "Carrara",
+      "metros_por_caja": 10,
+      "precio_coste_caja": 16.45,
+      "precio_venta_caja": 32.44,
+      "margen_euros": 15.99,
+      "margen_porcentaje": 97.2
+    },
+    {
+      "id": "100x100-Elvis-3",
+      "formato": "100x100",
+      "serie": "Elvis",
+      "metros_por_caja": 10,
+      "precio_coste_caja": 16.45,
+      "precio_venta_caja": 32.44,
+      "margen_euros": 15.99,
+      "margen_porcentaje": 97.2
+    },
+    {
+      "id": "100x100-Samario-4",
+      "formato": "100x100",
+      "serie": "Samario",
+      "metros_por_caja": 10,
+      "precio_coste_caja": 16.45,
+      "precio_venta_caja": 32.44,
+      "margen_euros": 15.99,
+      "margen_porcentaje": 97.2
+    },
+    {
+      "id": "100x100-Sanit-Dark-5",
+      "formato": "100x100",
+      "serie": "Sanit Dark",
+      "metros_por_caja": 10,
+      "precio_coste_caja": 16.45,
+      "precio_venta_caja": 32.44,
+      "margen_euros": 15.99,
+      "margen_porcentaje": 97.2
+    },
+    {
+      "id": "10x10-Blancos-6",
+      "formato": "10x10",
+      "serie": "Blancos",
+      "metros_por_caja": 0.1,
+      "precio_coste_caja": 12.15,
+      "precio_venta_caja": 25.94,
+      "margen_euros": 13.79,
+      "margen_porcentaje": 113.5
+    },
+    {
+      "id": "10x20-Blancos-7",
+      "formato": "10x20",
+      "serie": "Blancos",
+      "metros_por_caja": 0.2,
+      "precio_coste_caja": 7.65,
+      "precio_venta_caja": 19.13,
+      "margen_euros": 11.48,
+      "margen_porcentaje": 150.1
+    },
+    {
+      "id": "10x20-Metro-8",
+      "formato": "10x20",
+      "serie": "Metro",
+      "metros_por_caja": 0.2,
+      "precio_coste_caja": 9.35,
+      "precio_venta_caja": 21.7,
+      "margen_euros": 12.35,
+      "margen_porcentaje": 132.1
+    },
+    {
+      "id": "15x15-Blancos-9",
+      "formato": "15x15",
+      "serie": "Blancos",
+      "metros_por_caja": 0.22,
+      "precio_coste_caja": 7.15,
+      "precio_venta_caja": 18.38,
+      "margen_euros": 11.23,
+      "margen_porcentaje": 157
+    },
+    {
+      "id": "19x57-Forest-10",
+      "formato": "19x57",
+      "serie": "Forest",
+      "metros_por_caja": 1.08,
+      "precio_coste_caja": 5.75,
+      "precio_venta_caja": 16.26,
+      "margen_euros": 10.51,
+      "margen_porcentaje": 182.8
+    },
+    {
+      "id": "19x57-Fusta-11",
+      "formato": "19x57",
+      "serie": "Fusta",
+      "metros_por_caja": 1.08,
+      "precio_coste_caja": 5.75,
+      "precio_venta_caja": 16.26,
+      "margen_euros": 10.51,
+      "margen_porcentaje": 182.8
+    },
+    {
+      "id": "20x120-Legend-12",
+      "formato": "20x120",
+      "serie": "Legend",
+      "metros_por_caja": 2.4,
+      "precio_coste_caja": 11.45,
+      "precio_venta_caja": 24.88,
+      "margen_euros": 13.43,
+      "margen_porcentaje": 117.3
+    },
+    {
+      "id": "20x20-Blancos-13",
+      "formato": "20x20",
+      "serie": "Blancos",
+      "metros_por_caja": 0.4,
+      "precio_coste_caja": 5.95,
+      "precio_venta_caja": 16.56,
+      "margen_euros": 10.61,
+      "margen_porcentaje": 178.4
+    },
+    {
+      "id": "20x60-Foresta-14",
+      "formato": "20x60",
+      "serie": "Foresta",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.75,
+      "precio_venta_caja": 17.77,
+      "margen_euros": 11.02,
+      "margen_porcentaje": 163.3
+    },
+    {
+      "id": "20x60-Pinada-15",
+      "formato": "20x60",
+      "serie": "Pinada",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.75,
+      "precio_venta_caja": 17.77,
+      "margen_euros": 11.02,
+      "margen_porcentaje": 163.3
+    },
+    {
+      "id": "20x60-Blancos-16",
+      "formato": "20x60",
+      "serie": "Blancos",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "20x60-Brick-17",
+      "formato": "20x60",
+      "serie": "Brick",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "20x60-Carrara-18",
+      "formato": "20x60",
+      "serie": "Carrara",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "20x60-Haina-19",
+      "formato": "20x60",
+      "serie": "Haina",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "20x60-Irati-20",
+      "formato": "20x60",
+      "serie": "Irati",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "20x60-Masip-21",
+      "formato": "20x60",
+      "serie": "Masip",
+      "metros_por_caja": 1.2,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "22,5x90-Atlas-22",
+      "formato": "22,5x90",
+      "serie": "Atlas",
+      "metros_por_caja": 1.98,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "22,5x90-Curia-C3-23",
+      "formato": "22,5x90",
+      "serie": "Curia C3",
+      "metros_por_caja": 1.98,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "22,5x90-Enate-24",
+      "formato": "22,5x90",
+      "serie": "Enate",
+      "metros_por_caja": 1.98,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "22,5x90-Mogan-25",
+      "formato": "22,5x90",
+      "serie": "Mogan",
+      "metros_por_caja": 1.98,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "22,5x90-Tea-26",
+      "formato": "22,5x90",
+      "serie": "Tea",
+      "metros_por_caja": 1.98,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "23x120-Alpina-27",
+      "formato": "23x120",
+      "serie": "Alpina",
+      "metros_por_caja": 2.76,
+      "precio_coste_caja": 9.35,
+      "precio_venta_caja": 21.7,
+      "margen_euros": 12.35,
+      "margen_porcentaje": 132.1
+    },
+    {
+      "id": "23x120-Bigas-28",
+      "formato": "23x120",
+      "serie": "Bigas",
+      "metros_por_caja": 2.76,
+      "precio_coste_caja": 9.35,
+      "precio_venta_caja": 21.7,
+      "margen_euros": 12.35,
+      "margen_porcentaje": 132.1
+    },
+    {
+      "id": "23x120-Tablero-29",
+      "formato": "23x120",
+      "serie": "Tablero",
+      "metros_por_caja": 2.76,
+      "precio_coste_caja": 9.35,
+      "precio_venta_caja": 21.7,
+      "margen_euros": 12.35,
+      "margen_porcentaje": 132.1
+    },
+    {
+      "id": "23x120-Terry-30",
+      "formato": "23x120",
+      "serie": "Terry",
+      "metros_por_caja": 2.76,
+      "precio_coste_caja": 9.35,
+      "precio_venta_caja": 21.7,
+      "margen_euros": 12.35,
+      "margen_porcentaje": 132.1
+    },
+    {
+      "id": "25x40-Blancos-31",
+      "formato": "25x40",
+      "serie": "Blancos",
+      "metros_por_caja": 1,
+      "precio_coste_caja": 5.95,
+      "precio_venta_caja": 16.56,
+      "margen_euros": 10.61,
+      "margen_porcentaje": 178.4
+    },
+    {
+      "id": "25x50-Blancos-32",
+      "formato": "25x50",
+      "serie": "Blancos",
+      "metros_por_caja": 1.25,
+      "precio_coste_caja": 6.35,
+      "precio_venta_caja": 17.17,
+      "margen_euros": 10.82,
+      "margen_porcentaje": 170.3
+    },
+    {
+      "id": "25x50-Jaca-33",
+      "formato": "25x50",
+      "serie": "Jaca",
+      "metros_por_caja": 1.25,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "25x80-Blancos-34",
+      "formato": "25x80",
+      "serie": "Blancos",
+      "metros_por_caja": 2,
+      "precio_coste_caja": 7.55,
+      "precio_venta_caja": 18.98,
+      "margen_euros": 11.43,
+      "margen_porcentaje": 151.4
+    },
+    {
+      "id": "25x80-Eden-35",
+      "formato": "25x80",
+      "serie": "Eden",
+      "metros_por_caja": 2,
+      "precio_coste_caja": 7.95,
+      "precio_venta_caja": 19.59,
+      "margen_euros": 11.64,
+      "margen_porcentaje": 146.4
+    },
+    {
+      "id": "25x80-Keops-36",
+      "formato": "25x80",
+      "serie": "Keops",
+      "metros_por_caja": 2,
+      "precio_coste_caja": 7.95,
+      "precio_venta_caja": 19.59,
+      "margen_euros": 11.64,
+      "margen_porcentaje": 146.4
+    },
+    {
+      "id": "25x80-Kronos-37",
+      "formato": "25x80",
+      "serie": "Kronos",
+      "metros_por_caja": 2,
+      "precio_coste_caja": 7.95,
+      "precio_venta_caja": 19.59,
+      "margen_euros": 11.64,
+      "margen_porcentaje": 146.4
+    },
+    {
+      "id": "30x60-Ardesia-C3-38",
+      "formato": "30x60",
+      "serie": "Ardesia C3",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Bali-39",
+      "formato": "30x60",
+      "serie": "Bali",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Kaster-40",
+      "formato": "30x60",
+      "serie": "Kaster",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Keyburn-C3-41",
+      "formato": "30x60",
+      "serie": "Keyburn C3",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Land-Kaster-C3-42",
+      "formato": "30x60",
+      "serie": "Land Kaster C3",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Provence-C3-43",
+      "formato": "30x60",
+      "serie": "Provence C3",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 9.95,
+      "precio_venta_caja": 22.61,
+      "margen_euros": 12.66,
+      "margen_porcentaje": 127.3
+    },
+    {
+      "id": "30x60-Torcal-44",
+      "formato": "30x60",
+      "serie": "Torcal",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Tosca-45",
+      "formato": "30x60",
+      "serie": "Tosca",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Urbión-46",
+      "formato": "30x60",
+      "serie": "Urbión",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "30x60-Blancos-47",
+      "formato": "30x60",
+      "serie": "Blancos",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.55,
+      "precio_venta_caja": 17.47,
+      "margen_euros": 10.92,
+      "margen_porcentaje": 166.7
+    },
+    {
+      "id": "30x60-Carrara-48",
+      "formato": "30x60",
+      "serie": "Carrara",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Concrete-49",
+      "formato": "30x60",
+      "serie": "Concrete",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Kamen-50",
+      "formato": "30x60",
+      "serie": "Kamen",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Kite-51",
+      "formato": "30x60",
+      "serie": "Kite",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Koral-52",
+      "formato": "30x60",
+      "serie": "Koral",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Legend-53",
+      "formato": "30x60",
+      "serie": "Legend",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Life-54",
+      "formato": "30x60",
+      "serie": "Life",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Murano-55",
+      "formato": "30x60",
+      "serie": "Murano",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Napoli-56",
+      "formato": "30x60",
+      "serie": "Napoli",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Polaris-57",
+      "formato": "30x60",
+      "serie": "Polaris",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Ritz-58",
+      "formato": "30x60",
+      "serie": "Ritz",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 6.95,
+      "precio_venta_caja": 18.07,
+      "margen_euros": 11.12,
+      "margen_porcentaje": 160.1
+    },
+    {
+      "id": "30x60-Blancos-59",
+      "formato": "30x60",
+      "serie": "Blancos",
+      "metros_por_caja": 1.8,
+      "precio_coste_caja": 9.45,
+      "precio_venta_caja": 21.86,
+      "margen_euros": 12.41,
+      "margen_porcentaje": 131.3
+    },
+    {
+      "id": "30x90-Blancos-60",
+      "formato": "30x90",
+      "serie": "Blancos",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "30x90-Calacata-61",
+      "formato": "30x90",
+      "serie": "Calacata",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "30x90-Shiman-62",
+      "formato": "30x90",
+      "serie": "Shiman",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "30x90-Tadan-63",
+      "formato": "30x90",
+      "serie": "Tadan",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "30x90-Verdi-64",
+      "formato": "30x90",
+      "serie": "Verdi",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "30x90-Wahkan-65",
+      "formato": "30x90",
+      "serie": "Wahkan",
+      "metros_por_caja": 2.7,
+      "precio_coste_caja": 10.75,
+      "precio_venta_caja": 23.82,
+      "margen_euros": 13.07,
+      "margen_porcentaje": 121.6
+    },
+    {
+      "id": "33,3x33,3-Bosco-66",
+      "formato": "33,3x33,3",
+      "serie": "Bosco",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 7.55,
+      "precio_venta_caja": 18.98,
+      "margen_euros": 11.43,
+      "margen_porcentaje": 151.4
+    },
+    {
+      "id": "33,3x33,3-Pobla-C3-67",
+      "formato": "33,3x33,3",
+      "serie": "Pobla C3",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 7.55,
+      "precio_venta_caja": 18.98,
+      "margen_euros": 11.43,
+      "margen_porcentaje": 151.4
+    },
+    {
+      "id": "33,3x33,3-Stahl-C3-68",
+      "formato": "33,3x33,3",
+      "serie": "Stahl C3",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 7.55,
+      "precio_venta_caja": 18.98,
+      "margen_euros": 11.43,
+      "margen_porcentaje": 151.4
+    },
+    {
+      "id": "33,3x33,3-Cotto-Provenzal-69",
+      "formato": "33,3x33,3",
+      "serie": "Cotto Provenzal",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "33,3x33,3-Hidráulicos-70",
+      "formato": "33,3x33,3",
+      "serie": "Hidráulicos",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "33,3x33,3-Inca-71",
+      "formato": "33,3x33,3",
+      "serie": "Inca",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "33,3x33,3-Mulhacén-72",
+      "formato": "33,3x33,3",
+      "serie": "Mulhacén",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "33,3x33,3-Pizarra-73",
+      "formato": "33,3x33,3",
+      "serie": "Pizarra",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "33,3x33,3-Silos-C3-74",
+      "formato": "33,3x33,3",
+      "serie": "Silos C3",
+      "metros_por_caja": 1.09,
+      "precio_coste_caja": 6.25,
+      "precio_venta_caja": 17.02,
+      "margen_euros": 10.77,
+      "margen_porcentaje": 172.3
+    },
+    {
+      "id": "40x120-Blancos-75",
+      "formato": "40x120",
+      "serie": "Blancos",
+      "metros_por_caja": 4.8,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "45x45-Alhambra-76",
+      "formato": "45x45",
+      "serie": "Alhambra",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Atrio-77",
+      "formato": "45x45",
+      "serie": "Atrio",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Carrara-78",
+      "formato": "45x45",
+      "serie": "Carrara",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Dahino-79",
+      "formato": "45x45",
+      "serie": "Dahino",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Garden-80",
+      "formato": "45x45",
+      "serie": "Garden",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Keops-81",
+      "formato": "45x45",
+      "serie": "Keops",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Memory-C3-82",
+      "formato": "45x45",
+      "serie": "Memory C3",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Mijas-83",
+      "formato": "45x45",
+      "serie": "Mijas",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-One-84",
+      "formato": "45x45",
+      "serie": "One",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Rock-85",
+      "formato": "45x45",
+      "serie": "Rock",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Ronda-86",
+      "formato": "45x45",
+      "serie": "Ronda",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Siracusa-87",
+      "formato": "45x45",
+      "serie": "Siracusa",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "45x45-Star-88",
+      "formato": "45x45",
+      "serie": "Star",
+      "metros_por_caja": 2.03,
+      "precio_coste_caja": 6.45,
+      "precio_venta_caja": 17.32,
+      "margen_euros": 10.87,
+      "margen_porcentaje": 168.5
+    },
+    {
+      "id": "60x120-Calacata-89",
+      "formato": "60x120",
+      "serie": "Calacata",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Calacatta-90",
+      "formato": "60x120",
+      "serie": "Calacatta",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Calacatta-Gold-91",
+      "formato": "60x120",
+      "serie": "Calacatta Gold",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Carlotta-Silver-92",
+      "formato": "60x120",
+      "serie": "Carlotta Silver",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Carrara-93",
+      "formato": "60x120",
+      "serie": "Carrara",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Crema-Marfil-94",
+      "formato": "60x120",
+      "serie": "Crema Marfil",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Land-Kaster-C3-95",
+      "formato": "60x120",
+      "serie": "Land Kaster C3",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Polaris-96",
+      "formato": "60x120",
+      "serie": "Polaris",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Samario-97",
+      "formato": "60x120",
+      "serie": "Samario",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x120-Technikal-C2-98",
+      "formato": "60x120",
+      "serie": "Technikal C2",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 13.65,
+      "precio_venta_caja": 28.21,
+      "margen_euros": 14.56,
+      "margen_porcentaje": 106.7
+    },
+    {
+      "id": "60x120-Toledo-99",
+      "formato": "60x120",
+      "serie": "Toledo",
+      "metros_por_caja": 7.2,
+      "precio_coste_caja": 11.95,
+      "precio_venta_caja": 25.64,
+      "margen_euros": 13.69,
+      "margen_porcentaje": 114.5
+    },
+    {
+      "id": "60x60-Brando-100",
+      "formato": "60x60",
+      "serie": "Brando",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Calacata-101",
+      "formato": "60x60",
+      "serie": "Calacata",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 12.95,
+      "precio_venta_caja": 27.15,
+      "margen_euros": 14.2,
+      "margen_porcentaje": 109.6
+    },
+    {
+      "id": "60x60-Caliza-Brillo-102",
+      "formato": "60x60",
+      "serie": "Caliza Brillo",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 12.95,
+      "precio_venta_caja": 27.15,
+      "margen_euros": 14.2,
+      "margen_porcentaje": 109.6
+    },
+    {
+      "id": "60x60-Canyon-103",
+      "formato": "60x60",
+      "serie": "Canyon",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 18.15,
+      "precio_venta_caja": 35.01,
+      "margen_euros": 16.86,
+      "margen_porcentaje": 92.9
+    },
+    {
+      "id": "60x60-Kamen-104",
+      "formato": "60x60",
+      "serie": "Kamen",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Kaster-105",
+      "formato": "60x60",
+      "serie": "Kaster",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Kite-106",
+      "formato": "60x60",
+      "serie": "Kite",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Koral-107",
+      "formato": "60x60",
+      "serie": "Koral",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Land-Kaster-C3-108",
+      "formato": "60x60",
+      "serie": "Land Kaster C3",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Legend-109",
+      "formato": "60x60",
+      "serie": "Legend",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Napoli-110",
+      "formato": "60x60",
+      "serie": "Napoli",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Pietra-111",
+      "formato": "60x60",
+      "serie": "Pietra",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 18.15,
+      "precio_venta_caja": 35.01,
+      "margen_euros": 16.86,
+      "margen_porcentaje": 92.9
+    },
+    {
+      "id": "60x60-Polaris-112",
+      "formato": "60x60",
+      "serie": "Polaris",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Ritz-113",
+      "formato": "60x60",
+      "serie": "Ritz",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "60x60-Tokyo-114",
+      "formato": "60x60",
+      "serie": "Tokyo",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 18.15,
+      "precio_venta_caja": 35.01,
+      "margen_euros": 16.86,
+      "margen_porcentaje": 92.9
+    },
+    {
+      "id": "60x60-Travertino-115",
+      "formato": "60x60",
+      "serie": "Travertino",
+      "metros_por_caja": 3.6,
+      "precio_coste_caja": 8.95,
+      "precio_venta_caja": 21.1,
+      "margen_euros": 12.15,
+      "margen_porcentaje": 135.7
+    },
+    {
+      "id": "75x75-Koral-116",
+      "formato": "75x75",
+      "serie": "Koral",
+      "metros_por_caja": 5.63,
+      "precio_coste_caja": 11.65,
+      "precio_venta_caja": 25.18,
+      "margen_euros": 13.53,
+      "margen_porcentaje": 116.2
+    },
+    {
+      "id": "90x90-Magnum-117",
+      "formato": "90x90",
+      "serie": "Magnum",
+      "metros_por_caja": 8.1,
+      "precio_coste_caja": 12.85,
+      "precio_venta_caja": 27,
+      "margen_euros": 14.15,
+      "margen_porcentaje": 110.1
+    }
+  ]
 }

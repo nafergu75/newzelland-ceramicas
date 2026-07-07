@@ -54,69 +54,64 @@ function normalizarNombre(nombre) {
 }
 
 /**
- * Obtiene la serie de tarifa correspondiente a un catálogo
- * Busca en el mapeo extraído del Excel
- * @param {string} serieCatalogo - Nombre de serie del catálogo (ej: "Blancos", "Carrara")
+ * Obtiene la serie para búsqueda en tarifa
+ * Normaliza sufijos como "c3", "C3", etc.
+ * @param {string} serieCatalogo - Nombre de serie del catálogo (ej: "Bali c3", "Land Kaster C3")
  * @param {string} formatoCatalogo - Formato del catálogo (ej: "20x60", "30x60")
- * @returns {object} {formato, serie} de la tarifa, o null
+ * @returns {object} {formato, serie} para búsqueda, o null
  */
 function obtenerSerieTarifa(serieCatalogo, formatoCatalogo) {
-    if (!mapeoTarifa || mapeoTarifa.length === 0) return null;
+    if (!serieCatalogo) return null;
 
-    const serieNorm = normalizarNombre(serieCatalogo);
-    const formatoNorm = (formatoCatalogo || '').toUpperCase().replace(/\s+/g, '').replace(/,/g, '');
+    // Quita sufijos comunes: " c3", " C3", " C2", etc.
+    const serieNorm = serieCatalogo.trim()
+        .replace(/\s+c\d+$/i, '')    // " c3", " C2", etc.
+        .replace(/\s+rec$/i, '')      // " REC"
+        .replace(/\s+prc\.?$/i, '')   // " PRC", " PRC."
+        .trim();
 
-    // Busca en el mapeo: ¿cuál serie de tarifa menciona esta serie del catálogo?
-    for (let mapeo of mapeoTarifa) {
-        const nombresNorm = normalizarNombre(mapeo.nombres_catalogo || '');
-
-        // Si los nombres están vacíos, saltalo
-        if (!serieNorm || !nombresNorm) continue;
-
-        // Busca coincidencia: palabra completa o con espacios/puntuación
-        // Ejemplo: "blancos" en "blancos - irati - haina"
-        const palabrasNombres = nombresNorm.split(/[\s,/-]+/).filter(p => p);
-        const palabraSerie = serieNorm.split(/[\s,/-]+/)[0];  // Primera palabra
-
-        const encontrado = palabrasNombres.some(palabra =>
-            palabra === serieNorm ||
-            palabra === palabraSerie ||
-            serieNorm.includes(palabra)
-        );
-
-        if (encontrado) {
-            // Verifica que el formato sea compatible
-            const formatoMapeoNorm = (mapeo.formato || '').toUpperCase().replace(/\s+/g, '').replace(/,/g, '');
-            if (!formatoMapeoNorm || formatoMapeoNorm === formatoNorm || formatoMapeoNorm === '?') {
-                return {
-                    formato: mapeo.formato,
-                    serie: mapeo.serie
-                };
-            }
-        }
-    }
-
-    return null;
+    return {
+        formato: formatoCatalogo,
+        serie: serieNorm
+    };
 }
 
 /**
- * Busca un producto en la tarifa por formato y nombre de serie
- * @param {string} formato - Ej: "10x10", "20x60", "30X60"
- * @param {string} serieNombre - Ej: "AZULEJO", "BASES", "METRO BISEL"
+ * Busca un producto en la tarifa por formato y nombre de serie del catálogo
+ * @param {string} formato - Ej: "10x10", "20x60", "30x60"
+ * @param {string} serieNombre - Nombre del catálogo (sin sufijos c3/REC/etc), ej: "Bali", "Irati"
  * @returns {object} Producto de tarifa con precio y m²/caja, o null
  */
 function buscarEnTarifa(formato, serieNombre) {
     if (!tarifa || tarifa.length === 0) return null;
 
-    // Normaliza: formato y serie sin espacios extras, mayúsculas
-    const formatoNorm = formato.toUpperCase().trim().replace(/\s+/g, '');
-    const serieNorm = serieNombre.toUpperCase().trim();
+    // Normaliza formato: solo dígitos y 'x', sin espacios ni extras
+    const formatoNorm = formato.toUpperCase()
+        .trim()
+        .replace(/\s+/g, '')      // Quita espacios
+        .replace(/,/g, '')         // Quita comas
+        .replace(/[A-Z].*$/g, ''); // Quita sufijos como "REC", "PRC", etc.
 
-    // Busca coincidencia exacta: formato + serie
-    return tarifa.find(p =>
-        p.formato.toUpperCase().replace(/\s+/g, '') === formatoNorm &&
-        p.serie.toUpperCase() === serieNorm
-    );
+    // serieNombre ya viene normalizado desde obtenerSerieTarifa()
+    // pero lo normalizamos de todas formas por seguridad
+    const serieNorm = serieNombre.trim();
+    const serieNormUpper = serieNorm.toUpperCase();
+
+    // Busca: match formato base + serie exacta (case-insensitive)
+    const producto = tarifa.find(p => {
+        const formatoTarifaNorm = p.formato.toUpperCase()
+            .trim()
+            .replace(/\s+/g, '')
+            .replace(/,/g, '')
+            .replace(/[A-Z].*$/g, '');  // Quita PRC, REC, etc.
+
+        const serieTarifaNorm = (p.serie || '').trim().toUpperCase();
+
+        return formatoTarifaNorm === formatoNorm &&
+               serieTarifaNorm === serieNormUpper;
+    });
+
+    return producto;
 }
 
 function renderFilters() {
@@ -217,18 +212,13 @@ function renderProducts() {
     container.innerHTML = productos.map(p => {
         const formato = p.formatos[0] || '';
 
-        // Intenta encontrar la serie de tarifa correspondiente
+        // Obtiene la serie normalizada (sin sufijos como "c3", "REC", etc.)
         let seriesTarifa = obtenerSerieTarifa(p.nombre, formato);
         let dataTarifa = null;
 
-        // Si encuentra mapeo, busca el producto en tarifa
+        // Busca con la serie normalizada
         if (seriesTarifa) {
             dataTarifa = buscarEnTarifa(seriesTarifa.formato, seriesTarifa.serie);
-        }
-
-        // Si no encuentra por mapeo, intenta búsqueda directa (compatibilidad)
-        if (!dataTarifa) {
-            dataTarifa = buscarEnTarifa(formato, p.nombre);
         }
 
         if (!dataTarifa) {
