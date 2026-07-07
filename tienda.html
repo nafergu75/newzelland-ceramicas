@@ -286,6 +286,15 @@
         let recargo = 0;
         let provinciaDetectada = '';
 
+        // Códigos postales fuera de la península (sin envío)
+        const zonasNoEnvio = {
+            '35': 'Las Palmas (Canarias)',
+            '38': 'Santa Cruz de Tenerife (Canarias)',
+            '07': 'Baleares (Islas Baleares)',
+            '51': 'Ceuta',
+            '52': 'Melilla'
+        };
+
         function validarCodigoPostal() {
             const cpInput = document.getElementById('codigo-postal');
             const cp = cpInput.value.trim();
@@ -305,10 +314,21 @@
 
             const codigoProvincial = cp.substring(0, 2);
 
+            // Validar que sea código español válido
             if (codigoProvincial < '01' || codigoProvincial > '52') {
                 alert('Código postal no válido para España');
                 cpInput.value = '';
                 desgloseDiv.style.display = 'none';
+                return;
+            }
+
+            // Rechazar zonas fuera de la península
+            if (zonasNoEnvio[codigoProvincial]) {
+                alert(`❌ No realizamos envíos a ${zonasNoEnvio[codigoProvincial]}\n\nPara solicitar un presupuesto especial de envío, contacta con nosotros:\n📧 Email: info@newzeland.es\n📞 Teléfono: +34 123 456 789`);
+                cpInput.value = '';
+                desgloseDiv.style.display = 'none';
+                provinciaDetectada = '';
+                recargo = 0;
                 return;
             }
 
