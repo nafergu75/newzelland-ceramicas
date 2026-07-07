@@ -14,7 +14,7 @@ class CarritoBoxes {
   async init() {
     // Carga la tarifa desde JSON
     try {
-      const response = await fetch('./data/tarifa-productos.json?v=3');
+      const response = await fetch('./data/tarifa-productos.json?v=' + Date.now());
       const data = await response.json();
       this.tarifa = data.productos;
       console.log(`Tarifa cargada: ${this.tarifa.length} productos`);
