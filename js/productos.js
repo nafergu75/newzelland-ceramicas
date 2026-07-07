@@ -286,7 +286,7 @@ function renderProducts() {
                     ${p.formatos.length > 3 ? `<span class="format-badge">+${p.formatos.length - 3}</span>` : ''}
                 </div>
                 <div class="product-tarifa" style="background: #ece4d4; padding: 0.75rem; border-radius: 4px; margin: 0.5rem 0; font-size: 0.9rem;">
-                    <div style="font-weight: 600; color: #26374a;">${dataTarifa.precio_venta_caja.toFixed(2)}€/caja</div>
+                    <div style="font-weight: 600; color: #26374a;">${(dataTarifa.precio_venta_m2 || dataTarifa.precio_venta_caja / dataTarifa.metros_por_caja).toFixed(2)}€/m²</div>
                     <div style="font-size: 0.85rem; color: #8a857b;">${dataTarifa.metros_por_caja} m² por caja</div>
                 </div>
                 <div class="product-actions" style="gap: 0.5rem; display: flex; align-items: center;">

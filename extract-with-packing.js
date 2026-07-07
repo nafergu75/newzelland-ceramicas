@@ -70,6 +70,10 @@ for (let r = 1; r < Math.min(data.length, 500); r++) {
         formato: formatoRaw,
         serie: serie.trim(),
         metros_por_caja: Math.round(metrosCaja * 100) / 100,
+        // Precios por m² (para mostrar en web)
+        precio_coste_m2: Math.round(precioM2Num * 100) / 100,
+        precio_venta_m2: Math.round(pvpM2Num * 100) / 100,
+        // Precios por caja (para carrito)
         precio_coste_caja: Math.round(costoCaja * 100) / 100,
         precio_venta_caja: Math.round(pvpCaja * 100) / 100,
         margen_euros: Math.round((pvpCaja - costoCaja) * 100) / 100,
