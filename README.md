@@ -1,178 +1,190 @@
-# Newzeland Cerámicas - Comercializadora Oficial de Practika
+# Newzelland Cerámicas - E-commerce Platform
 
-Web de comercialización de productos Practika Cerámica: azulejos, porcelánico y revestimientos.
+Plataforma de e-commerce completa para venta de cerámica premium en España.
 
-## 📋 Características
-
-- ✨ **Responsive Design** — optimizado para mobile, tablet y desktop
-- 🛍️ **Tienda Virtual** — carrito y checkout con Stripe/PayPal
-- 📥 **Descarga de Catálogos** — fichas técnicas organizadas por familia (estilo Practika)
-- 💬 **WhatsApp Bot** — contacto automático y toma de pedidos
-- 🎯 **Filtros Avanzados** — serie, formato, acabado, tipo de producto
-- 📱 **Progressive Web App** — funcionamiento offline basic
-
-## 🏗️ Stack Técnico
-
-### Frontend
-- **HTML5** — estructura semántica
-- **CSS3** — responsive, sin frameworks pesados
-- **JavaScript Vanilla** — sin dependencias en cliente
-- **GitHub Pages** — hosting gratis
+## 🚀 Stack Tecnológico
 
 ### Backend
-- **Node.js + Express** — API para pagos y WhatsApp
-- **PostgreSQL** — base de datos de órdenes y mensajes
-- **Stripe / PayPal** — procesamiento de pagos
-- **WhatsApp Business API** — bot automático
-- **Vercel** — hosting del backend
+- **Node.js** + **Express** + **TypeScript**
+- **PostgreSQL** para base de datos
+- **JWT** para autenticación
+- **Nodemailer** para emails
+- **PDFKit** para generación de facturas
+- **Joi** para validación
 
-## 📁 Estructura de Carpetas
+### Frontend
+- **React 18** + **TypeScript**
+- **Vite** como build tool
+- **React Router** para navegación
+- **Axios** para API calls
+- **Recharts** para gráficos
 
-```
-newzeland-ceramicas/
-├── index.html                 # Página de inicio
-├── productos.html             # Catálogo filtrable
-├── descargas.html            # Catálogos y fichas técnicas (★ CRÍTICA)
-├── tienda.html               # Carrito y checkout
-├── sobre-nosotros.html       # Información empresa
-├── contacto.html             # Formulario de contacto
-│
-├── css/
-│   └── styles.css            # Estilos globales
-│
-├── js/
-│   ├── nav.js                # Navegación y utilidades
-│   ├── carousel.js           # Carrusel del hero
-│   ├── productos.js          # Filtros y grid
-│   ├── descargas.js          # Gestión de familias
-│   ├── tienda.js             # Checkout
-│   ├── carrito.js            # Gestión localStorage
-│   └── contacto.js           # Formulario contacto
-│
-├── data/
-│   └── catalogo.json         # Datos de productos (series, formatos, PDFs)
-│
-├── assets/
-│   ├── img/                  # Imágenes de productos
-│   ├── descargas/            # PDFs de catálogos y fichas
-│   ├── icons/                # Iconos SVG
-│   └── logos/                # Logos empresa
-│
-├── backend/                  # API Node.js (Vercel)
-│   ├── package.json
-│   ├── server.js
-│   ├── routes/
-│   │   ├── checkout.js       # Stripe integration
-│   │   ├── whatsapp.js       # WhatsApp webhook
-│   │   └── orders.js         # CRUD pedidos
-│   └── .env
-│
-└── docs/
-    ├── DEPLOY.md             # Instrucciones de deploy
-    └── API.md                # Documentación API
-```
+## 📋 Requisitos Previos
 
-## 🚀 Deploy
+- Node.js 18+
+- PostgreSQL 12+
+- npm o yarn
 
-### Frontend (GitHub Pages)
+## 🔧 Instalación Rápida
+
+### 1. Clonar y preparar variables de entorno
 
 ```bash
-# Inicializar repo
-git init
-git add .
-git commit -m "Initial commit: Newzeland Cerámicas web"
-git branch -M main
-git remote add origin https://github.com/tu-usuario/newzeland-ceramicas.git
-git push -u origin main
-```
+cd newzelland-ceramicas
 
-Luego habilitar GitHub Pages en repo → Settings → Pages → Deploy from branch: main
-
-### Backend (Vercel)
-
-```bash
+# Backend
 cd backend
-vercel deploy
+cp .env.example .env
+# Editar .env con tus credenciales
+
+# Frontend
+cd ../frontend
+cp .env.example .env
 ```
 
-Configurar variables de entorno en Vercel:
-- `STRIPE_KEY` — clave privada de Stripe
-- `PAYPAL_ID` — ID de PayPal
-- `WHATSAPP_TOKEN` — token de WhatsApp Business API
-- `DATABASE_URL` — URL de PostgreSQL
-- `ADMIN_EMAIL` — email para notificaciones
+### 2. Crear base de datos
 
-## 📦 Dependencias de Producción
-
-Frontend: **ninguna** (vanilla JS)
-
-Backend:
-```json
-{
-  "dependencies": {
-    "express": "^4.18.0",
-    "stripe": "^12.0.0",
-    "pg": "^8.10.0",
-    "dotenv": "^16.0.0",
-    "axios": "^1.4.0"
-  }
-}
+En Windows PowerShell o psql:
+```bash
+$env:PGPASSWORD="postgres"
+psql -U postgres -h localhost -c "CREATE DATABASE ecommerce_db;"
 ```
 
-## 🔌 APIs Externas
-
-- **Stripe** — procesamiento de pagos
-- **PayPal REST API** — alternativa de pagos
-- **WhatsApp Business API** — bot automático
-- **SendGrid / Mailgun** — emails transaccionales (opcional)
-
-## 📝 Importante
-
-### Página de Descargas (★ CRÍTICA)
-
-La página `descargas.html` es la más importante del proyecto. Debe:
-
-1. **Mostrar todas las familias de Practika** por tarjetas (Calacata, Atlas, Artic, Provence, Stahl, Keyburn, etc.)
-2. **Cada familia** debe tener:
-   - Imagen representativa
-   - Formatos disponibles
-   - Acabados
-   - Botones de descarga para fichas técnicas/instalación
-3. **Descargas generales** (Catálogo 2024, Novedades, Área Técnica)
-4. **Búsqueda** rápida por nombre de familia
-
-### Catálogo JSON
-
-El archivo `data/catalogo.json` contiene la estructura de todos los productos. Actualizar cuando:
-- Se agreguen nuevas familias
-- Cambien formatos o acabados disponibles
-- Se suban nuevas fichas técnicas o PDFs
-
-## 🛠️ Desarrollo Local
+### 3. Instalar dependencias
 
 ```bash
-# Instalar dependencias backend
+# Backend
 cd backend
 npm install
+npm run migrate
 
-# Levantar servidor local
-npm start  # http://localhost:3000
-
-# Frontend corre en localhost:5500 (Live Server)
-# o abrir archivos .html directamente en navegador
+# Frontend (en otra terminal)
+cd frontend
+npm install
 ```
 
-## 👥 Contacto
+### 4. Ejecutar en desarrollo
 
-- **Email:** info@newzeland.es
-- **Teléfono:** +34 123 456 789
-- **WhatsApp:** +34 123 456 789
-- **Ubicación:** Onda, Castellón, España
+```bash
+# Terminal 1 - Backend (puerto 3000)
+cd backend
+npm run dev
 
-## 📄 Licencia
+# Terminal 2 - Frontend (puerto 5173)
+cd frontend
+npm run dev
+```
 
-© 2024 Newzeland Cerámicas. Todos los derechos reservados.
+Abre http://localhost:5173 en tu navegador.
+
+## 📚 Estructura del Proyecto
+
+```
+newzelland-ceramicas/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/        # Lógica de rutas
+│   │   ├── services/           # Lógica de negocio
+│   │   ├── routes/             # Definición de rutas
+│   │   ├── middleware/         # Auth, logging, errores
+│   │   ├── models/             # TypeScript interfaces
+│   │   ├── db/                 # Conexión y migraciones
+│   │   └── app.ts              # Servidor Express
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── .env
+│
+└── frontend/
+    ├── src/
+    │   ├── pages/              # Componentes de páginas
+    │   ├── services/           # API client
+    │   ├── hooks/              # Custom hooks
+    │   ├── App.tsx             # Router principal
+    │   └── main.tsx
+    ├── index.html
+    ├── vite.config.ts
+    └── package.json
+```
+
+## 🔌 API Endpoints
+
+### Autenticación
+- `POST /api/auth/register` - Registrar usuario
+- `POST /api/auth/login` - Login con email/password
+- `GET /api/auth/verify-email?token=...` - Verificar email
+
+### Usuario
+- `GET /api/user/profile` - Obtener perfil
+- `PATCH /api/user/profile` - Actualizar perfil
+- `GET /api/user/orders` - Listar órdenes
+
+### Productos
+- `GET /api/products` - Listar productos
+- `GET /api/products/:id` - Detalle producto
+
+### Checkout
+- `POST /api/checkout` - Crear orden
+
+### Admin (requiere rol admin)
+- `GET /api/admin/stats/visits` - Estadísticas de visitas
+- `GET /api/admin/stats/downloads` - Descargas de catálogos
+- `GET /api/admin/stats/orders` - Estadísticas de órdenes
+- `PATCH /api/admin/orders/:orderId` - Actualizar estado orden
+
+## 🎯 Características Implementadas
+
+✅ Autenticación con JWT y email verification
+✅ Registro de usuarios con provincia
+✅ Catálogo de productos con 5 artículos de demo
+✅ Carrito de compras en localStorage
+✅ Checkout con validación de NIF/CIF
+✅ Generación de facturas en PDF
+✅ Órdenes con seguimiento de estado
+✅ Dashboard de usuario con órdenes
+✅ Panel de admin con analytics
+✅ Logging de visitas y descargas
+✅ Rate limiting y seguridad CORS/Helmet
+✅ Manejo global de errores
+✅ Validación con Joi
+
+## 🚧 Próximos Pasos (Opcionales)
+
+- [ ] Integración Stripe para pagos
+- [ ] WhatsApp Business API
+- [ ] Más productos en catálogo
+- [ ] Filtros avanzados de búsqueda
+- [ ] Revisiones y puntuaciones
+- [ ] Sistema de cupones/descuentos
+- [ ] Estadísticas en tiempo real
+- [ ] Notificaciones push
+- [ ] Integración con FacturaScripts
+- [ ] Deployment a Vercel/Heroku
+
+## 📧 Configurar Emails (Gmail)
+
+1. Ir a https://myaccount.google.com/apppasswords
+2. Generar contraseña de aplicación
+3. Usar en `SMTP_PASS` del .env
+
+## 🐛 Troubleshooting
+
+**Error: "Cannot find module 'pg'"**
+- Ejecutar: `npm install` en la carpeta backend
+
+**Error: "Connection refused" en PostgreSQL**
+- Verificar que PostgreSQL está corriendo
+- Verificar credenciales en .env
+
+**Error: "CORS blocked"**
+- Revisar que `FRONTEND_URL` en backend .env sea correcto
+
+## 📞 Soporte
+
+Para preguntas sobre la implementación, revisar:
+- [Express.js docs](https://expressjs.com/)
+- [React docs](https://react.dev/)
+- [PostgreSQL docs](https://www.postgresql.org/docs/)
 
 ---
 
-**Generado con Claude Code** — Asistente de desarrollo IA
+**Creado con ❤️ usando Claude**
