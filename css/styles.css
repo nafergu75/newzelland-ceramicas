@@ -137,6 +137,25 @@ a:hover {
     font-weight: 400;
 }
 
+/* logo con la marca grafica (paneles plegados) delante del texto */
+.logo-con-marca {
+    flex-direction: row;
+    gap: 0.7rem;
+}
+
+.logo-con-marca > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.logo-mark {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
