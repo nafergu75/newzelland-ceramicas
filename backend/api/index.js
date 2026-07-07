@@ -6,8 +6,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const axios = require('axios');
 
+// Load environment variables
+dotenv.config();
 dotenv.config({ path: '.env.local' });
 
 const app = express();
