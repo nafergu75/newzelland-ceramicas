@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda | Newzeland Cerámicas</title>
-    <link rel="stylesheet" href="css/styles.css?v=4">
+    <link rel="stylesheet" href="css/styles.css?v=5">
     <link rel="stylesheet" href="css/layout.css?v=4">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700&family=Roboto:wght@500;700;900&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
 </head>
@@ -13,9 +13,12 @@
     <header class="header">
         <nav class="navbar">
             <div class="navbar-container">
-                <div class="logo">
-                    <h1>NEWZELAND</h1>
-                    <p class="tagline">Cerámicas Practika</p>
+                <div class="logo logo-con-marca">
+                    <img src="assets/img/logo-newzeland-mark.svg" alt="Logo Newzeland Cerámicas" class="logo-mark">
+                    <div>
+                        <h1>NEWZELAND</h1>
+                        <p class="tagline">Cerámicas Practika</p>
+                    </div>
                 </div>
 
                 <ul class="nav-menu">
@@ -49,24 +52,13 @@
             <h1>Tu Carrito de Compra</h1>
 
             <div class="tienda-layout">
-                <!-- Carrito -->
+                <!-- Carrito con tarifa integrada -->
                 <div class="cart-section">
-                    <table class="cart-table">
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="cart-items">
-                            <tr class="empty-cart">
-                                <td colspan="5">Tu carrito está vacío</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div id="carritoContenedor">
+                        <div style="text-align: center; padding: 3rem; color: #8a857b;">
+                            <p>Cargando carrito...</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Resumen y checkout -->
@@ -74,19 +66,27 @@
                     <div class="order-summary">
                         <h3>Resumen del Pedido</h3>
                         <div class="summary-row">
+                            <span>Total cajas:</span>
+                            <span id="total-cajas">0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total metros:</span>
+                            <span id="total-metros">0 m²</span>
+                        </div>
+                        <div class="summary-row">
                             <span>Subtotal:</span>
-                            <span id="subtotal">€0.00</span>
+                            <span id="subtotal">0.00€</span>
                         </div>
                         <div class="summary-row">
                             <span>Envío:</span>
                             <span id="shipping">Consultar</span>
                         </div>
                         <div class="summary-row total">
-                            <span>Total:</span>
-                            <span id="total">€0.00</span>
+                            <span>Total a pagar:</span>
+                            <span id="total">0.00€</span>
                         </div>
 
-                        <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">Proceder al Pago</button>
+                        <button class="btn btn-primary btn-block" id="btn-checkout" onclick="proceedToCheckout()" disabled>Proceder al Pago</button>
                         <a href="productos.html" class="btn btn-secondary btn-block">Seguir comprando</a>
                     </div>
 
@@ -97,7 +97,7 @@
                 </aside>
             </div>
 
-            <!-- Formulario Checkout (oculto hasta que se clickee "Proceder al Pago") -->
+            <!-- Formulario Checkout -->
             <section class="checkout-form" id="checkout-form" style="display:none;">
                 <h2>Información de Facturación y Envío</h2>
                 <form id="payment-form">
@@ -133,6 +133,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
+                    <img src="assets/img/logo-newzeland-mark.svg" alt="Logo Newzeland Cerámicas" class="logo-mark-footer">
                     <h4>Newzeland Cerámicas</h4>
                     <p>Cerámica Practika para vivienda, proyecto y obra.</p>
                 </div>
@@ -153,7 +154,123 @@
         Escríbenos</a>
 
     <script src="js/nav.js"></script>
-    <script src="js/carrito.js"></script>
-    <script src="js/tienda.js"></script>
+    <script src="js/carrito-boxed.js"></script>
+    <script>
+        /**
+         * Renderiza el carrito en tienda.html con tarifa integrada
+         */
+        function renderCarrito() {
+            const contenedor = document.getElementById('carritoContenedor');
+            const btnCheckout = document.getElementById('btn-checkout');
+
+            if (carrito.items.length === 0) {
+                contenedor.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: #8a857b;">
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Tu carrito está vacío</p>
+                        <a href="productos.html" style="color: #26374a; text-decoration: underline;">Volver a productos</a>
+                    </div>
+                `;
+                btnCheckout.disabled = true;
+                actualizarResumen();
+                return;
+            }
+
+            btnCheckout.disabled = false;
+            const totales = carrito.calcularTotales();
+
+            let html = `
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>M²/caja</th>
+                            <th>Cajas</th>
+                            <th>Metros totales</th>
+                            <th>Precio/caja</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            carrito.items.forEach(item => {
+                const metros = carrito.calcularMetros(item);
+                const subtotal = carrito.calcularSubtotal(item);
+
+                html += `
+                    <tr>
+                        <td>
+                            <div>
+                                <strong>${item.formato} | ${item.serie}</strong>
+                                <br><small style="color: #8a857b;">${item.descripcion}</small>
+                            </div>
+                        </td>
+                        <td>${item.metros_por_caja} m²</td>
+                        <td>
+                            <div style="display: flex; gap: 0.3rem; align-items: center;">
+                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cajas - 1})" style="padding: 0.2rem 0.5rem; border: none; background: #e5e0d5; cursor: pointer; border-radius: 3px;">−</button>
+                                <input type="number" value="${item.cajas}" onchange="carrito.actualizarCantidad('${item.id}', parseInt(this.value))" min="1" style="width: 50px; text-align: center; padding: 0.3rem; border: 1px solid #d9d2c4; border-radius: 3px;">
+                                <button onclick="carrito.actualizarCantidad('${item.id}', ${item.cajas + 1})" style="padding: 0.2rem 0.5rem; border: none; background: #e5e0d5; cursor: pointer; border-radius: 3px;">+</button>
+                            </div>
+                        </td>
+                        <td style="background: #ece4d4; padding: 0.75rem; border-radius: 4px; font-weight: 600;">
+                            ${metros.toFixed(2)} m²
+                        </td>
+                        <td style="text-align: right; font-weight: 600;">${item.precio_venta_caja.toFixed(2)}€</td>
+                        <td style="text-align: right; font-weight: 600;">${subtotal.toFixed(2)}€</td>
+                        <td>
+                            <button onclick="carrito.eliminarDelCarrito('${item.id}')" style="padding: 0.4rem 0.8rem; border: none; background: #f5e5e0; color: #d62828; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            contenedor.innerHTML = html;
+            actualizarResumen();
+        }
+
+        function actualizarResumen() {
+            const totales = carrito.calcularTotales();
+            document.getElementById('total-cajas').textContent = totales.total_cajas;
+            document.getElementById('total-metros').textContent = totales.total_metros.toFixed(2) + ' m²';
+            document.getElementById('subtotal').textContent = totales.total_precio.toFixed(2) + '€';
+            document.getElementById('total').textContent = totales.total_precio.toFixed(2) + '€';
+        }
+
+        function proceedToCheckout() {
+            if (carrito.items.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            document.getElementById('checkout-form').style.display = 'block';
+            window.scrollTo(0, document.getElementById('checkout-form').offsetTop);
+        }
+
+        function cancelCheckout() {
+            document.getElementById('checkout-form').style.display = 'none';
+        }
+
+        function submitCheckout() {
+            const pedido = carrito.exportarPedido();
+            console.log('Pedido:', pedido);
+            alert(`Pedido procesado:\n\n${pedido.resumen.total_cajas} cajas\n${pedido.resumen.total_metros} m²\n${pedido.resumen.total_precio}€\n\nPróximamente: integración con pago`);
+        }
+
+        // Escucha cambios en el carrito
+        window.addEventListener('carritoActualizado', () => {
+            renderCarrito();
+        });
+
+        // Renderiza cuando carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCarrito();
+        });
+    </script>
 </body>
 </html>

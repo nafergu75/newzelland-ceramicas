@@ -1,0 +1,170 @@
+{
+  "instrucciones": "Completa 'serie_catalogo' con el nombre EXACTO de la serie del catálogo que corresponde",
+  "mapeos": [
+    {
+      "formato_tarifa": "10x10",
+      "serie_tarifa": "AZULEJO",
+      "serie_catalogo": "Blancos"
+    },
+    {
+      "formato_tarifa": "15x15",
+      "serie_tarifa": "AZULEJO",
+      "serie_catalogo": "Blancos"
+    },
+    {
+      "formato_tarifa": "25x40",
+      "serie_tarifa": "AZULEJO",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "25x50",
+      "serie_tarifa": "AZULEJO",
+      "serie_catalogo": "Blancos"
+    },
+    {
+      "formato_tarifa": "20x20",
+      "serie_tarifa": "AZULEJO",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "10x20",
+      "serie_tarifa": "METRO BISEL",
+      "serie_catalogo": "Metro"
+    },
+    {
+      "formato_tarifa": "20x60",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "20x60",
+      "serie_tarifa": "DECORADOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "20x60",
+      "serie_tarifa": "TAB.MADERA",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "25x80",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "Eden"
+    },
+    {
+      "formato_tarifa": "25x80",
+      "serie_tarifa": "RELIEVE",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x60",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x60",
+      "serie_tarifa": "RELIEVE",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x60",
+      "serie_tarifa": "DECORADOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x60 REC",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "25x75",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "25x75",
+      "serie_tarifa": "DECORADOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x90 REC",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x90 REC",
+      "serie_tarifa": "RELIEVE",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "30x90 REC",
+      "serie_tarifa": "DECORADOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "40x120 REC",
+      "serie_tarifa": "BASES",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "33x33",
+      "serie_tarifa": "9 MM.",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "33x33 ESP.",
+      "serie_tarifa": "12 MM",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "45x45",
+      "serie_tarifa": "HIDRAULICOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "45x45",
+      "serie_tarifa": "BRILLO",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "19x57",
+      "serie_tarifa": "TAB.MADERA",
+      "serie_catalogo": "Forest"
+    },
+    {
+      "formato_tarifa": "20x60",
+      "serie_tarifa": "VARIOS",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "20x120 PRC RT SL",
+      "serie_tarifa": "TAB.MADERA",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "23x120 PRC.",
+      "serie_tarifa": "TAB.MADERA",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "60x120 PRC. REC",
+      "serie_tarifa": "MATE",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "60x120 PRC. REC",
+      "serie_tarifa": "BRILLO",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "90x90 PRC. RC.",
+      "serie_tarifa": "MATE",
+      "serie_catalogo": "?"
+    },
+    {
+      "formato_tarifa": "100x100 PRC. REC",
+      "serie_tarifa": "NANO-POLSH",
+      "serie_catalogo": "?"
+    }
+  ]
+}

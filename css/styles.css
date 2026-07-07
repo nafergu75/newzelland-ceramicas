@@ -156,6 +156,14 @@ a:hover {
     display: block;
 }
 
+.logo-mark-footer {
+    height: 28px;
+    width: auto;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;

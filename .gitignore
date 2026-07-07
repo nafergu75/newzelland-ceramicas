@@ -13,3 +13,5 @@ backend/.env
 
 # PDFs de Practika: copia local (668 MB), la web enlaza al CDN de Practika
 assets/descargas/
+generales/paneles-tecnicos.pdf
+melissa/melissa-panel-tecnico.pdf

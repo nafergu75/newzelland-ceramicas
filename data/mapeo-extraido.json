@@ -1,0 +1,174 @@
+﻿{
+    "mapeos":  [
+                   {
+                       "formato":  "10x10",
+                       "serie":  "AZULEJO",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "15x15",
+                       "serie":  "AZULEJO",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "10x20",
+                       "serie":  "METRO BISEL",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "10x20",
+                       "serie":  "METRO BISEL",
+                       "nombres_catalogo":  "GRIS, PERLA, CREMA, SIENA MARFIL, CARRARA"
+                   },
+                   {
+                       "formato":  "10x20",
+                       "serie":  "METRO BISEL",
+                       "nombres_catalogo":  "NEGRO, MARENGO, SAGE, CELESTE, ROSA"
+                   },
+                   {
+                       "formato":  "10x20",
+                       "serie":  "METRO BISEL",
+                       "nombres_catalogo":  "ROJO, COBALTO, VERDE"
+                   },
+                   {
+                       "formato":  "20X20",
+                       "serie":  "AZULEJO",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "25X40",
+                       "serie":  "AZULEJO",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "25X50",
+                       "serie":  "AZULEJO",
+                       "nombres_catalogo":  "BLANCO BRILLO /BLANCO MATE"
+                   },
+                   {
+                       "formato":  "20x60",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCOS - IRATI - HAINA - MASIP - CARRARA - BRICK - JACA  "
+                   },
+                   {
+                       "formato":  "20x60",
+                       "serie":  "DECORADOS",
+                       "nombres_catalogo":  "DECOR. IRATI - HAINA - MASIP - CARRARA   "
+                   },
+                   {
+                       "formato":  "25x80",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCOS - KRONOS - KEOPS - EDEN"
+                   },
+                   {
+                       "formato":  "25x80",
+                       "serie":  "RELIEVE",
+                       "nombres_catalogo":  "BLANCOS - KRONOS - KEOPS - EDEN"
+                   },
+                   {
+                       "formato":  "30X60",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCOS  - POLARIS - RITZ - CONCRETE - KITE - NAPOLI"
+                   },
+                   {
+                       "formato":  "40X120 REC",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "KAMEN - COCRETE - LEGENT -LIFE/ENJOY - MURANO/BERNA"
+                   },
+                   {
+                       "formato":  "?",
+                       "serie":  "RELIEVE",
+                       "nombres_catalogo":  "KAMEN - COCRETE - KITE - LEGENT - POLARIS - RITZ - NAPOLI"
+                   },
+                   {
+                       "formato":  "?",
+                       "serie":  "DECORADOS",
+                       "nombres_catalogo":  "LIFE/ENJOY - MURANO/BERNA"
+                   },
+                   {
+                       "formato":  "30X60 REC",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCO BRILLO / BLANCO MATE  (RECTIFICADOS)"
+                   },
+                   {
+                       "formato":  "25X75",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCOS - LAND KASTER   "
+                   },
+                   {
+                       "formato":  "25X75",
+                       "serie":  "DECORADOS",
+                       "nombres_catalogo":  "LAND KASTER MIXED / LAND KASTER TREND/ BLANCO  ROAD"
+                   },
+                   {
+                       "formato":  "30X90 REC",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCOS -TADAN - WAHKAN - SHIMAN  - VERDI - CALACATA"
+                   },
+                   {
+                       "formato":  "30X90 REC",
+                       "serie":  "RELIEVE",
+                       "nombres_catalogo":  "BLANCOS: BLANCO SAW - FUTURE BRILLO - URBAN MATE"
+                   },
+                   {
+                       "formato":  "30X90 REC",
+                       "serie":  "DECORADOS",
+                       "nombres_catalogo":  "BLANCO SAW / SHIMAN POP / TADAN ONA / TESEL / CUT"
+                   },
+                   {
+                       "formato":  "40X120 REC",
+                       "serie":  "BASES",
+                       "nombres_catalogo":  "BLANCO BRILLO / BLANCO MATE "
+                   },
+                   {
+                       "formato":  "33X33",
+                       "serie":  "9 MM.",
+                       "nombres_catalogo":  "GRESITE - AZUL PISCINA - AGORA - INCA - MULHACEN"
+                   },
+                   {
+                       "formato":  "33X33 ESP.",
+                       "serie":  "12 MM",
+                       "nombres_catalogo":  "AVILA/CIES MASSAI - MAESTRE - SILOS - PIZARRA GRIS"
+                   },
+                   {
+                       "formato":  "45 X 45",
+                       "serie":  "HIDRAULICOS",
+                       "nombres_catalogo":  "ROCK - STAR - MIJAS - RONDA - ALHAMBRA"
+                   },
+                   {
+                       "formato":  "60X60 PRC. REC",
+                       "serie":  "BRILLO",
+                       "nombres_catalogo":  "CARRARA - DAHINO - SIRACUSA - KEOPS - ATRIO"
+                   },
+                   {
+                       "formato":  "19X57",
+                       "serie":  "TAB.MADERA",
+                       "nombres_catalogo":  "FUSTA - FOREST"
+                   },
+                   {
+                       "formato":  "20X60",
+                       "serie":  "TAB.MADERA",
+                       "nombres_catalogo":  "PINADA - FORESTA "
+                   },
+                   {
+                       "formato":  "33,3X33,3 PRC.",
+                       "serie":  "VARIOS",
+                       "nombres_catalogo":  "STHAL  - BOSCO - POBLA - AVILA/CIES"
+                   },
+                   {
+                       "formato":  "60X60 PRC.",
+                       "serie":  "MATE",
+                       "nombres_catalogo":  "POLARIS - BRANDO - KASTER - KAMEN - NAPOLI"
+                   },
+                   {
+                       "formato":  "60X60 PRC. REC",
+                       "serie":  "BRILLO",
+                       "nombres_catalogo":  "CALACATA - CALIZA BRILLO"
+                   },
+                   {
+                       "formato":  "30X60 PRC.",
+                       "serie":  "MATE C3",
+                       "nombres_catalogo":  "KASTER - TORCAL - URBION - BALI"
+                   }
+               ]
+}
