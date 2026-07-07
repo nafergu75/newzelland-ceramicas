@@ -229,7 +229,7 @@
                         <td>
                             <div>
                                 <strong>${item.formato} | ${item.serie}</strong>
-                                <br><small style="color: #8a857b;">${item.descripcion}</small>
+                                ${item.descripcion ? `<br><small style="color: #8a857b;">${item.descripcion}</small>` : ''}
                             </div>
                         </td>
                         <td>${item.metros_por_caja} m²</td>

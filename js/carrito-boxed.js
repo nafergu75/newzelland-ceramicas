@@ -62,6 +62,7 @@ class CarritoBoxes {
         serie: producto.serie,
         descripcion: producto.descripcion,
         metros_por_caja: producto.metros_por_caja,
+        precio_venta_m2: producto.precio_venta_m2,
         precio_venta_caja: producto.precio_venta_caja,
         cajas: cajas
       });
