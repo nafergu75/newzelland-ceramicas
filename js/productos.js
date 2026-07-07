@@ -10,9 +10,9 @@ let filtrosActivos = {};
 async function loadCatalogo() {
     try {
         const [catalogoResp, tarifaResp, mapeoResp] = await Promise.all([
-            fetch('./data/catalogo.json'),
-            fetch('./data/tarifa-productos.json'),
-            fetch('./data/mapeo-extraido.json')
+            fetch('./data/catalogo.json?v=3'),
+            fetch('./data/tarifa-productos.json?v=3'),
+            fetch('./data/mapeo-extraido.json?v=3')
         ]);
         catalogo = await catalogoResp.json();
         const tarifaData = await tarifaResp.json();
@@ -85,33 +85,58 @@ function obtenerSerieTarifa(serieCatalogo, formatoCatalogo) {
 function buscarEnTarifa(formato, serieNombre) {
     if (!tarifa || tarifa.length === 0) return null;
 
-    // Normaliza formato: solo dígitos y 'x', sin espacios ni extras
-    const formatoNorm = formato.toUpperCase()
-        .trim()
-        .replace(/\s+/g, '')      // Quita espacios
-        .replace(/,/g, '')         // Quita comas
-        .replace(/[A-Z].*$/g, ''); // Quita sufijos como "REC", "PRC", etc.
+    const formatoNorm = normalizarFormato(formato);
+    const serieNormUpper = normalizarSerie(serieNombre);
 
-    // serieNombre ya viene normalizado desde obtenerSerieTarifa()
-    // pero lo normalizamos de todas formas por seguridad
-    const serieNorm = serieNombre.trim();
-    const serieNormUpper = serieNorm.toUpperCase();
+    // Candidatos con el mismo formato
+    const candidatos = tarifa.filter(p => normalizarFormato(p.formato) === formatoNorm);
+    if (candidatos.length === 0) return null;
 
-    // Busca: match formato base + serie exacta (case-insensitive)
-    const producto = tarifa.find(p => {
-        const formatoTarifaNorm = p.formato.toUpperCase()
-            .trim()
-            .replace(/\s+/g, '')
-            .replace(/,/g, '')
-            .replace(/[A-Z].*$/g, '');  // Quita PRC, REC, etc.
+    // 1. Match exacto de serie normalizada
+    let producto = candidatos.find(p => normalizarSerie(p.serie) === serieNormUpper);
+    if (producto) return producto;
 
-        const serieTarifaNorm = (p.serie || '').trim().toUpperCase();
+    // 2. Nombres compuestos: "Silos c3/cotto provenzal" -> prueba cada parte
+    const partes = serieNombre.split('/').map(s => normalizarSerie(s)).filter(s => s);
+    for (const parte of partes) {
+        producto = candidatos.find(p => normalizarSerie(p.serie) === parte);
+        if (producto) return producto;
+    }
 
-        return formatoTarifaNorm === formatoNorm &&
-               serieTarifaNorm === serieNormUpper;
+    // 3. Prefijo: "Travertino caliza brillo" empieza por serie tarifa "Travertino"
+    producto = candidatos.find(p => {
+        const st = normalizarSerie(p.serie);
+        return st.length >= 4 && (serieNormUpper.startsWith(st + ' ') || st.startsWith(serieNormUpper + ' '));
     });
 
-    return producto;
+    return producto || null;
+}
+
+/**
+ * Normaliza un nombre de serie: mayúsculas, sin acentos, sin sufijos c2/c3
+ * "Ardesia c3" -> "ARDESIA" | "Land Kaster C3" -> "LAND KASTER" | "Urbión" -> "URBION"
+ */
+function normalizarSerie(serie) {
+    return (serie || '').trim()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')  // Quita acentos
+        .toUpperCase()
+        .replace(/\s+C\d+$/, '')   // Quita sufijo " C3", " C2", etc.
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+/**
+ * Normaliza un formato a "ANCHOxALTO" sin espacios, comas ni sufijos (REC, PRC, etc.)
+ * "30X60 REC" -> "30X60" | "33,3x33,3 PRC." -> "333X333" | "60x120" -> "60X120"
+ */
+function normalizarFormato(formato) {
+    const s = (formato || '').toUpperCase()
+        .trim()
+        .replace(/\s+/g, '')   // Quita espacios
+        .replace(/,/g, '');    // Quita comas
+    // Conserva solo las dimensiones "NNNxNNN" del principio (quita REC, PRC, etc.)
+    const m = s.match(/^\d+X\d+/);
+    return m ? m[0] : s;
 }
 
 function renderFilters() {
