@@ -430,13 +430,20 @@ TOTAL A PAGAR: ${totalConRecargo.toFixed(2)}€
             }
         }
 
-        // Renderiza cuando carga la página
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                renderCarrito();
-            });
-        } else {
+        // Renderiza cuando el carrito esté completamente cargado
+        function renderizarCarritoWhenReady() {
+            // Espera a que carrito esté listo (items cargados de localStorage)
+            if (typeof carrito === 'undefined' || carrito.items === undefined) {
+                setTimeout(renderizarCarritoWhenReady, 50);
+                return;
+            }
             renderCarrito();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderizarCarritoWhenReady);
+        } else {
+            renderizarCarritoWhenReady();
         }
 
         // Escucha cambios en el carrito (con debounce para evitar loops)
