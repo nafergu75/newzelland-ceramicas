@@ -31,6 +31,57 @@ console.log('\nExtrayendo productos con precios por m²...\n');
 
 const productos = new Map(); // Evita duplicados
 
+// Mapeos manuales para productos con nombres diferentes en catálogo vs Excel
+const mapeosManuales = [
+  { catalogo: "Brandon", excel: "Brando", formato: "60x120" },
+  { catalogo: "Garden", excel: "Garden", formato: "30x60" },
+  { catalogo: "Garden", excel: "Garden", formato: "45x45" },
+  { catalogo: "New calacatta", excel: "Calacatta Gold", formato: "100x100" },
+  { catalogo: "Pietra serena", excel: "Pietra", formato: "60x60" },
+  { catalogo: "Travertino caliza brillo", excel: "Caliza Brillo", formato: "60x60" }
+];
+
+// Procesa mapeos manuales primero
+for (const mapeo of mapeosManuales) {
+  for (let r = 1; r < Math.min(data.length, 500); r++) {
+    const row = data[r];
+    const serie = (row[1] || '').toString().trim();
+    if (serie === mapeo.excel) {
+      const precioM2 = row[8];
+      const pvpM2 = row[9];
+      const formatoNorm = mapeo.formato.toLowerCase().replace(/×/g, 'x').replace(/\s/g, '');
+      const metrosCaja = metrosPorFormato[formatoNorm];
+
+      if (metrosCaja && precioM2 && pvpM2) {
+        const precioM2Num = parseFloat(String(precioM2).replace(',', '.'));
+        const pvpM2Num = parseFloat(String(pvpM2).replace(',', '.'));
+
+        if (precioM2Num > 0 && pvpM2Num > 0) {
+          const costoCaja = precioM2Num * metrosCaja;
+          const pvpCaja = pvpM2Num * metrosCaja;
+          const key = `${mapeo.formato}|${mapeo.catalogo}`;
+
+          if (!productos.has(key)) {
+            productos.set(key, {
+              id: `${mapeo.formato}-${mapeo.catalogo.replace(/\s+/g, '-')}-${productos.size + 1}`,
+              formato: mapeo.formato,
+              serie: mapeo.catalogo.trim(),
+              metros_por_caja: Math.round(metrosCaja * 100) / 100,
+              precio_coste_m2: Math.round(precioM2Num * 100) / 100,
+              precio_venta_m2: Math.round(pvpM2Num * 100) / 100,
+              precio_coste_caja: Math.round(costoCaja * 100) / 100,
+              precio_venta_caja: Math.round(pvpCaja * 100) / 100,
+              margen_euros: Math.round((pvpCaja - costoCaja) * 100) / 100,
+              margen_porcentaje: Math.round(((pvpCaja - costoCaja) / costoCaja) * 100 * 10) / 10
+            });
+          }
+        }
+      }
+      break;
+    }
+  }
+}
+
 for (let r = 1; r < Math.min(data.length, 500); r++) {
   const row = data[r];
   if (!row || !row[1]) continue; // Salta vacías
