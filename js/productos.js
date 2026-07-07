@@ -10,9 +10,9 @@ let filtrosActivos = {};
 async function loadCatalogo() {
     try {
         const [catalogoResp, tarifaResp, mapeoResp] = await Promise.all([
-            fetch('data/catalogo.json'),
-            fetch('data/tarifa-productos.json'),
-            fetch('data/mapeo-extraido.json')
+            fetch('./data/catalogo.json'),
+            fetch('./data/tarifa-productos.json'),
+            fetch('./data/mapeo-extraido.json')
         ]);
         catalogo = await catalogoResp.json();
         const tarifaData = await tarifaResp.json();
