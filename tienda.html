@@ -181,6 +181,10 @@
          * Renderiza el carrito en tienda.html con tarifa integrada
          */
         function renderCarrito() {
+            if (renderizandoCarrito) return;
+            renderizandoCarrito = true;
+
+            try {
             const contenedor = document.getElementById('carritoContenedor');
             const btnCheckout = document.getElementById('btn-checkout');
 
@@ -256,6 +260,9 @@
 
             contenedor.innerHTML = html;
             actualizarResumen();
+            } finally {
+                renderizandoCarrito = false;
+            }
         }
 
         // Provincias con recargo (código postal 2 primeros dígitos)
@@ -285,6 +292,7 @@
 
         let recargo = 0;
         let provinciaDetectada = '';
+        let renderizandoCarrito = false;
 
         // Códigos postales fuera de la península (sin envío)
         const zonasNoEnvio = {
