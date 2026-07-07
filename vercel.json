@@ -1,24 +1,8 @@
 {
   "version": 2,
-  "env": {
-    "DB_HOST": "@db_host",
-    "DB_PORT": "@db_port",
-    "DB_NAME": "@db_name",
-    "DB_USER": "@db_user",
-    "DB_PASSWORD": "@db_password",
-    "JWT_SECRET": "@jwt_secret",
-    "STRIPE_SECRET": "@stripe_secret",
-    "STRIPE_PUBLIC": "@stripe_public",
-    "WHATSAPP_TOKEN": "@whatsapp_token",
-    "SMTP_HOST": "@smtp_host",
-    "SMTP_PORT": "@smtp_port",
-    "SMTP_USER": "@smtp_user",
-    "SMTP_PASS": "@smtp_pass",
-    "SMTP_FROM": "@smtp_from",
-    "NODE_ENV": "production"
-  },
   "buildCommand": "npm run build --prefix backend && npm run build --prefix frontend",
   "installCommand": "npm install --prefix backend && npm install --prefix frontend",
+  "outputDirectory": "frontend/dist",
   "public": true,
   "routes": [
     {
