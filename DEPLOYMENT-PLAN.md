@@ -113,13 +113,55 @@ NODE_ENV=production
 ✓ Documentation - complete
 ```
 
-## FASE 4 - Deploy a Vercel
+## FASE 4 - Deploy a Vercel ⏳ LISTA PARA DEPLOY
 
-### Pendiente:
-1. `vercel login`
-2. `vercel --prod`
-3. Configurar variables en Vercel
-4. Verificar deployment
+### Cambios realizados:
+
+#### 1. Vercel CLI
+- [x] Instalado globalmente: v54.21.1
+- [x] Verificado: `vercel --version`
+
+#### 2. Guía de Deploy
+- **Archivo**: `VERCEL-DEPLOY-GUIDE.md`
+- Opción 1: Deploy vía GitHub (recomendado)
+  - Push a repo
+  - Conectar en Vercel Dashboard
+  - Vercel automáticamente deploya
+- Opción 2: Deploy vía Vercel CLI
+  - `vercel login`
+  - `vercel --prod`
+  - Deploy manual
+- Opción 3: Vercel API token (para CI/CD)
+
+#### 3. Checklist de Deploy
+- **Archivo**: `DEPLOYMENT-CHECKLIST.md`
+- Pre-deploy checklist
+- Variables de entorno requeridas
+- Troubleshooting guide
+- URLs esperadas
+
+#### 4. Próximos pasos manuales:
+Para completar FASE 4, ejecutar:
+
+**Opción A: GitHub (Recomendado)**
+```bash
+git push origin master
+# Ir a https://vercel.com/dashboard
+# Conectar repo newzelland-ceramicas
+# Vercel automáticamente deploya
+```
+
+**Opción B: Vercel CLI**
+```bash
+vercel login
+vercel --prod
+```
+
+#### 5. URL esperada:
+```
+https://newzelland-ceramicas.vercel.app
+https://newzelland-ceramicas.vercel.app/api/health
+```
 
 ## FASE 5 - Verificación Final
 
@@ -131,6 +173,7 @@ NODE_ENV=production
 
 ---
 
-**Estado**: FASE 1 completada
+**Estado**: FASE 4 lista para deploy manual
 **Fecha**: 2026-07-08
-**Próximo paso**: FASE 2 - Setup BD y variables
+**Próximo paso**: FASE 4 Deploy (manual con vercel CLI o GitHub)
+**Luego**: FASE 5 - Verificación final
