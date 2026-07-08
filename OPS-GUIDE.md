@@ -1,422 +1,354 @@
-# Guía de Operaciones - Newzeland Cerámicas
+# OPS-GUIDE.md
 
-## Arquitectura Final
+Operaciones diarias y mantenimiento para Newzelland Cerámicas en Producción
 
-```
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│     https://newzelland-ceramicas.vercel.app        │
-│                                                     │
-├──────────────────┬──────────────────────────────────┤
-│  Frontend SPA    │         Backend API              │
-│  (React+Vite)    │      (Express.js)                │
-├──────────────────┼──────────────────────────────────┤
-│ /                │ /api/health                      │
-│ /productos       │ /api/products                    │
-│ /carrito         │ /api/checkout (Stripe)           │
-│ /contacto        │ /api/contact                     │
-│ /login           │ /api/whatsapp (webhook)          │
-│ /dashboard       │ /api/orders/:id                  │
-│ /...             │ /api/admin/* (auth required)     │
-├──────────────────┼──────────────────────────────────┤
-│ dist/            │ backend/api/index.js             │
-│ CSS+JS build     │ (Vercel Serverless Function)     │
-└──────────────────┴──────────────────────────────────┘
-         │                          │
-         └──────────┬───────────────┘
-                    │
-          ┌─────────▼────────┐
-          │  PostgreSQL DB   │
-          │  (Vercel Postgres)
-          │  Supabase, o RDS)│
-          │                  │
-          │ users            │
-          │ orders           │
-          │ order_items      │
-          └──────────────────┘
-```
+---
 
-## Monitoreo y Logs
+## MONITOREO DIARIO
 
-### Ver Logs de Vercel
+### Health Check (recomendado cada hora)
 
-```bash
-# Logs en tiempo real
+curl https://newzelland-ceramicas.vercel.app/api/health
+
+Respuesta esperada:
+{"status":"ok"}
+
+### Ver Logs en Tiempo Real
+
 vercel logs https://newzelland-ceramicas.vercel.app --follow
 
-# Logs de función específica
-vercel logs https://newzelland-ceramicas.vercel.app/api/health
+Buscar:
+- Errores (ERROR, Error, error)
+- Warnings (WARN, Warning)
+- Status 500 (internal server error)
 
-# Filtrar por tipo
-vercel logs https://newzelland-ceramicas.vercel.app | grep ERROR
-vercel logs https://newzelland-ceramicas.vercel.app | grep -i database
-```
-
-### Dashboard de Vercel
+### Dashboard Vercel
 
 https://vercel.com/dashboard/project/newzelland-ceramicas
 
-- **Deployments**: Historial de deploys
-- **Monitoring**: Latencia, errores, CPU
-- **Settings**: Variables de entorno, dominios
-- **Environment Variables**: Secretos y config
+Revisar:
+- Deployments: últimos cambios
+- Analytics: traffic y performance
+- Logs: errores o warnings
+- Settings: variables de entorno
 
-### Analytics
+---
+
+## ACTUALIZACIONES Y CAMBIOS
+
+### Hacer Cambios en Código
+
+1. En tu máquina local:
+   git checkout main
+   git pull origin main
+   git checkout -b feature/description
+
+2. Hacer cambios y commit:
+   git add .
+   git commit -m "feat: descripcion"
+
+3. Push a GitHub:
+   git push origin feature/description
+
+4. Crear Pull Request en GitHub
+   - Describe cambios
+   - Pide review si necesario
+   - Merge cuando esté aprobado
+
+5. Vercel automáticamente:
+   - Crea preview deployment
+   - Después del merge → deploy a producción
+   - Tiempo: 2-5 minutos
+
+### Verificar Antes de Cambios
+
+```bash
+cd "C:\Users\NACHO PC\Desktop\newzelland-ceramicas"
+
+# Compilar TypeScript
+npm run build --prefix backend
+npm run build --prefix frontend
+
+# Test local (si tienes tests)
+npm test
+
+# Revisar cambios
+git diff
+git status
+```
+
+### Después de Deploy a Producción
+
+```bash
+# Esperar 2-3 minutos
+# Luego test:
+curl https://newzelland-ceramicas.vercel.app/api/health
+
+# Si algo está roto: ROLLBACK inmediato
+# Ver EMERGENCY-RUNBOOK.md sección ROLLBACK
+```
+
+---
+
+## BASE DE DATOS
+
+### Backup de Datos
+
+Si usas Vercel Postgres:
+
+```bash
+# Ver BD disponibles
+vercel postgres list
+
+# Conectar a BD
+psql postgresql://...
+
+# Dump de toda la BD
+pg_dump postgresql://... > backup-2026-07-08.sql
+
+# Guardar en lugar seguro (Cloud Storage, Dropbox, etc)
+```
+
+### Restaurar Backup
+
+```bash
+psql postgresql://... < backup-2026-07-08.sql
+```
+
+### Mantenimiento de BD
+
+```bash
+# Conectar a BD
+psql postgresql://...
+
+# Ver tamaño de tablas
+\dt+
+
+# Analizar para optimizar queries
+ANALYZE;
+
+# Ver índices
+\di
+
+# Salir
+\q
+```
+
+---
+
+## SEGURIDAD
+
+### Cambiar JWT_SECRET (trimestral recomendado)
+
+1. Generar nuevo:
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+2. Actualizar en Vercel:
+   Settings → Environment Variables → JWT_SECRET → [nuevo valor]
+
+3. Redeploy:
+   vercel --prod
+
+4. NOTA: Los tokens JWT ya emitidos se invalidarán
+   (Usuarios necesitarán login nuevamente)
+
+### Cambiar SMTP_PASS (si Gmail lo pide)
+
+1. Ir a: https://myaccount.google.com/apppasswords
+2. Revocar la contraseña vieja
+3. Generar una nueva
+4. Actualizar en Vercel
+5. Redeploy: vercel --prod
+
+### Revisar Variables Sensibles
+
+```bash
+# Verificar que NO hay secretos en código
+grep -r "sk_" backend/src/  # Stripe secret
+grep -r "EAAJU" backend/src/  # WhatsApp token
+grep -r "password" backend/src/  # DB password
+grep -r "secret" backend/src/  # Genéricos
+
+# Debe estar vacío (todos en variables de entorno, no en código)
+```
+
+### HTTPS
+
+✅ Vercel proporciona automáticamente
+✅ Certificado SSL renovado automáticamente
+✅ Redirige HTTP → HTTPS automáticamente
+
+No hay nada que hacer.
+
+---
+
+## PERFORMANCE
+
+### Monitorear Lentitud
+
+Si notas que la API está lenta:
+
+1. Ver logs:
+   vercel logs https://newzelland-ceramicas.vercel.app --follow
+
+2. Buscar requests que toman mucho tiempo
+   (verás duración de cada request)
+
+3. Identificar endpoint lento
+
+4. Revisar query de BD:
+   - ¿Está indexada la columna WHERE?
+   - ¿Trae datos innecesarios?
+   - ¿Hay JOINs que no se necesitan?
+
+5. Optimizar:
+   - Agregar índice: CREATE INDEX idx_name ON table(column);
+   - Paginar: SELECT ... LIMIT 50;
+   - Denormalizar si es necesario
+
+### Analytics en Vercel
 
 https://vercel.com/dashboard/project/newzelland-ceramicas/analytics
 
-- Web Vitals
-- Request volume
-- Response times
-- Error rates
-
-## Redeploy (Actualizar el app)
-
-### Opción 1: Auto-deploy vía GitHub
-
-```bash
-# Hacer cambios locales
-git add .
-git commit -m "fix: something"
-git push origin master
-
-# Vercel automáticamente:
-# 1. Detecta el push
-# 2. Clona el repo
-# 3. Compila (npm run build)
-# 4. Deploya
-# Toma 2-5 minutos
-```
-
-### Opción 2: Manual con CLI
-
-```bash
-# Cambios locales
-git add .
-git commit -m "fix: something"
-
-# Redeploy manual
-vercel --prod
-
-# O más específico:
-vercel --prod --yes  # Sin confirmaciones
-```
-
-### Opción 3: Redeploy sin cambios (re-compile)
-
-```bash
-# Si solo cambiaste variables de entorno:
-vercel --prod
-
-# O en Vercel Dashboard:
-# 1. Ve a Deployments
-# 2. Haz click en el último deploy
-# 3. Click "Redeploy"
-```
-
-## Variables de Entorno - Cambiar en Producción
-
-### Actualizar una variable
-
-```bash
-# En Vercel Dashboard:
-1. Settings → Environment Variables
-2. Busca la variable (ej: STRIPE_SECRET)
-3. Click en el lápiz (edit)
-4. Cambia el valor
-5. Click Save
-6. Vercel automáticamente redeploya (opcional)
-```
-
-O con CLI:
-```bash
-vercel env list
-vercel env rm STRIPE_SECRET production
-vercel env add STRIPE_SECRET production
-# Pega el nuevo valor
-# Sí, para todos los environments
-```
-
-Después redeploy:
-```bash
-vercel --prod
-```
-
-## Rollback (Revertir a versión anterior)
-
-Si algo sale mal después de un deploy:
-
-```bash
-# Opción 1: CLI
-vercel ls
-# Busca el deployment anterior que funcionaba
-# Copia el ID (ej: prj_abc123)
-
-vercel promote prj_abc123 --prod
-# Confirma cuando te pregunta
-```
-
-O en Vercel Dashboard:
-```
-1. Ve a Deployments
-2. Haz click en el deploy anterior que funcionaba
-3. Click "Promote to Production"
-4. Confirma
-```
-
-Espera 1-2 minutos para que tome efecto.
-
-## Dominio Personalizado
-
-Para usar `newzeland.es` en lugar de `newzelland-ceramicas.vercel.app`:
-
-```bash
-# En Vercel Dashboard:
-1. Settings → Domains
-2. Agrega tu dominio: newzeland.es
-3. Agrega registros DNS en tu proveedor:
-   - A record: 76.76.19.165
-   - CNAME: cname.vercel.app.
-4. Espera 24h para propagación DNS
-```
-
-## SSL/HTTPS
-
-Automático con Vercel:
-- Todos los dominios tienen SSL/HTTPS
-- Certificado LetsEncrypt renovado automáticamente
-- Sin costo adicional
-
-Verificar en navegador:
-```
-https://newzelland-ceramicas.vercel.app/
-🔒 debe mostrar candado (HTTPS)
-```
-
-## Performance Optimization
-
-### Frontend
-
-```bash
-# Analizar bundle size
-npm run build --prefix frontend
-# Ver tamaño de dist/
-
-# Reducir tamaño:
-1. Code splitting (React.lazy)
-2. Image optimization
-3. CSS minification (Vite automático)
-4. JS minification (Vite automático)
-```
-
-### Backend
-
-```bash
-# Monitorear latencia en Vercel Analytics
-# Optimizaciones:
-1. DB connection pooling
-2. Caching (Redis)
-3. CDN para assets estáticos
-4. API response compression (Vercel automático)
-```
-
-## Seguridad
-
-### Checklist de Seguridad
-
-- [x] HTTPS habilitado (Vercel automático)
-- [x] CORS configurado en backend
-- [ ] JWT_SECRET fuerte (min 32 caracteres)
-- [ ] No .env con secretos en GitHub
-- [ ] Rate limiting en API (del middleware)
-- [ ] Validación de input (Joi en backend)
-- [ ] HTTPS enforced (redirección)
-- [ ] Headers de seguridad (Helmet en backend)
-
-### Verificar HTTPS Enforced
-
-```bash
-# Intentar HTTP (debe redirigir a HTTPS)
-curl -I http://newzelland-ceramicas.vercel.app/
-# Debe responder: HTTP/2 308 (redirect)
-
-# HTTPS debe funcionar
-curl -I https://newzelland-ceramicas.vercel.app/
-# Debe responder: HTTP/2 200
-```
-
-## Base de Datos - Operaciones Comunes
-
-### Conectar a Vercel Postgres
-
-```bash
-# Si usaste Vercel Postgres:
-vercel postgres connect
-
-# Te dará comando para conectar:
-# psql postgresql://...
-```
-
-### Backup de BD
-
-Con Vercel Postgres:
-```bash
-# Exportar
-pg_dump postgresql://... > backup.sql
-
-# Restaurar
-psql postgresql://... < backup.sql
-```
-
-Con Supabase:
-```
-Dashboard → Backups → Download backup
-```
-
-### Monitorear Queries
-
-Vercel Postgres Dashboard:
-```
-https://vercel.com/dashboard/data
-Selecciona tu base de datos
-Ve a Logs → Queries
-```
-
-## Alertas y Monitoreo
-
-### Alertas de Error
-
-En Vercel Dashboard:
-```
-1. Settings → Alerts (si tienes plan Pro)
-2. Configura notificaciones por email
-3. Recibe alertas cuando hay errores
-```
-
-### Monitoreo Manual
-
-```bash
-# Health check cada minuto
-watch -n 60 'curl https://newzelland-ceramicas.vercel.app/api/health'
-
-# Logs en tiempo real
-vercel logs https://newzelland-ceramicas.vercel.app --follow
-```
-
-## Escala y Limites
-
-### Limites de Vercel Free
-
-- 6000 build minutes/mes
-- 100GB bandwidth/mes
-- Deployments ilimitados
-- 12 serverless function invocations/mes
-
-### Si necesitas más
-
-```
-Upgrade a plan Pro:
-1. Vercel Dashboard → Account Settings
-2. Click "Upgrade to Pro"
-3. $20/mes
-4. Limites mucho más altos
-```
-
-## Logs de Auditoría
-
-Vercel guarda historial de:
-- Deployments
-- Cambios de variables
-- Cambios de settings
-- Team members actions
-
-Ver en Dashboard → Settings → Activity
-
-## Disaster Recovery
-
-Si algo muy malo pasó:
-
-```bash
-# 1. Verificar últimos deployments
-vercel ls
-
-# 2. Identificar cuándo se rompió
-# (ver timestamps en el listado)
-
-# 3. Revertir a última versión buena
-vercel promote <good_deployment_id> --prod
-
-# 4. Si el repo también está roto:
-git log --oneline
-git revert HEAD
-git push origin master
-vercel --prod
-
-# 5. Si todo está mal:
-# - Contacta a support de Vercel
-# - Vercel tiene backups de todos los deploys
-```
-
-## Preguntas Frecuentes (FAQ)
-
-### ¿Cuánto tarda un deploy?
-
-Típicamente 2-5 minutos desde que haces push.
-
-### ¿Vercel cuesta dinero?
-
-Free tier es suficiente para pequeño a mediano tráfico.
-Plan Pro: $20/mes si necesitas más limites.
-
-### ¿Cómo reporto un bug?
-
-En GitHub issues: https://github.com/nafergu75/newzelland-ceramicas/issues
-
-O en Vercel Support: https://vercel.com/support
-
-### ¿Puedo cambiar dominio?
-
-Sí, en Settings → Domains.
-DNS debe propagarse (24h normalmente).
-
-### ¿Cómo activo analytics?
-
-Vercel Analytics está en Free tier.
-Automáticamente se ve en Dashboard → Analytics.
-
-### ¿Vercel tiene SLA?
-
-Vercel garantiza 99.95% uptime en Pro plan.
-Free tier es best-effort.
+Ver:
+- Requests por hora
+- Países visitantes
+- Browsers usados
+- Errores más comunes
 
 ---
 
-**Referencia rápida:**
+## ESCALADO
 
-```bash
-# Ver logs
-vercel logs https://newzelland-ceramicas.vercel.app --follow
+### Si tráfico crece demasiado
 
-# Redeploy
-vercel --prod
+Vercel tiene límites Serverless:
+- 3 GB memoria por función
+- 60 segundos timeout
+- Concurrency automático (paga lo que usas)
 
-# Rollback
-vercel promote <id> --prod
+Señales de que necesitas cambio:
+- Errores frecuentes "out of memory"
+- Requests timeouting (>55 seg)
+- Facturas muy altas
 
-# Variables
-vercel env list
+Opciones:
 
-# Listar deploys
-vercel ls
-```
+A) Optimizar código (ver PERFORMANCE)
 
-**Documentación oficial:**
-https://vercel.com/docs
+B) Vercel Pro Plan
+   - $20/mes
+   - Mejor soporte
+   - Más concurrency
 
-**Support:**
-https://vercel.com/support
+C) Migrar a Vercel Functions + DB dedicated
+   (Costo: +$50-100/mes)
+
+D) Cambiar hosting a Heroku/Render/Railway
+   (Costo: +$7-50/mes dependiendo)
 
 ---
 
-**Última actualización**: 2026-07-08
-**Contacto**: ignacio@ifeval.es
+## COMUNICACIÓN CON EQUIPO
+
+### Team Notifications
+
+Cuando hagas deploy importante:
+
+1. Notificar a usuarios/equipo:
+   Email con:
+   - Qué cambios
+   - Cuándo empieza
+   - Si hay downtime esperado
+
+2. Formato:
+   Subject: "Newzelland Cerámicas - Maintenance window 2026-07-09 02:00 UTC"
+   
+   Body:
+   We will be performing maintenance on...
+   Expected downtime: 15 minutes
+   Features affected: [list]
+   
+   Thank you for your patience.
+
+### Incident Communication
+
+Si hay problema:
+
+1. Confirmar que es real (no falso positivo)
+
+2. Notificar inmediatamente:
+   Email + Slack (si tienes)
+   Subject: "INCIDENT: Newzelland down"
+
+3. Dar actualizaciones cada 15 min:
+   "Investigating..."
+   "Found root cause, fixing now..."
+   "Fixed and tested, monitoring..."
+   "All systems normal, post-mortem coming"
+
+4. Después de resolver:
+   Hacer post-mortem:
+   - Qué pasó
+   - Por qué pasó
+   - Cómo prevenirlo en futuro
+
+---
+
+## CHECKLISTS
+
+### Weekly (cada semana)
+
+- [ ] Health check funciona
+- [ ] No hay errores en logs
+- [ ] Performance normal
+- [ ] Backup de BD reciente
+
+### Monthly (cada mes)
+
+- [ ] Revisar Analytics de Vercel
+- [ ] Revisar seguridad (buscar secrets)
+- [ ] Actualizar dependencias (npm audit)
+- [ ] Revisar costs en Vercel
+
+### Quarterly (cada 3 meses)
+
+- [ ] Cambiar JWT_SECRET
+- [ ] Review de código
+- [ ] Actualizaciones de seguridad
+- [ ] Planificar escaldo si es necesario
+
+### Yearly (cada año)
+
+- [ ] Auditoría de seguridad completa
+- [ ] Revisar contrato de Vercel
+- [ ] Considerar cambios de arquitectura
+- [ ] Documentación actualizada
+
+---
+
+## CONTACTOS Y RECURSOS
+
+### Recursos
+
+- Vercel Dashboard: https://vercel.com/dashboard
+- Vercel Docs: https://vercel.com/docs
+- PostgreSQL Docs: https://www.postgresql.org/docs/
+- Express.js Docs: https://expressjs.com/
+- Node.js Docs: https://nodejs.org/docs/
+
+### Email de Soporte
+
+ignacio@ifeval.es
+
+### URLs importantes
+
+- Production: https://newzelland-ceramicas.vercel.app
+- API: https://newzelland-ceramicas.vercel.app/api
+- GitHub: [tu repo]
+- Vercel: https://vercel.com/dashboard/project/newzelland-ceramicas
+
+---
+
+Documento: OPS-GUIDE.md
+Última actualización: 2026-07-08
