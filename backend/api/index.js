@@ -22,12 +22,12 @@ app.use(express.json());
 // ============================================
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// POST /api/checkout - Procesar pago con Stripe
-app.post('/api/checkout', async (req, res) => {
+// POST /checkout - Procesar pago con Stripe
+app.post('/checkout', async (req, res) => {
     try {
         const { items, email, total, paymentMethod } = req.body;
 
@@ -54,8 +54,8 @@ app.post('/api/checkout', async (req, res) => {
     }
 });
 
-// POST /api/whatsapp - Webhook de WhatsApp
-app.post('/api/whatsapp', async (req, res) => {
+// POST /whatsapp - Webhook de WhatsApp
+app.post('/whatsapp', async (req, res) => {
     try {
         const message = req.body;
 
@@ -84,8 +84,8 @@ app.post('/api/whatsapp', async (req, res) => {
     }
 });
 
-// GET /api/products - Catálogo de productos (cache)
-app.get('/api/products', (req, res) => {
+// GET /products - Catálogo de productos (cache)
+app.get('/products', (req, res) => {
     // Servir catálogo.json (se puede cachear en BD)
     res.json({
         message: 'Endpoint disponible. Catálogo se sirve desde frontend/data/catalogo.json',
@@ -93,8 +93,8 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-// GET /api/orders/:id - Obtener estado de pedido
-app.get('/api/orders/:id', async (req, res) => {
+// GET /orders/:id - Obtener estado de pedido
+app.get('/orders/:id', async (req, res) => {
     try {
         const orderId = req.params.id;
         // En producción: consultar BD
@@ -108,8 +108,8 @@ app.get('/api/orders/:id', async (req, res) => {
     }
 });
 
-// POST /api/contact - Guardar mensaje de contacto
-app.post('/api/contact', async (req, res) => {
+// POST /contact - Guardar mensaje de contacto
+app.post('/contact', async (req, res) => {
     try {
         const { nombre, email, asunto, mensaje } = req.body;
 
