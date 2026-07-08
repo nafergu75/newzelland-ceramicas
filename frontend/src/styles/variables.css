@@ -1,25 +1,25 @@
 :root {
-  /* Primary Colors - Ceramic & Earth Tones */
-  --color-primary: #8B7355;      /* Warm ceramic brown */
-  --color-primary-light: #D4A574;
-  --color-primary-dark: #5C4A3A;
+  /* Primary Colors - Newzeland Design System */
+  --color-primary: #26374a;      /* Azul tinta */
+  --color-primary-light: #3d4f63;
+  --color-primary-dark: #1a2635;
 
   /* Secondary Colors */
-  --color-secondary: #E8D4C4;    /* Cream/ivory */
-  --color-accent: #C17851;       /* Clay/burnt sienna */
-  --color-accent-dark: #8B5A3C;
+  --color-secondary: #b08d57;    /* Latón/arena tostada */
+  --color-accent: #f7f3eb;       /* Crema */
+  --color-accent-dark: #ece4d4;  /* Beige arena */
 
-  /* Neutrals */
+  /* Neutrals & Ceramic Palette */
   --color-white: #FFFFFF;
   --color-black: #1A1A1A;
-  --color-gray-50: #F9F7F4;
-  --color-gray-100: #F2EFEB;
-  --color-gray-200: #E8E3DC;
-  --color-gray-300: #D9D0C4;
-  --color-gray-400: #B8ADA0;
-  --color-gray-500: #8B8078;
-  --color-gray-600: #6B6159;
-  --color-gray-700: #4A443B;
+  --color-gray-50: #fbf9f4;      /* Fondo crema */
+  --color-gray-100: #f7f3eb;     /* Accent */
+  --color-gray-200: #ece4d4;     /* Arena */
+  --color-gray-300: #d9d2c4;     /* Border */
+  --color-gray-400: #8a857b;     /* Cemento */
+  --color-gray-500: #6b665c;     /* Text light */
+  --color-gray-600: #3d4854;     /* Text dark */
+  --color-gray-700: #26374a;     /* Primary */
 
   /* Semantic Colors */
   --color-success: #4CAF50;
@@ -28,8 +28,8 @@
   --color-info: #2196F3;
 
   /* Typography */
-  --font-sans: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

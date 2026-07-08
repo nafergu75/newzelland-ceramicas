@@ -1,7 +1,8 @@
 /* HEADER */
 .header {
   background-color: var(--color-white);
-  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid var(--color-gray-300);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -10,7 +11,7 @@
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 1rem 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,31 +19,33 @@
 
 .logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 0.25rem;
   text-decoration: none;
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   transition: color var(--transition-base);
 }
 
 .logo:hover {
-  color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 .logo-icon {
-  font-size: var(--font-size-3xl);
+  height: 40px;
+  width: auto;
+  display: block;
+  font-size: 40px;
+  line-height: 1;
 }
 
 .logo-text {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .logo-text {
-    display: inline;
-  }
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0;
+  color: var(--color-primary);
 }
 
 .menu-toggle {
@@ -95,29 +98,35 @@
 }
 
 .nav-link {
-  color: var(--color-gray-700);
+  color: var(--color-gray-600);
   text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: color var(--transition-base);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-base);
   position: relative;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-accent);
+  color: var(--color-secondary);
+  border-bottom-color: var(--color-secondary);
 }
 
 .nav-link.auth {
-  background-color: var(--color-accent);
+  background-color: var(--color-secondary);
   color: white;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
   border: none;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-link.auth:hover {
-  background-color: var(--color-accent-dark);
+  background-color: #9d7d4d;
   color: white;
+  border-bottom: 2px solid transparent;
 }
 
 /* HERO SECTION */
