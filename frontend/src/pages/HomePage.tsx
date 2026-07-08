@@ -1,46 +1,173 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import HeroSection from '../components/HeroSection'
+import ProductCard from '../components/ProductCard'
+import Testimonials from '../components/Testimonials'
+import { collections } from '../data/collections'
+import { allProducts } from '../data/products'
+import '../styles/components.css'
 
 export default function HomePage() {
   const [isAuth, setIsAuth] = useState(false)
+  const [featuredProducts] = useState(allProducts.slice(0, 6))
 
   useEffect(() => {
     setIsAuth(!!localStorage.getItem('token'))
   }, [])
 
+  const addToCart = (product: any) => {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
+    const existingItem = cart.find((item: any) => item.id === product.id)
+    if (existingItem) {
+      existingItem.quantity += 1
+    } else {
+      cart.push({ ...product, quantity: 1 })
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
+    alert('Producto agregado al carrito')
+  }
+
   return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>🏺 Newzelland Cerámicas</h1>
-      <p>Tienda de cerámica premium importada</p>
-      <p style={{ color: '#999', fontSize: '14px' }}>
-        Catálogos de diseño, precios mayoristas, envío nacional
-      </p>
-      <nav style={{ marginTop: '20px', gap: '10px', display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-        {!isAuth ? (
-          <>
-            <Link to="/login"><button>Iniciar Sesión</button></Link>
-            <Link to="/register"><button>Registrarse</button></Link>
-          </>
-        ) : (
-          <>
-            <Link to="/cart"><button>🛒 Carrito</button></Link>
-            <Link to="/dashboard"><button>Mi Dashboard</button></Link>
-            <Link to="/admin"><button>📊 Admin</button></Link>
-          </>
-        )}
-        <Link to="/catalog"><button>📦 Catálogo</button></Link>
-      </nav>
-      <div style={{ marginTop: '40px', textAlign: 'left', maxWidth: '600px', margin: '40px auto' }}>
-        <h2>Por qué Newzelland?</h2>
-        <ul style={{ lineHeight: '1.8' }}>
-          <li>✓ Cerámica premium importada de España</li>
-          <li>✓ Más de 50 diseños disponibles</li>
-          <li>✓ Precios competitivos por m²</li>
-          <li>✓ Entrega en toda España en 2-3 días</li>
-          <li>✓ Catálogos descargables por colección</li>
-          <li>✓ Asesoramiento gratuito por WhatsApp</li>
-        </ul>
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Header />
+
+      <main style={{ flex: 1 }}>
+        {/* Hero Section */}
+        <HeroSection
+          title="Cerámica Premium Importada"
+          subtitle="Descubre nuestras 50+ diseños de alta calidad para proyectos residenciales y comerciales"
+          cta={{ text: 'Explorar Catálogo', link: '/catalog' }}
+        />
+
+        {/* Why Choose Us */}
+        <section style={{ padding: 'var(--spacing-3xl) 0', backgroundColor: 'var(--color-gray-50)' }}>
+          <div className="container">
+            <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
+              ¿Por qué Newzelland?
+            </h2>
+            <div className="grid grid-cols-1 grid-cols-3">
+              <div style={{ textAlign: 'center', padding: 'var(--spacing-lg)' }}>
+                <div style={{ fontSize: '3rem', marginBottom: 'var(--spacing-md)' }}>🏆</div>
+                <h3>Calidad Premium</h3>
+                <p>Cerámica importada de las mejores fabricantes españolas con certificación internacional.</p>
+              </div>
+              <div style={{ textAlign: 'center', padding: 'var(--spacing-lg)' }}>
+                <div style={{ fontSize: '3rem', marginBottom: 'var(--spacing-md)' }}>⚡</div>
+                <h3>Entrega Rápida</h3>
+                <p>Entrega en toda España en 2-3 días hábiles. Somos rápidos, confiables y eficientes.</p>
+              </div>
+              <div style={{ textAlign: 'center', padding: 'var(--spacing-lg)' }}>
+                <div style={{ fontSize: '3rem', marginBottom: 'var(--spacing-md)' }}>💰</div>
+                <h3>Precios Competitivos</h3>
+                <p>Precios al por mayor sin renunciar a la calidad. Descuentos por volumen disponibles.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Products */}
+        <section style={{ padding: 'var(--spacing-3xl) 0' }}>
+          <div className="container">
+            <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
+              Productos Destacados
+            </h2>
+            <div className="grid grid-cols-1 grid-cols-3">
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={addToCart}
+                  onViewDetails={() => console.log('Ver detalles:', product.id)}
+                />
+              ))}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
+              <Link to="/catalog">
+                <button style={{ padding: 'var(--spacing-md) var(--spacing-xl)' }}>
+                  Ver Catálogo Completo
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Collections */}
+        <section style={{ padding: 'var(--spacing-3xl) 0', backgroundColor: 'var(--color-gray-50)' }}>
+          <div className="container">
+            <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
+              Colecciones
+            </h2>
+            <div className="grid grid-cols-1 grid-cols-2">
+              {collections.map((collection) => (
+                <Link
+                  key={collection.id}
+                  to={`/collections/${collection.slug}`}
+                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                >
+                  <div
+                    style={{
+                      background: collection.image,
+                      borderRadius: 'var(--radius-lg)',
+                      padding: 'var(--spacing-2xl)',
+                      color: 'white',
+                      textAlign: 'center',
+                      minHeight: '200px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all var(--transition-base)',
+                      cursor: 'pointer',
+                    }}
+                    className="hover-lift"
+                  >
+                    <h3 style={{ color: 'white' }}>{collection.name}</h3>
+                    <p style={{ color: 'rgba(255,255,255,0.9)', marginTop: 'var(--spacing-md)' }}>
+                      {collection.productCount} productos
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <Testimonials />
+
+        {/* CTA Section */}
+        <section style={{
+          padding: 'var(--spacing-3xl)',
+          background: 'linear-gradient(135deg, #8B7355 0%, #C17851 100%)',
+          color: 'white',
+          textAlign: 'center',
+        }}>
+          <div className="container">
+            <h2 style={{ color: 'white', marginBottom: 'var(--spacing-lg)' }}>
+              ¿Necesitas Asesoramiento?
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.9)', marginBottom: 'var(--spacing-lg)', fontSize: 'var(--font-size-lg)' }}>
+              Nuestro equipo de expertos está disponible para ayudarte sin costo
+            </p>
+            <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link to="/contact">
+                <button style={{ padding: 'var(--spacing-md) var(--spacing-xl)' }}>
+                  Contactar por Email
+                </button>
+              </Link>
+              <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                <button style={{ padding: 'var(--spacing-md) var(--spacing-xl)', background: '#25D366' }}>
+                  💬 Contactar por WhatsApp
+                </button>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
     </div>
   )
 }

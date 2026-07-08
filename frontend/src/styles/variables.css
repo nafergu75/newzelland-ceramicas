@@ -1,0 +1,93 @@
+:root {
+  /* Primary Colors - Ceramic & Earth Tones */
+  --color-primary: #8B7355;      /* Warm ceramic brown */
+  --color-primary-light: #D4A574;
+  --color-primary-dark: #5C4A3A;
+
+  /* Secondary Colors */
+  --color-secondary: #E8D4C4;    /* Cream/ivory */
+  --color-accent: #C17851;       /* Clay/burnt sienna */
+  --color-accent-dark: #8B5A3C;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  --color-gray-50: #F9F7F4;
+  --color-gray-100: #F2EFEB;
+  --color-gray-200: #E8E3DC;
+  --color-gray-300: #D9D0C4;
+  --color-gray-400: #B8ADA0;
+  --color-gray-500: #8B8078;
+  --color-gray-600: #6B6159;
+  --color-gray-700: #4A443B;
+
+  /* Semantic Colors */
+  --color-success: #4CAF50;
+  --color-warning: #FF9800;
+  --color-error: #F44336;
+  --color-info: #2196F3;
+
+  /* Typography */
+  --font-sans: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+  --spacing-3xl: 3rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray-50: #1F1F1F;
+    --color-gray-100: #2D2D2D;
+    --color-gray-200: #3F3F3F;
+    --color-gray-300: #505050;
+    --color-gray-400: #707070;
+    --color-gray-500: #909090;
+    --color-gray-600: #B0B0B0;
+    --color-gray-700: #EBEBEB;
+  }
+}
