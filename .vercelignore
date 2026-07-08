@@ -25,4 +25,5 @@ setup-db.ps1
 test-local.sh
 assets/descargas/
 assets/descargas_actualizados/
-data/
+# Solo el data/ de la raíz; sin anclar excluía también frontend/src/data/
+/data/
