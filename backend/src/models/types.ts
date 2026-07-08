@@ -56,16 +56,21 @@ export interface OrderItem {
   totalLine: number;
 }
 
+/**
+ * Fila de la tabla `orders` tal y como la devuelve PostgreSQL (snake_case).
+ * Los servicios devuelven `result.rows[0]` sin mapear, así que la interfaz
+ * debe reflejar las columnas reales de la BD.
+ */
 export interface Order {
   id: string;
-  userId: string;
-  billingAddress: Address;
-  shippingAddress: Address;
+  user_id: string;
+  billing_address: Address;
+  shipping_address: Address;
   nif: string;
   phone: string;
   items: OrderItem[];
   subtotal: number;
-  taxAmount: number;
+  tax_amount: number;
 
   // Desglose de envío separado
   base_shipping: number;           // Envío base fijo
@@ -74,9 +79,9 @@ export interface Order {
 
   total: number;
   status: 'pending' | 'shipped' | 'delivered' | 'cancelled';
-  invoiceUrl?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  invoice_url?: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export interface AuthRequest extends Request {

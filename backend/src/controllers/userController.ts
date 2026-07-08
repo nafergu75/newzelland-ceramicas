@@ -10,7 +10,7 @@ export const getProfile = async (
   try {
     const result = await query(
       `SELECT id, name, email, phone, nif, province, email_verified, billing_address, shipping_address, created_at FROM users WHERE id = $1`,
-      [req.user!.userId]
+      [req.user!.id]
     );
     
     if (result.rows.length === 0) {
@@ -45,7 +45,7 @@ export const updateProfile = async (
         nif || null,
         billingAddress ? JSON.stringify(billingAddress) : null,
         shippingAddress ? JSON.stringify(shippingAddress) : null,
-        req.user!.userId,
+        req.user!.id,
       ]
     );
 
@@ -66,12 +66,12 @@ export const getOrders = async (
 
     const result = await query(
       `SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3`,
-      [req.user!.userId, limit, offset]
+      [req.user!.id, limit, offset]
     );
 
     const countResult = await query(
       `SELECT COUNT(*) as total FROM orders WHERE user_id = $1`,
-      [req.user!.userId]
+      [req.user!.id]
     );
 
     return res.json({

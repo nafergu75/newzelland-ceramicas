@@ -2,6 +2,7 @@ import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../models/types';
 import { createOrder, generateInvoice } from '../services/orderService';
 import { calculateOrderSummary } from '../services/shippingService';
+import { query } from '../db/connection';
 import Joi from 'joi';
 
 const summarySchema = Joi.object({
@@ -91,7 +92,7 @@ export const createCheckout = async (
     }));
 
     const order = await createOrder(
-      req.user!.userId,
+      req.user!.id,
       items,
       value.billingAddress,
       value.shippingAddress,
@@ -100,8 +101,8 @@ export const createCheckout = async (
     );
 
     try {
-      const invoiceUrl = await generateInvoice(order, req.user!.userId);
-      const updateResult = await (require('../db/connection')).query(
+      const invoiceUrl = await generateInvoice(order, req.user!.id);
+      const updateResult = await query(
         `UPDATE orders SET invoice_url = $1 WHERE id = $2 RETURNING *`,
         [invoiceUrl, order.id]
       );

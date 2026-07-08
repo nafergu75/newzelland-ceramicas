@@ -7,7 +7,7 @@ import {
   markEmailVerified,
 } from '../services/userService';
 import { sendVerificationEmail } from '../services/emailService';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { query } from '../db/connection';
 import Joi from 'joi';
@@ -149,7 +149,7 @@ export const login = async (
     const token = jwt.sign(
       { userId: user.id, role: user.role },
       process.env.JWT_SECRET!,
-      { expiresIn: process.env.JWT_EXPIRATION || '7d' }
+      { expiresIn: (process.env.JWT_EXPIRATION || '7d') as SignOptions['expiresIn'] }
     );
 
     return res.json({
