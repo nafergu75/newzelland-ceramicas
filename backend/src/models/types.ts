@@ -28,6 +28,25 @@ export interface User {
   updatedAt: Date;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  collection: string;
+  format: string;
+  m2_per_box: number;
+  description?: string;
+  color?: string;
+  finish?: 'mate' | 'brillo' | 'satinado';
+  specifications?: Record<string, any>;
+
+  // Campos de disponibilidad
+  stock: number;                    // Cantidad en stock (0 si no disponible)
+  isActive: boolean;                // Producto activo/disponible
+  replenishable: boolean;           // Se puede reponer (mostrar "Avisarme")
+  requiresConsultation: boolean;    // Requiere consultar (artículos a medida, bajo pedido)
+}
+
 export interface OrderItem {
   productId: string;
   name: string;
@@ -47,7 +66,12 @@ export interface Order {
   items: OrderItem[];
   subtotal: number;
   taxAmount: number;
-  shippingSurcharge: number;
+
+  // Desglose de envío separado
+  base_shipping: number;           // Envío base fijo
+  distance_surcharge: number;      // Recargo por distancia
+  total_shipping: number;          // Total envío = base + distance
+
   total: number;
   status: 'pending' | 'shipped' | 'delivered' | 'cancelled';
   invoiceUrl?: string;

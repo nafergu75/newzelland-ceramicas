@@ -4,9 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import path from 'path';
-
-const PROVINCES_WITH_SURCHARGE = 21;
-const SURCHARGE_PER_M2 = 3;
+import { calculateShipping, validateShippingCalculation } from './shippingService';
 
 export async function createOrder(
   userId: string,
@@ -17,19 +15,26 @@ export async function createOrder(
   phone: string
 ): Promise<Order> {
   const orderId = uuidv4();
-  
+
+  // Cálculo consistente de subtotal e impuestos
   const subtotal = items.reduce((sum, item) => sum + item.totalLine, 0);
-  const taxAmount = subtotal * 0.21;
-  const shippingSurcharge = Math.ceil(items.reduce((sum, item) => {
-    const m2 = (item.quantity || 1) * 1.2;
-    return sum + m2;
-  }, 0) / PROVINCES_WITH_M2) * SURCHARGE_PER_M2;
-  
-  const total = subtotal + taxAmount + shippingSurcharge;
+  const taxAmount = Math.round(subtotal * 0.21 * 100) / 100;
+
+  // Usar servicio centralizado de envío (evita duplicidades)
+  const shipping = calculateShipping(items);
+
+  // Validar que el cálculo sea consistente (detecta errores)
+  if (!validateShippingCalculation(shipping)) {
+    throw new Error('Shipping calculation validation failed');
+  }
+
+  const total = Math.round((subtotal + taxAmount + shipping.totalShipping) * 100) / 100;
 
   const result = await query(
-    `INSERT INTO orders (id, user_id, items, billing_address, shipping_address, nif, phone, subtotal, tax_amount, shipping_surcharge, total, status)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, 'pending')
+    `INSERT INTO orders (
+      id, user_id, items, billing_address, shipping_address, nif, phone,
+      subtotal, tax_amount, base_shipping, distance_surcharge, total_shipping, total, status
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, 'pending')
      RETURNING *`,
     [
       orderId,
@@ -41,7 +46,9 @@ export async function createOrder(
       phone,
       subtotal,
       taxAmount,
-      shippingSurcharge,
+      shipping.baseShipping,
+      shipping.distanceSurcharge,
+      shipping.totalShipping,
       total,
     ]
   );
@@ -132,7 +139,11 @@ export async function generateInvoice(order: Order, userId: string): Promise<str
 
       doc.text(`Subtotal: €${(order.subtotal).toFixed(2)}`);
       doc.text(`IVA (21%): €${(order.tax_amount).toFixed(2)}`);
-      doc.text(`Recargo por envío: €${(order.shipping_surcharge).toFixed(2)}`);
+      doc.moveDown();
+      doc.text(`Envío base: €${(order.base_shipping || 0).toFixed(2)}`);
+      doc.text(`Recargo por distancia: €${(order.distance_surcharge || 0).toFixed(2)}`);
+      doc.text(`Total envío: €${(order.total_shipping || 0).toFixed(2)}`);
+      doc.moveDown();
       doc.fontSize(12).text(`TOTAL: €${(order.total).toFixed(2)}`, {
         underline: true,
       });
@@ -149,5 +160,3 @@ export async function generateInvoice(order: Order, userId: string): Promise<str
     }
   });
 }
-
-const PROVINCES_WITH_M2 = 21;

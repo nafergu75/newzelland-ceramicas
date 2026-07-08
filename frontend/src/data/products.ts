@@ -13,6 +13,12 @@ export interface Product {
     resistance?: string;
     waterproof?: boolean;
   };
+
+  // Disponibilidad
+  stock: number;
+  isActive: boolean;
+  replenishable: boolean;
+  requiresConsultation: boolean;
 }
 
 export const products: Product[] = [
@@ -28,6 +34,10 @@ export const products: Product[] = [
     finish: 'mate',
     description: 'Azulejo cerámico con tonos beige naturales. Ideal para baños y cocinas modernas.',
     specifications: { thickness: '10mm', resistance: 'Clase 3', waterproof: true },
+    stock: 50,
+    isActive: true,
+    replenishable: true,
+    requiresConsultation: false,
   },
   {
     id: 'atlas-002',
