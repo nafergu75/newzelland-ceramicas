@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { productsAPI } from '../services/api'
+import { useCart } from '../context/CartContext'
 
 export default function CatalogPage() {
   const [products, setProducts] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const { addItem } = useCart()
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -20,14 +22,7 @@ export default function CatalogPage() {
   }, [])
 
   const addToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    const existingItem = cart.find((item: any) => item.id === product.id)
-    if (existingItem) {
-      existingItem.quantity += 1
-    } else {
-      cart.push({ ...product, quantity: 1 })
-    }
-    localStorage.setItem('cart', JSON.stringify(cart))
+    addItem(product)
     alert('Agregado al carrito')
   }
 

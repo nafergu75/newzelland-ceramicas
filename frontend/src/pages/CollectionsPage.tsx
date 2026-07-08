@@ -1,13 +1,14 @@
 import { useParams, Link } from 'react-router-dom'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 import ProductCard from '../components/ProductCard'
 import { collections } from '../data/collections'
 import { allProducts } from '../data/products'
+import { useCart } from '../context/CartContext'
 
 export default function CollectionsPage() {
   const { slug } = useParams<{ slug: string }>()
+  const { addItem } = useCart()
 
   const collectionList = slug
     ? collections.filter(c => c.slug === slug)
@@ -18,21 +19,12 @@ export default function CollectionsPage() {
     : allProducts
 
   const addToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    const existingItem = cart.find((item: any) => item.id === product.id)
-    if (existingItem) {
-      existingItem.quantity += 1
-    } else {
-      cart.push({ ...product, quantity: 1 })
-    }
-    localStorage.setItem('cart', JSON.stringify(cart))
+    addItem(product)
     alert('Producto agregado al carrito')
   }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header />
-
       <main style={{ flex: 1 }}>
         {slug ? (
           <>

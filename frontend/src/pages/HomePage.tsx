@@ -1,38 +1,25 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Header from '../components/Header'
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 import ProductCard from '../components/ProductCard'
 import Testimonials from '../components/Testimonials'
 import { collections } from '../data/collections'
 import { allProducts } from '../data/products'
+import { useCart } from '../context/CartContext'
 import '../styles/components.css'
 
 export default function HomePage() {
-  const [isAuth, setIsAuth] = useState(false)
   const [featuredProducts] = useState(allProducts.slice(0, 6))
-
-  useEffect(() => {
-    setIsAuth(!!localStorage.getItem('token'))
-  }, [])
+  const { addItem } = useCart()
 
   const addToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    const existingItem = cart.find((item: any) => item.id === product.id)
-    if (existingItem) {
-      existingItem.quantity += 1
-    } else {
-      cart.push({ ...product, quantity: 1 })
-    }
-    localStorage.setItem('cart', JSON.stringify(cart))
+    addItem(product)
     alert('Producto agregado al carrito')
   }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header />
-
       <main style={{ flex: 1 }}>
         {/* Hero Section */}
         <HeroSection

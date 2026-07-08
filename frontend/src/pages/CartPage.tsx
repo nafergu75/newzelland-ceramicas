@@ -1,74 +1,39 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { checkoutAPI } from '../services/api'
+import { useCart } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
+import { useCheckoutSummary } from '../hooks/useCheckoutSummary'
 import ShippingBreakdown from '../components/ShippingBreakdown'
 
-// Importar la función de cálculo de envío del backend
-// En producción, esto vendría del backend al hacer checkout
-const calculateShipping = (items: any[]) => {
-  const BASE_SHIPPING = 15.0;
-  const SURCHARGE_PER_M2 = 3.0;
-  const ITEMS_M2_PER_UNIT = 1.2;
-
-  if (!items || items.length === 0) {
-    return {
-      baseShipping: BASE_SHIPPING,
-      distanceSurcharge: 0,
-      totalShipping: BASE_SHIPPING,
-    };
-  }
-
-  const totalM2 = items.reduce((sum, item) => {
-    return sum + (item.quantity * ITEMS_M2_PER_UNIT);
-  }, 0);
-
-  const distanceSurcharge = Math.round(totalM2 * SURCHARGE_PER_M2 * 100) / 100;
-
-  return {
-    baseShipping: BASE_SHIPPING,
-    distanceSurcharge,
-    totalShipping: BASE_SHIPPING + distanceSurcharge,
-  };
-};
-
+/**
+ * Carrito + desglose en una única pantalla.
+ *
+ * El desglose NO guarda copia propia del carrito: useCheckoutSummary deriva
+ * los totales del estado global en cada render. Cambiar una cantidad o
+ * eliminar un artículo recalcula subtotal, IVA, envío base, recargo por
+ * distancia y total al instante.
+ */
 export default function CartPage() {
-  const [cart, setCart] = useState<any[]>([])
-  const [subtotal, setSubtotal] = useState(0)
-  const [shipping, setShipping] = useState({ baseShipping: 0, distanceSurcharge: 0, totalShipping: 0 })
-  const [tax, setTax] = useState(0)
-  const [total, setTotal] = useState(0)
+  const { cart, updateQuantity, removeItem, clearCart } = useCart()
+  const summary = useCheckoutSummary()
+  const { isAuthenticated } = useAuth()
   const [nif, setNif] = useState('')
   const [phone, setPhone] = useState('')
+  const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  // Recalcular totales cuando el carrito cambia
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]')
-    setCart(savedCart)
-
-    // Calcular subtotal
-    const newSubtotal = savedCart.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0)
-    setSubtotal(newSubtotal)
-
-    // Calcular envío (consistente con backend)
-    const shippingCalc = calculateShipping(savedCart)
-    setShipping(shippingCalc)
-
-    // Calcular impuesto (21% sobre subtotal)
-    const taxAmount = Math.round(newSubtotal * 0.21 * 100) / 100
-    setTax(taxAmount)
-
-    // Calcular total
-    const newTotal = newSubtotal + taxAmount + shippingCalc.totalShipping
-    setTotal(newTotal)
-  }, [])
-
   const handleCheckout = async () => {
+    if (!isAuthenticated) {
+      navigate('/login')
+      return
+    }
     if (!nif || !phone) {
       alert('Por favor completa NIF y teléfono')
       return
     }
 
+    setSubmitting(true)
     try {
       const items = cart.map((item) => ({
         productId: item.id,
@@ -101,13 +66,26 @@ export default function CartPage() {
         phone,
       })
 
-      localStorage.removeItem('cart')
+      clearCart()
       alert(`Pedido creado: ${order.data.id}`)
-      navigate('/dashboard')
+      navigate('/mi-cuenta')
     } catch (error) {
       console.error('Checkout error:', error)
       alert('Error al crear el pedido')
+    } finally {
+      setSubmitting(false)
     }
+  }
+
+  const qtyButtonStyle: React.CSSProperties = {
+    width: '28px',
+    height: '28px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    backgroundColor: 'white',
+    cursor: 'pointer',
+    fontSize: '16px',
+    lineHeight: 1,
   }
 
   return (
@@ -115,10 +93,12 @@ export default function CartPage() {
       <h1>Carrito de Compra</h1>
 
       {cart.length === 0 ? (
-        <p style={{ color: '#666', fontSize: '16px' }}>El carrito está vacío</p>
+        <p style={{ color: '#666', fontSize: '16px' }}>
+          El carrito está vacío. <Link to="/catalog">Ver catálogo</Link>
+        </p>
       ) : (
         <>
-          {/* Tabla de productos */}
+          {/* Tabla de productos con edición de cantidades */}
           <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '30px' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid #ddd', backgroundColor: '#f5f5f5' }}>
@@ -126,41 +106,68 @@ export default function CartPage() {
                 <th style={{ padding: '12px', textAlign: 'center' }}>Cantidad</th>
                 <th style={{ padding: '12px', textAlign: 'right' }}>Precio</th>
                 <th style={{ padding: '12px', textAlign: 'right' }}>Total</th>
+                <th style={{ padding: '12px' }}></th>
               </tr>
             </thead>
             <tbody>
               {cart.map((item) => (
                 <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
                   <td style={{ padding: '12px' }}>{item.name}</td>
-                  <td style={{ padding: '12px', textAlign: 'center' }}>{item.quantity}</td>
+                  <td style={{ padding: '12px', textAlign: 'center' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        style={qtyButtonStyle}
+                        aria-label={`Reducir cantidad de ${item.name}`}
+                      >
+                        −
+                      </button>
+                      <span style={{ minWidth: '24px', display: 'inline-block' }}>{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        style={qtyButtonStyle}
+                        aria-label={`Aumentar cantidad de ${item.name}`}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
                   <td style={{ padding: '12px', textAlign: 'right' }}>€{item.price.toFixed(2)}</td>
                   <td style={{ padding: '12px', textAlign: 'right', fontWeight: '600' }}>
                     €{(item.price * item.quantity).toFixed(2)}
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center' }}>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c62828', fontSize: '16px' }}
+                      aria-label={`Eliminar ${item.name}`}
+                      title="Eliminar"
+                    >
+                      🗑
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
 
-          {/* Resumen de precios */}
+          {/* Resumen de precios: derivado SIEMPRE del carrito actual */}
           <div style={{ backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px', marginBottom: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee' }}>
               <span>Subtotal:</span>
-              <span style={{ fontWeight: '600' }}>€{subtotal.toFixed(2)}</span>
+              <span style={{ fontWeight: '600' }}>€{summary.itemsTotal.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '12px', paddingBottom: '12px', borderBottom: '1px solid #eee' }}>
               <span>IVA (21%):</span>
-              <span style={{ fontWeight: '600' }}>€{tax.toFixed(2)}</span>
+              <span style={{ fontWeight: '600' }}>€{summary.taxAmount.toFixed(2)}</span>
             </div>
 
-            {/* Componente de desglose de envío */}
             <ShippingBreakdown
-              baseShipping={shipping.baseShipping}
-              distanceSurcharge={shipping.distanceSurcharge}
-              totalShipping={shipping.totalShipping}
+              baseShipping={summary.shippingBase}
+              distanceSurcharge={summary.distanceSurcharge}
+              totalShipping={summary.shippingTotal}
             />
 
-            {/* Total final */}
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -170,13 +177,20 @@ export default function CartPage() {
               color: '#2E7D32',
             }}>
               <span>TOTAL FINAL:</span>
-              <span>€{total.toFixed(2)}</span>
+              <span>€{summary.grandTotal.toFixed(2)}</span>
             </div>
           </div>
 
           {/* Formulario de datos */}
           <div style={{ marginTop: '30px', borderTop: '2px solid #ddd', paddingTop: '20px' }}>
             <h3>Datos para el pedido</h3>
+
+            {!isAuthenticated && (
+              <p style={{ backgroundColor: '#FFF3CD', padding: '12px', borderRadius: '4px', color: '#856404' }}>
+                Necesitas <Link to="/login">iniciar sesión</Link> para confirmar la compra.
+              </p>
+            )}
+
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>
                 NIF / CIF
@@ -220,23 +234,24 @@ export default function CartPage() {
 
             <button
               onClick={handleCheckout}
+              disabled={submitting}
               style={{
                 padding: '12px 24px',
                 fontSize: '16px',
                 fontWeight: '600',
-                backgroundColor: '#4CAF50',
+                backgroundColor: submitting ? '#9E9E9E' : '#4CAF50',
                 color: 'white',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer',
+                cursor: submitting ? 'not-allowed' : 'pointer',
                 width: '100%',
               }}
             >
-              ✓ Confirmar Compra
+              {submitting ? 'Procesando…' : '✓ Confirmar Compra'}
             </button>
           </div>
         </>
       )}
     </div>
-  );
+  )
 }

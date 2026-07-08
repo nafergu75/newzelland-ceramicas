@@ -50,6 +50,54 @@ export function calculateShipping(items: Array<{ quantity: number }>): ShippingC
   };
 }
 
+export interface OrderSummary {
+  itemsTotal: number;        // Subtotal de productos
+  taxAmount: number;         // IVA 21%
+  shippingBase: number;      // Envío base fijo
+  distanceSurcharge: number; // Recargo por distancia (importe ya calculado)
+  shippingTotal: number;     // shippingBase + distanceSurcharge
+  grandTotal: number;        // itemsTotal + taxAmount + shippingTotal
+}
+
+const VAT_RATE = 0.21;
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
+/**
+ * ÚNICA fuente de verdad del resumen de pedido.
+ * El frontend replica esta función en src/utils/checkoutSummary.ts y puede
+ * pedir el valor autoritativo vía POST /api/checkout/summary.
+ * Devuelve importes ya calculados: el cliente nunca recibe la fórmula.
+ */
+export function calculateOrderSummary(
+  items: Array<{ quantity: number; unitPrice: number }>
+): OrderSummary {
+  if (!items || items.length === 0) {
+    return {
+      itemsTotal: 0,
+      taxAmount: 0,
+      shippingBase: 0,
+      distanceSurcharge: 0,
+      shippingTotal: 0,
+      grandTotal: 0,
+    };
+  }
+
+  const itemsTotal = round2(
+    items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0)
+  );
+  const taxAmount = round2(itemsTotal * VAT_RATE);
+  const shipping = calculateShipping(items);
+
+  return {
+    itemsTotal,
+    taxAmount,
+    shippingBase: shipping.baseShipping,
+    distanceSurcharge: shipping.distanceSurcharge,
+    shippingTotal: shipping.totalShipping,
+    grandTotal: round2(itemsTotal + taxAmount + shipping.totalShipping),
+  };
+}
+
 /**
  * Valida que el cálculo de envío sea consistente
  * (para detectar descuadres entre frontend y backend)

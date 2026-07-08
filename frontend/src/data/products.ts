@@ -21,7 +21,19 @@ export interface Product {
   requiresConsultation: boolean;
 }
 
-export const products: Product[] = [
+// Los datos estáticos pueden omitir los campos de disponibilidad;
+// se rellenan con estos valores por defecto al exportar.
+type RawProduct = Omit<Product, 'stock' | 'isActive' | 'replenishable' | 'requiresConsultation'> &
+  Partial<Pick<Product, 'stock' | 'isActive' | 'replenishable' | 'requiresConsultation'>>;
+
+const AVAILABILITY_DEFAULTS = {
+  stock: 50,
+  isActive: true,
+  replenishable: true,
+  requiresConsultation: false,
+};
+
+const rawProducts: RawProduct[] = [
   // ATLAS Collection
   {
     id: 'atlas-001',
@@ -636,5 +648,10 @@ export const products: Product[] = [
     specifications: { thickness: '10mm', resistance: 'Clase 3', waterproof: true },
   },
 ];
+
+export const products: Product[] = rawProducts.map((p) => ({
+  ...AVAILABILITY_DEFAULTS,
+  ...p,
+}));
 
 export const allProducts = products;

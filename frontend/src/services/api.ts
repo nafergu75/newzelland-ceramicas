@@ -34,6 +34,9 @@ export const productsAPI = {
 
 export const checkoutAPI = {
   createOrder: (data: any) => api.post('/checkout', data),
+  // Desglose autoritativo calculado en servidor a partir del carrito actual
+  getSummary: (items: Array<{ quantity: number; unitPrice: number }>) =>
+    api.post('/checkout/summary', { items }),
 };
 
 export const adminAPI = {

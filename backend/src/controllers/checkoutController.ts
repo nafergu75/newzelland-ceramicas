@@ -1,7 +1,44 @@
 import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../models/types';
 import { createOrder, generateInvoice } from '../services/orderService';
+import { calculateOrderSummary } from '../services/shippingService';
 import Joi from 'joi';
+
+const summarySchema = Joi.object({
+  items: Joi.array()
+    .items(
+      Joi.object({
+        productId: Joi.string().optional(),
+        name: Joi.string().optional(),
+        quantity: Joi.number().min(1).required(),
+        unitPrice: Joi.number().min(0).required(),
+      }).unknown(true)
+    )
+    .required(),
+});
+
+/**
+ * POST /api/checkout/summary
+ * Devuelve el desglose autoritativo (subtotal, IVA, envío base, recargo por
+ * distancia, total) calculado en servidor a partir del carrito ACTUAL.
+ * El frontend debe llamarlo cada vez que entra en la página de desglose,
+ * nunca reutilizar un snapshot anterior.
+ */
+export const getCheckoutSummary = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { error, value } = summarySchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
+    return res.json(calculateOrderSummary(value.items));
+  } catch (error) {
+    next(error);
+  }
+};
 
 const checkoutSchema = Joi.object({
   items: Joi.array()

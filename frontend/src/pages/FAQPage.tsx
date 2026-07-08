@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 import { faqItems } from '../data/faq'
@@ -18,8 +17,6 @@ export default function FAQPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header />
-
       <main style={{ flex: 1 }}>
         <HeroSection
           title="Preguntas Frecuentes"
