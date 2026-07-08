@@ -17,8 +17,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Debug middleware to log incoming requests
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+    next();
+});
+
 // ============================================
-// RUTAS
+// RUTAS - Versión 1: sin /api prefix (como debe ser)
 // ============================================
 
 // Health check
@@ -145,6 +151,17 @@ app.get('/', (req, res) => {
             'GET /orders/:id - Estado del pedido',
             'POST /contact - Formulario de contacto'
         ]
+    });
+});
+
+// ============================================
+// FALLBACK - 404 handler
+// ============================================
+app.use((req, res) => {
+    res.status(404).json({
+        error: 'Not Found',
+        path: req.path,
+        method: req.method
     });
 });
 
