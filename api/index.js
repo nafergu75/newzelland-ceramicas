@@ -1,6 +1,6 @@
 // ============================================
 // BACKEND API - NEWZELAND CERÁMICAS
-// Vercel Serverless Function
+// Vercel Serverless Function Handler
 // ============================================
 
 const express = require('express');
@@ -132,6 +132,23 @@ app.post('/contact', async (req, res) => {
 });
 
 // ============================================
+// ROOT ENDPOINT
+// ============================================
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Newzelland Cerámicas API',
+        version: '1.0.0',
+        endpoints: [
+            'GET /health - Health check',
+            'POST /checkout - Procesar pago',
+            'GET /products - Catálogo de productos',
+            'GET /orders/:id - Estado del pedido',
+            'POST /contact - Formulario de contacto'
+        ]
+    });
+});
+
+// ============================================
 // INICIAR SERVIDOR
 // ============================================
 
@@ -145,5 +162,6 @@ if (require.main === module) {
     });
 }
 
-// Para Vercel
+// Export handler for Vercel serverless
+// Vercel strips the /api prefix before passing to the handler
 module.exports = app;
