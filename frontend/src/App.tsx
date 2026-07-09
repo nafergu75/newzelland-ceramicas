@@ -15,6 +15,8 @@ import DashboardPage from './pages/DashboardPage'
 import AdminPage from './pages/AdminPage'
 import CatalogPage from './pages/CatalogPage'
 import CartPage from './pages/CartPage'
+import PackingPage from './pages/PackingPage'
+import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
 
 /**
  * Las rutas protegidas se montan SIEMPRE y deciden en render-time con el
@@ -47,6 +49,8 @@ export default function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/downloads" element={<DownloadsPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/packing" element={<PackingPage />} />
+            <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotrosPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/registro" element={<Navigate to="/register" replace />} />

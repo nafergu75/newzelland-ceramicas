@@ -58,6 +58,12 @@ export default function Header() {
           <Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`} onClick={closeMenu}>
             Contacto
           </Link>
+          <Link to="/packing" className={`nav-link ${isActive('/packing') ? 'active' : ''}`} onClick={closeMenu}>
+            Packing
+          </Link>
+          <Link to="/trabaja-con-nosotros" className={`nav-link ${isActive('/trabaja-con-nosotros') ? 'active' : ''}`} onClick={closeMenu}>
+            Trabaja con nosotros
+          </Link>
 
           {/* Carrito: visible siempre (el carrito vive en el navegador) */}
           <Link to="/cart" className={`nav-link ${isActive('/cart') ? 'active' : ''}`} onClick={closeMenu}>
