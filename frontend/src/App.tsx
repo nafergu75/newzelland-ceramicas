@@ -36,7 +36,13 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <Router>
+        {/*
+          basename = BASE_URL de Vite: '/' en Vercel (dominio raíz),
+          '/newzelland-ceramicas/' en GitHub Pages (subdirectorio del repo).
+          Sin esto, al servir desde un subdirectorio React Router no
+          reconoce ninguna ruta y la app queda en blanco.
+        */}
+        <Router basename={import.meta.env.BASE_URL}>
           {/* Header global: visible en TODAS las páginas */}
           <Header />
           <Routes>
