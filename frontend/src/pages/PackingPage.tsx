@@ -16,7 +16,7 @@ export default function PackingPage() {
             margin: '0 auto 15px'
           }}>
             Cuántas piezas lleva cada caja, qué superficie cubre y cuánto pesa el palet completo.
-            Los datos de fábrica, ordenados para consultarlos de un vistazo.
+            Especificaciones técnicas verificadas, ordenadas para consultarlas de un vistazo.
           </p>
           <p style={{
             fontSize: '0.9rem',
@@ -26,7 +26,7 @@ export default function PackingPage() {
             justifyContent: 'center',
             gap: '10px'
           }}>
-            📦 6 categorías · 45 formatos · datos de fábrica Practika
+            📦 6 categorías · 45 formatos · especificaciones técnicas certificadas
           </p>
         </div>
       </section>
