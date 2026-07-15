@@ -1,22 +1,12 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
-import ProductCard from '../components/ProductCard'
-import Testimonials from '../components/Testimonials'
-import { collections } from '../data/collections'
-import { allProducts } from '../data/products'
-import { useCart } from '../context/CartContext'
+import SeriesCard from '../components/SeriesCard'
+import { series } from '../data/catalog'
 import '../styles/components.css'
 
 export default function HomePage() {
-  const [featuredProducts] = useState(allProducts.slice(0, 6))
-  const { addItem } = useCart()
-
-  const addToCart = (product: any) => {
-    addItem(product)
-    alert('Producto agregado al carrito')
-  }
+  const featuredSeries = series.slice(0, 6)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -24,7 +14,8 @@ export default function HomePage() {
         {/* Hero Section */}
         <HeroSection
           title="Cerámica Premium Importada"
-          subtitle="Descubre nuestras 50+ diseños de alta calidad para proyectos residenciales y comerciales"
+          subtitle={`Descubre nuestras ${series.length}+ diseños de alta calidad para proyectos residenciales y comerciales`}
+          backgroundImage={series[0]?.imagen}
           cta={{ text: 'Explorar Catálogo', link: '/catalog' }}
         />
 
@@ -54,20 +45,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured Products */}
+        {/* Featured Series */}
         <section style={{ padding: 'var(--spacing-3xl) 0' }}>
           <div className="container">
             <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
-              Productos Destacados
+              Nuestras Series
             </h2>
             <div className="grid grid-cols-1 grid-cols-3">
-              {featuredProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onAddToCart={addToCart}
-                  onViewDetails={() => console.log('Ver detalles:', product.id)}
-                />
+              {featuredSeries.map((s) => (
+                <SeriesCard key={s.id} serie={s} />
               ))}
             </div>
             <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
@@ -79,50 +65,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* Collections */}
-        <section style={{ padding: 'var(--spacing-3xl) 0', backgroundColor: 'var(--color-gray-50)' }}>
-          <div className="container">
-            <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
-              Colecciones
-            </h2>
-            <div className="grid grid-cols-1 grid-cols-2">
-              {collections.map((collection) => (
-                <Link
-                  key={collection.id}
-                  to={`/collections/${collection.slug}`}
-                  style={{ textDecoration: 'none', cursor: 'pointer' }}
-                >
-                  <div
-                    style={{
-                      background: collection.image,
-                      borderRadius: 'var(--radius-lg)',
-                      padding: 'var(--spacing-2xl)',
-                      color: 'white',
-                      textAlign: 'center',
-                      minHeight: '200px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all var(--transition-base)',
-                      cursor: 'pointer',
-                    }}
-                    className="hover-lift"
-                  >
-                    <h3 style={{ color: 'white' }}>{collection.name}</h3>
-                    <p style={{ color: 'rgba(255,255,255,0.9)', marginTop: 'var(--spacing-md)' }}>
-                      {collection.productCount} productos
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <Testimonials />
 
         {/* CTA Section */}
         <section style={{

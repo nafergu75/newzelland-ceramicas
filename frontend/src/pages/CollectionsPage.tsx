@@ -1,103 +1,158 @@
 import { useParams, Link } from 'react-router-dom'
+import { useMemo, useState } from 'react'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
-import ProductCard from '../components/ProductCard'
-import { collections } from '../data/collections'
-import { allProducts } from '../data/products'
-import { useCart } from '../context/CartContext'
+import SeriesCard from '../components/SeriesCard'
+import { series, getSerieById } from '../data/catalog'
 
 export default function CollectionsPage() {
   const { slug } = useParams<{ slug: string }>()
-  const { addItem } = useCart()
+  const [search, setSearch] = useState('')
 
-  const collectionList = slug
-    ? collections.filter(c => c.slug === slug)
-    : collections
+  const serie = slug ? getSerieById(slug) : undefined
 
-  const productsToShow = slug
-    ? allProducts.filter(p => p.collection === slug)
-    : allProducts
+  const filteredSeries = useMemo(() => {
+    if (!search.trim()) return series
+    const q = search.trim().toLowerCase()
+    return series.filter(
+      (s) => s.nombre.toLowerCase().includes(q) || s.material.toLowerCase().includes(q)
+    )
+  }, [search])
 
-  const addToCart = (product: any) => {
-    addItem(product)
-    alert('Producto agregado al carrito')
+  // --- Vista detalle de una serie ---
+  if (slug) {
+    if (!serie) {
+      return (
+        <div style={{ padding: '80px 20px', textAlign: 'center' }}>
+          <h1>Serie no encontrada</h1>
+          <Link to="/collections">← Volver a Colecciones</Link>
+        </div>
+      )
+    }
+
+    const whatsappText = encodeURIComponent(
+      `Hola, me interesa la serie ${serie.nombre} (${serie.formatos.join(', ')}). ¿Podéis darme precio?`
+    )
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <main style={{ flex: 1 }}>
+          <HeroSection
+            title={serie.nombre}
+            subtitle={serie.descripcion}
+            backgroundImage={serie.imagen}
+          />
+
+          <section style={{ padding: 'var(--spacing-3xl) 0' }}>
+            <div className="container">
+              <Link to="/collections" style={{ color: 'var(--color-primary)' }}>
+                ← Volver a Colecciones
+              </Link>
+
+              <div
+                className="grid grid-cols-1 grid-cols-2"
+                style={{ marginTop: 'var(--spacing-xl)', alignItems: 'start' }}
+              >
+                <img
+                  src={serie.imagen}
+                  alt={serie.nombre}
+                  loading="lazy"
+                  style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover' }}
+                />
+
+                <div>
+                  <h2>Especificaciones</h2>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                      gap: 'var(--spacing-md)',
+                      marginBottom: 'var(--spacing-xl)',
+                    }}
+                  >
+                    <div>
+                      <strong>Material</strong>
+                      <p>{serie.material}</p>
+                    </div>
+                    <div>
+                      <strong>Formatos</strong>
+                      <p>{serie.formatos.join(', ')}</p>
+                    </div>
+                    <div>
+                      <strong>Acabados</strong>
+                      <p>{serie.acabados.join(', ')}</p>
+                    </div>
+                    <div>
+                      <strong>Tipo</strong>
+                      <p>{serie.tipo.join(', ')}</p>
+                    </div>
+                    <div style={{ gridColumn: '1 / -1' }}>
+                      <strong>Colores disponibles</strong>
+                      <p>{serie.colores.join(', ')}</p>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
+                    <a
+                      href={`https://wa.me/34123456789?text=${whatsappText}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button style={{ backgroundColor: 'var(--color-secondary)' }}>
+                        💬 Consultar precio por WhatsApp
+                      </button>
+                    </a>
+                    {serie.fichas.tecnica && (
+                      <a href={serie.fichas.tecnica} target="_blank" rel="noopener noreferrer">
+                        <button className="secondary">Ficha técnica (PDF)</button>
+                      </a>
+                    )}
+                    {serie.fichas.catalogo && (
+                      <a href={serie.fichas.catalogo} target="_blank" rel="noopener noreferrer">
+                        <button className="secondary">Catálogo (PDF)</button>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <Footer />
+      </div>
+    )
   }
 
+  // --- Vista listado de todas las series ---
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
-        {slug ? (
-          <>
-            {collectionList.length > 0 && (
-              <HeroSection
-                title={collectionList[0].name}
-                subtitle={collectionList[0].description}
-                backgroundColor={collectionList[0].image}
-              />
-            )}
-          </>
-        ) : (
-          <HeroSection
-            title="Nuestras Colecciones"
-            subtitle="Explora nuestras 5 colecciones de cerámica premium"
-          />
-        )}
+        <HeroSection
+          title="Nuestras Colecciones"
+          subtitle={`Explora nuestras ${series.length} series de cerámica y porcelánico`}
+        />
 
         <section style={{ padding: 'var(--spacing-3xl) 0' }}>
           <div className="container">
-            {!slug && (
-              <div className="grid grid-cols-1 grid-cols-2">
-                {collections.map((collection) => (
-                  <Link
-                    key={collection.id}
-                    to={`/collections/${collection.slug}`}
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <div
-                      style={{
-                        background: collection.image,
-                        borderRadius: 'var(--radius-lg)',
-                        padding: 'var(--spacing-2xl)',
-                        color: 'white',
-                        textAlign: 'center',
-                        minHeight: '250px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                      }}
-                      className="hover-lift"
-                    >
-                      <h3 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-                        {collection.name}
-                      </h3>
-                      <p style={{ color: 'rgba(255,255,255,0.9)' }}>
-                        {collection.productCount} productos
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
+            <input
+              type="text"
+              placeholder="Buscar por nombre o material (ej: Calacata, Porcelánico...)"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{ maxWidth: '400px', marginBottom: 'var(--spacing-xl)' }}
+            />
 
-            {slug && productsToShow.length > 0 && (
-              <>
-                <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
-                  <Link to="/collections" style={{ color: 'var(--color-accent)' }}>
-                    ← Volver a Colecciones
-                  </Link>
-                </div>
-                <div className="grid grid-cols-1 grid-cols-3">
-                  {productsToShow.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      onAddToCart={addToCart}
-                    />
-                  ))}
-                </div>
-              </>
+            <div className="grid grid-cols-1 grid-cols-3">
+              {filteredSeries.map((s) => (
+                <SeriesCard key={s.id} serie={s} />
+              ))}
+            </div>
+
+            {filteredSeries.length === 0 && (
+              <p style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
+                No hay resultados para "{search}".
+              </p>
             )}
           </div>
         </section>

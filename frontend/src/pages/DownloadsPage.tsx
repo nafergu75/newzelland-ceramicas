@@ -1,33 +1,39 @@
+import { useMemo, useState } from 'react'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
+import { series } from '../data/catalog'
 
 export default function DownloadsPage() {
-  const catalogs = [
-    { id: 'atlas', name: 'Atlas', description: 'Colección elegante con tonos naturales' },
-    { id: 'calacatta', name: 'Calacatta', description: 'Inspirada en mármol de Carrara' },
-    { id: 'terra', name: 'Terra', description: 'Colección rústica con tonos cálidos' },
-    { id: 'nordica', name: 'Nórdica', description: 'Diseño escandinavo minimalista' },
-    { id: 'botanica', name: 'Botánica', description: 'Patrones inspirados en la naturaleza' },
-  ]
+  const [search, setSearch] = useState('')
+
+  const filteredSeries = useMemo(() => {
+    if (!search.trim()) return series
+    const q = search.trim().toLowerCase()
+    return series.filter((s) => s.nombre.toLowerCase().includes(q))
+  }, [search])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
         <HeroSection
           title="Descargas"
-          subtitle="Catálogos PDF de nuestras colecciones"
+          subtitle={`Fichas técnicas y catálogos PDF de nuestras ${series.length} series`}
         />
 
         <section style={{ padding: 'var(--spacing-3xl) 0' }}>
           <div className="container">
-            <h2 style={{ textAlign: 'center', marginBottom: 'var(--spacing-2xl)' }}>
-              Catálogos de Colecciones
-            </h2>
+            <input
+              type="text"
+              placeholder="Buscar serie (ej: Calacata, Morella...)"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{ maxWidth: '400px', marginBottom: 'var(--spacing-xl)' }}
+            />
 
             <div className="grid grid-cols-1 grid-cols-2">
-              {catalogs.map((catalog) => (
+              {filteredSeries.map((s) => (
                 <div
-                  key={catalog.id}
+                  key={s.id}
                   style={{
                     background: 'var(--color-white)',
                     padding: 'var(--spacing-xl)',
@@ -40,42 +46,43 @@ export default function DownloadsPage() {
                   className="hover-lift"
                 >
                   <div>
-                    <h3>{catalog.name}</h3>
+                    <h3>{s.nombre}</h3>
                     <p style={{ color: 'var(--color-gray-600)' }}>
-                      {catalog.description}
+                      {s.material} · {s.formatos.join(', ')}
                     </p>
                   </div>
 
-                  <div style={{ marginTop: 'auto' }}>
-                    <button
-                      onClick={() => {
-                        alert(`Descargando catálogo ${catalog.name}...`)
-                      }}
-                      style={{
-                        width: '100%',
-                        padding: 'var(--spacing-md)',
-                        background: 'var(--color-accent)',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 'var(--radius-md)',
-                        cursor: 'pointer',
-                        fontWeight: 'var(--font-weight-semibold)',
-                      }}
-                    >
-                      📥 Descargar PDF
-                    </button>
-                  </div>
-
-                  <div style={{
-                    fontSize: 'var(--font-size-sm)',
-                    color: 'var(--color-gray-500)',
-                    textAlign: 'center',
-                  }}>
-                    PDF • 5-8 MB • Especificaciones técnicas incluidas
+                  <div style={{ marginTop: 'auto', display: 'flex', gap: 'var(--spacing-sm)', flexWrap: 'wrap' }}>
+                    {s.fichas.tecnica && (
+                      <a
+                        href={s.fichas.tecnica}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ flex: 1 }}
+                      >
+                        <button style={{ width: '100%' }}>📄 Ficha técnica</button>
+                      </a>
+                    )}
+                    {s.fichas.catalogo && (
+                      <a
+                        href={s.fichas.catalogo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ flex: 1 }}
+                      >
+                        <button className="secondary" style={{ width: '100%' }}>📥 Catálogo</button>
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
+
+            {filteredSeries.length === 0 && (
+              <p style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
+                No hay resultados para "{search}".
+              </p>
+            )}
 
             {/* Additional Resources */}
             <div style={{ marginTop: 'var(--spacing-3xl)', textAlign: 'center' }}>
