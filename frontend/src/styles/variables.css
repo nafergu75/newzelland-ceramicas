@@ -1,39 +1,51 @@
+/* ============================================================
+   NEWZELLAND · Design tokens "Mar y Cal"
+   Familia de paleta: Cobalt + Cream (un solo acento: azul mar).
+   Tema claro bloqueado (editorial fotográfico).
+   ============================================================ */
+
 :root {
-  /* Primary Colors - Newzeland Design System */
-  --color-primary: #26374a;      /* Azul tinta */
-  --color-primary-light: #3d4f63;
-  --color-primary-dark: #1a2635;
+  /* --- Color --- */
+  --paper: #FAF7F2;            /* fondo general, blanco roto cálido */
+  --sand: #EFE9E0;             /* secciones tintadas */
+  --surface: #FFFFFF;          /* superficie de tarjetas */
+  --ink: #22303C;              /* texto principal / titulares */
+  --stone: #6E675C;            /* texto secundario, metadatos */
+  --line: #E2DACE;             /* hairlines y bordes */
+  --accent: #20627E;           /* ÚNICO acento: azul mar */
+  --accent-strong: #174C63;    /* hover / active del acento */
+  --on-accent: #FFFFFF;
 
-  /* Secondary Colors */
-  --color-secondary: #b08d57;    /* Latón/arena tostada */
-  --color-accent: #f7f3eb;       /* Crema */
-  --color-accent-dark: #ece4d4;  /* Beige arena */
+  /* Compat: alias legacy usados por páginas aún no migradas */
+  --color-primary: var(--ink);
+  --color-primary-light: #3A4A58;
+  --color-primary-dark: var(--ink);
+  --color-secondary: var(--accent);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-strong);
+  --color-white: var(--surface);
+  --color-black: var(--ink);
+  --color-gray-50: var(--paper);
+  --color-gray-100: var(--sand);
+  --color-gray-200: var(--sand);
+  --color-gray-300: var(--line);
+  --color-gray-400: #A39B8D;
+  --color-gray-500: var(--stone);
+  --color-gray-600: #4A4A44;
+  --color-gray-700: var(--ink);
+  --color-success: #2E6B4F;
+  --color-warning: #A96B21;
+  --color-error: #A3393B;
+  --color-info: var(--accent);
 
-  /* Neutrals & Ceramic Palette */
-  --color-white: #FFFFFF;
-  --color-black: #1A1A1A;
-  --color-gray-50: #fbf9f4;      /* Fondo crema */
-  --color-gray-100: #f7f3eb;     /* Accent */
-  --color-gray-200: #ece4d4;     /* Arena */
-  --color-gray-300: #d9d2c4;     /* Border */
-  --color-gray-400: #8a857b;     /* Cemento */
-  --color-gray-500: #6b665c;     /* Text light */
-  --color-gray-600: #3d4854;     /* Text dark */
-  --color-gray-700: #26374a;     /* Primary */
-
-  /* Semantic Colors */
-  --color-success: #4CAF50;
-  --color-warning: #FF9800;
-  --color-error: #F44336;
-  --color-info: #2196F3;
-
-  /* Typography */
+  /* --- Tipografía --- */
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
+  --font-size-body: 1.0625rem;   /* 17px cuerpo de lectura */
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
@@ -47,47 +59,52 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 2.5rem;
-  --spacing-3xl: 3rem;
+  /* --- Escala de espaciado: 4/8/12/16/24/32/48/64/96 --- */
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+  --space-24: 6rem;     /* 96 */
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  /* Alias legacy */
+  --spacing-xs: var(--space-1);
+  --spacing-sm: var(--space-2);
+  --spacing-md: var(--space-4);
+  --spacing-lg: var(--space-6);
+  --spacing-xl: var(--space-8);
+  --spacing-2xl: var(--space-8);
+  --spacing-3xl: var(--space-12);
 
-  /* Border Radius */
+  /* --- Sombras (tintadas al fondo cálido, nunca negro puro) --- */
+  --shadow-sm: 0 1px 2px 0 rgba(52, 42, 28, 0.05);
+  --shadow-md: 0 4px 14px -2px rgba(52, 42, 28, 0.08);
+  --shadow-lg: 0 12px 32px -8px rgba(52, 42, 28, 0.12);
+  --shadow-xl: 0 24px 48px -12px rgba(52, 42, 28, 0.14);
+
+  /* --- Radios (regla documentada):
+     cards e imágenes 12px · botones pill · inputs 8px --- */
+  --radius-card: 12px;
+  --radius-input: 8px;
+  --radius-pill: 999px;
+  /* Alias legacy */
   --radius-none: 0;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-full: 9999px;
+  --radius-sm: var(--radius-input);
+  --radius-md: var(--radius-input);
+  --radius-lg: var(--radius-card);
+  --radius-xl: var(--radius-card);
+  --radius-2xl: var(--radius-card);
+  --radius-full: var(--radius-pill);
 
-  /* Transitions */
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
-}
+  /* --- Transiciones --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition-base: 300ms var(--ease-out);
+  --transition-slow: 450ms var(--ease-out);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-white: #FFFFFF;
-    --color-black: #1A1A1A;
-    --color-gray-50: #1F1F1F;
-    --color-gray-100: #2D2D2D;
-    --color-gray-200: #3F3F3F;
-    --color-gray-300: #505050;
-    --color-gray-400: #707070;
-    --color-gray-500: #909090;
-    --color-gray-600: #B0B0B0;
-    --color-gray-700: #EBEBEB;
-  }
+  /* --- Layout --- */
+  --content-max: 1280px;
 }
