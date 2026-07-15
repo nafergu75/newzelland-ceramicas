@@ -57,8 +57,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <p>&copy; {currentYear} Newzeland Cerámicas. Todos los derechos reservados.</p>
         <div className="footer-links">
-          <Link to="/faq">Privacidad</Link>
-          <Link to="/faq">Términos</Link>
+          <Link to="/faq">Aviso legal</Link>
         </div>
       </div>
     </footer>

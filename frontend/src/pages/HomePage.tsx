@@ -3,6 +3,8 @@ import { ArrowRight } from '@phosphor-icons/react'
 import Footer from '../components/Footer'
 import HeroCarousel from '../components/HeroCarousel'
 import SeriesCard from '../components/SeriesCard'
+import MosaicTile from '../components/MosaicTile'
+import { useReveal } from '../hooks/useReveal'
 import { series, getSerieById } from '../data/catalog'
 import '../styles/components.css'
 
@@ -14,6 +16,7 @@ const POPULAR_IDS = ['diamond', 'berna', 'provence', 'crema-marfil', 'travertino
 export default function HomePage() {
   const mosaicSeries = MOSAIC_IDS.map(getSerieById).filter(Boolean) as NonNullable<ReturnType<typeof getSerieById>>[]
   const popularSeries = POPULAR_IDS.map(getSerieById).filter(Boolean) as NonNullable<ReturnType<typeof getSerieById>>[]
+  const editorial = useReveal<HTMLDivElement>()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -27,18 +30,12 @@ export default function HomePage() {
         <HeroCarousel />
 
         {/* 2 · Mosaico asimétrico de colecciones destacadas */}
-        <section className="section">
+        <section className="section-tight">
           <div className="container">
             <h2 style={{ marginBottom: 'var(--space-8)' }}>Colecciones destacadas</h2>
             <div className="feature-mosaic">
-              {mosaicSeries.map((s) => (
-                <Link key={s.id} to={`/collections/${s.id}`} className="mosaic-item">
-                  <img src={s.imagen} alt={`Serie ${s.nombre}`} loading="lazy" />
-                  <div className="mosaic-caption">
-                    <h3>{s.nombre}</h3>
-                    <span>{s.material.split(',')[0]} · {s.formatos.join(', ')}</span>
-                  </div>
-                </Link>
+              {mosaicSeries.map((s, i) => (
+                <MosaicTile key={s.id} serie={s} delay={i * 90} />
               ))}
             </div>
           </div>
@@ -46,7 +43,7 @@ export default function HomePage() {
 
         {/* 3 · Banda editorial: materialidad y origen */}
         <section className="editorial-band">
-          <div className="editorial-inner">
+          <div ref={editorial.ref} className={`editorial-inner reveal ${editorial.visible ? 'is-visible' : ''}`}>
             <img
               src={getSerieById('morella')?.imagen ?? series[1].imagen}
               alt="Detalle de acabado cerámico"
@@ -77,28 +74,34 @@ export default function HomePage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
               <h2 style={{ marginBottom: 0 }}>Las más pedidas</h2>
               <Link to="/catalog" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 500, whiteSpace: 'nowrap' }}>
-                Ver catálogo completo
+                Ver catálogo
                 <ArrowRight size={16} weight="regular" />
               </Link>
             </div>
             <div className="snap-row">
-              {popularSeries.map((s) => (
-                <SeriesCard key={s.id} serie={s} />
+              {popularSeries.map((s, i) => (
+                <SeriesCard key={s.id} serie={s} delay={i * 70} />
               ))}
             </div>
           </div>
         </section>
 
         {/* 5 · Banda profesional */}
-        <section className="pro-band">
+        <section className="pro-band section-tight">
           <div className="pro-band-inner">
             <div>
               <h2>¿Interiorista o arquitecto?</h2>
               <p>Precios de proyecto, muestras y fichas técnicas para tu estudio.</p>
             </div>
-            <Link to="/contact" className="btn-primary btn-large">
-              Solicitar presupuesto
-            </Link>
+            <div className="pro-band-actions">
+              <Link to="/contact" className="btn-primary btn-large">
+                Solicitar presupuesto
+              </Link>
+              <Link to="/downloads" className="pro-band-secondary">
+                Descargar fichas técnicas
+                <ArrowRight size={14} weight="regular" />
+              </Link>
+            </div>
           </div>
         </section>
       </main>

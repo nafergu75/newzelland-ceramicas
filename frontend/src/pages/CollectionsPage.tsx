@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 import { ArrowLeft, FilePdf, WhatsappLogo } from '@phosphor-icons/react'
 import Footer from '../components/Footer'
 import SeriesCard from '../components/SeriesCard'
+import AddToCartBox from '../components/AddToCartBox'
 import { series, getSerieById } from '../data/catalog'
 
 export default function CollectionsPage() {
@@ -85,6 +86,8 @@ export default function CollectionsPage() {
                   <p>{serie.colores.join(', ')}</p>
                 </div>
               </div>
+
+              <AddToCartBox serie={serie} />
 
               <div className="serie-actions">
                 <a

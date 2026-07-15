@@ -15,7 +15,7 @@ import ShippingBreakdown from '../components/ShippingBreakdown'
  * distancia y total al instante.
  */
 export default function CartPage() {
-  const { cart, updateQuantity, removeItem, clearCart } = useCart()
+  const { cart, updateCajas, removeItem, clearCart } = useCart()
   const summary = useCheckoutSummary()
   const { isAuthenticated } = useAuth()
   const [nif, setNif] = useState('')
@@ -37,11 +37,11 @@ export default function CartPage() {
     try {
       const items = cart.map((item) => ({
         productId: item.id,
-        name: item.name,
-        quantity: item.quantity,
-        unitPrice: item.price,
+        name: `${item.serieNombre} ${item.formato}`,
+        quantity: item.cajas,
+        unitPrice: item.precioVentaCaja,
         vatPercentage: 21,
-        totalLine: item.price * item.quantity,
+        totalLine: item.precioVentaCaja * item.cajas,
       }))
 
       const order = await checkoutAPI.createOrder({
@@ -103,57 +103,66 @@ export default function CartPage() {
             <thead>
               <tr style={{ borderBottom: '2px solid #ddd', backgroundColor: '#f5f5f5' }}>
                 <th style={{ padding: '12px', textAlign: 'left' }}>Producto</th>
-                <th style={{ padding: '12px', textAlign: 'center' }}>Cantidad</th>
-                <th style={{ padding: '12px', textAlign: 'right' }}>Precio</th>
+                <th style={{ padding: '12px', textAlign: 'center' }}>Cajas</th>
+                <th style={{ padding: '12px', textAlign: 'right' }}>Metros</th>
+                <th style={{ padding: '12px', textAlign: 'right' }}>Precio/caja</th>
                 <th style={{ padding: '12px', textAlign: 'right' }}>Total</th>
                 <th style={{ padding: '12px' }}></th>
               </tr>
             </thead>
             <tbody>
-              {cart.map((item) => (
-                <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '12px' }}>{item.name}</td>
-                  <td style={{ padding: '12px', textAlign: 'center' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              {cart.map((item) => {
+                const nombre = `${item.serieNombre} · ${item.formato}`
+                const metros = Math.round(item.cajas * item.metrosPorCaja * 100) / 100
+                return (
+                  <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ padding: '12px' }}>{nombre}</td>
+                    <td style={{ padding: '12px', textAlign: 'center' }}>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                        <button
+                          onClick={() => updateCajas(item.id, item.cajas - 1)}
+                          style={qtyButtonStyle}
+                          aria-label={`Reducir cajas de ${nombre}`}
+                        >
+                          −
+                        </button>
+                        <span style={{ minWidth: '24px', display: 'inline-block' }}>{item.cajas}</span>
+                        <button
+                          onClick={() => updateCajas(item.id, item.cajas + 1)}
+                          style={qtyButtonStyle}
+                          aria-label={`Aumentar cajas de ${nombre}`}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td style={{ padding: '12px', textAlign: 'right' }}>{metros} m²</td>
+                    <td style={{ padding: '12px', textAlign: 'right' }}>€{item.precioVentaCaja.toFixed(2)}</td>
+                    <td style={{ padding: '12px', textAlign: 'right', fontWeight: '600' }}>
+                      €{(item.precioVentaCaja * item.cajas).toFixed(2)}
+                    </td>
+                    <td style={{ padding: '12px', textAlign: 'center' }}>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        style={qtyButtonStyle}
-                        aria-label={`Reducir cantidad de ${item.name}`}
+                        onClick={() => removeItem(item.id)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c62828', fontSize: '16px' }}
+                        aria-label={`Eliminar ${nombre}`}
+                        title="Eliminar"
                       >
-                        −
+                        🗑
                       </button>
-                      <span style={{ minWidth: '24px', display: 'inline-block' }}>{item.quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        style={qtyButtonStyle}
-                        aria-label={`Aumentar cantidad de ${item.name}`}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                  <td style={{ padding: '12px', textAlign: 'right' }}>€{item.price.toFixed(2)}</td>
-                  <td style={{ padding: '12px', textAlign: 'right', fontWeight: '600' }}>
-                    €{(item.price * item.quantity).toFixed(2)}
-                  </td>
-                  <td style={{ padding: '12px', textAlign: 'center' }}>
-                    <button
-                      onClick={() => removeItem(item.id)}
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c62828', fontSize: '16px' }}
-                      aria-label={`Eliminar ${item.name}`}
-                      title="Eliminar"
-                    >
-                      🗑
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
 
           {/* Resumen de precios: derivado SIEMPRE del carrito actual */}
           <div style={{ backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px', marginBottom: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee', color: '#666', fontSize: '14px' }}>
+              <span>{summary.totalCajas} {summary.totalCajas === 1 ? 'caja' : 'cajas'} · {summary.totalMetros} m² totales</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', paddingTop: '12px', borderBottom: '1px solid #eee' }}>
               <span>Subtotal:</span>
               <span style={{ fontWeight: '600' }}>€{summary.itemsTotal.toFixed(2)}</span>
             </div>

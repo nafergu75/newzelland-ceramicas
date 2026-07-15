@@ -596,6 +596,14 @@
   box-shadow: var(--shadow-lg);
 }
 
+.product-card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
 .product-image {
   position: relative;
   width: 100%;
@@ -659,8 +667,7 @@
   justify-content: space-between;
   gap: var(--space-4);
   border-top: 1px solid var(--line);
-  padding-top: var(--space-4);
-  margin-top: auto;
+  padding: var(--space-4) var(--space-6);
 }
 
 .product-footer .cta-text {
@@ -697,6 +704,30 @@
 .pro-band p {
   color: rgba(250, 247, 242, 0.75);
   margin-bottom: 0;
+}
+
+.pro-band-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.pro-band-secondary {
+  color: rgba(250, 247, 242, 0.82);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-bottom: 1px solid rgba(250, 247, 242, 0.3);
+  padding-bottom: 2px;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.pro-band-secondary:hover {
+  color: var(--paper);
+  border-color: var(--paper);
 }
 
 /* ---------- FICHA DE SERIE ---------- */
@@ -783,6 +814,84 @@
   .spec-groups {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- COMPRA POR CAJAS (AddToCartBox) ---------- */
+.add-to-cart-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background-color: var(--sand);
+  border-radius: var(--radius-card);
+  max-width: 320px;
+}
+
+.add-to-cart-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--stone);
+}
+
+.add-to-cart-field select {
+  padding: var(--space-2) var(--space-3);
+}
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: fit-content;
+}
+
+.qty-stepper button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.qty-stepper button:hover {
+  background-color: var(--paper);
+  border-color: var(--stone);
+}
+
+.qty-stepper span {
+  min-width: 64px;
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+  color: var(--ink);
+}
+
+.add-to-cart-preview {
+  font-size: var(--font-size-sm);
+  color: var(--stone);
+  margin-bottom: 0;
+}
+
+.quick-add-btn {
+  background-color: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+}
+
+.quick-add-btn:hover {
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
 }
 
 /* ---------- FORMULARIOS ---------- */
@@ -929,6 +1038,37 @@
 @media (max-width: 768px) {
   .section-padding {
     padding: var(--space-16) 0;
+  }
+}
+
+/* ---------- RITMO DE SECCIÓN: variación de densidad ---------- */
+.section-tight {
+  padding: var(--space-16) 0;
+}
+
+@media (max-width: 768px) {
+  .section-tight {
+    padding: var(--space-12) 0;
+  }
+}
+
+/* ---------- REVEAL ON SCROLL (grillas de producto) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

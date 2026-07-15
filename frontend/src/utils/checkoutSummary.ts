@@ -7,11 +7,16 @@
  * estado actual del carrito; nunca se cachea un resumen anterior.
  */
 
+/** Línea de carrito: una serie + formato concretos, comprados por cajas. */
 export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
+  id: string;             // id de tarifa (formato-serie-N), única por línea
+  serieId: string;        // id de la Serie en el catálogo (para enlazar a la ficha)
+  serieNombre: string;
+  formato: string;
+  metrosPorCaja: number;
+  precioVentaCaja: number;
+  precioVentaM2: number;
+  cajas: number;
 }
 
 export interface CheckoutSummary {
@@ -21,11 +26,12 @@ export interface CheckoutSummary {
   distanceSurcharge: number; // Recargo por distancia (importe ya calculado)
   shippingTotal: number;     // shippingBase + distanceSurcharge
   grandTotal: number;        // itemsTotal + taxAmount + shippingTotal
+  totalCajas: number;
+  totalMetros: number;
 }
 
 const BASE_SHIPPING = 15.0;
 const SURCHARGE_PER_M2 = 3.0;   // Interno: nunca mostrar la fórmula en UI
-const ITEMS_M2_PER_UNIT = 1.2;
 const VAT_RATE = 0.21;
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
@@ -39,20 +45,22 @@ export function getCheckoutSummary(items: CartItem[]): CheckoutSummary {
       distanceSurcharge: 0,
       shippingTotal: 0,
       grandTotal: 0,
+      totalCajas: 0,
+      totalMetros: 0,
     };
   }
 
   const itemsTotal = round2(
-    items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    items.reduce((sum, item) => sum + item.precioVentaCaja * item.cajas, 0)
   );
   const taxAmount = round2(itemsTotal * VAT_RATE);
 
-  const totalM2 = items.reduce(
-    (sum, item) => sum + item.quantity * ITEMS_M2_PER_UNIT,
-    0
+  const totalMetros = round2(
+    items.reduce((sum, item) => sum + item.cajas * item.metrosPorCaja, 0)
   );
-  const distanceSurcharge = round2(totalM2 * SURCHARGE_PER_M2);
+  const distanceSurcharge = round2(totalMetros * SURCHARGE_PER_M2);
   const shippingTotal = round2(BASE_SHIPPING + distanceSurcharge);
+  const totalCajas = items.reduce((sum, item) => sum + item.cajas, 0);
 
   return {
     itemsTotal,
@@ -61,5 +69,7 @@ export function getCheckoutSummary(items: CartItem[]): CheckoutSummary {
     distanceSurcharge,
     shippingTotal,
     grandTotal: round2(itemsTotal + taxAmount + shippingTotal),
+    totalCajas,
+    totalMetros,
   };
 }

@@ -13,8 +13,8 @@ import type { CartItem } from '../utils/checkoutSummary'
 interface CartContextValue {
   cart: CartItem[]
   cartCount: number
-  addItem: (product: { id: string; name: string; price: number }) => void
-  updateQuantity: (id: string, quantity: number) => void
+  addBoxes: (product: Omit<CartItem, 'cajas'>, cajas: number) => void
+  updateCajas: (id: string, cajas: number) => void
   removeItem: (id: string) => void
   clearCart: () => void
 }
@@ -49,23 +49,24 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
-  const addItem = (product: { id: string; name: string; price: number }) => {
+  /** Añade cajas de una serie+formato. Si ya está en el carrito, suma cajas (no duplica línea). */
+  const addBoxes = (product: Omit<CartItem, 'cajas'>, cajas: number) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id)
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id ? { ...item, cajas: item.cajas + cajas } : item
         )
       }
-      return [...prev, { id: product.id, name: product.name, price: product.price, quantity: 1 }]
+      return [...prev, { ...product, cajas }]
     })
   }
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateCajas = (id: string, cajas: number) => {
     setCart((prev) =>
-      quantity <= 0
+      cajas <= 0
         ? prev.filter((item) => item.id !== id)
-        : prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+        : prev.map((item) => (item.id === id ? { ...item, cajas } : item))
     )
   }
 
@@ -75,10 +76,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const clearCart = () => setCart([])
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const cartCount = cart.reduce((sum, item) => sum + item.cajas, 0)
 
   return (
-    <CartContext.Provider value={{ cart, cartCount, addItem, updateQuantity, removeItem, clearCart }}>
+    <CartContext.Provider value={{ cart, cartCount, addBoxes, updateCajas, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   )
