@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from '@phosphor-icons/react'
 import Footer from '../components/Footer'
+import HeroCarousel from '../components/HeroCarousel'
 import SeriesCard from '../components/SeriesCard'
 import { series, getSerieById } from '../data/catalog'
 import '../styles/components.css'
@@ -13,31 +14,17 @@ const POPULAR_IDS = ['diamond', 'berna', 'provence', 'crema-marfil', 'travertino
 export default function HomePage() {
   const mosaicSeries = MOSAIC_IDS.map(getSerieById).filter(Boolean) as NonNullable<ReturnType<typeof getSerieById>>[]
   const popularSeries = POPULAR_IDS.map(getSerieById).filter(Boolean) as NonNullable<ReturnType<typeof getSerieById>>[]
-  const heroSerie = getSerieById('calacata') ?? series[0]
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
-        {/* 1 · Hero split asimétrico */}
-        <section className="home-hero">
-          <div className="home-hero-copy animate-fade-in-up">
-            <h1>
-              Cerámica mediterránea para espacios con carácter
-            </h1>
-            <p>
-              Porcelánico y gres desde Onda, Castellón. {series.length} series para vivienda, proyecto y obra.
-            </p>
-            <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-              <Link to="/collections" className="btn-primary btn-large">
-                Ver colecciones
-                <ArrowRight size={18} weight="regular" />
-              </Link>
-            </div>
-          </div>
-          <div className="home-hero-media">
-            <img src={heroSerie.imagen} alt={`Serie ${heroSerie.nombre} en ambiente`} />
-          </div>
-        </section>
+        {/* 1 · Hero banner: carrusel de ambientes cerámicos.
+            Slides y timing se editan en components/HeroCarousel.tsx
+            (HERO_SLIDES y AUTOPLAY_MS). */}
+        <h1 className="sr-only">
+          Newzeland Cerámicas: porcelánico y gres desde Onda, Castellón
+        </h1>
+        <HeroCarousel />
 
         {/* 2 · Mosaico asimétrico de colecciones destacadas */}
         <section className="section">

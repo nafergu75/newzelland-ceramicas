@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     HERO BANNER CERÁMICO · Versión estática autocontenida
+     ------------------------------------------------------------
+     CÓMO USARLO EN TU PÁGINA (HTTrack o HTML estático):
+     1. Copia el bloque <style id="hero-banner-css"> dentro de tu <head>
+        (o guárdalo como css aparte y enlázalo).
+     2. Copia el <section class="hero-carousel" id="hero-banner"> donde
+        quieras el banner (normalmente justo después del <header>).
+     3. Copia el <script id="hero-banner-js"> antes de cerrar </body>.
+
+     DÓNDE SE EDITA CADA COSA (todo en el script, objeto CONFIG):
+     · Imágenes de fondo  → CONFIG.slides[n].image
+     · Título             → CONFIG.slides[n].title
+     · Subtítulo          → CONFIG.slides[n].subtitle
+     · Texto del botón    → CONFIG.slides[n].ctaText
+     · Destino del botón  → CONFIG.slides[n].ctaLink
+     · Tiempo entre slides→ CONFIG.autoplayMs (0 = sin autoplay)
+     · Duración del fade  → variable CSS --hc-fade (en el <style>)
+     ============================================================ -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero banner cerámico (demo estática)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <style id="hero-banner-css">
+    /* ---- Tokens mínimos del banner (ajústalos a tu marca) ---- */
+    .hero-carousel {
+      --hc-ink: #22303C;          /* azul tinta */
+      --hc-paper: #FAF7F2;        /* blanco roto */
+      --hc-accent: #20627E;       /* azul mar (único acento) */
+      --hc-accent-strong: #174C63;
+      --hc-fade: 800ms;           /* duración del crossfade */
+      --hc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --hc-max: 1280px;           /* ancho del contenido */
+
+      position: relative;
+      height: clamp(480px, 72vh, 720px);
+      overflow: hidden;
+      background-color: var(--hc-ink);
+      font-family: 'Outfit', -apple-system, sans-serif;
+    }
+
+    .hc-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--hc-fade) var(--hc-ease);
+      pointer-events: none;
+    }
+
+    .hc-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hc-slide img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Drift sutil de la foto activa (se desactiva con reduced motion) */
+    @media (prefers-reduced-motion: no-preference) {
+      .hc-slide.active img {
+        animation: hcDrift 7s var(--hc-ease) both;
+      }
+
+      @keyframes hcDrift {
+        from { transform: scale(1); }
+        to { transform: scale(1.045); }
+      }
+
+      .hc-slide.active .hc-content > * {
+        animation: hcRise 700ms var(--hc-ease) both;
+      }
+
+      .hc-slide.active .hc-content > *:nth-child(2) { animation-delay: 90ms; }
+      .hc-slide.active .hc-content > *:nth-child(3) { animation-delay: 180ms; }
+      .hc-slide.active .hc-content > *:nth-child(4) { animation-delay: 270ms; }
+
+      @keyframes hcRise {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hc-slide { transition: none; }
+    }
+
+    /* Scrim para contraste AA del texto sobre cualquier foto */
+    .hc-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(20, 30, 40, 0.82) 0%, rgba(20, 30, 40, 0.35) 40%, rgba(20, 30, 40, 0.05) 70%),
+        linear-gradient(to right, rgba(20, 30, 40, 0.35), transparent 55%);
+      z-index: 1;
+    }
+
+    .hc-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      max-width: var(--hc-max);
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .hc-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.85);
+      margin-bottom: 12px;
+    }
+
+    .hc-content h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.08;
+      color: #fff;
+      max-width: 16ch;
+      margin: 0 0 12px;
+    }
+
+    .hc-content p {
+      color: rgba(250, 247, 242, 0.88);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      max-width: 44ch;
+      margin: 0 0 24px;
+    }
+
+    .hc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--hc-accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: background-color 300ms var(--hc-ease);
+      white-space: nowrap;
+    }
+
+    .hc-cta:hover {
+      background-color: var(--hc-accent-strong);
+    }
+
+    /* Flechas */
+    .hc-controls {
+      position: absolute;
+      right: max(24px, calc((100vw - var(--hc-max)) / 2 + 24px));
+      bottom: 64px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+
+    .hc-arrow {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 999px;
+      background-color: rgba(250, 247, 242, 0.14);
+      border: 1px solid rgba(250, 247, 242, 0.35);
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background-color 300ms var(--hc-ease);
+    }
+
+    .hc-arrow:hover {
+      background-color: rgba(250, 247, 242, 0.28);
+    }
+
+    /* Indicadores */
+    .hc-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      z-index: 3;
+      max-width: var(--hc-max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .hc-dot {
+      width: 32px;
+      height: 3px;
+      padding: 0;
+      border: none;
+      border-radius: 999px;
+      background-color: rgba(250, 247, 242, 0.35);
+      cursor: pointer;
+      transition: background-color 300ms var(--hc-ease);
+    }
+
+    .hc-dot:hover { background-color: rgba(250, 247, 242, 0.6); }
+    .hc-dot[aria-current='true'] { background-color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero-carousel {
+        height: auto;
+        min-height: 480px;
+        aspect-ratio: 3 / 4;
+        max-height: 640px;
+      }
+
+      .hc-content { padding: 0 24px 48px; }
+      .hc-controls { display: none; } /* móvil: puntos + swipe */
+    }
+  </style>
+</head>
+<body style="margin:0">
+
+  <!-- El banner se construye solo dentro de esta sección -->
+  <section class="hero-carousel" id="hero-banner" aria-roledescription="carrusel" aria-label="Ambientes destacados"></section>
+
+  <script id="hero-banner-js">
+    (function () {
+      /* ================= CONFIGURACIÓN =================
+         Edita aquí imágenes, textos, enlaces y timing.  */
+      var CONFIG = {
+        autoplayMs: 6000, /* tiempo entre slides; 0 = sin autoplay */
+        slides: [
+          {
+            image: 'img/ambiente-bano.jpg',       /* ← tu imagen */
+            eyebrow: 'Baño',
+            title: 'Calacata, mármol sereno',
+            subtitle: 'Pasta blanca y porcelánico en 30x90 y 60x60. Luz de mármol para baños en calma.',
+            ctaText: 'Ver colección',
+            ctaLink: 'productos.html?serie=calacata'
+          },
+          {
+            image: 'img/ambiente-salon.jpg',
+            eyebrow: 'Salón',
+            title: 'Diamond, brillo de gran formato',
+            subtitle: 'Porcelánico pulido 60x120 que amplifica la luz del salón.',
+            ctaText: 'Ver colección',
+            ctaLink: 'productos.html?serie=diamond'
+          },
+          {
+            image: 'img/ambiente-cocina.jpg',
+            eyebrow: 'Cocina',
+            title: 'Tokyo, carácter urbano',
+            subtitle: 'Porcelánico 60x60 y 80x80 que resiste el día a día de la cocina.',
+            ctaText: 'Ver colección',
+            ctaLink: 'productos.html?serie=tokyo'
+          },
+          {
+            image: 'img/ambiente-terraza.jpg',
+            eyebrow: 'Terraza',
+            title: 'Morella, alma mediterránea',
+            subtitle: 'Gres 33,3x33,3 con acabados que envejecen bien al aire libre.',
+            ctaText: 'Ver colección',
+            ctaLink: 'productos.html?serie=morella'
+          }
+        ]
+      };
+      /* ================================================= */
+
+      var root = document.getElementById('hero-banner');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var index = 0;
+      var paused = false;
+      var timer = null;
+      var touchX = null;
+
+      /* Construcción del DOM */
+      var slidesHtml = CONFIG.slides.map(function (s, i) {
+        return (
+          '<div class="hc-slide' + (i === 0 ? ' active' : '') + '" role="group" aria-roledescription="diapositiva" aria-label="' + (i + 1) + ' de ' + CONFIG.slides.length + ': ' + s.eyebrow + '">' +
+            '<img src="' + s.image + '" alt="' + s.eyebrow + '" ' + (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + '>' +
+            '<div class="hc-scrim" aria-hidden="true"></div>' +
+            '<div class="hc-content">' +
+              '<span class="hc-eyebrow">' + s.eyebrow + '</span>' +
+              '<h2>' + s.title + '</h2>' +
+              '<p>' + s.subtitle + '</p>' +
+              '<a class="hc-cta" href="' + s.ctaLink + '">' + s.ctaText + ' &rarr;</a>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      var dotsHtml = CONFIG.slides.map(function (s, i) {
+        return '<button class="hc-dot" role="tab" aria-current="' + (i === 0) + '" aria-label="' + s.eyebrow + ': ' + s.title + '" data-goto="' + i + '"></button>';
+      }).join('');
+
+      root.innerHTML =
+        slidesHtml +
+        '<div class="hc-controls">' +
+          '<button class="hc-arrow" data-dir="-1" aria-label="Ambiente anterior">&#8249;</button>' +
+          '<button class="hc-arrow" data-dir="1" aria-label="Ambiente siguiente">&#8250;</button>' +
+        '</div>' +
+        '<div class="hc-dots" role="tablist" aria-label="Ir a un ambiente">' + dotsHtml + '</div>';
+
+      var slides = root.querySelectorAll('.hc-slide');
+      var dots = root.querySelectorAll('.hc-dot');
+
+      function goTo(i) {
+        index = ((i % slides.length) + slides.length) % slides.length;
+        for (var j = 0; j < slides.length; j++) {
+          slides[j].classList.toggle('active', j === index);
+          dots[j].setAttribute('aria-current', String(j === index));
+        }
+      }
+
+      function startTimer() {
+        if (CONFIG.autoplayMs <= 0 || reduceMotion) return;
+        stopTimer();
+        timer = setInterval(function () {
+          if (!paused && !document.hidden) goTo(index + 1);
+        }, CONFIG.autoplayMs);
+      }
+
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      /* Controles */
+      root.addEventListener('click', function (e) {
+        var arrow = e.target.closest('.hc-arrow');
+        var dot = e.target.closest('.hc-dot');
+        if (arrow) goTo(index + parseInt(arrow.dataset.dir, 10));
+        if (dot) goTo(parseInt(dot.dataset.goto, 10));
+      });
+
+      /* Pausa con hover y focus (UX: no rotar mientras el usuario mira) */
+      root.addEventListener('mouseenter', function () { paused = true; });
+      root.addEventListener('mouseleave', function () { paused = false; });
+      root.addEventListener('focusin', function () { paused = true; });
+      root.addEventListener('focusout', function () { paused = false; });
+
+      /* Swipe táctil */
+      root.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+      root.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var delta = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(delta) > 48) goTo(index + (delta < 0 ? 1 : -1));
+        touchX = null;
+      }, { passive: true });
+
+      startTimer();
+    })();
+  </script>
+</body>
+</html>
