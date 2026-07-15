@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { to: '/downloads', label: 'Descargas' },
   { to: '/packing', label: 'Packing' },
   { to: '/about', label: 'Sobre nosotros' },
+  { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contacto' },
   { to: '/trabaja-con-nosotros', label: 'Trabaja con nosotros' },
 ]
