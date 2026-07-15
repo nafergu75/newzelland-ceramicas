@@ -8,7 +8,6 @@ import '../styles/components.css'
 const NAV_ITEMS = [
   { to: '/', label: 'Inicio' },
   { to: '/collections', label: 'Colecciones' },
-  { to: '/catalog', label: 'Catálogo' },
   { to: '/downloads', label: 'Descargas' },
   { to: '/packing', label: 'Packing' },
   { to: '/about', label: 'Sobre nosotros' },

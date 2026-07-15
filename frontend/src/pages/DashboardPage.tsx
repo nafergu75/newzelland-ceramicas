@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { userAPI } from '../services/api'
 
 export default function DashboardPage() {
@@ -44,7 +45,7 @@ export default function DashboardPage() {
       <div>
         <h2>Mis Pedidos</h2>
         {orders.length === 0 ? (
-          <p>No hay pedidos aún. <a href="/catalog">Ver catálogo</a></p>
+          <p>No hay pedidos aún. <Link to="/collections">Ver colecciones</Link></p>
         ) : (
           <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
             <thead>

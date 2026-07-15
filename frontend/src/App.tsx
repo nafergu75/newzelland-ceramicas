@@ -13,7 +13,6 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import AdminPage from './pages/AdminPage'
-import CatalogPage from './pages/CatalogPage'
 import CartPage from './pages/CartPage'
 import PackingPage from './pages/PackingPage'
 import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
@@ -54,7 +53,8 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/downloads" element={<DownloadsPage />} />
-            <Route path="/catalog" element={<CatalogPage />} />
+            {/* Catálogo y Colecciones eran la misma vista duplicada; unificado en /collections */}
+            <Route path="/catalog" element={<Navigate to="/collections" replace />} />
             <Route path="/packing" element={<PackingPage />} />
             <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotrosPage />} />
             <Route path="/login" element={<LoginPage />} />

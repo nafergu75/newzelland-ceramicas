@@ -94,7 +94,7 @@ export default function CartPage() {
 
       {cart.length === 0 ? (
         <p style={{ color: '#666', fontSize: '16px' }}>
-          El carrito está vacío. <Link to="/catalog">Ver catálogo</Link>
+          El carrito está vacío. <Link to="/collections">Ver colecciones</Link>
         </p>
       ) : (
         <>

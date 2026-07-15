@@ -73,8 +73,8 @@ export default function HomePage() {
           <div className="container">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
               <h2 style={{ marginBottom: 0 }}>Las más pedidas</h2>
-              <Link to="/catalog" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 500, whiteSpace: 'nowrap' }}>
-                Ver catálogo
+              <Link to="/collections" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                Ver colecciones
                 <ArrowRight size={16} weight="regular" />
               </Link>
             </div>
