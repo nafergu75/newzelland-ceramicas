@@ -278,16 +278,10 @@ export default function CartPage() {
                   </div>
 
                   {/* Envío */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', color: '#666' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid #eee', color: summary.distanceSurcharge > 0 ? '#d9534f' : '#666', fontWeight: summary.distanceSurcharge > 0 ? '600' : 'normal' }}>
                     <span>Envío:</span>
-                    <span>€{summary.shippingBase.toFixed(2)}</span>
+                    <span>€{summary.shippingTotal.toFixed(2)}</span>
                   </div>
-                  {summary.distanceSurcharge > 0 && (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid #eee', color: '#d9534f', fontWeight: '600' }}>
-                      <span>Recargo distancia:</span>
-                      <span>€{summary.distanceSurcharge.toFixed(2)}</span>
-                    </div>
-                  )}
                 </div>
 
                 {/* Total final */}

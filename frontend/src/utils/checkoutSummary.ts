@@ -30,8 +30,8 @@ export interface CheckoutSummary {
   itemsNeto: number;           // Subtotal sin IVA
   taxAmount: number;           // IVA 21% (calculado sobre neto)
   itemsTotal: number;          // itemsNeto + taxAmount
-  shippingBase: number;        // Envío base incluido (25 € por defecto)
-  distanceSurcharge: number;   // Recargo por distancia > 500km: 5€/m² (importe ya calculado)
+  shippingBase: number;        // Envío base (0 siempre, solo para compatibilidad)
+  distanceSurcharge: number;   // Costo de envío: 0 si <= 500km, metros × 5€ si > 500km
   shippingTotal: number;       // shippingBase + distanceSurcharge
   grandTotal: number;          // itemsTotal + shippingTotal
   totalCajas: number;
@@ -40,9 +40,8 @@ export interface CheckoutSummary {
   isLongDistance: boolean;     // true si > 500km desde Onda
 }
 
-const BASE_SHIPPING = 25.0;                // Envío base: 25€ (incluido en precio para destinos <= 500km)
 const DISTANCE_THRESHOLD_KM = 500;         // Umbral de distancia desde Onda
-const SURCHARGE_PER_M2 = 5.0;              // Recargo: 5€/m² para destinos > 500km
+const SHIPPING_PER_M = 5.0;                // Costo de envío: 5€/m para destinos > 500km
 const VAT_RATE = 0.21;
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
@@ -145,13 +144,16 @@ export function getCheckoutSummary(items: CartItem[], postalCode: string | null 
     items.reduce((sum, item) => sum + item.cajas * item.metrosPorCaja, 0)
   );
 
-  // Distancia y recargo
+  // Cálculo de envío:
+  // - Sin código postal: envío gratuito
+  // - Con código postal y <= 500km: envío gratuito
+  // - Con código postal y > 500km: 5€ por metro (metros × 5)
   const distanceKm = estimateDistanceFromOnda(postalCode);
   const isLongDistance = distanceKm > DISTANCE_THRESHOLD_KM;
-  const distanceSurcharge = isLongDistance ? round2(totalMetros * SURCHARGE_PER_M2) : 0;
+  const distanceSurcharge = isLongDistance ? round2(totalMetros * SHIPPING_PER_M) : 0;
 
-  // Total de envío (base + recargo condicional)
-  const shippingTotal = round2(BASE_SHIPPING + distanceSurcharge);
+  // Total de envío (sin base, solo recargo condicional)
+  const shippingTotal = distanceSurcharge;
 
   // Total cajas
   const totalCajas = items.reduce((sum, item) => sum + item.cajas, 0);
@@ -160,7 +162,7 @@ export function getCheckoutSummary(items: CartItem[], postalCode: string | null 
     itemsNeto,
     taxAmount,
     itemsTotal,
-    shippingBase: BASE_SHIPPING,
+    shippingBase: 0,
     distanceSurcharge,
     shippingTotal,
     grandTotal: round2(itemsTotal + shippingTotal),
