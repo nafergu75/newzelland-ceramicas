@@ -5,249 +5,224 @@ import { series } from '../data/catalog'
 
 export default function DownloadsPage() {
   const [search, setSearch] = useState('')
-  const [activeFilter, setActiveFilter] = useState<'all' | 'pavimentos' | 'revestimientos' | 'piezas'>('all')
 
   const filteredSeries = useMemo(() => {
-    let filtered = series
-    if (!search.trim()) {
-      filtered = series
-    } else {
-      const q = search.trim().toLowerCase()
-      filtered = series.filter((s) => s.nombre.toLowerCase().includes(q))
-    }
-    return filtered
+    if (!search.trim()) return series
+    const q = search.trim().toLowerCase()
+    return series.filter((s) => s.nombre.toLowerCase().includes(q))
   }, [search])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
         <HeroSection
-          title="Recursos Técnicos"
-          subtitle="Fichas detalladas y especificaciones de nuestras colecciones"
+          title="Fichas Técnicas"
+          subtitle="Especificaciones de todas nuestras colecciones"
         />
 
-        {/* Intro editorial */}
-        <section style={{ padding: 'var(--space-24) 0 var(--space-16)' }}>
-          <div className="container" style={{ maxWidth: '720px' }}>
-            <p style={{
-              fontSize: 'var(--font-size-lg)',
-              color: 'var(--stone)',
-              lineHeight: '1.8',
-              marginBottom: 'var(--space-12)'
-            }}>
-              Aquí encontrarás la información técnica completa de cada serie: especificaciones de formato, espesor, absorción, resistencia y acabados disponibles. Para arquitectos e interioristas que necesitan precisión.
-            </p>
-          </div>
-        </section>
+        {/* Split layout: Para Profesionales + Colecciones */}
+        <section style={{ padding: 'var(--space-24) 0' }}>
+          <div className="container" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr', gap: 'var(--space-24)', alignItems: 'start' }}>
+            {/* Left: Professional narrative */}
+            <aside style={{ paddingTop: 'var(--space-8)' }}>
+              <h2 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.8rem',
+                lineHeight: '1.2',
+                marginBottom: 'var(--space-6)',
+                color: 'var(--ink)'
+              }}>
+                Para arquitectos e interioristas
+              </h2>
+              <p style={{
+                fontSize: 'var(--font-size-base)',
+                color: 'var(--stone)',
+                lineHeight: '1.8',
+                marginBottom: 'var(--space-8)'
+              }}>
+                Cada serie de Newzeland cuenta con fichas técnicas completas: absorción de agua, resistencia a la rotura, acabados disponibles y dimensiones exactas. Todo lo que necesitas para especificar con precisión.
+              </p>
+              <div style={{
+                borderLeft: '3px solid var(--accent)',
+                paddingLeft: 'var(--space-6)',
+                marginBottom: 'var(--space-12)'
+              }}>
+                <p style={{
+                  fontSize: 'var(--font-size-sm)',
+                  color: 'var(--stone)',
+                  fontStyle: 'italic',
+                  lineHeight: '1.7'
+                }}>
+                  "Trabajamos directamente con profesionales del sector. Si necesitas muestras físicas, catálogos personalizados o asesoramiento técnico, contacta con nosotros."
+                </p>
+              </div>
+              <a href="/contact" style={{ textDecoration: 'none' }}>
+                <button style={{
+                  padding: 'var(--space-3) var(--space-6)',
+                  background: 'var(--accent)',
+                  color: 'var(--on-accent)',
+                  border: 'none',
+                  fontSize: 'var(--font-size-sm)',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  borderRadius: '2px'
+                }}>
+                  Solicitar asesoramiento
+                </button>
+              </a>
+            </aside>
 
-        {/* Search + Filter section */}
-        <section style={{ borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: 'var(--space-16) 0' }}>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', alignItems: 'end' }}>
-              {/* Search */}
-              <div>
-                <label style={{ display: 'block', fontSize: 'var(--font-size-sm)', fontWeight: '500', color: 'var(--stone)', marginBottom: 'var(--space-2)' }}>
-                  Buscar serie
-                </label>
+            {/* Right: Search + Grid */}
+            <div>
+              {/* Search field */}
+              <div style={{ marginBottom: 'var(--space-16)' }}>
                 <input
                   type="text"
-                  placeholder="Ej: Calacata, Morella..."
+                  placeholder="Buscar colección..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: 'var(--space-3) var(--space-4)',
+                    padding: 'var(--space-4) var(--space-6)',
                     border: '1px solid var(--line)',
-                    borderRadius: 'var(--radius-input)',
+                    borderRadius: 0,
                     fontSize: 'var(--font-size-base)',
-                    fontFamily: 'var(--font-sans)'
+                    fontFamily: 'var(--font-sans)',
+                    background: 'var(--surface)'
                   }}
                 />
               </div>
 
-              {/* Filter buttons */}
-              <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-                {['all', 'pavimentos', 'revestimientos', 'piezas'].map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setActiveFilter(f as any)}
-                    style={{
-                      padding: 'var(--space-2) var(--space-4)',
-                      border: activeFilter === f ? 'none' : '1px solid var(--line)',
-                      background: activeFilter === f ? 'var(--accent)' : 'transparent',
-                      color: activeFilter === f ? 'var(--on-accent)' : 'var(--ink)',
-                      borderRadius: 'var(--radius-pill)',
-                      fontSize: 'var(--font-size-sm)',
-                      cursor: 'pointer',
-                      transition: 'all var(--transition-base)',
-                      fontWeight: activeFilter === f ? '500' : '400'
-                    }}
-                  >
-                    {f === 'all' ? 'Todas' : f.charAt(0).toUpperCase() + f.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Grid de series - Asimétrico */}
-        <section style={{ padding: 'var(--space-24) 0' }}>
-          <div className="container">
-            {filteredSeries.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: 'var(--space-16) 0', color: 'var(--stone)' }}>
-                <p style={{ fontSize: 'var(--font-size-lg)', marginBottom: 'var(--space-4)' }}>
-                  No encontramos series con "{search}"
+              {/* Grid */}
+              {filteredSeries.length === 0 ? (
+                <p style={{ color: 'var(--stone)', fontSize: 'var(--font-size-base)' }}>
+                  No encontramos "{search}"
                 </p>
-                <button
-                  onClick={() => setSearch('')}
-                  style={{
-                    background: 'transparent',
-                    color: 'var(--accent)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    textDecoration: 'underline',
-                    fontWeight: '500'
-                  }}
-                >
-                  Ver todas las series
-                </button>
-              </div>
-            ) : (
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-                gap: 'var(--space-8)',
-                gridAutoRows: 'auto'
-              }}>
-                {filteredSeries.map((s, idx) => (
-                  <div
-                    key={s.id}
-                    style={{
-                      background: 'var(--surface)',
-                      border: '1px solid var(--line)',
-                      borderRadius: 'var(--radius-card)',
-                      overflow: 'hidden',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      transition: 'box-shadow var(--transition-base), transform var(--transition-base)',
-                      gridColumn: idx === 0 ? 'span 1' : 'span 1'
-                    }}
-                    className="hover-lift"
-                  >
-                    {/* Card content */}
-                    <div style={{ padding: 'var(--space-8)' }}>
+              ) : (
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 'var(--space-8)',
+                  gridAutoRows: 'min-content'
+                }}>
+                  {filteredSeries.map((s) => (
+                    <div key={s.id} style={{ borderBottom: '1px solid var(--line)', paddingBottom: 'var(--space-8)' }}>
                       <h3 style={{
                         fontFamily: 'var(--font-serif)',
-                        fontSize: '1.4rem',
+                        fontSize: '1.35rem',
                         marginBottom: 'var(--space-2)',
-                        color: 'var(--ink)'
+                        color: 'var(--ink)',
+                        fontWeight: '600'
                       }}>
                         {s.nombre}
                       </h3>
-                      <div style={{ marginBottom: 'var(--space-6)' }}>
+                      <div style={{ marginBottom: 'var(--space-4)' }}>
                         <p style={{
                           fontSize: 'var(--font-size-sm)',
                           color: 'var(--stone)',
-                          marginBottom: 'var(--space-1)',
                           lineHeight: '1.5'
                         }}>
-                          <strong>{s.material}</strong>
+                          {s.material}
                         </p>
                         <p style={{
-                          fontSize: 'var(--font-size-sm)',
+                          fontSize: 'var(--font-size-xs)',
                           color: 'var(--stone)',
-                          lineHeight: '1.5'
+                          marginTop: 'var(--space-1)'
                         }}>
-                          Formatos: {s.formatos.join(', ')}
+                          {s.formatos.join(' · ')}
                         </p>
                       </div>
 
-                      {/* Download links */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                      {/* CTA links - minimal design */}
+                      <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
                         {s.fichas.tecnica && (
-                          <a href={s.fichas.tecnica} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                            <button style={{
-                              width: '100%',
-                              padding: 'var(--space-3) var(--space-4)',
-                              background: 'var(--accent)',
-                              color: 'var(--on-accent)',
-                              border: 'none',
-                              borderRadius: 'var(--radius-input)',
-                              cursor: 'pointer',
-                              fontSize: 'var(--font-size-sm)',
-                              fontWeight: '500',
-                              transition: 'background var(--transition-base)'
-                            }}>
-                              Descargar ficha técnica
-                            </button>
+                          <a href={s.fichas.tecnica} target="_blank" rel="noopener noreferrer" style={{
+                            fontSize: 'var(--font-size-sm)',
+                            color: 'var(--accent)',
+                            textDecoration: 'none',
+                            fontWeight: '500',
+                            borderBottom: '1px solid var(--accent)',
+                            paddingBottom: '2px',
+                            cursor: 'pointer',
+                            transition: 'opacity var(--transition-base)'
+                          }}>
+                            Ficha técnica
                           </a>
                         )}
                         {s.fichas.catalogo && (
-                          <a href={s.fichas.catalogo} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                            <button style={{
-                              width: '100%',
-                              padding: 'var(--space-3) var(--space-4)',
-                              background: 'transparent',
-                              color: 'var(--accent)',
-                              border: '1px solid var(--accent)',
-                              borderRadius: 'var(--radius-input)',
-                              cursor: 'pointer',
-                              fontSize: 'var(--font-size-sm)',
-                              fontWeight: '500',
-                              transition: 'all var(--transition-base)'
-                            }}>
-                              Ver catálogo
-                            </button>
+                          <a href={s.fichas.catalogo} target="_blank" rel="noopener noreferrer" style={{
+                            fontSize: 'var(--font-size-sm)',
+                            color: 'var(--accent)',
+                            textDecoration: 'none',
+                            fontWeight: '500',
+                            borderBottom: '1px solid var(--accent)',
+                            paddingBottom: '2px',
+                            cursor: 'pointer',
+                            transition: 'opacity var(--transition-base)'
+                          }}>
+                            Catálogo
                           </a>
                         )}
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
-        {/* Professional resources CTA section */}
+        {/* Stories section */}
         <section style={{
           background: 'var(--sand)',
           padding: 'var(--space-24) 0',
-          marginTop: 'var(--space-24)',
-          borderTop: '1px solid var(--line)'
+          marginTop: 'var(--space-24)'
         }}>
-          <div className="container" style={{ maxWidth: '720px', textAlign: 'center' }}>
+          <div className="container" style={{ maxWidth: '720px' }}>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
-              marginBottom: 'var(--space-6)',
-              fontSize: 'clamp(1.8rem, 3vw, 2.4rem)'
+              fontSize: '2rem',
+              marginBottom: 'var(--space-8)',
+              color: 'var(--ink)'
             }}>
-              Catálogos y Muestras Personalizadas
+              Por qué Newzeland
             </h2>
-            <p style={{
-              fontSize: 'var(--font-size-lg)',
-              color: 'var(--stone)',
-              lineHeight: '1.8',
-              marginBottom: 'var(--space-8)'
-            }}>
-              Si eres arquitecto, interiorista o profesional del sector, podemos preparar material especializado adaptado a tu proyecto.
-            </p>
-            <a href="/contact" style={{ textDecoration: 'none' }}>
-              <button style={{
-                padding: 'var(--space-4) var(--space-8)',
-                background: 'var(--accent)',
-                color: 'var(--on-accent)',
-                border: 'none',
-                borderRadius: 'var(--radius-pill)',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: '500',
-                cursor: 'pointer',
-                transition: 'background var(--transition-base)'
-              }}>
-                Contactar equipo profesional
-              </button>
-            </a>
+            <div style={{ display: 'grid', gap: 'var(--space-12)' }}>
+              <div>
+                <p style={{
+                  fontSize: 'var(--font-size-lg)',
+                  color: 'var(--ink)',
+                  fontWeight: '600',
+                  marginBottom: 'var(--space-3)'
+                }}>
+                  Procedencia controlada
+                </p>
+                <p style={{
+                  fontSize: 'var(--font-size-base)',
+                  color: 'var(--stone)',
+                  lineHeight: '1.7'
+                }}>
+                  Trabajamos directamente con fábricas de Onda y Castellón, donde la cerámica se perfecciona desde hace más de un siglo. Conocemos cada proceso, cada horno, cada acabado.
+                </p>
+              </div>
+              <div>
+                <p style={{
+                  fontSize: 'var(--font-size-lg)',
+                  color: 'var(--ink)',
+                  fontWeight: '600',
+                  marginBottom: 'var(--space-3)'
+                }}>
+                  Asesoramiento real
+                </p>
+                <p style={{
+                  fontSize: 'var(--font-size-base)',
+                  color: 'var(--stone)',
+                  lineHeight: '1.7'
+                }}>
+                  No somos solo distribuidores. Trabajamos con arquitectos e interioristas para elegir la pieza correcta para cada proyecto. Enviamos muestras, especificamos con precisión, resolvemos dudas técnicas.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
