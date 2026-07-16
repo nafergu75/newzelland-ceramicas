@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redireccionando...</title>
     <script>
-      // GitHub Pages 404 redirect: guardar URL original y redirigir a raíz
-      sessionStorage.redirect = location.href;
-      location.href = '/newzelland-ceramicas/';
+      // GitHub Pages 404 redirect para React Router
+      const path = location.pathname.replace('/newzelland-ceramicas', '');
+      location.replace('/newzelland-ceramicas/#' + path + location.search);
     </script>
   </head>
   <body>
