@@ -3,10 +3,13 @@
 import os
 import yaml
 import logging
+from pathlib import Path
 from anthropic import AsyncAnthropic
 from dotenv import load_dotenv
 
-load_dotenv()
+# Carga explícita de .env-whatsapp (override=True para pisar claves viejas
+# heredadas de otros .env del sistema)
+load_dotenv(Path(__file__).resolve().parent.parent / ".env-whatsapp", override=True)
 logger = logging.getLogger("agentkit")
 
 client = AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
@@ -33,7 +36,7 @@ async def generar_respuesta(mensaje: str, historial: list[dict]) -> str:
 
     try:
         response = await client.messages.create(
-            model="claude-opus-4-1-20250805",
+            model="claude-sonnet-5",
             max_tokens=1024,
             system=system_prompt,
             messages=mensajes
