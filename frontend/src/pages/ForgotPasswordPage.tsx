@@ -1,30 +1,19 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
+import { authService } from '../services/authService'
 import { validateEmail } from '../utils/validation'
 
-export default function LoginPage() {
-  const navigate = useNavigate()
-  const { login } = useAuth()
-
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    recuerdame: false,
-  })
-
+export default function ForgotPasswordPage() {
+  const [email, setEmail] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
 
-    if (!validateEmail(formData.email)) {
+    if (!validateEmail(email)) {
       newErrors.email = 'Por favor, introduce un correo válido'
-    }
-
-    if (!formData.password) {
-      newErrors.password = 'La contraseña es obligatoria'
     }
 
     setErrors(newErrors)
@@ -32,15 +21,9 @@ export default function LoginPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
-
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    })
-
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: '' })
+    setEmail(e.target.value)
+    if (errors.email) {
+      setErrors({})
     }
   }
 
@@ -51,21 +34,40 @@ export default function LoginPage() {
 
     setLoading(true)
     try {
-      await login(formData.email, formData.password)
-      navigate('/mi-cuenta')
+      await authService.forgotPassword({ email })
+      setSubmitted(true)
     } catch (error: any) {
-      setErrors({ submit: error.message || 'Error al iniciar sesión. Verifica tus credenciales.' })
+      setErrors({ submit: error.message || 'Error al enviar el email. Inténtalo de nuevo.' })
     } finally {
       setLoading(false)
     }
   }
 
+  if (submitted) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '60px 20px', textAlign: 'center' }}>
+        <h2>¿Revisamos el correo?</h2>
+        <p style={{ marginTop: '20px', color: '#666', maxWidth: '500px', margin: '20px auto', fontSize: '16px' }}>
+          Hemos enviado un enlace de recuperación de contraseña a <strong>{email}</strong>
+        </p>
+        <p style={{ color: '#999', fontSize: '14px', marginTop: '15px' }}>
+          Si no ves el email, revisa tu carpeta de spam
+        </p>
+        <div style={{ marginTop: '40px' }}>
+          <Link to="/login" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600', fontSize: '16px' }}>
+            ← Volver a iniciar sesión
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '40px 20px', display: 'flex', alignItems: 'center' }}>
       <div style={{ maxWidth: '500px', margin: '0 auto', width: '100%' }}>
-        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>Inicia sesión</h1>
+        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>Recuperar contraseña</h1>
         <p style={{ textAlign: 'center', color: '#666', marginBottom: '40px', fontSize: '16px' }}>
-          Accede a tu cuenta para ver tus pedidos y gestionar tu perfil
+          Introduce tu correo para recibir un enlace de recuperación
         </p>
 
         <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -82,7 +84,7 @@ export default function LoginPage() {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              value={email}
               onChange={handleChange}
               placeholder="tu@email.com"
               style={{
@@ -95,44 +97,9 @@ export default function LoginPage() {
               }}
             />
             {errors.email && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.email}</p>}
-          </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-              <label style={{ fontWeight: '600', fontSize: '14px' }}>Contraseña *</label>
-              <Link to="/olvide-contrasena" style={{ color: '#1976d2', textDecoration: 'none', fontSize: '12px', fontWeight: '600' }}>
-                ¿La olvidaste?
-              </Link>
-            </div>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Tu contraseña"
-              style={{
-                width: '100%',
-                padding: '10px',
-                border: errors.password ? '1px solid #c62828' : '1px solid #ddd',
-                borderRadius: '4px',
-                boxSizing: 'border-box',
-                fontSize: '14px',
-              }}
-            />
-            {errors.password && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.password}</p>}
-          </div>
-
-          <div style={{ marginBottom: '20px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
-            <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-              <input
-                type="checkbox"
-                name="recuerdame"
-                checked={formData.recuerdame}
-                onChange={handleChange}
-                style={{ marginRight: '8px', cursor: 'pointer' }}
-              />
-              <span style={{ fontSize: '14px' }}>Recuerda mi contraseña en este navegador</span>
-            </label>
+            <p style={{ fontSize: '12px', color: '#999', marginTop: '6px' }}>
+              Te enviaremos un enlace para restablecer tu contraseña en los próximos minutos
+            </p>
           </div>
 
           <button
@@ -152,11 +119,11 @@ export default function LoginPage() {
               transition: 'background-color 0.2s',
             }}
           >
-            {loading ? 'Iniciando sesión...' : '✓ Iniciar sesión'}
+            {loading ? 'Enviando...' : '✓ Enviar enlace'}
           </button>
 
           <p style={{ textAlign: 'center', color: '#666', fontSize: '14px' }}>
-            ¿No tienes cuenta? <Link to="/registrarse" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Regístrate aquí</Link>
+            ¿Recordaste tu contraseña? <Link to="/login" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Inicia sesión aquí</Link>
           </p>
         </form>
       </div>

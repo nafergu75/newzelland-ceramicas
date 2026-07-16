@@ -1,54 +1,92 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { User, AuthContextType, RegisterData, LoginData } from '../types/auth'
+import { authService } from '../services/authService'
 
-/**
- * Estado global de autenticación.
- *
- * Antes cada componente leía localStorage.getItem('token') una sola vez al
- * montar, así que tras hacer login (sin recargar la página) ni el Header ni
- * las rutas protegidas se enteraban. Con este contexto, login() y logout()
- * actualizan el estado de React y toda la UI reacciona al momento.
- */
-
-interface AuthContextValue {
-  isAuthenticated: boolean
-  login: (token: string) => void
-  logout: () => void
-}
-
-const AuthContext = createContext<AuthContextValue | null>(null)
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 const TOKEN_KEY = 'token'
+const REFRESH_TOKEN_KEY = 'refreshToken'
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem(TOKEN_KEY))
+  const [user, setUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Sincronizar login/logout hecho en otra pestaña
   useEffect(() => {
+    const initializeAuth = async () => {
+      if (authService.isAuthenticated()) {
+        try {
+          const currentUser = await authService.getCurrentUser()
+          setUser(currentUser)
+        } catch {
+          localStorage.removeItem(TOKEN_KEY)
+          localStorage.removeItem(REFRESH_TOKEN_KEY)
+          setUser(null)
+        }
+      }
+      setIsLoading(false)
+    }
+
+    initializeAuth()
+
     const onStorage = (e: StorageEvent) => {
-      if (e.key === TOKEN_KEY) setToken(localStorage.getItem(TOKEN_KEY))
+      if (e.key === TOKEN_KEY) {
+        if (!localStorage.getItem(TOKEN_KEY)) {
+          setUser(null)
+        }
+      }
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
   }, [])
 
-  const login = (newToken: string) => {
-    localStorage.setItem(TOKEN_KEY, newToken)
-    setToken(newToken)
+  const login = async (email: string, password: string) => {
+    setIsLoading(true)
+    try {
+      const response = await authService.login({ email, password })
+      if (response.user) {
+        setUser(response.user)
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const register = async (data: RegisterData) => {
+    setIsLoading(true)
+    try {
+      await authService.register(data)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const logout = () => {
-    localStorage.removeItem(TOKEN_KEY)
-    setToken(null)
+    authService.logout()
+    setUser(null)
   }
 
-  return (
-    <AuthContext.Provider value={{ isAuthenticated: !!token, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  )
+  const refreshToken = async () => {
+    try {
+      await authService.refreshToken()
+    } catch {
+      setUser(null)
+    }
+  }
+
+  const value: AuthContextType = {
+    user,
+    isAuthenticated: !!user,
+    isLoading,
+    login,
+    register,
+    logout,
+    refreshToken,
+  }
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-export function useAuth(): AuthContextValue {
+export function useAuth(): AuthContextType {
   const ctx = useContext(AuthContext)
   if (!ctx) throw new Error('useAuth debe usarse dentro de <AuthProvider>')
   return ctx

@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import Header from './components/Header'
 import CartToast from './components/CartToast'
+import PrivateRoute from './components/PrivateRoute'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import CollectionsPage from './pages/CollectionsPage'
@@ -12,8 +13,11 @@ import FAQPage from './pages/FAQPage'
 import DownloadsPage from './pages/DownloadsPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import DashboardPage from './pages/DashboardPage'
-import AdminPage from './pages/AdminPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
+import ConfirmEmailPage from './pages/ConfirmEmailPage'
+import AccountDashboard from './pages/account/AccountDashboard'
+import AdminDashboard from './pages/admin/AdminDashboard'
 import CartPage from './pages/CartPage'
 import PackingPage from './pages/PackingPage'
 import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
@@ -59,9 +63,16 @@ export default function App() {
             <Route path="/catalog" element={<Navigate to="/collections" replace />} />
             <Route path="/packing" element={<PackingPage />} />
             <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotrosPage />} />
+
+            {/* Auth Routes */}
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/registro" element={<Navigate to="/register" replace />} />
+            <Route path="/registrarse" element={<RegisterPage />} />
+            <Route path="/register" element={<Navigate to="/registrarse" replace />} />
+            <Route path="/registro" element={<Navigate to="/registrarse" replace />} />
+            <Route path="/olvide-contrasena" element={<ForgotPasswordPage />} />
+            <Route path="/forgot-password" element={<Navigate to="/olvide-contrasena" replace />} />
+            <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+            <Route path="/confirm-email/:token" element={<ConfirmEmailPage />} />
 
             {/* El carrito es público (vive en el navegador); el checkout exige login */}
             <Route path="/cart" element={<CartPage />} />
@@ -71,7 +82,7 @@ export default function App() {
               path="/mi-cuenta"
               element={
                 <ProtectedRoute>
-                  <DashboardPage />
+                  <AccountDashboard />
                 </ProtectedRoute>
               }
             />
@@ -80,7 +91,7 @@ export default function App() {
               path="/admin"
               element={
                 <ProtectedRoute>
-                  <AdminPage />
+                  <AdminDashboard />
                 </ProtectedRoute>
               }
             />
