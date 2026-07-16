@@ -191,7 +191,7 @@
       "id": "bigas",
       "nombre": "Bigas",
       "descripcion": "Porcelánico · 23x120",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bigas/ambientes/bigas-ambiente-01",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "23x120"
       ],
@@ -249,7 +249,7 @@
       "id": "bosco",
       "nombre": "Bosco",
       "descripcion": "Porcelánico · 33,3x33,3",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bosco/ambientes/bosco-ambiente-01",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "33,3x33,3"
       ],
@@ -991,7 +991,7 @@
       "id": "jaca",
       "nombre": "Jaca",
       "descripcion": "Pasta Roja · 25x50",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/jaca/ambientes/jaca-ambiente-01",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "25x50"
       ],
@@ -1257,7 +1257,7 @@
       "id": "legend",
       "nombre": "Legend",
       "descripcion": "Pasta Roja, Porcelánico · 30x60, 60x60, 120x20",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/legend/ambientes/legend-ambiente-02",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "30x60",
         "60x60",
@@ -1610,7 +1610,7 @@
       "id": "new-calacatta",
       "nombre": "New calacatta",
       "descripcion": "Porcelánico · 60x120",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/new-calacatta/ambientes/new-calacatta-ambiente-01",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "60x120"
       ],
@@ -1780,7 +1780,7 @@
       "id": "polaris",
       "nombre": "Polaris",
       "descripcion": "Pasta Roja, Porcelánico · 30x60, 60x60, 60x120",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/polaris/ambientes/polaris-ambiente-01",
+      "imagen": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EImagen no disponible%3C/text%3E%3C/svg%3E",
       "formatos": [
         "30x60",
         "60x60",
