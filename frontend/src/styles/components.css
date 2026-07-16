@@ -225,15 +225,68 @@
   object-fit: cover;
 }
 
-/* Drift sutil (Ken Burns contenido) solo en el slide activo */
+/* Animación Ken Burns: zoom + paneo suave, único por slide */
 @media (prefers-reduced-motion: no-preference) {
   .hc-slide.active img {
-    animation: hcDrift 7s var(--ease-out) both;
+    animation: 7s var(--ease-out) both;
+    animation-fill-mode: both;
+    transform-origin: center;
   }
 
-  @keyframes hcDrift {
-    from { transform: scale(1); }
-    to { transform: scale(1.045); }
+  /* Slide 1 (Calacata/Baño): zoom in leve + paneo hacia arriba */
+  .hc-slide:nth-child(1).active img {
+    animation-name: hcDrift1;
+  }
+
+  @keyframes hcDrift1 {
+    from {
+      transform: scale(1) translate(0, 8px);
+    }
+    to {
+      transform: scale(1.08) translate(0, -12px);
+    }
+  }
+
+  /* Slide 2 (Crema marfil/Salón): zoom in medio + paneo derecha */
+  .hc-slide:nth-child(2).active img {
+    animation-name: hcDrift2;
+  }
+
+  @keyframes hcDrift2 {
+    from {
+      transform: scale(1) translate(-10px, 0);
+    }
+    to {
+      transform: scale(1.1) translate(8px, -5px);
+    }
+  }
+
+  /* Slide 3 (Tokyo/Cocina): zoom in suave + paneo izquierda-abajo */
+  .hc-slide:nth-child(3).active img {
+    animation-name: hcDrift3;
+  }
+
+  @keyframes hcDrift3 {
+    from {
+      transform: scale(1) translate(6px, -8px);
+    }
+    to {
+      transform: scale(1.075) translate(-10px, 5px);
+    }
+  }
+
+  /* Slide 4 (Morella/Terraza): zoom in elegante + paneo multidireccional */
+  .hc-slide:nth-child(4).active img {
+    animation-name: hcDrift4;
+  }
+
+  @keyframes hcDrift4 {
+    from {
+      transform: scale(1) translate(-8px, 6px);
+    }
+    to {
+      transform: scale(1.085) translate(10px, -10px);
+    }
   }
 
   .hc-slide.active .hc-content > * {

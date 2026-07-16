@@ -16,8 +16,9 @@ import ShippingBreakdown from '../components/ShippingBreakdown'
  */
 export default function CartPage() {
   const { cart, updateCajas, removeItem, clearCart } = useCart()
-  const summary = useCheckoutSummary()
   const { isAuthenticated } = useAuth()
+  const [postalCode, setPostalCode] = useState('')
+  const summary = useCheckoutSummary(postalCode || null)
   const [nif, setNif] = useState('')
   const [phone, setPhone] = useState('')
   const [submitting, setSubmitting] = useState(false)
@@ -98,84 +99,215 @@ export default function CartPage() {
         </p>
       ) : (
         <>
-          {/* Tabla de productos con edición de cantidades */}
-          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '30px' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid #ddd', backgroundColor: '#f5f5f5' }}>
-                <th style={{ padding: '12px', textAlign: 'left' }}>Producto</th>
-                <th style={{ padding: '12px', textAlign: 'center' }}>Cajas</th>
-                <th style={{ padding: '12px', textAlign: 'right' }}>Metros</th>
-                <th style={{ padding: '12px', textAlign: 'right' }}>Precio/caja</th>
-                <th style={{ padding: '12px', textAlign: 'right' }}>Total</th>
-                <th style={{ padding: '12px' }}></th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item) => {
-                const nombre = `${item.serieNombre} · ${item.formato}`
-                const metros = Math.round(item.cajas * item.metrosPorCaja * 100) / 100
-                return (
-                  <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ padding: '12px' }}>{nombre}</td>
-                    <td style={{ padding: '12px', textAlign: 'center' }}>
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <button
-                          onClick={() => updateCajas(item.id, item.cajas - 1)}
-                          style={qtyButtonStyle}
-                          aria-label={`Reducir cajas de ${nombre}`}
-                        >
-                          −
-                        </button>
-                        <span style={{ minWidth: '24px', display: 'inline-block' }}>{item.cajas}</span>
-                        <button
-                          onClick={() => updateCajas(item.id, item.cajas + 1)}
-                          style={qtyButtonStyle}
-                          aria-label={`Aumentar cajas de ${nombre}`}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </td>
-                    <td style={{ padding: '12px', textAlign: 'right' }}>{metros} m²</td>
-                    <td style={{ padding: '12px', textAlign: 'right' }}>€{item.precioVentaCaja.toFixed(2)}</td>
-                    <td style={{ padding: '12px', textAlign: 'right', fontWeight: '600' }}>
-                      €{(item.precioVentaCaja * item.cajas).toFixed(2)}
-                    </td>
-                    <td style={{ padding: '12px', textAlign: 'center' }}>
+          {/* Líneas de carrito: layout responsive con desglose de precios */}
+          <div style={{ marginBottom: '30px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {cart.map((item) => {
+              const nombre = `${item.serieNombre} · ${item.formato}`
+              const metrosTotales = Math.round(item.cajas * item.metrosPorCaja * 100) / 100
+              const precioM2 = Math.round((item.precioVentaCaja / item.metrosPorCaja) * 100) / 100
+              const subtotalLinea = item.precioVentaCaja * item.cajas
+
+              return (
+                <div
+                  key={item.id}
+                  style={{
+                    backgroundColor: '#fafafa',
+                    border: '1px solid #ddd',
+                    borderRadius: '8px',
+                    padding: '16px',
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '16px',
+                    alignItems: 'start',
+                  }}
+                >
+                  {/* Nombre del producto */}
+                  <div>
+                    <div style={{ fontWeight: '600', marginBottom: '4px' }}>{nombre}</div>
+                    <div style={{ fontSize: '13px', color: '#666' }}>
+                      {metrosTotales} m² totales
+                    </div>
+                  </div>
+
+                  {/* Precio por m² */}
+                  <div>
+                    <div style={{ fontSize: '12px', color: '#999', marginBottom: '4px', textTransform: 'uppercase' }}>
+                      Precio/m²
+                    </div>
+                    <div style={{ fontWeight: '600', fontSize: '16px' }}>
+                      €{precioM2.toFixed(2)}
+                    </div>
+                  </div>
+
+                  {/* Precio por caja */}
+                  <div>
+                    <div style={{ fontSize: '12px', color: '#999', marginBottom: '4px', textTransform: 'uppercase' }}>
+                      Precio/caja
+                    </div>
+                    <div style={{ fontWeight: '600', fontSize: '16px' }}>
+                      €{item.precioVentaCaja.toFixed(2)}
+                    </div>
+                  </div>
+
+                  {/* Control de cantidad: botones +/− */}
+                  <div>
+                    <div style={{ fontSize: '12px', color: '#999', marginBottom: '8px', textTransform: 'uppercase' }}>
+                      Cajas
+                    </div>
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0',
+                        border: '1px solid #ddd',
+                        borderRadius: '6px',
+                        overflow: 'hidden',
+                        backgroundColor: 'white',
+                      }}
+                    >
                       <button
-                        onClick={() => removeItem(item.id)}
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c62828', fontSize: '16px' }}
-                        aria-label={`Eliminar ${nombre}`}
-                        title="Eliminar"
+                        onClick={() => updateCajas(item.id, Math.max(1, item.cajas - 1))}
+                        style={{
+                          ...qtyButtonStyle,
+                          border: 'none',
+                          borderRadius: '0',
+                          flex: '0 0 40px',
+                          fontSize: '18px',
+                          backgroundColor: '#f5f5f5',
+                          cursor: 'pointer',
+                          ':hover': { backgroundColor: '#efefef' },
+                        }}
+                        aria-label={`Reducir cajas de ${nombre}`}
                       >
-                        🗑
+                        −
                       </button>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+                      <div
+                        style={{
+                          flex: '0 0 50px',
+                          textAlign: 'center',
+                          fontSize: '16px',
+                          fontWeight: '600',
+                          borderLeft: '1px solid #ddd',
+                          borderRight: '1px solid #ddd',
+                        }}
+                      >
+                        {item.cajas}
+                      </div>
+                      <button
+                        onClick={() => updateCajas(item.id, item.cajas + 1)}
+                        style={{
+                          ...qtyButtonStyle,
+                          border: 'none',
+                          borderRadius: '0',
+                          flex: '0 0 40px',
+                          fontSize: '18px',
+                          backgroundColor: '#f5f5f5',
+                          cursor: 'pointer',
+                          ':hover': { backgroundColor: '#efefef' },
+                        }}
+                        aria-label={`Aumentar cajas de ${nombre}`}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Subtotal de la línea */}
+                  <div>
+                    <div style={{ fontSize: '12px', color: '#999', marginBottom: '4px', textTransform: 'uppercase' }}>
+                      Subtotal
+                    </div>
+                    <div style={{ fontWeight: '700', fontSize: '18px', color: '#2E7D32' }}>
+                      €{subtotalLinea.toFixed(2)}
+                    </div>
+                  </div>
+
+                  {/* Botón eliminar */}
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', height: '100%' }}>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      style={{
+                        background: 'none',
+                        border: '1px solid #e0e0e0',
+                        cursor: 'pointer',
+                        color: '#c62828',
+                        fontSize: '14px',
+                        padding: '8px 12px',
+                        borderRadius: '4px',
+                        transition: 'all 0.2s',
+                      }}
+                      aria-label={`Eliminar ${nombre}`}
+                      title="Eliminar producto"
+                    >
+                      🗑 Eliminar
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Código postal para calcular recargo de transporte */}
+          <div style={{ backgroundColor: '#f0f8ff', padding: '16px', borderRadius: '8px', marginBottom: '20px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#1a1a1a' }}>
+              Código postal (para calcular envío)
+            </label>
+            <input
+              type="text"
+              placeholder="Ej: 28001"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value.slice(0, 5))}
+              maxLength={5}
+              style={{
+                display: 'block',
+                width: '100%',
+                padding: '10px',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+                fontSize: '14px',
+                boxSizing: 'border-box',
+              }}
+            />
+            {summary.isLongDistance && (
+              <p style={{ color: '#d9534f', fontSize: '13px', marginTop: '8px' }}>
+                📍 Destino a más de 500 km desde Onda: recargo de <strong>€5,00/m²</strong>
+              </p>
+            )}
+          </div>
 
           {/* Resumen de precios: derivado SIEMPRE del carrito actual */}
           <div style={{ backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px', marginBottom: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee', color: '#666', fontSize: '14px' }}>
               <span>{summary.totalCajas} {summary.totalCajas === 1 ? 'caja' : 'cajas'} · {summary.totalMetros} m² totales</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', paddingTop: '12px', borderBottom: '1px solid #eee' }}>
+
+            {/* Desglose de precios: neto + IVA */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', paddingTop: '12px', borderBottom: '1px solid #eee', color: '#666', fontSize: '14px' }}>
+              <span>Subtotal (neto):</span>
+              <span>€{summary.itemsNeto.toFixed(2)}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee', color: '#666', fontSize: '14px' }}>
+              <span>IVA (21%):</span>
+              <span>€{summary.taxAmount.toFixed(2)}</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee' }}>
               <span>Subtotal:</span>
               <span style={{ fontWeight: '600' }}>€{summary.itemsTotal.toFixed(2)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '12px', paddingBottom: '12px', borderBottom: '1px solid #eee' }}>
-              <span>IVA (21%):</span>
-              <span style={{ fontWeight: '600' }}>€{summary.taxAmount.toFixed(2)}</span>
+
+            {/* Envío */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', paddingTop: '12px', borderBottom: '1px solid #eee', color: '#666', fontSize: '14px' }}>
+              <span>Envío (base):</span>
+              <span>€{summary.shippingBase.toFixed(2)}</span>
             </div>
 
-            <ShippingBreakdown
-              baseShipping={summary.shippingBase}
-              distanceSurcharge={summary.distanceSurcharge}
-              totalShipping={summary.shippingTotal}
-            />
+            {/* Recargo condicional */}
+            {summary.distanceSurcharge > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid #eee', color: '#d9534f', fontSize: '14px' }}>
+                <span>Recargo distancia (+500km):</span>
+                <span style={{ fontWeight: '600' }}>€{summary.distanceSurcharge.toFixed(2)}</span>
+              </div>
+            )}
 
             <div style={{
               display: 'flex',
