@@ -9,13 +9,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <script>
-      // Redirigir rutas 404 a index.html para que React Router las maneje
-      sessionStorage.redirect = location.href;
+      // Store the URL to restore it after redirect
+      if (location.pathname !== '/newzelland-ceramicas/') {
+        sessionStorage.redirect = location.pathname + location.search + location.hash;
+        location.replace('/newzelland-ceramicas/index.html');
+      }
     </script>
-    <meta http-equiv="refresh" content="0;url=/newzelland-ceramicas/"></meta>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/newzelland-ceramicas/src/main.tsx"></script>
+    <script type="module">
+      // Restore the URL from sessionStorage
+      if (sessionStorage.redirect) {
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        // Use history.replaceState to update the URL without a reload
+        window.history.replaceState({}, '', redirect);
+      }
+    </script>
+    <script type="module" src="/newzelland-ceramicas/index.html"></script>
   </body>
 </html>
