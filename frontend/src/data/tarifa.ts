@@ -30,3 +30,16 @@ export function getFormatosConTarifa(serieNombre: string, formatos: string[]): T
     .map((formato) => getTarifaProducto(serieNombre, formato))
     .filter((p): p is TarifaProducto => p !== undefined)
 }
+
+/**
+ * Desglose de precios con IVA 21%.
+ * Los precios en tarifa.json son BRUTOS (con IVA incluido).
+ * Esta función calcula el neto: bruto / 1.21
+ */
+const round2 = (n: number) => Math.round(n * 100) / 100
+
+export function desglosarPreciosConIVA(precioBruto: number) {
+  const precioNeto = round2(precioBruto / 1.21)
+  const iva = round2(precioBruto - precioNeto)
+  return { precioNeto, iva, precioBruto }
+}

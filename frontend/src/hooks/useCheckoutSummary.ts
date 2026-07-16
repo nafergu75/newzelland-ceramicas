@@ -7,8 +7,10 @@ import { getCheckoutSummary, CheckoutSummary } from '../utils/checkoutSummary'
  *
  * No guarda copia propia: cualquier cambio de cantidades, altas o bajas en
  * el carrito re-renderiza a los consumidores con los totales recalculados.
+ *
+ * @param postalCode - Código postal del cliente (para calcular recargo de transporte)
  */
-export function useCheckoutSummary(): CheckoutSummary {
+export function useCheckoutSummary(postalCode: string | null = null): CheckoutSummary {
   const { cart } = useCart()
-  return useMemo(() => getCheckoutSummary(cart), [cart])
+  return useMemo(() => getCheckoutSummary(cart, postalCode), [cart, postalCode])
 }

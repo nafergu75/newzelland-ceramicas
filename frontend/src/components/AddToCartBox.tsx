@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Minus, Plus, ShoppingCartSimple, Check } from '@phosphor-icons/react'
 import type { Serie } from '../data/catalog'
-import { getFormatosConTarifa } from '../data/tarifa'
+import { getFormatosConTarifa, desglosarPreciosConIVA } from '../data/tarifa'
 import { useCart } from '../context/CartContext'
 import '../styles/components.css'
 
@@ -47,6 +47,9 @@ export default function AddToCartBox({ serie, compact = false }: AddToCartBoxPro
   const precioTotal = Math.round(seleccionado.precio_venta_caja * cajas * 100) / 100
 
   const handleAdd = () => {
+    const { precioNeto } = desglosarPreciosConIVA(seleccionado.precio_venta_caja)
+    const precioNetoM2 = desglosarPreciosConIVA(seleccionado.precio_venta_m2).precioNeto
+
     addBoxes(
       {
         id: seleccionado.id,
@@ -54,8 +57,9 @@ export default function AddToCartBox({ serie, compact = false }: AddToCartBoxPro
         serieNombre: serie.nombre,
         formato: seleccionado.formato,
         metrosPorCaja: seleccionado.metros_por_caja,
-        precioVentaCaja: seleccionado.precio_venta_caja,
-        precioVentaM2: seleccionado.precio_venta_m2,
+        precioVentaCaja: precioNeto,                              // Precio NETO
+        precioVentaCajaBruto: seleccionado.precio_venta_caja,     // Precio BRUTO (para mostrar)
+        precioVentaM2: precioNetoM2,                              // Precio/m² NETO
       },
       cajas
     )
