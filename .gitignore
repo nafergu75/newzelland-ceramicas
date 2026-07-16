@@ -30,3 +30,4 @@ venv/
 *.egg-info/
 dist/
 build/
+/whatsapp-agent-kit
