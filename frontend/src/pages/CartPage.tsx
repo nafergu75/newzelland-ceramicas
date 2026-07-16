@@ -251,7 +251,7 @@ export default function CartPage() {
                 />
                 {summary.isLongDistance && (
                   <p style={{ fontSize: '12px', color: '#d9534f', marginTop: '8px', margin: '8px 0 0 0' }}>
-                    📍 +500km: recargo €5/m²
+                    Recargo de envío +500km desde origen
                   </p>
                 )}
               </div>
