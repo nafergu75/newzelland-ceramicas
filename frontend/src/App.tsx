@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import Header from './components/Header'
+import CartToast from './components/CartToast'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import CollectionsPage from './pages/CollectionsPage'
@@ -44,6 +45,7 @@ export default function App() {
         <Router basename={import.meta.env.BASE_URL}>
           {/* Header global: visible en TODAS las páginas */}
           <Header />
+          <CartToast />
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />

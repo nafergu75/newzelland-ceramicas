@@ -879,19 +879,129 @@
   color: var(--accent);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-2);
   white-space: nowrap;
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
 }
 
 .quick-add-btn:hover {
   background-color: var(--accent);
   color: var(--on-accent);
   border-color: var(--accent);
+}
+
+.quick-add-btn:active {
+  transform: scale(0.97);
+}
+
+.quick-add-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.quick-add-label {
+  font-weight: var(--font-weight-semibold);
+}
+
+.quick-add-price {
+  font-size: 0.7rem;
+  color: var(--stone);
+}
+
+.quick-add-btn:hover .quick-add-price {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- BADGE DEL CARRITO (header) ---------- */
+.cart-icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.65rem;
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cart-badge {
+    animation: cartBadgePop 320ms var(--ease-out);
+  }
+
+  @keyframes cartBadgePop {
+    from { transform: scale(0.4); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* ---------- TOAST DE CARRITO (confirmación global) ----------
+   Centrado con left:50% + translateX(-50%) en TODOS los tamaños: el
+   componente Y (entrada deslizante) es lo único que cambia con
+   is-visible, así no hay dos reglas de "transform" por breakpoint
+   compitiendo por el mismo eje X. */
+.cart-toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-6);
+  transform: translate(-50%, 16px);
+  z-index: 50; /* por encima del contenido, por debajo de overlays modales */
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: min(92vw, 420px);
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--font-size-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.cart-toast svg {
+  flex-shrink: 0;
+  color: #4ADE80;
+}
+
+.cart-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 768px) {
+  .cart-toast {
+    bottom: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-toast {
+    transition: opacity 150ms linear;
+    transform: translate(-50%, 0) !important;
+  }
 }
 
 /* ---------- FORMULARIOS ---------- */

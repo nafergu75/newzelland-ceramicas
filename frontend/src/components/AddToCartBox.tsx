@@ -74,9 +74,13 @@ export default function AddToCartBox({ serie, compact = false }: AddToCartBoxPro
           handleAdd()
         }}
         aria-label={`Añadir una caja de ${serie.nombre} ${seleccionado.formato} al carrito`}
+        title="Añadir 1 caja al carrito"
       >
-        {justAdded ? <Check size={16} weight="bold" /> : <ShoppingCartSimple size={16} weight="regular" />}
-        {currency.format(seleccionado.precio_venta_caja)} / caja
+        {justAdded ? <Check size={18} weight="bold" /> : <ShoppingCartSimple size={18} weight="regular" />}
+        <span className="quick-add-text">
+          <span className="quick-add-label">{justAdded ? 'Añadido' : 'Añadir caja'}</span>
+          <span className="quick-add-price">{currency.format(seleccionado.precio_venta_caja)} / caja</span>
+        </span>
       </button>
     )
   }

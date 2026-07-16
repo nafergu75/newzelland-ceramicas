@@ -10,9 +10,20 @@ import type { CartItem } from '../utils/checkoutSummary'
  * directamente ni guardarse una copia propia del carrito.
  */
 
+/** Evento de la última adición al carrito, para feedback tipo toast. `key` cambia
+ *  en cada llamada (aunque se repita el mismo producto) para poder re-disparar la animación. */
+export interface CartAddedEvent {
+  key: number
+  cajas: number
+  metros: number
+  serieNombre: string
+  formato: string
+}
+
 interface CartContextValue {
   cart: CartItem[]
   cartCount: number
+  lastAdded: CartAddedEvent | null
   addBoxes: (product: Omit<CartItem, 'cajas'>, cajas: number) => void
   updateCajas: (id: string, cajas: number) => void
   removeItem: (id: string) => void
@@ -34,6 +45,7 @@ function readStoredCart(): CartItem[] {
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>(readStoredCart)
+  const [lastAdded, setLastAdded] = useState<CartAddedEvent | null>(null)
 
   // Persistir cada cambio
   useEffect(() => {
@@ -60,6 +72,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, { ...product, cajas }]
     })
+    setLastAdded({
+      key: Date.now(),
+      cajas,
+      metros: Math.round(cajas * product.metrosPorCaja * 100) / 100,
+      serieNombre: product.serieNombre,
+      formato: product.formato,
+    })
   }
 
   const updateCajas = (id: string, cajas: number) => {
@@ -79,7 +98,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const cartCount = cart.reduce((sum, item) => sum + item.cajas, 0)
 
   return (
-    <CartContext.Provider value={{ cart, cartCount, addBoxes, updateCajas, removeItem, clearCart }}>
+    <CartContext.Provider value={{ cart, cartCount, lastAdded, addBoxes, updateCajas, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   )

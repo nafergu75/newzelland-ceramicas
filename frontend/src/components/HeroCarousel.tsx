@@ -39,12 +39,12 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLink: '/collections/calacata',
   },
   {
-    image: `${CLOUD}/diamond/ambientes/diamond-ambiente-01`,
+    image: `${CLOUD}/crema-marfil/ambientes/crema-marfil-ambiente-01`,
     eyebrow: 'Salón',
-    title: 'Diamond, brillo de gran formato',
-    subtitle: 'Porcelánico pulido 60x120 que amplifica la luz del salón.',
+    title: 'Crema marfil, calidez sin juntas',
+    subtitle: 'Porcelánico brillo 60x120 que multiplica la luz natural del salón.',
     ctaText: 'Ver colección',
-    ctaLink: '/collections/diamond',
+    ctaLink: '/collections/crema-marfil',
   },
   {
     image: `${CLOUD}/tokyo/ambientes/tokyo-ambiente-01`,

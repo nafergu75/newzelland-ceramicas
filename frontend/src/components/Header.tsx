@@ -72,8 +72,15 @@ export default function Header() {
             onClick={closeMenu}
             style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            <ShoppingBag size={18} weight="regular" />
-            Carrito{cartCount > 0 ? ` (${cartCount})` : ''}
+            <span className="cart-icon-wrap">
+              <ShoppingBag size={18} weight="regular" />
+              {cartCount > 0 && (
+                <span key={cartCount} className="cart-badge">
+                  {cartCount}
+                </span>
+              )}
+            </span>
+            Carrito
           </Link>
 
           {/*
