@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redireccionando...</title>
     <script>
-      // Guardar URL original y redirigir a raíz para que React Router la maneje
-      sessionStorage.redirect = location.pathname + location.search + location.hash;
-      location.replace('/newzelland-ceramicas/');
+      // Redirigir al index.html con la ruta original en el hash
+      var path = location.pathname;
+      if (path.startsWith('/newzelland-ceramicas')) {
+        path = path.substring('/newzelland-ceramicas'.length);
+      }
+      location.replace('/newzelland-ceramicas/#' + path + location.search);
     </script>
   </head>
   <body>

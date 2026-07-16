@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { ReactNode, useEffect } from 'react'
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { ReactNode } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import Header from './components/Header'
@@ -36,74 +36,6 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-function AppContent() {
-  // Manejar redirect desde sessionStorage (GitHub Pages 404 redirect)
-  useEffect(() => {
-    const redirect = sessionStorage.redirect
-    if (redirect) {
-      delete sessionStorage.redirect
-      // Redirigir a la URL original guardada
-      window.location.href = redirect
-    }
-  }, [])
-
-  return (
-    <>
-      {/* Header global: visible en TODAS las páginas */}
-      <Header />
-      <CartToast />
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/collections" element={<CollectionsPage />} />
-        <Route path="/collections/:slug" element={<CollectionsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/downloads" element={<DownloadsPage />} />
-        {/* Catálogo y Colecciones eran la misma vista duplicada; unificado en /collections */}
-        <Route path="/catalog" element={<Navigate to="/collections" replace />} />
-        <Route path="/packing" element={<PackingPage />} />
-        <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotrosPage />} />
-
-        {/* Auth Routes */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/registrarse" element={<RegisterPage />} />
-        <Route path="/register" element={<Navigate to="/registrarse" replace />} />
-        <Route path="/registro" element={<Navigate to="/registrarse" replace />} />
-        <Route path="/olvide-contrasena" element={<ForgotPasswordPage />} />
-        <Route path="/forgot-password" element={<Navigate to="/olvide-contrasena" replace />} />
-        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-        <Route path="/confirm-email/:token" element={<ConfirmEmailPage />} />
-
-        {/* El carrito es público (vive en el navegador); el checkout exige login */}
-        <Route path="/cart" element={<CartPage />} />
-
-        {/* Protected Routes */}
-        <Route
-          path="/mi-cuenta"
-          element={
-            <ProtectedRoute>
-              <AccountDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/dashboard" element={<Navigate to="/mi-cuenta" replace />} />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </>
-  )
-}
-
 export default function App() {
   return (
     <AuthProvider>
@@ -115,7 +47,57 @@ export default function App() {
           reconoce ninguna ruta y la app queda en blanco.
         */}
         <Router basename={import.meta.env.BASE_URL}>
-          <AppContent />
+          {/* Header global: visible en TODAS las páginas */}
+          <Header />
+          <CartToast />
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/collections" element={<CollectionsPage />} />
+            <Route path="/collections/:slug" element={<CollectionsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+            {/* Catálogo y Colecciones eran la misma vista duplicada; unificado en /collections */}
+            <Route path="/catalog" element={<Navigate to="/collections" replace />} />
+            <Route path="/packing" element={<PackingPage />} />
+            <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotrosPage />} />
+
+            {/* Auth Routes */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registrarse" element={<RegisterPage />} />
+            <Route path="/register" element={<Navigate to="/registrarse" replace />} />
+            <Route path="/registro" element={<Navigate to="/registrarse" replace />} />
+            <Route path="/olvide-contrasena" element={<ForgotPasswordPage />} />
+            <Route path="/forgot-password" element={<Navigate to="/olvide-contrasena" replace />} />
+            <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+            <Route path="/confirm-email/:token" element={<ConfirmEmailPage />} />
+
+            {/* El carrito es público (vive en el navegador); el checkout exige login */}
+            <Route path="/cart" element={<CartPage />} />
+
+            {/* Protected Routes */}
+            <Route
+              path="/mi-cuenta"
+              element={
+                <ProtectedRoute>
+                  <AccountDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/dashboard" element={<Navigate to="/mi-cuenta" replace />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </Router>
       </CartProvider>
     </AuthProvider>
