@@ -37,19 +37,13 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
 }
 
 function AppContent() {
-  const { useNavigate } = { useNavigate: () => import('react-router-dom').then(m => m.useNavigate()) }
-
   // Manejar redirect desde sessionStorage (GitHub Pages 404 redirect)
   useEffect(() => {
     const redirect = sessionStorage.redirect
     if (redirect) {
       delete sessionStorage.redirect
-      // Extraer la ruta después de /newzelland-ceramicas/
-      const path = redirect.replace('/newzelland-ceramicas', '')
-      // Usar window.location si es necesario un hard redirect
-      if (path && path !== '/') {
-        window.location.href = redirect
-      }
+      // Redirigir a la URL original guardada
+      window.location.href = redirect
     }
   }, [])
 
