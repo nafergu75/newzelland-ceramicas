@@ -13,8 +13,11 @@
       if (sessionStorage.redirect) {
         const redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
-        // Usar replace para que React Router maneje la navegación
-        window.location.replace(redirect.split(window.location.host)[1]);
+        const path = redirect.split(window.location.host)[1];
+        const basename = '/newzelland-ceramicas/';
+        // Extraer ruta después del basename para React Router
+        const routePath = path.startsWith(basename) ? path.slice(basename.length - 1) : path;
+        window.location.replace(routePath);
       }
     </script>
     <script type="module" crossorigin src="/newzelland-ceramicas/assets/index-DI_l6UEO.js"></script>
