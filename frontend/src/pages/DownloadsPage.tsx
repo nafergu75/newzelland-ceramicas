@@ -40,7 +40,7 @@ export default function DownloadsPage() {
         {/* Split layout: Para Profesionales + Colecciones */}
         <section style={{ padding: 'var(--space-24) 0' }}>
           <div className="container" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr', gap: 'var(--space-24)', alignItems: 'start' }}>
-            {/* Left: Professional narrative */}
+            {/* Left: Professional narrative + Filter */}
             <aside style={{ paddingTop: 'var(--space-8)' }}>
               <h2 style={{
                 fontFamily: 'var(--font-serif)',
@@ -87,6 +87,59 @@ export default function DownloadsPage() {
                   Solicitar asesoramiento
                 </button>
               </a>
+
+              {/* Family filter - moved here */}
+              <div style={{ marginTop: 'var(--space-16)' }}>
+                <p style={{
+                  fontSize: 'var(--font-size-xs)',
+                  color: 'var(--stone)',
+                  marginBottom: 'var(--space-4)',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>
+                  Filtrar por familia
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                  <button
+                    onClick={() => setSelectedFamily(null)}
+                    style={{
+                      padding: 'var(--space-3) var(--space-4)',
+                      border: !selectedFamily ? 'none' : '1px solid var(--line)',
+                      background: !selectedFamily ? 'var(--accent)' : 'transparent',
+                      color: !selectedFamily ? 'var(--on-accent)' : 'var(--ink)',
+                      fontSize: 'var(--font-size-sm)',
+                      cursor: 'pointer',
+                      borderRadius: '2px',
+                      fontWeight: !selectedFamily ? '600' : '400',
+                      transition: 'all var(--transition-base)',
+                      textAlign: 'left'
+                    }}
+                  >
+                    Todas las familias
+                  </button>
+                  {families.map((family) => (
+                    <button
+                      key={family}
+                      onClick={() => setSelectedFamily(family)}
+                      style={{
+                        padding: 'var(--space-3) var(--space-4)',
+                        border: selectedFamily === family ? 'none' : '1px solid var(--line)',
+                        background: selectedFamily === family ? 'var(--accent)' : 'transparent',
+                        color: selectedFamily === family ? 'var(--on-accent)' : 'var(--ink)',
+                        fontSize: 'var(--font-size-sm)',
+                        cursor: 'pointer',
+                        borderRadius: '2px',
+                        fontWeight: selectedFamily === family ? '600' : '400',
+                        transition: 'all var(--transition-base)',
+                        textAlign: 'left'
+                      }}
+                    >
+                      {family.charAt(0).toUpperCase() + family.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </aside>
 
             {/* Right: Search + Grid */}
@@ -108,57 +161,6 @@ export default function DownloadsPage() {
                     background: 'var(--surface)'
                   }}
                 />
-              </div>
-
-              {/* Family filter */}
-              <div style={{ marginBottom: 'var(--space-12)' }}>
-                <p style={{
-                  fontSize: 'var(--font-size-xs)',
-                  color: 'var(--stone)',
-                  marginBottom: 'var(--space-3)',
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
-                }}>
-                  Filtrar por familia
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
-                  <button
-                    onClick={() => setSelectedFamily(null)}
-                    style={{
-                      padding: 'var(--space-2) var(--space-4)',
-                      border: !selectedFamily ? 'none' : '1px solid var(--line)',
-                      background: !selectedFamily ? 'var(--accent)' : 'transparent',
-                      color: !selectedFamily ? 'var(--on-accent)' : 'var(--ink)',
-                      fontSize: 'var(--font-size-sm)',
-                      cursor: 'pointer',
-                      borderRadius: '2px',
-                      fontWeight: !selectedFamily ? '600' : '400',
-                      transition: 'all var(--transition-base)'
-                    }}
-                  >
-                    Todas
-                  </button>
-                  {families.map((family) => (
-                    <button
-                      key={family}
-                      onClick={() => setSelectedFamily(family)}
-                      style={{
-                        padding: 'var(--space-2) var(--space-4)',
-                        border: selectedFamily === family ? 'none' : '1px solid var(--line)',
-                        background: selectedFamily === family ? 'var(--accent)' : 'transparent',
-                        color: selectedFamily === family ? 'var(--on-accent)' : 'var(--ink)',
-                        fontSize: 'var(--font-size-sm)',
-                        cursor: 'pointer',
-                        borderRadius: '2px',
-                        fontWeight: selectedFamily === family ? '600' : '400',
-                        transition: 'all var(--transition-base)'
-                      }}
-                    >
-                      {family.charAt(0).toUpperCase() + family.slice(1)}
-                    </button>
-                  ))}
-                </div>
               </div>
 
               {/* Grid con imágenes */}
