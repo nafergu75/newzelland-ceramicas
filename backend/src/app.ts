@@ -8,6 +8,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { pageViewLogger } from './middleware/logger';
 
 import authRoutes from './routes/auth';
+import accountRoutes from './routes/account';
 import userRoutes from './routes/user';
 import checkoutRoutes from './routes/checkout';
 import adminRoutes from './routes/admin';
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(pageViewLogger);
 
 app.use('/api/auth', authRoutes);
+app.use('/api/account', accountRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/admin', adminRoutes);

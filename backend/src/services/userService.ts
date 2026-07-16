@@ -8,24 +8,48 @@ export const createUser = async (
   email: string,
   password: string,
   province: string,
-  acceptsMarketing: boolean = false
+  acceptsMarketing: boolean = false,
+  phone?: string
 ): Promise<User> => {
-  const id = uuidv4();
-  const passwordHash = await bcryptjs.hash(password, 10);
+  try {
+    console.log('🔐 [USER SERVICE] Hasheando contraseña...');
+    const id = uuidv4();
+    const passwordHash = await bcryptjs.hash(password, 10);
+    console.log('✅ [USER SERVICE] Contraseña hasheada. Insertando en BD...');
 
-  const result = await query(
-    `INSERT INTO users (id, name, email, password_hash, province, accepts_marketing)
-     VALUES ($1, $2, $3, $4, $5, $6)
-     RETURNING *`,
-    [id, name, email, passwordHash, province, acceptsMarketing]
-  );
+    const result = await query(
+      `INSERT INTO users (id, name, email, password_hash, province, accepts_marketing, phone, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+       RETURNING *`,
+      [id, name, email, passwordHash, province, acceptsMarketing, phone || null]
+    );
 
-  return mapUserRow(result.rows[0]);
+    if (!result.rows || result.rows.length === 0) {
+      throw new Error('User creation returned no rows');
+    }
+
+    console.log('✅ [USER SERVICE] Usuario insertado correctamente en BD');
+    return mapUserRow(result.rows[0]);
+
+  } catch (error: any) {
+    console.error('❌ [USER SERVICE] Error al crear usuario:', {
+      message: error.message,
+      code: error.code,
+      detail: error.detail,
+      constraint: error.constraint,
+    });
+    throw error;
+  }
 };
 
 export const getUserByEmail = async (email: string): Promise<User | null> => {
-  const result = await query(`SELECT * FROM users WHERE email = $1`, [email]);
-  return result.rows.length > 0 ? mapUserRow(result.rows[0]) : null;
+  try {
+    const result = await query(`SELECT * FROM users WHERE email = $1`, [email]);
+    return result.rows.length > 0 ? mapUserRow(result.rows[0]) : null;
+  } catch (error: any) {
+    console.error('❌ [USER SERVICE] Error al buscar usuario por email:', error.message);
+    throw error;
+  }
 };
 
 export const getUserById = async (id: string): Promise<User | null> => {

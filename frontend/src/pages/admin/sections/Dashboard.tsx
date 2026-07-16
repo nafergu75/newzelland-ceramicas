@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { adminService } from '../../../services/adminService'
 import { AdminStats } from '../../../types/admin'
-import { TrendingUp, Package, Users, AlertCircle } from '@phosphor-icons/react'
+import { TrendUp, Package, Users, Warning } from '@phosphor-icons/react'
 
 export default function Dashboard() {
   const [stats, setStats] = useState<AdminStats | null>(null)
@@ -32,10 +32,10 @@ export default function Dashboard() {
     <div>
       {/* KPIs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-        <KPICard label="Ingresos Totales" value={`€${stats.totalIngresos.toFixed(2)}`} icon={<TrendingUp size={32} />} color="#4caf50" />
+        <KPICard label="Ingresos Totales" value={`€${stats.totalIngresos.toFixed(2)}`} icon={<TrendUp size={32} />} color="#4caf50" />
         <KPICard label="Total Pedidos" value={stats.totalPedidos.toString()} icon={<Package size={32} />} color="#2196f3" />
         <KPICard label="Clientes Nuevos" value={stats.clientesNuevos.toString()} icon={<Users size={32} />} color="#ff9800" />
-        <KPICard label="Ticket Promedio" value={`€${stats.ticketPromedio.toFixed(2)}`} icon={<TrendingUp size={32} />} color="#9c27b0" />
+        <KPICard label="Ticket Promedio" value={`€${stats.ticketPromedio.toFixed(2)}`} icon={<TrendUp size={32} />} color="#9c27b0" />
       </div>
 
       {/* Alerts */}
@@ -45,7 +45,7 @@ export default function Dashboard() {
             title="Mensajes sin Responder"
             count={stats.mensajesSinResponder}
             color="#ff9800"
-            icon={<AlertCircle size={24} />}
+            icon={<Warning size={24} />}
           />
         )}
         {stats.pedidosPendientes > 0 && (

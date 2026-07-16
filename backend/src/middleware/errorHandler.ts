@@ -6,22 +6,30 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.error('Error:', err);
+  console.error('❌ ERROR CAPTURADO:', {
+    timestamp: new Date().toISOString(),
+    path: req.path,
+    method: req.method,
+    statusCode: err.status || err.statusCode || 500,
+    message: err.message,
+    code: err.code,
+    detail: err.detail,
+    constraint: err.constraint,
+    stack: err.stack,
+  });
 
-  if (err.name === 'ValidationError') {
-    return res.status(400).json({
-      error: 'Validation error',
-      details: err.details,
-    });
-  }
+  const statusCode = err.statusCode || err.status || 500;
+  const message = err.message || 'Internal server error';
 
-  if (err.code === '23505') {
-    return res.status(409).json({
-      error: 'Resource already exists',
-    });
-  }
-
-  return res.status(500).json({
-    error: 'Internal server error',
+  res.status(statusCode).json({
+    success: false,
+    error: message,
+    code: err.code || 'INTERNAL_ERROR',
+    ...(process.env.NODE_ENV === 'development' && {
+      stack: err.stack,
+      details: err.detail,
+    }),
   });
 };
+
+export default errorHandler;

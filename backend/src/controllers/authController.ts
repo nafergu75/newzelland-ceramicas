@@ -5,6 +5,7 @@ import {
   getUserByEmail,
   verifyPassword,
   markEmailVerified,
+  getUserById,
 } from '../services/userService';
 import { sendVerificationEmail } from '../services/emailService';
 import jwt, { SignOptions } from 'jsonwebtoken';
@@ -13,11 +14,15 @@ import { query } from '../db/connection';
 import Joi from 'joi';
 
 const registerSchema = Joi.object({
-  name: Joi.string().required().min(3),
+  nombre: Joi.string().required().min(3).max(50),
+  apellidos: Joi.string().required().min(3).max(50),
+  empresa: Joi.string().optional().max(100),
   email: Joi.string().email().required(),
-  province: Joi.string().required(),
-  password: Joi.string().required().min(8),
-  acceptsMarketing: Joi.boolean().default(false),
+  telefono: Joi.string().required().min(7).max(20),
+  password: Joi.string().required().min(8).max(100),
+  terminos: Joi.boolean().required().valid(true),
+  privacidad: Joi.boolean().required().valid(true),
+  newsletter: Joi.boolean().default(false),
 });
 
 const loginSchema = Joi.object({
@@ -31,23 +36,46 @@ export const register = async (
   next: NextFunction
 ) => {
   try {
+    console.log('📝 [REGISTER] Iniciando registro con datos:', {
+      nombre: req.body.nombre,
+      email: req.body.email,
+      empresa: req.body.empresa,
+    });
+
     const { error, value } = registerSchema.validate(req.body);
     if (error) {
-      return res.status(400).json({ error: error.details[0].message });
+      console.warn('⚠️ [REGISTER] Validación fallida:', error.details[0].message);
+      return res.status(400).json({
+        error: error.details[0].message,
+        code: 'VALIDATION_ERROR',
+      });
     }
 
+    console.log('✅ [REGISTER] Validación exitosa. Verificando email duplicado...');
     const existingUser = await getUserByEmail(value.email);
     if (existingUser) {
-      return res.status(409).json({ error: 'Email already registered' });
+      console.warn('⚠️ [REGISTER] Email ya registrado:', value.email);
+      return res.status(409).json({
+        error: 'Email already registered',
+        code: 'EMAIL_ALREADY_EXISTS',
+      });
     }
 
+    console.log('✅ [REGISTER] Email disponible. Creando usuario en BD...');
+    const fullName = `${value.nombre} ${value.apellidos}`;
     const user = await createUser(
-      value.name,
+      fullName,
       value.email,
       value.password,
-      value.province,
-      value.acceptsMarketing
+      value.empresa || 'N/A',
+      value.newsletter,
+      value.telefono
     );
+    console.log('✅ [REGISTER] Usuario creado exitosamente. ID:', user.id);
+
+    // En desarrollo: verificar email automáticamente
+    await markEmailVerified(user.id);
+    console.log('✅ [REGISTER] Email verificado automáticamente (desarrollo)');
 
     const verificationToken = uuidv4();
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
@@ -57,6 +85,7 @@ export const register = async (
        VALUES ($1, $2, $3)`,
       [user.id, verificationToken, expiresAt]
     );
+    console.log('✅ [REGISTER] Token de verificación creado');
 
     try {
       await sendVerificationEmail(
@@ -64,15 +93,25 @@ export const register = async (
         verificationToken,
         process.env.FRONTEND_URL!
       );
-    } catch (emailError) {
-      console.warn('Email sending failed, but continuing:', emailError);
+      console.log('✅ [REGISTER] Email de verificación enviado a:', user.email);
+    } catch (emailError: any) {
+      console.warn('⚠️ [REGISTER] Email no se pudo enviar (continuando):', emailError.message);
     }
 
+    console.log('✅ [REGISTER] Registro completado exitosamente');
     return res.status(201).json({
+      success: true,
       userId: user.id,
       message: 'Registration successful. Check your email to verify.',
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error('❌ [REGISTER] ERROR NO CONTROLADO:', {
+      message: error.message,
+      code: error.code,
+      detail: error.detail,
+      constraint: error.constraint,
+      stack: error.stack,
+    });
     next(error);
   }
 };
@@ -173,6 +212,38 @@ export const logout = async (
 ) => {
   try {
     return res.json({ success: true, message: 'Logged out successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getMe = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (!req.user?.id) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const user = await getUserById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    return res.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      nif: user.nif,
+      province: user.province,
+      role: user.role,
+      acceptsMarketing: user.acceptsMarketing,
+      billingAddress: user.billingAddress,
+      shippingAddress: user.shippingAddress,
+    });
   } catch (error) {
     next(error);
   }

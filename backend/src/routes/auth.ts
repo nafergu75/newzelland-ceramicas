@@ -4,6 +4,7 @@ import {
   verifyEmail,
   login,
   logout,
+  getMe,
 } from '../controllers/authController';
 import { authMiddleware } from '../middleware/auth';
 
@@ -13,5 +14,6 @@ router.post('/register', register);
 router.get('/verify-email', verifyEmail);
 router.post('/login', login);
 router.post('/logout', authMiddleware, logout);
+router.get('/me', authMiddleware, getMe);
 
 export default router;
