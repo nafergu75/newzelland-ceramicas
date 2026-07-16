@@ -512,16 +512,12 @@
   color: var(--on-accent);
 }
 
-/* ---------- MOSAICO DE COLECCIONES (grid asimétrico 2+1+1) ---------- */
+/* ---------- MOSAICO DE COLECCIONES (grid simétrico 3x1) ---------- */
 .feature-mosaic {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 320px 320px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 320px;
   gap: var(--space-4);
-}
-
-.feature-mosaic .mosaic-item:first-child {
-  grid-row: span 2;
 }
 
 .mosaic-item {
