@@ -2,6 +2,7 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.env-whatsapp
 .DS_Store
 *.log
 dist/
@@ -17,3 +18,15 @@ assets/descargas/
 generales/paneles-tecnicos.pdf
 melissa/melissa-panel-tecnico.pdf
 assets/descargas_actualizados/
+
+# AgentKit
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/

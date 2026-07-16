@@ -1,0 +1,35 @@
+# Configuración del negocio - Newzeland Cerámicas
+# Generado por AgentKit
+
+negocio:
+  nombre: "Newzeland Cerámicas"
+  descripcion: "Venta y distribución de productos cerámicos para proyectos de construcción, reforma y diseño de interiores/exteriores. Incluye pavimentos, revestimientos, azulejos y soluciones decorativas y técnicas."
+  horario: "Lunes a viernes de 9:00 a 18:00, sábados de 10:00 a 14:00"
+
+agente:
+  nombre: "Asesor Newzeland"
+  tono: "Profesional y formal con trato amable y cercano"
+  casos_de_uso:
+    - "Responder preguntas frecuentes sobre productos"
+    - "Agendar citas y consultas de asesoramiento"
+    - "Calificar y atender leads"
+    - "Soporte post-venta"
+
+clientes:
+  - "Particulares que reforman su vivienda"
+  - "Constructores y reformistas"
+  - "Arquitectos e interioristas"
+  - "Empresas de obra nueva"
+  - "Comercios y locales"
+
+productos:
+  - "Pavimentos cerámicos"
+  - "Revestimientos"
+  - "Azulejos"
+  - "Soluciones decorativas"
+  - "Soluciones técnicas"
+
+metadata:
+  creado: "2026-07-16"
+  version: "1.0"
+  proveedor_whatsapp: "whapi.cloud"
