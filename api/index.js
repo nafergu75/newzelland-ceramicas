@@ -24,6 +24,106 @@ app.use((req, res, next) => {
 });
 
 // ============================================
+// RUTAS DE AUTENTICACIÓN
+// ============================================
+
+// Rutas de auth básicas (para Vercel)
+// En producción, estos endpoint deben conectar a PostgreSQL
+app.post('/api/auth/register', async (req, res) => {
+    try {
+        const { nombre, apellidos, empresa, email, telefono, password, terminos, privacidad, newsletter } = req.body;
+
+        // Validación básica
+        if (!nombre || !apellidos || !email || !telefono || !password) {
+            return res.status(400).json({
+                error: 'Datos incompletos',
+                message: 'Todos los campos requeridos deben ser completados'
+            });
+        }
+
+        if (password.length < 8) {
+            return res.status(400).json({
+                error: 'Contraseña debe tener al menos 8 caracteres',
+                message: 'Contraseña debe tener al menos 8 caracteres'
+            });
+        }
+
+        if (!terminos || !privacidad) {
+            return res.status(400).json({
+                error: 'Debes aceptar términos y privacidad',
+                message: 'Debes aceptar términos y privacidad'
+            });
+        }
+
+        // Aquí iría: guardar en BD, hashear contraseña, enviar email
+        console.log(`[AUTH] Registro solicitado: ${email}`);
+
+        // Por ahora, simular éxito (EN PRODUCCIÓN: conectar a BD PostgreSQL)
+        res.status(201).json({
+            success: true,
+            userId: `user_${Date.now()}`,
+            message: 'Registro exitoso. Revisa tu email para confirmar.'
+        });
+
+    } catch (error) {
+        console.error('[AUTH] Error en register:', error);
+        res.status(500).json({
+            error: 'Error al registrar',
+            message: error.message
+        });
+    }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({
+                error: 'Email y contraseña requeridos',
+                message: 'Email y contraseña requeridos'
+            });
+        }
+
+        // Aquí iría: verificar en BD, comparar contraseña hasheada
+        console.log(`[AUTH] Login solicitado: ${email}`);
+
+        // Por ahora, simular éxito (EN PRODUCCIÓN: conectar a BD PostgreSQL)
+        res.json({
+            token: `token_${Date.now()}`,
+            user: {
+                id: `user_${Date.now()}`,
+                name: 'Usuario',
+                email: email,
+                role: 'customer'
+            }
+        });
+
+    } catch (error) {
+        console.error('[AUTH] Error en login:', error);
+        res.status(500).json({
+            error: 'Error al iniciar sesión',
+            message: error.message
+        });
+    }
+});
+
+app.get('/api/auth/me', (req, res) => {
+    const token = req.headers.authorization?.replace('Bearer ', '');
+
+    if (!token) {
+        return res.status(401).json({ error: 'No autorizado' });
+    }
+
+    res.json({
+        id: 'user_123',
+        name: 'Usuario',
+        email: 'usuario@example.com',
+        role: 'customer'
+    });
+});
+
+// ============================================
 // RUTAS - Con /api prefix (como llegan de Vercel)
 // ============================================
 
