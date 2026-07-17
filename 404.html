@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redireccionando...</title>
     <script>
-      // Redirigir al index.html con la ruta original en el hash
+      // Detect which domain we're on and redirect appropriately
       var path = location.pathname;
+      var basePath = '/';
+
+      // GitHub Pages: remove /newzelland-ceramicas prefix if present
+      if (location.hostname.includes('github.io')) {
+        if (path.startsWith('/newzelland-ceramicas')) {
+          path = path.substring('/newzelland-ceramicas'.length);
+        }
+        basePath = '/newzelland-ceramicas/';
+      }
+
+      // Vercel (or any other domain): use root domain with /
+      // Just remove /newzelland-ceramicas if accidentally present
       if (path.startsWith('/newzelland-ceramicas')) {
         path = path.substring('/newzelland-ceramicas'.length);
       }
-      location.replace('/newzelland-ceramicas/#' + path + location.search);
+
+      // Redirect to the correct base path with hash routing
+      location.replace(basePath + '#' + path + location.search);
     </script>
   </head>
   <body>
