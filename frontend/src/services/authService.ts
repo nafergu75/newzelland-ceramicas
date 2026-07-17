@@ -53,7 +53,8 @@ export const authService = {
       })
       return response.data
     } catch (error: any) {
-      throw new Error(error.response?.data?.message || 'Error al registrar')
+      const errorMsg = error.response?.data?.message || error.response?.data?.error || error.message || 'Error al registrar'
+      throw new Error(errorMsg)
     }
   },
 

@@ -24,6 +24,7 @@ export const errorHandler = (
   res.status(statusCode).json({
     success: false,
     error: message,
+    message: message,
     code: err.code || 'INTERNAL_ERROR',
     ...(process.env.NODE_ENV === 'development' && {
       stack: err.stack,
