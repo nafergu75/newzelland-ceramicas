@@ -9,9 +9,9 @@ import { series, getSerieById } from '../data/catalog'
 import '../styles/components.css'
 
 /** Series con foto potente para el mosaico de portada */
-const MOSAIC_IDS = ['calacata', 'morella', 'atlas']
+const MOSAIC_IDS = ['calacata', 'morella', 'atlas', 'bali-c3', 'brandon', 'crema-marfil']
 /** Series populares para la fila horizontal */
-const POPULAR_IDS = ['diamond', 'berna', 'provence', 'crema-marfil', 'travertino-caliza-brillo', 'tokyo']
+const POPULAR_IDS = ['diamond', 'berna', 'provence', 'carrara', 'travertino-caliza-brillo', 'tokyo']
 
 export default function HomePage() {
   const mosaicSeries = MOSAIC_IDS.map(getSerieById).filter(Boolean) as NonNullable<ReturnType<typeof getSerieById>>[]
