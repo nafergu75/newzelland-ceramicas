@@ -5,6 +5,9 @@
 
 const express = require('express');
 const cors = require('cors');
+const { Pool } = require('pg');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
 // Load environment variables
@@ -13,391 +16,352 @@ dotenv.config({ path: '.env.local' });
 
 const app = express();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// ============================================
+// DATABASE CONNECTION
+// ============================================
 
-// Debug middleware to log incoming requests
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
-    next();
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT || '5432'),
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+});
+
+pool.on('error', (err) => {
+  console.error('Database connection error:', err);
 });
 
 // ============================================
-// RUTAS DE AUTENTICACIÓN
+// MIDDLEWARE
 // ============================================
 
-// Rutas de auth básicas (para Vercel)
-// En producción, estos endpoint deben conectar a PostgreSQL
+app.use(cors());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// Debug middleware
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+  next();
+});
+
+// ============================================
+// AUTH MIDDLEWARE
+// ============================================
+
+const authMiddleware = (req, res, next) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  if (!token) {
+    return res.status(401).json({ error: 'No autorizado' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ error: 'Token inválido' });
+  }
+};
+
+// ============================================
+// AUTHENTICATION ROUTES
+// ============================================
+
 app.post('/api/auth/register', async (req, res) => {
-    try {
-        const { nombre, apellidos, empresa, email, telefono, password, terminos, privacidad, newsletter } = req.body;
+  try {
+    const { nombre, apellidos, empresa, email, telefono, password, terminos, privacidad, newsletter } = req.body;
 
-        // Validación básica
-        if (!nombre || !apellidos || !email || !telefono || !password) {
-            return res.status(400).json({
-                error: 'Datos incompletos',
-                message: 'Todos los campos requeridos deben ser completados'
-            });
-        }
-
-        if (password.length < 8) {
-            return res.status(400).json({
-                error: 'Contraseña debe tener al menos 8 caracteres',
-                message: 'Contraseña debe tener al menos 8 caracteres'
-            });
-        }
-
-        if (!terminos || !privacidad) {
-            return res.status(400).json({
-                error: 'Debes aceptar términos y privacidad',
-                message: 'Debes aceptar términos y privacidad'
-            });
-        }
-
-        // Aquí iría: guardar en BD, hashear contraseña, enviar email
-        console.log(`[AUTH] Registro solicitado: ${email}`);
-
-        // Por ahora, simular éxito (EN PRODUCCIÓN: conectar a BD PostgreSQL)
-        res.status(201).json({
-            success: true,
-            userId: `user_${Date.now()}`,
-            message: 'Registro exitoso. Revisa tu email para confirmar.'
-        });
-
-    } catch (error) {
-        console.error('[AUTH] Error en register:', error);
-        res.status(500).json({
-            error: 'Error al registrar',
-            message: error.message
-        });
+    // Validación
+    if (!nombre || !apellidos || !email || !telefono || !password) {
+      return res.status(400).json({
+        error: 'Datos incompletos',
+        message: 'Todos los campos requeridos deben ser completados'
+      });
     }
+
+    if (password.length < 8) {
+      return res.status(400).json({
+        error: 'Contraseña debe tener al menos 8 caracteres',
+        message: 'Contraseña debe tener al menos 8 caracteres'
+      });
+    }
+
+    if (!terminos || !privacidad) {
+      return res.status(400).json({
+        error: 'Debes aceptar términos y privacidad',
+        message: 'Debes aceptar términos y privacidad'
+      });
+    }
+
+    // Verificar email duplicado
+    const existingUser = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
+    if (existingUser.rows.length > 0) {
+      return res.status(409).json({
+        error: 'Email already registered',
+        message: 'Este correo ya está registrado'
+      });
+    }
+
+    // Hash contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crear usuario
+    const result = await pool.query(
+      `INSERT INTO users (name, email, password_hash, phone, empresa, accepts_marketing, email_verified, created_at)
+       VALUES ($1, $2, $3, $4, $5, $6, true, NOW())
+       RETURNING id, email, name`,
+      [
+        `${nombre} ${apellidos}`,
+        email,
+        hashedPassword,
+        telefono,
+        empresa || null,
+        newsletter || false
+      ]
+    );
+
+    const user = result.rows[0];
+
+    console.log(`✅ Usuario registrado: ${email}`);
+
+    res.status(201).json({
+      success: true,
+      userId: user.id,
+      message: 'Registro exitoso. Bienvenido!'
+    });
+
+  } catch (error) {
+    console.error('Error en register:', error);
+    res.status(500).json({
+      error: 'Error al registrar',
+      message: error.message
+    });
+  }
 });
 
 app.post('/api/auth/login', async (req, res) => {
-    try {
-        const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-        if (!email || !password) {
-            return res.status(400).json({
-                error: 'Email y contraseña requeridos',
-                message: 'Email y contraseña requeridos'
-            });
-        }
-
-        // Aquí iría: verificar en BD, comparar contraseña hasheada
-        console.log(`[AUTH] Login solicitado: ${email}`);
-
-        // Por ahora, simular éxito (EN PRODUCCIÓN: conectar a BD PostgreSQL)
-        res.json({
-            token: `token_${Date.now()}`,
-            user: {
-                id: `user_${Date.now()}`,
-                name: 'Usuario',
-                email: email,
-                role: 'customer'
-            }
-        });
-
-    } catch (error) {
-        console.error('[AUTH] Error en login:', error);
-        res.status(500).json({
-            error: 'Error al iniciar sesión',
-            message: error.message
-        });
+    if (!email || !password) {
+      return res.status(400).json({
+        error: 'Email y contraseña requeridos',
+        message: 'Email y contraseña requeridos'
+      });
     }
-});
 
-app.get('/api/auth/me', (req, res) => {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    // Buscar usuario
+    const result = await pool.query('SELECT id, name, email, password_hash, role FROM users WHERE email = $1', [email]);
 
-    if (!token) {
-        return res.status(401).json({ error: 'No autorizado' });
+    if (result.rows.length === 0) {
+      return res.status(401).json({
+        error: 'Credenciales inválidas',
+        message: 'Email o contraseña incorrectos'
+      });
     }
+
+    const user = result.rows[0];
+
+    // Verificar contraseña
+    const passwordMatch = await bcrypt.compare(password, user.password_hash);
+    if (!passwordMatch) {
+      return res.status(401).json({
+        error: 'Credenciales inválidas',
+        message: 'Email o contraseña incorrectos'
+      });
+    }
+
+    // Generar token
+    const token = jwt.sign(
+      { userId: user.id, role: user.role },
+      process.env.JWT_SECRET || 'secret',
+      { expiresIn: '7d' }
+    );
+
+    console.log(`✅ Login exitoso: ${email}`);
 
     res.json({
-        id: 'user_123',
-        name: 'Usuario',
-        email: 'usuario@example.com',
-        role: 'customer'
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
     });
+
+  } catch (error) {
+    console.error('Error en login:', error);
+    res.status(500).json({
+      error: 'Error al iniciar sesión',
+      message: error.message
+    });
+  }
+});
+
+app.get('/api/auth/me', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, email, role FROM users WHERE id = $1', [req.user.userId]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // ============================================
-// RUTAS DE CUENTA
+// ACCOUNT ROUTES
 // ============================================
 
-app.get('/api/account/summary', (req, res) => {
-    try {
-        // Mock data - en producción vendría de BD
-        res.json({
-            totalFacturado: 2500.50,
-            totalPedidos: 5,
-            pedidosEsteAño: 2,
-            enviosPendientes: 1,
-            miembroDesde: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener resumen de cuenta' });
-    }
-});
+app.get('/api/account/summary', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.userId;
 
-app.get('/api/account/pedidos', (req, res) => {
-    try {
-        const page = req.query.page || 1;
-        // Mock data - en producción vendría de BD
-        res.json({
-            pedidos: [
-                {
-                    id: `ORD-${Date.now()}`,
-                    fecha: new Date().toISOString(),
-                    estado: 'entregado',
-                    total: 500.00,
-                    items: 3,
-                    referencia: 'REF-001'
-                }
-            ],
-            total: 1,
-            pagina: page,
-            por_pagina: 10
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener pedidos' });
-    }
-});
+    // Obtener resumen de pedidos
+    const result = await pool.query(
+      `SELECT
+        COALESCE(COUNT(*), 0) as total_pedidos,
+        COALESCE(SUM(total), 0) as total_facturado,
+        COALESCE(COUNT(CASE WHEN EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM NOW()) THEN 1 END), 0) as pedidos_este_año,
+        COALESCE(COUNT(CASE WHEN status != 'entregado' THEN 1 END), 0) as envios_pendientes,
+        MIN(created_at) as miembro_desde
+       FROM orders
+       WHERE user_id = $1`,
+      [userId]
+    );
 
-app.get('/api/account/pedido/:id', (req, res) => {
-    try {
-        const { id } = req.params;
-        // Mock data - en producción vendría de BD
-        res.json({
-            id: id,
-            fecha: new Date().toISOString(),
-            estado: 'entregado',
-            total: 500.00,
-            items: [
-                { nombre: 'Cerámica', cantidad: 2, precio: 250.00 }
-            ],
-            direccion: { calle: 'Calle Principal', ciudad: 'Valencia', cp: '46001' }
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener pedido' });
-    }
-});
+    const summary = result.rows[0];
 
-app.get('/api/account/perfil', (req, res) => {
-    try {
-        const token = req.headers.authorization?.replace('Bearer ', '');
-        if (!token) {
-            return res.status(401).json({ error: 'No autorizado' });
-        }
-
-        // Mock data - en producción vendría de BD
-        res.json({
-            id: 'user_123',
-            nombre: 'Ignacio',
-            apellidos: 'Ferrer',
-            email: 'ignacio@ifeval.es',
-            telefono: '+34 699 083 535',
-            empresa: 'ifeval inversiones s.l.',
-            direccionFacturacion: { calle: '', ciudad: '', cp: '' },
-            direccionEnvio: { calle: '', ciudad: '', cp: '' }
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener perfil' });
-    }
-});
-
-app.get('/api/account/envios', (req, res) => {
-    try {
-        // Mock data - en producción vendría de BD
-        res.json({
-            envios: [
-                {
-                    id: 'ENV-001',
-                    pedidoId: 'ORD-001',
-                    estado: 'en-camino',
-                    transportista: 'MRW',
-                    numeroSeguimiento: '12345678',
-                    fechaEnvio: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-                    fechaEntrega: null
-                }
-            ]
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener envios' });
-    }
-});
-
-// ============================================
-// RUTAS - Con /api prefix (como llegan de Vercel)
-// ============================================
-
-// Health check
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
-// POST /api/checkout - Procesar pago con Stripe
-app.post('/api/checkout', async (req, res) => {
-    try {
-        const { items, email, total, paymentMethod } = req.body;
-
-        if (!items || !email || !total) {
-            return res.status(400).json({ error: 'Datos incompletos' });
-        }
-
-        // Aquí iría integración real con Stripe/PayPal
-        // Por ahora, simular respuesta exitosa
-        const orderId = `ORD-${Date.now()}`;
-
-        // En producción: guardar en BD, procesar pago, enviar email
-        console.log(`Orden creada: ${orderId} - Cliente: ${email}`);
-
-        res.json({
-            success: true,
-            orderId: orderId,
-            message: 'Orden procesada. Te enviaremos confirmación por email.'
-        });
-
-    } catch (error) {
-        console.error('Error en checkout:', error);
-        res.status(500).json({ error: 'Error procesando pago' });
-    }
-});
-
-// POST /api/whatsapp - Webhook de WhatsApp
-app.post('/api/whatsapp', async (req, res) => {
-    try {
-        const message = req.body;
-
-        // Verificar token
-        const token = req.headers['authorization'];
-        if (token !== `Bearer ${process.env.WHATSAPP_TOKEN}`) {
-            return res.status(401).json({ error: 'No autorizado' });
-        }
-
-        // Procesar mensaje entrante
-        const fromNumber = message.from;
-        const messageText = message.text;
-
-        console.log(`Mensaje de WhatsApp de ${fromNumber}: ${messageText}`);
-
-        // Aquí iría lógica de bot:
-        // - Reconocer intención (info producto, pedido, etc)
-        // - Responder con datos del catálogo
-        // - Guardar datos de cliente y pedido
-
-        res.json({ ok: true });
-
-    } catch (error) {
-        console.error('Error en WhatsApp webhook:', error);
-        res.status(500).json({ error: 'Error procesando mensaje' });
-    }
-});
-
-// GET /api/products - Catálogo de productos (cache)
-app.get('/api/products', (req, res) => {
-    // Servir catálogo.json (se puede cachear en BD)
     res.json({
-        message: 'Endpoint disponible. Catálogo se sirve desde frontend/data/catalogo.json',
-        endpoint: '/data/catalogo.json'
+      totalFacturado: parseFloat(summary.total_facturado),
+      totalPedidos: parseInt(summary.total_pedidos),
+      pedidosEsteAño: parseInt(summary.pedidos_este_año),
+      enviosPendientes: parseInt(summary.envios_pendientes),
+      miembroDesde: summary.miembro_desde?.toISOString() || new Date().toISOString()
     });
+  } catch (error) {
+    console.error('Error en account/summary:', error);
+    res.status(500).json({ error: 'Error al obtener resumen de cuenta' });
+  }
 });
 
-// GET /api/orders/:id - Obtener estado de pedido
-app.get('/api/orders/:id', async (req, res) => {
-    try {
-        const orderId = req.params.id;
-        // En producción: consultar BD
-        res.json({
-            orderId: orderId,
-            status: 'processing',
-            message: 'Consulta tu pedido en tu email'
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error obteniendo pedido' });
-    }
+app.get('/api/account/pedidos', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const page = parseInt(req.query.page || 1);
+    const limit = 10;
+    const offset = (page - 1) * limit;
+
+    const result = await pool.query(
+      `SELECT id, created_at as fecha, status as estado, total
+       FROM orders
+       WHERE user_id = $1
+       ORDER BY created_at DESC
+       LIMIT $2 OFFSET $3`,
+      [userId, limit, offset]
+    );
+
+    res.json({
+      pedidos: result.rows.map(row => ({
+        id: row.id,
+        fecha: row.fecha?.toISOString(),
+        estado: row.estado,
+        total: parseFloat(row.total),
+        items: 1
+      })),
+      total: result.rows.length,
+      pagina: page,
+      por_pagina: limit
+    });
+  } catch (error) {
+    console.error('Error en account/pedidos:', error);
+    res.status(500).json({ error: 'Error al obtener pedidos' });
+  }
 });
 
-// POST /api/contact - Guardar mensaje de contacto
-app.post('/api/contact', async (req, res) => {
-    try {
-        const { nombre, email, asunto, mensaje } = req.body;
+app.get('/api/account/perfil', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const result = await pool.query(
+      'SELECT id, name, email, phone, empresa FROM users WHERE id = $1',
+      [userId]
+    );
 
-        if (!nombre || !email || !asunto || !mensaje) {
-            return res.status(400).json({ error: 'Datos incompletos' });
-        }
-
-        // En producción: guardar en BD y enviar email
-        console.log(`Mensaje de contacto de ${email}: ${asunto}`);
-
-        res.json({
-            success: true,
-            message: 'Mensaje recibido. Te contactaremos pronto.'
-        });
-
-    } catch (error) {
-        console.error('Error guardando contacto:', error);
-        res.status(500).json({ error: 'Error enviando mensaje' });
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
     }
+
+    const user = result.rows[0];
+    const [nombre, ...apellidos] = user.name.split(' ');
+
+    res.json({
+      id: user.id,
+      nombre: nombre,
+      apellidos: apellidos.join(' '),
+      email: user.email,
+      telefono: user.phone || '',
+      empresa: user.empresa || ''
+    });
+  } catch (error) {
+    console.error('Error en account/perfil:', error);
+    res.status(500).json({ error: 'Error al obtener perfil' });
+  }
 });
 
 // ============================================
-// ROOT ENDPOINT
+// HEALTH CHECK
 // ============================================
+
+app.get('/api/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1');
+    res.json({ status: 'ok', database: 'connected' });
+  } catch (error) {
+    res.status(500).json({ status: 'error', database: 'disconnected' });
+  }
+});
+
 app.get('/api', (req, res) => {
-    res.json({
-        message: 'Newzelland Cerámicas API',
-        version: '1.0.0',
-        endpoints: [
-            'GET /api/health - Health check',
-            'POST /api/checkout - Procesar pago',
-            'GET /api/products - Catálogo de productos',
-            'GET /api/orders/:id - Estado del pedido',
-            'POST /api/contact - Formulario de contacto'
-        ]
-    });
+  res.json({
+    message: 'Newzelland Cerámicas API',
+    version: '1.0.0',
+    endpoints: [
+      'POST /api/auth/register',
+      'POST /api/auth/login',
+      'GET /api/auth/me',
+      'GET /api/account/summary',
+      'GET /api/account/pedidos',
+      'GET /api/account/perfil',
+      'GET /api/health'
+    ]
+  });
 });
 
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Newzelland Cerámicas API',
-        version: '1.0.0',
-        endpoints: [
-            'GET /api/health - Health check',
-            'POST /api/checkout - Procesar pago',
-            'GET /api/products - Catálogo de productos',
-            'GET /api/orders/:id - Estado del pedido',
-            'POST /api/contact - Formulario de contacto'
-        ]
-    });
+  res.json({ message: 'Newzelland Cerámicas API' });
 });
 
 // ============================================
-// FALLBACK - 404 handler
+// 404 HANDLER
 // ============================================
+
 app.use((req, res) => {
-    res.status(404).json({
-        error: 'Not Found',
-        path: req.path,
-        method: req.method
-    });
+  res.status(404).json({
+    error: 'Not Found',
+    path: req.path,
+    method: req.method
+  });
 });
 
 // ============================================
-// INICIAR SERVIDOR
+// EXPORT FOR VERCEL
 // ============================================
 
-const PORT = process.env.PORT || 3000;
-
-// Para desarrollo local
-if (require.main === module) {
-    app.listen(PORT, () => {
-        console.log(`🚀 Servidor escuchando en puerto ${PORT}`);
-        console.log(`📍 http://localhost:${PORT}/api/health`);
-    });
-}
-
-// Export handler for Vercel serverless
 module.exports = app;
