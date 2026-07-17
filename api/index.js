@@ -124,6 +124,112 @@ app.get('/api/auth/me', (req, res) => {
 });
 
 // ============================================
+// RUTAS DE CUENTA
+// ============================================
+
+app.get('/api/account/summary', (req, res) => {
+    try {
+        // Mock data - en producción vendría de BD
+        res.json({
+            totalFacturado: 2500.50,
+            totalPedidos: 5,
+            pedidosEsteAño: 2,
+            enviosPendientes: 1,
+            miembroDesde: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener resumen de cuenta' });
+    }
+});
+
+app.get('/api/account/pedidos', (req, res) => {
+    try {
+        const page = req.query.page || 1;
+        // Mock data - en producción vendría de BD
+        res.json({
+            pedidos: [
+                {
+                    id: `ORD-${Date.now()}`,
+                    fecha: new Date().toISOString(),
+                    estado: 'entregado',
+                    total: 500.00,
+                    items: 3,
+                    referencia: 'REF-001'
+                }
+            ],
+            total: 1,
+            pagina: page,
+            por_pagina: 10
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener pedidos' });
+    }
+});
+
+app.get('/api/account/pedido/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        // Mock data - en producción vendría de BD
+        res.json({
+            id: id,
+            fecha: new Date().toISOString(),
+            estado: 'entregado',
+            total: 500.00,
+            items: [
+                { nombre: 'Cerámica', cantidad: 2, precio: 250.00 }
+            ],
+            direccion: { calle: 'Calle Principal', ciudad: 'Valencia', cp: '46001' }
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener pedido' });
+    }
+});
+
+app.get('/api/account/perfil', (req, res) => {
+    try {
+        const token = req.headers.authorization?.replace('Bearer ', '');
+        if (!token) {
+            return res.status(401).json({ error: 'No autorizado' });
+        }
+
+        // Mock data - en producción vendría de BD
+        res.json({
+            id: 'user_123',
+            nombre: 'Ignacio',
+            apellidos: 'Ferrer',
+            email: 'ignacio@ifeval.es',
+            telefono: '+34 699 083 535',
+            empresa: 'ifeval inversiones s.l.',
+            direccionFacturacion: { calle: '', ciudad: '', cp: '' },
+            direccionEnvio: { calle: '', ciudad: '', cp: '' }
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener perfil' });
+    }
+});
+
+app.get('/api/account/envios', (req, res) => {
+    try {
+        // Mock data - en producción vendría de BD
+        res.json({
+            envios: [
+                {
+                    id: 'ENV-001',
+                    pedidoId: 'ORD-001',
+                    estado: 'en-camino',
+                    transportista: 'MRW',
+                    numeroSeguimiento: '12345678',
+                    fechaEnvio: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    fechaEntrega: null
+                }
+            ]
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener envios' });
+    }
+});
+
+// ============================================
 // RUTAS - Con /api prefix (como llegan de Vercel)
 // ============================================
 
