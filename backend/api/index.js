@@ -131,6 +131,63 @@ app.post('/contact', async (req, res) => {
     }
 });
 
+// POST /admin/facturas/extraer-ia - Proxy a Conta API (invoice extractor)
+app.post('/admin/facturas/extraer-ia', async (req, res) => {
+    try {
+        const { archivoBase64, nombre, mimeType } = req.body;
+
+        if (!archivoBase64 || !nombre) {
+            return res.status(400).json({ error: 'Archivo y nombre requeridos' });
+        }
+
+        const CONTA_API_URL = process.env.CONTA_API_URL || 'http://localhost:3005';
+        const CONTA_API_TOKEN = process.env.CONTA_API_TOKEN;
+        const CONTA_COMPANY_ID = process.env.CONTA_COMPANY_ID || '1';
+
+        if (!CONTA_API_TOKEN) {
+            return res.status(500).json({ error: 'CONTA_API_TOKEN no configurado' });
+        }
+
+        // Enviar archivo a Conta API
+        const response = await fetch(`${CONTA_API_URL}/companies/${CONTA_COMPANY_ID}/invoice-extractor/extract`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${CONTA_API_TOKEN}`,
+            },
+            body: JSON.stringify({
+                fileData: archivoBase64,
+                mimeType: mimeType || 'application/pdf',
+                fileName: nombre,
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            console.error('[extraer-ia] Conta API error:', errorData);
+            return res.status(response.status).json({
+                error: 'Error en extractor IA',
+                details: errorData.error || 'Sin detalles',
+            });
+        }
+
+        const data = await response.json();
+
+        // Devolver el nuevo schema de InvoiceExtraction
+        res.json({
+            success: true,
+            data: data, // El schema nuevo ya viene de Conta API
+        });
+
+    } catch (error) {
+        console.error('[extraer-ia] Error:', error);
+        res.status(500).json({
+            error: 'Error procesando extractor IA',
+            message: error instanceof Error ? error.message : 'Desconocido',
+        });
+    }
+});
+
 // ============================================
 // INICIAR SERVIDOR
 // ============================================

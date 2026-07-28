@@ -27,8 +27,9 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+// 20mb: el lector de facturas en modo IA envía el PDF como JSON base64 (~33% mayor)
+app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ limit: '20mb', extended: true }));
 
 app.use(pageViewLogger);
 

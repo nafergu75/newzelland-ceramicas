@@ -96,6 +96,63 @@ const migrations = async () => {
       CREATE INDEX IF NOT EXISTS idx_downloads_timestamp ON catalog_download_logs(timestamp);
     `);
 
+    // Tablas para lector OCR de facturas
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS asientos_contables (
+        id VARCHAR(50) PRIMARY KEY,
+        fecha DATE NOT NULL,
+        descripcion VARCHAR(255),
+        entidad VARCHAR(255),
+        nif VARCHAR(20),
+        total DECIMAL(12,2) NOT NULL,
+        moneda CHAR(3) DEFAULT 'EUR',
+        direccion VARCHAR(10) NOT NULL,
+        confianza VARCHAR(10) NOT NULL,
+        estado VARCHAR(20) DEFAULT 'registrado',
+        usuario_id UUID,
+        observaciones TEXT,
+        texto_original TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT direccion_check CHECK (direccion IN ('ingreso', 'gasto')),
+        CONSTRAINT confianza_check CHECK (confianza IN ('alta', 'media', 'baja')),
+        CONSTRAINT estado_check CHECK (estado IN ('registrado', 'validado', 'error'))
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_asientos_fecha ON asientos_contables(fecha);
+      CREATE INDEX IF NOT EXISTS idx_asientos_direccion ON asientos_contables(direccion);
+      CREATE INDEX IF NOT EXISTS idx_asientos_usuario ON asientos_contables(usuario_id);
+      CREATE INDEX IF NOT EXISTS idx_asientos_estado ON asientos_contables(estado);
+      CREATE INDEX IF NOT EXISTS idx_asientos_nif ON asientos_contables(nif);
+    `);
+
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS asiento_lineas (
+        id SERIAL PRIMARY KEY,
+        asiento_id VARCHAR(50) NOT NULL REFERENCES asientos_contables(id) ON DELETE CASCADE,
+        cuenta VARCHAR(20) NOT NULL,
+        base DECIMAL(12,2) NOT NULL,
+        tipo_iva SMALLINT NOT NULL,
+        cuota DECIMAL(12,2) NOT NULL,
+        confianza DECIMAL(3,2) NOT NULL DEFAULT 0.85,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_lineas_asiento ON asiento_lineas(asiento_id);
+      CREATE INDEX IF NOT EXISTS idx_lineas_cuenta ON asiento_lineas(cuenta);
+    `);
+
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS asiento_observaciones (
+        id SERIAL PRIMARY KEY,
+        asiento_id VARCHAR(50) NOT NULL REFERENCES asientos_contables(id) ON DELETE CASCADE,
+        observacion TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_obs_asiento ON asiento_observaciones(asiento_id);
+    `);
+
     await client.query('COMMIT');
     console.log('✓ Migrations ejecutadas correctamente');
     process.exit(0);
