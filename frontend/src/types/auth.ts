@@ -6,6 +6,10 @@ export interface User {
   telefono: string
   empresa?: string
   esAdmin?: boolean
+  // Rol real devuelto por /api/auth/me y /api/auth/login ('customer' | 'admin').
+  // Los demás campos de esta interfaz son aspiracionales y no coinciden con
+  // la forma real de la respuesta del backend; role sí se usa tal cual.
+  role?: string
   emailVerificado: boolean
   cuentaActiva: boolean
   fechaAlta: string
@@ -23,11 +27,13 @@ export interface AuthContextType {
 }
 
 export interface RegisterData {
+  // `nombre` es el nombre completo: se simplificó el formulario para bajar
+  // la fricción de registro (apellidos/teléfono/empresa ya no son obligatorios).
   nombre: string
-  apellidos: string
+  apellidos?: string
   empresa?: string
   email: string
-  telefono: string
+  telefono?: string
   password: string
   passwordConfirm: string
   terminos: boolean

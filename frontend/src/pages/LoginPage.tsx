@@ -1,11 +1,16 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { validateEmail } from '../utils/validation'
 
 export default function LoginPage() {
   const navigate = useNavigate()
   const { login } = useAuth()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/mi-cuenta'
+  const reason = searchParams.get('reason')
+  const isCatalogReason = reason === 'catalog'
+  const registerHref = `/registrarse?redirect=${encodeURIComponent(redirectTo)}${reason ? `&reason=${reason}` : ''}`
 
   const [formData, setFormData] = useState({
     email: '',
@@ -15,6 +20,17 @@ export default function LoginPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
+  const [loginSuccess, setLoginSuccess] = useState(false)
+
+  // Tras un login que venía a por un catálogo, se enseña un mensaje breve
+  // antes de saltar a la página de descargas (donde la descarga pendiente
+  // se dispara sola vía useCatalogDownload).
+  useEffect(() => {
+    if (loginSuccess && isCatalogReason) {
+      const timeout = setTimeout(() => navigate(redirectTo), 1600)
+      return () => clearTimeout(timeout)
+    }
+  }, [loginSuccess, isCatalogReason, redirectTo, navigate])
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
@@ -52,7 +68,11 @@ export default function LoginPage() {
     setLoading(true)
     try {
       await login(formData.email, formData.password)
-      navigate('/mi-cuenta')
+      if (isCatalogReason) {
+        setLoginSuccess(true)
+      } else {
+        navigate(redirectTo)
+      }
     } catch (error: any) {
       setErrors({ submit: error.message || 'Error al iniciar sesión. Verifica tus credenciales.' })
     } finally {
@@ -60,13 +80,50 @@ export default function LoginPage() {
     }
   }
 
+  if (loginSuccess) {
+    return (
+      <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '40px 20px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center' }}>
+          <h2>Ya puedes descargar tu catálogo</h2>
+          <p style={{ marginTop: '16px', color: '#666' }}>
+            La descarga se iniciará en unos segundos. Si no se descarga automáticamente, puedes volver a la sección de catálogos.
+          </p>
+          <Link
+            to={redirectTo}
+            style={{
+              display: 'inline-block',
+              marginTop: '24px',
+              padding: '12px 24px',
+              backgroundColor: '#4CAF50',
+              color: 'white',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              fontWeight: '600',
+            }}
+          >
+            Ir a catálogos ahora
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '40px 20px', display: 'flex', alignItems: 'center' }}>
       <div style={{ maxWidth: '500px', margin: '0 auto', width: '100%' }}>
-        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>Inicia sesión</h1>
-        <p style={{ textAlign: 'center', color: '#666', marginBottom: '40px', fontSize: '16px' }}>
-          Accede a tu cuenta para ver tus pedidos y gestionar tu perfil
+        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>
+          {isCatalogReason ? 'Accede para descargar el catálogo' : 'Accede a tu cuenta'}
+        </h1>
+        <p style={{ textAlign: 'center', color: '#666', marginBottom: isCatalogReason ? '12px' : '40px', fontSize: '16px' }}>
+          {isCatalogReason
+            ? 'El registro es rápido y gratuito. Al crear tu cuenta podrás descargar los catálogos técnicos y de colección, y acceder a actualizaciones y novedades de nuestras series.'
+            : 'Gestiona tus descargas, explora nuestras colecciones y accede a material exclusivo para profesionales y particulares.'}
         </p>
+        {isCatalogReason && (
+          <p style={{ textAlign: 'center', color: '#999', fontSize: '13px', marginBottom: '28px' }}>
+            Si aún no tienes cuenta, puedes crearla en menos de un minuto.
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
           {errors.submit && (
@@ -148,15 +205,38 @@ export default function LoginPage() {
               fontSize: '16px',
               fontWeight: '600',
               cursor: loading ? 'not-allowed' : 'pointer',
-              marginBottom: '16px',
+              marginBottom: isCatalogReason ? '12px' : '16px',
               transition: 'background-color 0.2s',
             }}
           >
-            {loading ? 'Iniciando sesión...' : '✓ Iniciar sesión'}
+            {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
           </button>
 
+          {isCatalogReason && (
+            <Link
+              to={registerHref}
+              style={{
+                display: 'block',
+                width: '100%',
+                padding: '12px',
+                backgroundColor: 'white',
+                color: '#1a1a1a',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+                fontSize: '16px',
+                fontWeight: '600',
+                textAlign: 'center',
+                textDecoration: 'none',
+                marginBottom: '16px',
+                boxSizing: 'border-box',
+              }}
+            >
+              Crear cuenta
+            </Link>
+          )}
+
           <p style={{ textAlign: 'center', color: '#666', fontSize: '14px' }}>
-            ¿No tienes cuenta? <Link to="/registrarse" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Regístrate aquí</Link>
+            ¿No tienes cuenta? <Link to={registerHref} style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Regístrate aquí</Link>
           </p>
         </form>
       </div>

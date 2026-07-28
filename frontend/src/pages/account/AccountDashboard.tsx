@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import AccountSidebar from './components/AccountSidebar'
+import WelcomeOnboarding from '../../components/WelcomeOnboarding'
 
 const AccountSummary = lazy(() => import('./sections/AccountSummary'))
 const MyOrders = lazy(() => import('./sections/MyOrders'))
@@ -56,6 +57,8 @@ export default function AccountDashboard() {
               Bienvenido/a, <strong>{user?.nombre}</strong>
             </p>
           </div>
+
+          <WelcomeOnboarding />
 
           <Suspense fallback={<p>Cargando...</p>}>
             {activeSection === 'resumen' && <AccountSummary />}

@@ -27,8 +27,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/paneles-tecnicos/alpina-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/catalogos/alpina-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -60,8 +60,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/aneto/paneles-tecnicos/aneto-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/catalogos/aneto-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -89,8 +89,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ardesia-c3/paneles-tecnicos/ardesia-c3-panel-tecnico-02",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ardesia-c3/catalogos/ardesia-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -119,8 +119,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/paneles-tecnicos/atlas-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/catalogos/atlas-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -154,8 +154,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bali/paneles-tecnicos/bali-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/catalogos/bali-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -183,8 +183,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/berna/paneles-tecnicos/berna-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/catalogos/berna-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -212,8 +212,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bigas/paneles-tecnicos/bigas-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bigas/catalogos/bigas-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -241,8 +241,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/blancos/paneles-tecnicos/blancos-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/blancos/catalogos/blancos-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -268,8 +268,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/bosco/paneles-tecnicos/bosco-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bosco/catalogos/bosco-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -295,8 +295,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brando/paneles-tecnicos/brando-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/catalogos/brando-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -321,8 +321,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brandon/catalogos/brandon-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -348,8 +348,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brick/paneles-tecnicos/brick-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brick/catalogos/brick-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -376,8 +376,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/calacata/paneles-tecnicos/calacata-panel-tecnico-01",
-        "catalogo": null
+        "tecnica": true,
+        "catalogo": false
       }
     },
     {
@@ -402,8 +402,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/canyon/catalogos/canyon-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -427,8 +427,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carlotta-silver/catalogos/carlotta-silver-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -462,8 +462,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/carrara/paneles-tecnicos/carrara-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/catalogos/carrara-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -489,8 +489,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/catalogos/ceppo-di-gre-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -519,8 +519,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/cober/paneles-tecnicos/cober-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/catalogos/cober-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -547,8 +547,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/concrete/paneles-tecnicos/concrete-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/catalogos/concrete-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -571,8 +571,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/crema-marfil/paneles-tecnicos/crema-marfil-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/crema-marfil/catalogos/crema-marfil-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -601,8 +601,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/curia-c3/paneles-tecnicos/curia-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/catalogos/curia-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -627,8 +627,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/diamond/paneles-tecnicos/diamond-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/diamond/catalogos/diamond-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -653,8 +653,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/catalogos/eden-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -677,8 +677,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/elvis/catalogos/elvis-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -706,8 +706,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enate/paneles-tecnicos/enate-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/catalogos/enate-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -735,8 +735,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/enjoy/paneles-tecnicos/enjoy-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/catalogos/enjoy-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -765,8 +765,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/forest/paneles-tecnicos/forest-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/catalogos/forest-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -791,8 +791,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/foresta/paneles-tecnicos/foresta-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/foresta/catalogos/foresta-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -822,8 +822,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fresno/paneles-tecnicos/fresno-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/catalogos/fresno-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -852,8 +852,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/fusta/paneles-tecnicos/fusta-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/catalogos/fusta-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -880,8 +880,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/garden/paneles-tecnicos/garden-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/catalogos/garden-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -907,8 +907,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/haina/paneles-tecnicos/haina-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/catalogos/haina-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -929,8 +929,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/hidraulicos/paneles-tecnicos/hidraulicos-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/hidraulicos/catalogos/hidraulicos-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -956,8 +956,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/inca/paneles-tecnicos/inca-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/inca/catalogos/inca-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -983,8 +983,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/irati/paneles-tecnicos/irati-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/catalogos/irati-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1009,8 +1009,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/jaca/paneles-tecnicos/jaca-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/jaca/catalogos/jaca-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1039,8 +1039,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kamen/paneles-tecnicos/kamen-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/catalogos/kamen-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1069,8 +1069,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kaster/paneles-tecnicos/kaster-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/catalogos/kaster-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1097,8 +1097,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keops/paneles-tecnicos/keops-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/catalogos/keops-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1127,8 +1127,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/keyburn-c3/paneles-tecnicos/keyburn-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keyburn-c3/catalogos/keyburn-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1157,8 +1157,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kite/paneles-tecnicos/kite-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/catalogos/kite-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1184,8 +1184,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/koral/paneles-tecnicos/koral-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/koral/catalogos/koral-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1213,8 +1213,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/kronos/paneles-tecnicos/kronos-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/catalogos/kronos-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1249,8 +1249,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/land-kaster-c3/paneles-tecnicos/land-kaster-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/catalogos/land-kaster-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1283,8 +1283,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/legend/paneles-tecnicos/legend-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/catalogos/legend-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1311,8 +1311,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/life/paneles-tecnicos/life-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/catalogos/life-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1337,8 +1337,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/magnum/paneles-tecnicos/magnum-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/catalogos/magnum-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1364,8 +1364,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/masip/paneles-tecnicos/masip-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/masip/catalogos/masip-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1395,8 +1395,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/paneles-tecnicos/melissa-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/catalogos/melissa-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1433,8 +1433,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/metro/paneles-tecnicos/metro-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/catalogos/metro-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1461,8 +1461,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mijas/paneles-tecnicos/mijas-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mijas/catalogos/mijas-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1490,8 +1490,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mogan/paneles-tecnicos/mogan-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/catalogos/mogan-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1521,8 +1521,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/morella/paneles-tecnicos/morella-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/morella/catalogos/morella-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1548,8 +1548,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/mulhacen/paneles-tecnicos/mulhacen-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mulhacen/catalogos/mulhacen-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1576,8 +1576,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/murano/paneles-tecnicos/murano-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/catalogos/murano-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1602,8 +1602,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/napoli/paneles-tecnicos/napoli-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/napoli/catalogos/napoli-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1626,8 +1626,8 @@
       "colores": [],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/new-calacatta/catalogos/new-calacatta-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -1653,8 +1653,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra/paneles-tecnicos/pietra-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra/catalogos/pietra-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1685,8 +1685,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pietra-serena/paneles-tecnicos/pietra-serena-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/catalogos/pietra-serena-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1714,8 +1714,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pinada/paneles-tecnicos/pinada-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/catalogos/pinada-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1742,8 +1742,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pizarra/paneles-tecnicos/pizarra-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/catalogos/pizarra-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1772,8 +1772,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pobla-c3/paneles-tecnicos/pobla-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pobla-c3/catalogos/pobla-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1800,8 +1800,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/polaris/paneles-tecnicos/polaris-panel-tecnico-02",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/polaris/catalogos/polaris-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1830,8 +1830,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence/catalogos/provence-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -1858,8 +1858,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/provence-c3/paneles-tecnicos/provence-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence-c3/catalogos/provence-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1885,8 +1885,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ritz/paneles-tecnicos/ritz-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ritz/catalogos/ritz-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1911,8 +1911,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/samario/catalogos/samario-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -1935,8 +1935,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": null,
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sanit-dark/catalogos/sanit-dark-catalogo-01.pdf"
+        "tecnica": false,
+        "catalogo": true
       }
     },
     {
@@ -1961,8 +1961,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shadow/paneles-tecnicos/shadow-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shadow/catalogos/shadow-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -1987,8 +1987,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/shiman/paneles-tecnicos/shiman-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shiman/catalogos/shiman-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2013,8 +2013,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/silos-c3-cotto-provenzal/paneles-tecnicos/silos-c3-cotto-provenzal-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/silos-c3-cotto-provenzal/catalogos/silos-c3-cotto-provenzal-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2039,8 +2039,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/sonora/paneles-tecnicos/sonora-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sonora/catalogos/sonora-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2066,8 +2066,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/stahl-c3/paneles-tecnicos/stahl-c3-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/stahl-c3/catalogos/stahl-c3-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2093,8 +2093,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/star/paneles-tecnicos/star-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/star/catalogos/star-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2122,8 +2122,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tablero/paneles-tecnicos/tablero-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/catalogos/tablero-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2150,8 +2150,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tadan/paneles-tecnicos/tadan-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/catalogos/tadan-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2177,8 +2177,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/taracea/paneles-tecnicos/taracea-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/taracea/catalogos/taracea-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2205,8 +2205,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tea/paneles-tecnicos/tea-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tea/catalogos/tea-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2232,8 +2232,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/technikal-c2/paneles-tecnicos/technikal-c2-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/technikal-c2/catalogos/technikal-c2-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2261,8 +2261,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/terry/paneles-tecnicos/terry-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/catalogos/terry-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2289,8 +2289,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/timber/paneles-tecnicos/timber-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/catalogos/timber-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2316,8 +2316,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tokyo/paneles-tecnicos/tokyo-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/catalogos/tokyo-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2342,8 +2342,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/toledo/paneles-tecnicos/toledo-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/toledo/catalogos/toledo-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2371,8 +2371,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/paneles-tecnicos/torcal-panel-tecnico-01.pdf",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/catalogos/torcal-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2399,8 +2399,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tosca/paneles-tecnicos/tosca-panel-tecnico-01",
-        "catalogo": null
+        "tecnica": true,
+        "catalogo": false
       }
     },
     {
@@ -2425,8 +2425,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/travertino-caliza-brillo/paneles-tecnicos/travertino-caliza-brillo-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/travertino-caliza-brillo/catalogos/travertino-caliza-brillo-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2457,8 +2457,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/urbion/paneles-tecnicos/urbion-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/catalogos/urbion-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2483,8 +2483,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/verdi/paneles-tecnicos/verdi-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/verdi/catalogos/verdi-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2510,8 +2510,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/wahkan/paneles-tecnicos/wahkan-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/wahkan/catalogos/wahkan-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     },
     {
@@ -2536,8 +2536,8 @@
       ],
       "precio_consultable": true,
       "fichas": {
-        "tecnica": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/walter-light-grey/paneles-tecnicos/walter-light-grey-panel-tecnico-01",
-        "catalogo": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/walter-light-grey/catalogos/walter-light-grey-catalogo-01.pdf"
+        "tecnica": true,
+        "catalogo": true
       }
     }
   ],

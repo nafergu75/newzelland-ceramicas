@@ -11,9 +11,11 @@ export interface Serie {
   material: string
   colores: string[]
   precio_consultable: boolean
+  // Solo indica si existe el fichero; la URL real vive en el backend
+  // (api/data/catalog-fichas.json) para que nunca se exponga al cliente.
   fichas: {
-    tecnica?: string
-    catalogo?: string
+    tecnica: boolean
+    catalogo: boolean
   }
 }
 

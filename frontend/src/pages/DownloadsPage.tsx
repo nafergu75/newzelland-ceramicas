@@ -1,9 +1,22 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 import { series } from '../data/catalog'
+import { useCatalogDownload } from '../hooks/useCatalogDownload'
+import { useAuth } from '../context/AuthContext'
+import WelcomeOnboarding from '../components/WelcomeOnboarding'
+
+// Descripción genérica reutilizada para todas las fichas: no hay 90
+// descripciones a medida escritas, es una plantilla con el nombre de la
+// serie insertado.
+function catalogoDescripcion(nombre: string): string {
+  return `Catálogo completo de la colección ${nombre}, con vistas de piezas, formatos disponibles, acabados y aplicaciones recomendadas. Ideal para proyectos de interiorismo, arquitectura y decoración.`
+}
 
 export default function DownloadsPage() {
+  const { isAuthenticated } = useAuth()
+  const { handleDownload, downloadingKey, downloadError } = useCatalogDownload()
   const [search, setSearch] = useState('')
   const [selectedFamily, setSelectedFamily] = useState<string | null>(null)
 
@@ -33,8 +46,8 @@ export default function DownloadsPage() {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
         <HeroSection
-          title="Fichas Técnicas"
-          subtitle="Especificaciones de todas nuestras colecciones"
+          title="Catálogos y documentación técnica"
+          subtitle="Descarga los catálogos de nuestras colecciones y la documentación técnica asociada. El acceso está disponible para todos los usuarios registrados."
         />
 
         {/* Full width section with filters at top */}
@@ -75,6 +88,66 @@ export default function DownloadsPage() {
                 </button>
               </a>
             </div>
+
+            {isAuthenticated ? (
+              <WelcomeOnboarding />
+            ) : (
+              <div style={{
+                background: 'var(--surface)',
+                border: '1px solid var(--line)',
+                borderRadius: 'var(--radius-card)',
+                padding: 'var(--space-12)',
+                marginBottom: 'var(--space-16)'
+              }}>
+                <h3 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.2rem',
+                  marginBottom: 'var(--space-4)',
+                  color: 'var(--ink)'
+                }}>
+                  ¿Por qué registrarse?
+                </h3>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: '0 0 var(--space-8) 0',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: 'var(--space-4)'
+                }}>
+                  {[
+                    'Acceso inmediato a todos los catálogos técnicos y de colección.',
+                    'Descargas ilimitadas mientras tengas cuenta activa.',
+                    'Actualizaciones y novedades sobre nuevas series y materiales.',
+                    'Soporte prioritario para profesionales (interioristas, arquitectos, instaladores).'
+                  ].map((punto) => (
+                    <li key={punto} style={{
+                      fontSize: 'var(--font-size-sm)',
+                      color: 'var(--stone)',
+                      lineHeight: '1.5',
+                      paddingLeft: 'var(--space-4)',
+                      borderLeft: '2px solid var(--accent)'
+                    }}>
+                      {punto}
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/registrarse?redirect=/downloads&reason=catalog" style={{ textDecoration: 'none' }}>
+                  <button style={{
+                    padding: 'var(--space-3) var(--space-6)',
+                    background: 'var(--accent)',
+                    color: 'var(--on-accent)',
+                    border: 'none',
+                    fontSize: 'var(--font-size-sm)',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    borderRadius: '2px'
+                  }}>
+                    Crear cuenta / Iniciar sesión
+                  </button>
+                </Link>
+              </div>
+            )}
 
             {/* Search and filters row */}
             <div style={{
@@ -165,6 +238,16 @@ export default function DownloadsPage() {
               </div>
             </div>
 
+            {downloadError && (
+              <p style={{
+                color: '#c62828',
+                fontSize: 'var(--font-size-sm)',
+                marginBottom: 'var(--space-8)'
+              }}>
+                {downloadError}
+              </p>
+            )}
+
             {/* Grid horizontal de series */}
             {filteredSeries.length === 0 ? (
               <p style={{ color: 'var(--stone)', fontSize: 'var(--font-size-base)' }}>
@@ -232,33 +315,58 @@ export default function DownloadsPage() {
                         </p>
                       </div>
 
-                      {/* CTA links */}
+                      <p style={{
+                        fontSize: 'var(--font-size-xs)',
+                        color: 'var(--stone)',
+                        lineHeight: '1.5',
+                        marginBottom: 'var(--space-4)'
+                      }}>
+                        {catalogoDescripcion(s.nombre)}
+                      </p>
+
+                      {/* CTA de descarga: pasan por handleDownload, que exige sesión */}
                       <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
                         {s.fichas.tecnica && (
-                          <a href={s.fichas.tecnica} target="_blank" rel="noopener noreferrer" style={{
-                            fontSize: 'var(--font-size-xs)',
-                            color: 'var(--accent)',
-                            textDecoration: 'none',
-                            fontWeight: '500',
-                            borderBottom: '1px solid var(--accent)',
-                            paddingBottom: '1px',
-                            cursor: 'pointer'
-                          }}>
-                            Ficha técnica
-                          </a>
+                          <button
+                            onClick={() => handleDownload(s.id, 'tecnica', s.nombre)}
+                            disabled={downloadingKey === `${s.id}-tecnica`}
+                            style={{
+                              fontSize: 'var(--font-size-xs)',
+                              color: 'var(--accent)',
+                              fontWeight: '500',
+                              border: 'none',
+                              borderBottom: '1px solid var(--accent)',
+                              cursor: downloadingKey === `${s.id}-tecnica` ? 'wait' : 'pointer',
+                              background: 'transparent',
+                              padding: 0,
+                              paddingBottom: '1px',
+                              fontFamily: 'inherit',
+                              opacity: downloadingKey === `${s.id}-tecnica` ? 0.6 : 1
+                            }}
+                          >
+                            {downloadingKey === `${s.id}-tecnica` ? 'Descargando…' : 'Ficha técnica'}
+                          </button>
                         )}
                         {s.fichas.catalogo && (
-                          <a href={s.fichas.catalogo} target="_blank" rel="noopener noreferrer" style={{
-                            fontSize: 'var(--font-size-xs)',
-                            color: 'var(--accent)',
-                            textDecoration: 'none',
-                            fontWeight: '500',
-                            borderBottom: '1px solid var(--accent)',
-                            paddingBottom: '1px',
-                            cursor: 'pointer'
-                          }}>
-                            Catálogo
-                          </a>
+                          <button
+                            onClick={() => handleDownload(s.id, 'catalogo', s.nombre)}
+                            disabled={downloadingKey === `${s.id}-catalogo`}
+                            style={{
+                              fontSize: 'var(--font-size-xs)',
+                              color: 'var(--accent)',
+                              fontWeight: '500',
+                              border: 'none',
+                              borderBottom: '1px solid var(--accent)',
+                              cursor: downloadingKey === `${s.id}-catalogo` ? 'wait' : 'pointer',
+                              background: 'transparent',
+                              padding: 0,
+                              paddingBottom: '1px',
+                              fontFamily: 'inherit',
+                              opacity: downloadingKey === `${s.id}-catalogo` ? 0.6 : 1
+                            }}
+                          >
+                            {downloadingKey === `${s.id}-catalogo` ? 'Descargando…' : 'Catálogo'}
+                          </button>
                         )}
                       </div>
                     </div>

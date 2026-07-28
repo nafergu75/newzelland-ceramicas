@@ -5,11 +5,13 @@ import Footer from '../components/Footer'
 import SeriesCard from '../components/SeriesCard'
 import AddToCartBox from '../components/AddToCartBox'
 import { series, getSerieById } from '../data/catalog'
+import { useCatalogDownload } from '../hooks/useCatalogDownload'
 
 export default function CollectionsPage() {
   const { slug } = useParams<{ slug: string }>()
   const [search, setSearch] = useState('')
   const [material, setMaterial] = useState('')
+  const { handleDownload, downloadingKey, downloadError } = useCatalogDownload()
 
   const serie = slug ? getSerieById(slug) : undefined
 
@@ -100,22 +102,31 @@ export default function CollectionsPage() {
                   Solicitar presupuesto
                 </a>
                 {serie.fichas.tecnica && (
-                  <a href={serie.fichas.tecnica} target="_blank" rel="noopener noreferrer">
-                    <button className="secondary">
-                      <FilePdf size={18} weight="regular" />
-                      Ficha técnica
-                    </button>
-                  </a>
+                  <button
+                    className="secondary"
+                    onClick={() => handleDownload(serie.id, 'tecnica', serie.nombre)}
+                    disabled={downloadingKey === `${serie.id}-tecnica`}
+                  >
+                    <FilePdf size={18} weight="regular" />
+                    {downloadingKey === `${serie.id}-tecnica` ? 'Descargando…' : 'Ficha técnica'}
+                  </button>
                 )}
                 {serie.fichas.catalogo && (
-                  <a href={serie.fichas.catalogo} target="_blank" rel="noopener noreferrer">
-                    <button className="secondary">
-                      <FilePdf size={18} weight="regular" />
-                      Catálogo
-                    </button>
-                  </a>
+                  <button
+                    className="secondary"
+                    onClick={() => handleDownload(serie.id, 'catalogo', serie.nombre)}
+                    disabled={downloadingKey === `${serie.id}-catalogo`}
+                  >
+                    <FilePdf size={18} weight="regular" />
+                    {downloadingKey === `${serie.id}-catalogo` ? 'Descargando…' : 'Catálogo'}
+                  </button>
                 )}
               </div>
+              {downloadError && (
+                <p style={{ color: '#c62828', fontSize: '0.85rem', marginTop: 'var(--space-3)' }}>
+                  {downloadError}
+                </p>
+              )}
             </div>
           </div>
 

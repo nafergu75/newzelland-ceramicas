@@ -1,15 +1,20 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { validateEmail, validateTelefono, validatePassword, getPasswordStrengthLabel, getPasswordStrengthColor } from '../utils/validation'
+import { validateEmail, validatePassword, getPasswordStrengthLabel, getPasswordStrengthColor } from '../utils/validation'
+import { markJustRegistered } from '../utils/onboarding'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
-  const { register } = useAuth()
+  const { register, login } = useAuth()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirect')
+  const reason = searchParams.get('reason')
+  const isCatalogReason = reason === 'catalog'
+  const loginHref = `/login${redirectTo ? `?redirect=${encodeURIComponent(redirectTo)}` : ''}${reason ? `${redirectTo ? '&' : '?'}reason=${reason}` : ''}`
 
   const [formData, setFormData] = useState({
     nombre: '',
-    apellidos: '',
     empresa: '',
     email: '',
     telefono: '',
@@ -23,7 +28,17 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [autoLoginFailed, setAutoLoginFailed] = useState(false)
   const [passwordStrength, setPasswordStrength] = useState<'weak' | 'medium' | 'strong'>('weak')
+
+  // Si venía a descargar un catálogo, en cuanto ya está logueado (justo
+  // después del registro) le llevamos directo a por qué vino.
+  useEffect(() => {
+    if (submitted && !autoLoginFailed && isCatalogReason) {
+      const timeout = setTimeout(() => navigate(redirectTo || '/downloads'), 1800)
+      return () => clearTimeout(timeout)
+    }
+  }, [submitted, autoLoginFailed, isCatalogReason, redirectTo, navigate])
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
@@ -31,21 +46,11 @@ export default function RegisterPage() {
     if (!formData.nombre.trim()) {
       newErrors.nombre = 'El nombre es obligatorio'
     } else if (formData.nombre.trim().length < 3) {
-      newErrors.nombre = 'El nombre debe tener al menos 3 caracteres'
-    }
-
-    if (!formData.apellidos.trim()) {
-      newErrors.apellidos = 'Los apellidos son obligatorios'
-    } else if (formData.apellidos.trim().length < 3) {
-      newErrors.apellidos = 'Los apellidos deben tener al menos 3 caracteres'
+      newErrors.nombre = 'Escribe al menos tu nombre y un apellido'
     }
 
     if (!validateEmail(formData.email)) {
       newErrors.email = 'Por favor, introduce un correo válido'
-    }
-
-    if (!validateTelefono(formData.telefono)) {
-      newErrors.telefono = 'Formato no válido. Usa: +34 600 123 456'
     }
 
     if (!formData.password) {
@@ -96,8 +101,18 @@ export default function RegisterPage() {
     setLoading(true)
     try {
       await register(formData)
+      markJustRegistered(formData.nombre.trim())
+
+      // El registro no da sesión por sí solo; iniciamos sesión con las
+      // mismas credenciales para que "Ir a catálogos" funcione de verdad
+      // (y, si venía de una descarga, se dispare sin pedirle login otra vez).
+      try {
+        await login(formData.email, formData.password)
+      } catch {
+        setAutoLoginFailed(true)
+      }
+
       setSubmitted(true)
-      setTimeout(() => navigate('/login'), 3000)
     } catch (error: any) {
       setErrors({ submit: error.message || 'Error al registrar. Intenta de nuevo.' })
     } finally {
@@ -108,13 +123,72 @@ export default function RegisterPage() {
   if (submitted) {
     return (
       <div style={{ padding: '60px 20px', textAlign: 'center', minHeight: '100vh', backgroundColor: '#fafafa' }}>
-        <h2>¡Cuasi-casi... Revisa tu correo!</h2>
-        <p style={{ marginTop: '20px', color: '#666', maxWidth: '500px', margin: '20px auto' }}>
-          Hemos enviado un enlace de confirmación a <strong>{formData.email}</strong>
-        </p>
-        <p style={{ color: '#999', fontSize: '14px', marginTop: '40px' }}>
-          Redireccionando a login en unos momentos...
-        </p>
+        <div style={{ maxWidth: '480px', margin: '0 auto' }}>
+          {autoLoginFailed ? (
+            <>
+              <h2>Cuenta creada correctamente</h2>
+              <p style={{ marginTop: '16px', color: '#666' }}>
+                Ya puedes iniciar sesión para descargar los catálogos de todas nuestras colecciones.
+              </p>
+              <Link
+                to={loginHref}
+                style={{
+                  display: 'inline-block',
+                  marginTop: '28px',
+                  padding: '12px 28px',
+                  backgroundColor: '#4CAF50',
+                  color: 'white',
+                  borderRadius: '4px',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                }}
+              >
+                Iniciar sesión
+              </Link>
+            </>
+          ) : (
+            <>
+              <h2>Cuenta creada correctamente</h2>
+              <p style={{ marginTop: '16px', color: '#666' }}>
+                Ya puedes descargar los catálogos de todas nuestras colecciones.
+              </p>
+              {isCatalogReason && (
+                <p style={{ color: '#999', fontSize: '14px', marginTop: '12px' }}>
+                  Te llevamos a por tu catálogo en un momento…
+                </p>
+              )}
+              <div style={{ marginTop: '28px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Link
+                  to="/downloads"
+                  style={{
+                    padding: '12px 24px',
+                    backgroundColor: '#4CAF50',
+                    color: 'white',
+                    borderRadius: '4px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                  }}
+                >
+                  Ir a catálogos
+                </Link>
+                <Link
+                  to="/collections"
+                  style={{
+                    padding: '12px 24px',
+                    backgroundColor: 'white',
+                    color: '#1a1a1a',
+                    border: '1px solid #ddd',
+                    borderRadius: '4px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                  }}
+                >
+                  Explorar colecciones
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     )
   }
@@ -122,9 +196,13 @@ export default function RegisterPage() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', padding: '40px 20px' }}>
       <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>Crear cuenta</h1>
+        <h1 style={{ marginBottom: '10px', textAlign: 'center' }}>
+          {isCatalogReason ? 'Regístrate para descargar el catálogo' : 'Crea tu cuenta'}
+        </h1>
         <p style={{ textAlign: 'center', color: '#666', marginBottom: '40px', fontSize: '16px' }}>
-          Regístrate para comenzar a comprar
+          {isCatalogReason
+            ? 'El registro es rápido, gratuito y seguro. En menos de un minuto tendrás acceso a todos nuestros catálogos técnicos y de colección.'
+            : 'Accede a todos los catálogos técnicos y de colección, y recibe actualizaciones sobre nuestras series y novedades.'}
         </p>
 
         <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -134,71 +212,26 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>
-            <div>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
-                Nombre *
-              </label>
-              <input
-                type="text"
-                name="nombre"
-                value={formData.nombre}
-                onChange={handleChange}
-                placeholder="Juan"
-                style={{
-                  width: '100%',
-                  padding: '10px',
-                  border: errors.nombre ? '1px solid #c62828' : '1px solid #ddd',
-                  borderRadius: '4px',
-                  boxSizing: 'border-box',
-                  fontSize: '14px',
-                }}
-              />
-              {errors.nombre && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.nombre}</p>}
-            </div>
-
-            <div>
-              <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
-                Apellidos *
-              </label>
-              <input
-                type="text"
-                name="apellidos"
-                value={formData.apellidos}
-                onChange={handleChange}
-                placeholder="García López"
-                style={{
-                  width: '100%',
-                  padding: '10px',
-                  border: errors.apellidos ? '1px solid #c62828' : '1px solid #ddd',
-                  borderRadius: '4px',
-                  boxSizing: 'border-box',
-                  fontSize: '14px',
-                }}
-              />
-              {errors.apellidos && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.apellidos}</p>}
-            </div>
-          </div>
-
           <div style={{ marginBottom: '20px' }}>
             <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
-              Empresa (Opcional)
+              Nombre completo *
             </label>
             <input
               type="text"
-              name="empresa"
-              value={formData.empresa}
+              name="nombre"
+              value={formData.nombre}
               onChange={handleChange}
-              placeholder="Ej: García & Asociados S.L."
+              placeholder="Juan García"
               style={{
                 width: '100%',
                 padding: '10px',
-                border: '1px solid #ddd',
+                border: errors.nombre ? '1px solid #c62828' : '1px solid #ddd',
                 borderRadius: '4px',
                 boxSizing: 'border-box',
                 fontSize: '14px',
               }}
             />
+            {errors.nombre && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.nombre}</p>}
           </div>
 
           <div style={{ marginBottom: '20px' }}>
@@ -221,31 +254,6 @@ export default function RegisterPage() {
               }}
             />
             {errors.email && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.email}</p>}
-            <p style={{ fontSize: '12px', color: '#999', marginTop: '6px' }}>
-              Usaremos este correo para enviarte confirmaciones y facturas
-            </p>
-          </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
-              Teléfono *
-            </label>
-            <input
-              type="tel"
-              name="telefono"
-              value={formData.telefono}
-              onChange={handleChange}
-              placeholder="+34 600 123 456"
-              style={{
-                width: '100%',
-                padding: '10px',
-                border: errors.telefono ? '1px solid #c62828' : '1px solid #ddd',
-                borderRadius: '4px',
-                boxSizing: 'border-box',
-                fontSize: '14px',
-              }}
-            />
-            {errors.telefono && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.telefono}</p>}
           </div>
 
           <div style={{ marginBottom: '20px' }}>
@@ -287,9 +295,6 @@ export default function RegisterPage() {
                 </div>
               </div>
             )}
-            <p style={{ fontSize: '12px', color: '#999', marginTop: '6px' }}>
-              Recomendamos: mayúsculas, minúsculas y números
-            </p>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
@@ -313,6 +318,44 @@ export default function RegisterPage() {
             />
             {errors.passwordConfirm && <p style={{ color: '#c62828', fontSize: '12px', marginTop: '4px' }}>{errors.passwordConfirm}</p>}
           </div>
+
+          <details style={{ marginBottom: '20px' }}>
+            <summary style={{ cursor: 'pointer', fontSize: '13px', color: '#999', fontWeight: '600' }}>
+              Teléfono y empresa (opcional, útil si eres profesional)
+            </summary>
+            <div style={{ marginTop: '12px' }}>
+              <div style={{ marginBottom: '12px' }}>
+                <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
+                  Teléfono
+                </label>
+                <input
+                  type="tel"
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  placeholder="+34 600 123 456"
+                  style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', boxSizing: 'border-box', fontSize: '14px' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '6px', fontWeight: '600', fontSize: '14px' }}>
+                  Empresa / estudio
+                </label>
+                <input
+                  type="text"
+                  name="empresa"
+                  value={formData.empresa}
+                  onChange={handleChange}
+                  placeholder="Ej: García & Asociados S.L."
+                  style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '4px', boxSizing: 'border-box', fontSize: '14px' }}
+                />
+              </div>
+            </div>
+          </details>
+
+          <p style={{ fontSize: '13px', color: '#999', marginBottom: '16px', lineHeight: '1.5' }}>
+            Al registrarte aceptas nuestra política de privacidad. Tratamos tus datos de forma segura y solo para gestionar tus descargas y comunicaciones relacionadas con nuestros productos.
+          </p>
 
           <div style={{ marginBottom: '20px', paddingBottom: '20px', borderBottom: '1px solid #eee' }}>
             <label style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px', cursor: 'pointer' }}>
@@ -338,7 +381,7 @@ export default function RegisterPage() {
                 style={{ marginRight: '8px', marginTop: '2px', cursor: 'pointer' }}
               />
               <span style={{ fontSize: '14px' }}>
-                Acepto la <a href="/privacidad" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Política de Privacidad</a> *
+                Acepto la <Link to="/privacidad" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Política de Privacidad</Link> *
               </span>
             </label>
             {errors.privacidad && <p style={{ color: '#c62828', fontSize: '12px', marginLeft: '24px' }}>{errors.privacidad}</p>}
@@ -376,7 +419,7 @@ export default function RegisterPage() {
           </button>
 
           <p style={{ textAlign: 'center', color: '#666', fontSize: '14px' }}>
-            ¿Ya tienes cuenta? <Link to="/login" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Inicia sesión aquí</Link>
+            ¿Ya tienes cuenta? <Link to={loginHref} style={{ color: '#1976d2', textDecoration: 'none', fontWeight: '600' }}>Inicia sesión aquí</Link>
           </p>
         </form>
       </div>
