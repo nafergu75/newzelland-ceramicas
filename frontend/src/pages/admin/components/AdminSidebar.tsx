@@ -1,5 +1,5 @@
 import { useAuth } from '../../../context/AuthContext'
-import { SignOut, ChartLine, Users, ShoppingCart, FileText, ChatDots, FileArrowDown } from '@phosphor-icons/react'
+import { SignOut, ChartLine, Users, ShoppingCart, FileText, ChatDots, FileArrowDown, Scan, DownloadSimple, Image, EnvelopeSimple } from '@phosphor-icons/react'
 
 interface AdminSidebarProps {
   activeSection: string
@@ -12,8 +12,13 @@ export default function AdminSidebar({ activeSection, onNavigate }: AdminSidebar
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: ChartLine },
     { id: 'clientes', label: 'Clientes', icon: Users },
+    { id: 'descargas-catalogo', label: 'Descargas de catálogo', icon: DownloadSimple },
+    { id: 'proyectos', label: 'Proyectos', icon: Image },
+    { id: 'crm', label: 'CRM / Email', icon: EnvelopeSimple },
     { id: 'pedidos', label: 'Pedidos', icon: ShoppingCart },
     { id: 'facturas', label: 'Facturas', icon: FileText },
+    { id: 'lector-ingresos', label: 'Lector de Ingresos', icon: Scan },
+    { id: 'lector-gastos', label: 'Lector de Gastos', icon: Scan },
     { id: 'soporte', label: 'Soporte', icon: ChatDots },
     { id: 'reportes', label: 'Reportes', icon: FileArrowDown },
   ]
@@ -48,7 +53,10 @@ export default function AdminSidebar({ activeSection, onNavigate }: AdminSidebar
       <nav style={{ flex: 1 }}>
         {menuItems.map((item) => {
           const IconComponent = item.icon
-          const isActive = activeSection === item.id || activeSection.includes(item.id.split('-')[0])
+          const isActive =
+            activeSection === item.id ||
+            (!menuItems.some((m) => m.id === activeSection) &&
+              activeSection.includes(item.id.split('-')[0]))
 
           return (
             <button

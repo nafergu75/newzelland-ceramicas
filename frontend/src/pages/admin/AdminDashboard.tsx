@@ -4,14 +4,20 @@ import AdminSidebar from './components/AdminSidebar'
 const Dashboard = lazy(() => import('./sections/Dashboard'))
 const Customers = lazy(() => import('./sections/Customers'))
 const CustomerDetail = lazy(() => import('./sections/CustomerDetail'))
+const CatalogDownloads = lazy(() => import('./sections/CatalogDownloads'))
+const ProjectsAdmin = lazy(() => import('./sections/ProjectsAdmin'))
+const CRMDashboard = lazy(() => import('./sections/CRMDashboard'))
 const Orders = lazy(() => import('./sections/Orders'))
 const OrderDetail = lazy(() => import('./sections/OrderDetail'))
 const Invoices = lazy(() => import('./sections/Invoices'))
+const InvoiceReader = lazy(() => import('./sections/InvoiceReader'))
+const InvoiceIncomeReader = lazy(() => import('./sections/InvoiceIncomeReaderSimple'))
+const InvoiceExpenseReader = lazy(() => import('./sections/InvoiceIncomeReaderSimple'))
 const SupportMessages = lazy(() => import('./sections/SupportMessages'))
 const MessageDetail = lazy(() => import('./sections/MessageDetail'))
 const Reports = lazy(() => import('./sections/Reports'))
 
-type ActiveSection = 'dashboard' | 'clientes' | 'cliente-detalle' | 'pedidos' | 'pedido-detalle' | 'facturas' | 'soporte' | 'ticket-detalle' | 'reportes'
+type ActiveSection = 'dashboard' | 'clientes' | 'cliente-detalle' | 'descargas-catalogo' | 'proyectos' | 'crm' | 'pedidos' | 'pedido-detalle' | 'facturas' | 'lector-facturas' | 'lector-ingresos' | 'lector-gastos' | 'soporte' | 'ticket-detalle' | 'reportes'
 
 export default function AdminDashboard() {
   const [activeSection, setActiveSection] = useState<ActiveSection>('dashboard')
@@ -74,11 +80,17 @@ export default function AdminDashboard() {
             {activeSection === 'cliente-detalle' && selectedClienteId && (
               <CustomerDetail clienteId={selectedClienteId} onBack={handleBackFromCliente} />
             )}
+            {activeSection === 'descargas-catalogo' && <CatalogDownloads />}
+            {activeSection === 'proyectos' && <ProjectsAdmin />}
+            {activeSection === 'crm' && <CRMDashboard />}
             {activeSection === 'pedidos' && <Orders onSelectPedido={handleSelectPedido} />}
             {activeSection === 'pedido-detalle' && selectedPedidoId && (
               <OrderDetail pedidoId={selectedPedidoId} onBack={handleBackFromPedido} />
             )}
             {activeSection === 'facturas' && <Invoices />}
+            {activeSection === 'lector-facturas' && <InvoiceReader />}
+            {activeSection === 'lector-ingresos' && <InvoiceIncomeReader />}
+            {activeSection === 'lector-gastos' && <InvoiceExpenseReader />}
             {activeSection === 'soporte' && <SupportMessages onSelectTicket={handleSelectTicket} />}
             {activeSection === 'ticket-detalle' && selectedTicketId && (
               <MessageDetail ticketId={selectedTicketId} onBack={handleBackFromTicket} />

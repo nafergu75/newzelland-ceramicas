@@ -1,16 +1,22 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
+import { captureAttribution } from './utils/attribution'
 import Header from './components/Header'
 import CartToast from './components/CartToast'
 import PrivateRoute from './components/PrivateRoute'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import CollectionsPage from './pages/CollectionsPage'
+import ProjectsPage from './pages/ProjectsPage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
 import ContactPage from './pages/ContactPage'
+import QuoteRequestPage from './pages/QuoteRequestPage'
+import PartnerRegisterPage from './pages/PartnerRegisterPage'
 import FAQPage from './pages/FAQPage'
 import DownloadsPage from './pages/DownloadsPage'
+import PrivacyPage from './pages/PrivacyPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
@@ -21,6 +27,7 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import CartPage from './pages/CartPage'
 import PackingPage from './pages/PackingPage'
 import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
+import InvoiceReader from './pages/admin/sections/InvoiceReader'
 
 /**
  * Las rutas protegidas se montan SIEMPRE y deciden en render-time con el
@@ -29,14 +36,38 @@ import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
  * sin recargar, /dashboard no existía y salía pantalla en blanco.)
  */
 function ProtectedRoute({ children }: { children: ReactNode }) {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, isLoading } = useAuth()
+  // Sin esperar isLoading, una recarga completa con token válido pero
+  // AuthContext aún inicializando (llamada async a /api/auth/me en curso)
+  // expulsaba a /login de forma incorrecta — el mismo patrón que ya se
+  // corrigió en AdminRoute.
+  if (isLoading) return null
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
   }
   return <>{children}</>
 }
 
+// Además de exigir sesión, exige role === 'admin'. Un cliente normal
+// logueado que entre a /admin se redirige a su cuenta, no a /login
+// (ya tiene sesión válida, solo no tiene permiso).
+function AdminRoute({ children }: { children: ReactNode }) {
+  const { isAuthenticated, user, isLoading } = useAuth()
+  if (isLoading) return null
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
+  if (user?.role !== 'admin') {
+    return <Navigate to="/mi-cuenta" replace />
+  }
+  return <>{children}</>
+}
+
 export default function App() {
+  useEffect(() => {
+    captureAttribution()
+  }, [])
+
   return (
     <AuthProvider>
       <CartProvider>
@@ -56,9 +87,19 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/collections" element={<CollectionsPage />} />
             <Route path="/collections/:slug" element={<CollectionsPage />} />
+            <Route path="/proyectos" element={<ProjectsPage />} />
+            <Route path="/proyectos/:slug" element={<ProjectDetailPage />} />
+            <Route path="/projects" element={<Navigate to="/proyectos" replace />} />
+            <Route path="/projects/:slug" element={<Navigate to="/proyectos/:slug" replace />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/contacto" element={<Navigate to="/contact" replace />} />
+            <Route path="/presupuesto" element={<QuoteRequestPage />} />
+            <Route path="/quote-request" element={<Navigate to="/presupuesto" replace />} />
+            <Route path="/registro-profesionales" element={<PartnerRegisterPage />} />
+            <Route path="/partner-register" element={<Navigate to="/registro-profesionales" replace />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/downloads" element={<DownloadsPage />} />
+            <Route path="/privacidad" element={<PrivacyPage />} />
             {/* Catálogo y Colecciones eran la misma vista duplicada; unificado en /collections */}
             <Route path="/catalog" element={<Navigate to="/collections" replace />} />
             <Route path="/packing" element={<PackingPage />} />
@@ -90,11 +131,16 @@ export default function App() {
             <Route
               path="/admin"
               element={
-                <ProtectedRoute>
+                <AdminRoute>
                   <AdminDashboard />
-                </ProtectedRoute>
+                </AdminRoute>
               }
             />
+
+            {/* Ruta solo-desarrollo para probar el lector OCR sin login */}
+            {import.meta.env.DEV && (
+              <Route path="/dev/lector" element={<InvoiceReader />} />
+            )}
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

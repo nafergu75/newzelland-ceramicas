@@ -15,6 +15,14 @@ frontend/dist/
 frontend/tsconfig.tsbuildinfo
 api/.env
 
+# URLs reales de descarga de catálogos (R2/Cloudinary). El repo es público:
+# si esto se commitea, cualquiera puede leer los enlaces directos y
+# descargar catálogos sin pasar por login ni tracking, que es precisamente
+# lo que este fichero existe para evitar (ver comentario en api/index.js).
+# Debe subirse a Vercel como parte del deploy por otra vía (ver notas de
+# despliegue), nunca vía git en un repo público.
+api/data/catalog-fichas.json
+
 .vercel
 
 # PDFs de Practika: copia local (668 MB), la web enlaza al CDN de Practika
