@@ -192,6 +192,11 @@ export default function CollectionsAdmin() {
             <label>
               Imagen de portada (URL)
               <input value={form.imagen_portada} onChange={(e) => setForm({ ...form, imagen_portada: e.target.value })} style={{ width: '100%' }} />
+              {!form.imagen_portada.trim() && (
+                <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#8a6416' }}>
+                  Sin URL: la ficha mostrará el icono genérico por defecto. Pega aquí la foto real cuando la tengas.
+                </p>
+              )}
             </label>
             <label>
               Acabado de corte
@@ -238,7 +243,25 @@ export default function CollectionsAdmin() {
         <tbody>
           {collections.map((c) => (
             <tr key={c.id} style={{ borderBottom: '1px solid #f5f5f5' }}>
-              <td style={{ padding: '12px' }}>{c.nombre}</td>
+              <td style={{ padding: '12px' }}>
+                {c.nombre}
+                {!c.imagen_portada && (
+                  <span
+                    style={{
+                      marginLeft: '8px',
+                      padding: '2px 8px',
+                      borderRadius: '999px',
+                      backgroundColor: '#fff3cd',
+                      color: '#8a6416',
+                      fontSize: '11px',
+                      fontWeight: 600,
+                    }}
+                    title="Esta colección no tiene foto real: usa el icono genérico por defecto"
+                  >
+                    Sin foto real
+                  </span>
+                )}
+              </td>
               <td style={{ padding: '12px' }}>{c.material}</td>
               <td style={{ padding: '12px' }}>{c.estilo}</td>
               <td style={{ padding: '12px', textAlign: 'center' }}>{c.especificaciones_verificadas ? '✓' : '—'}</td>
