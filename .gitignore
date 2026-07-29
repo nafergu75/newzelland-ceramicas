@@ -31,6 +31,12 @@ generales/paneles-tecnicos.pdf
 melissa/melissa-panel-tecnico.pdf
 assets/descargas_actualizados/
 
+# WhatsApp bot: sesión autenticada (Puppeteer/LocalAuth) — nunca debe subirse,
+# equivale a una sesión de WhatsApp activa.
+whatsapp-bot/.wwebjs_auth/
+whatsapp-bot/node_modules/
+whatsapp-bot/.env
+
 # AgentKit
 *.db
 *.sqlite
@@ -41,3 +47,7 @@ __pycache__/
 venv/
 *.egg-info/
 /whatsapp-agent-kit
+
+.vercel
+.env*
+.superpowers/
