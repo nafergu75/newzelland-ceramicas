@@ -80,7 +80,9 @@ export interface DatosPersonales {
   email: string
   telefono: string
   empresa?: string
-  direccion: {
+  // Opcional: el backend (GET /api/account/perfil) todavía no tiene columnas
+  // de dirección en `users` — no confundir con "no debería existir nunca".
+  direccion?: {
     calle: string
     ciudad: string
     codigoPostal: string

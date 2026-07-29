@@ -8,7 +8,10 @@ import {
   DatosPersonales,
 } from '../types/account'
 
-const API_BASE = 'http://localhost:3000/api'
+// Antes hardcodeado a localhost:3000 — funcionaba en dev y quedaba roto en
+// cualquier despliegue real. El resto de servicios (api.ts, adminService.ts)
+// ya usan VITE_API_URL; este se alinea con ellos.
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
 const api = axios.create({
   baseURL: API_BASE,

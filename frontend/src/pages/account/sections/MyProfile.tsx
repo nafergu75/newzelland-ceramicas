@@ -30,7 +30,10 @@ export default function MyProfile() {
 
   const handleEditarClick = () => {
     setEditando(true)
-    setDatosTemporal(datos)
+    setDatosTemporal({
+      ...datos!,
+      direccion: datos?.direccion || { calle: '', ciudad: '', codigoPostal: '', pais: '' },
+    })
   }
 
   const handleGuardar = async () => {
@@ -231,11 +234,11 @@ export default function MyProfile() {
               </label>
               <input
                 type="text"
-                value={datosTemporal?.direccion.calle || ''}
+                value={datosTemporal?.direccion?.calle || ''}
                 onChange={(e) =>
                   setDatosTemporal({
                     ...datosTemporal!,
-                    direccion: { ...datosTemporal!.direccion, calle: e.target.value },
+                    direccion: { ...datosTemporal!.direccion!, calle: e.target.value },
                   })
                 }
                 style={{
@@ -256,11 +259,11 @@ export default function MyProfile() {
                 </label>
                 <input
                   type="text"
-                  value={datosTemporal?.direccion.ciudad || ''}
+                  value={datosTemporal?.direccion?.ciudad || ''}
                   onChange={(e) =>
                     setDatosTemporal({
                       ...datosTemporal!,
-                      direccion: { ...datosTemporal!.direccion, ciudad: e.target.value },
+                      direccion: { ...datosTemporal!.direccion!, ciudad: e.target.value },
                     })
                   }
                   style={{
@@ -279,11 +282,11 @@ export default function MyProfile() {
                 </label>
                 <input
                   type="text"
-                  value={datosTemporal?.direccion.codigoPostal || ''}
+                  value={datosTemporal?.direccion?.codigoPostal || ''}
                   onChange={(e) =>
                     setDatosTemporal({
                       ...datosTemporal!,
-                      direccion: { ...datosTemporal!.direccion, codigoPostal: e.target.value },
+                      direccion: { ...datosTemporal!.direccion!, codigoPostal: e.target.value },
                     })
                   }
                   style={{
@@ -339,7 +342,10 @@ export default function MyProfile() {
             <InfoItem label="Email" value={datos.email} />
             <InfoItem label="Teléfono" value={datos.telefono} />
             <InfoItem label="Empresa" value={datos.empresa || '-'} />
-            <InfoItem label="Dirección" value={`${datos.direccion.calle}, ${datos.direccion.ciudad}`} />
+            <InfoItem
+              label="Dirección"
+              value={datos.direccion ? `${datos.direccion.calle}, ${datos.direccion.ciudad}` : 'Sin especificar'}
+            />
           </div>
         )}
       </div>
