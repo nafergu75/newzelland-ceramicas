@@ -1409,14 +1409,100 @@
   width: 100%;
 }
 
-.collections-filters-section h3 {
+.collections-filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collections-filters-header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.collections-filters-toggle-all {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.collections-filters-toggle-all:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
+/* Cabecera de cada familia: antes era un <h3> estático, ahora es el botón
+   que abre/cierra el acordeón. */
+.collections-filters-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0 0 var(--space-2) 0;
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--stone);
-  margin: 0 0 var(--space-3) 0;
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--line);
+  transition: color var(--transition-fast);
+}
+
+.collections-filters-section-header:hover {
+  color: var(--ink);
+}
+
+.collections-filters-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.collections-filters-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.collections-filters-chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.collections-filters-chevron.is-expanded {
+  transform: rotate(180deg);
+}
+
+/* max-height (no height: auto) porque es lo único que se puede animar con
+   transition en CSS puro; 1000px es de sobra para la lista más larga
+   (Formato, ~21 opciones) sin recortar contenido cuando está expandida. */
+.collections-filters-options-wrap {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base), opacity var(--transition-base);
+}
+
+.collections-filters-options-wrap.is-expanded {
+  max-height: 1000px;
+  opacity: 1;
 }
 
 .collections-filters-options {

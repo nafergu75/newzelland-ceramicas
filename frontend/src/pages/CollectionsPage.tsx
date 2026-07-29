@@ -5,7 +5,17 @@ import Footer from '../components/Footer'
 import SeriesCard from '../components/SeriesCard'
 import AddToCartBox from '../components/AddToCartBox'
 import ImageWithFallback from '../components/ImageWithFallback'
-import CollectionsFilters, { ActiveFilters, EMPTY_FILTERS, espesorEnRango, materialesDe } from '../components/CollectionsFilters'
+import CollectionsFilters, {
+  ActiveFilters,
+  EMPTY_FILTERS,
+  espesorEnRango,
+  materialesDe,
+  ExpandedFamilies,
+  ALL_EXPANDED,
+  ALL_COLLAPSED,
+  cargarFamiliasExpandidas,
+  guardarFamiliasExpandidas,
+} from '../components/CollectionsFilters'
 import FilterDrawer from '../components/FilterDrawer'
 import ColorSelector from '../components/ColorSelector'
 import { series, getSerieById } from '../data/catalog'
@@ -20,6 +30,7 @@ export default function CollectionsPage() {
   const [search, setSearch] = useState('')
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>(EMPTY_FILTERS)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [expandedFamilies, setExpandedFamilies] = useState<ExpandedFamilies>(cargarFamiliasExpandidas)
   const [collectionDetail, setCollectionDetail] = useState<CollectionDetail | null>(null)
   const [loadingDetail, setLoadingDetail] = useState(true)
   const [selectedColor, setSelectedColor] = useState<ColorFoto | null>(null)
@@ -65,6 +76,17 @@ export default function CollectionsPage() {
       cancelado = true
     }
   }, [slug])
+
+  useEffect(() => {
+    guardarFamiliasExpandidas(expandedFamilies)
+  }, [expandedFamilies])
+
+  const handleToggleFamily = (categoria: keyof ActiveFilters) => {
+    setExpandedFamilies((prev) => ({ ...prev, [categoria]: !prev[categoria] }))
+  }
+
+  const handleExpandAll = () => setExpandedFamilies(ALL_EXPANDED)
+  const handleCollapseAll = () => setExpandedFamilies(ALL_COLLAPSED)
 
   const handleToggleFilter = (categoria: keyof ActiveFilters, valor: string) => {
     setActiveFilters((prev) => {
@@ -279,6 +301,10 @@ export default function CollectionsPage() {
                   activeFilters={activeFilters}
                   onToggle={handleToggleFilter}
                   onClear={handleClearFilters}
+                  expandedFamilies={expandedFamilies}
+                  onToggleFamily={handleToggleFamily}
+                  onExpandAll={handleExpandAll}
+                  onCollapseAll={handleCollapseAll}
                 />
               </aside>
 
@@ -290,6 +316,10 @@ export default function CollectionsPage() {
                   activeFilters={activeFilters}
                   onToggle={handleToggleFilter}
                   onClear={handleClearFilters}
+                  expandedFamilies={expandedFamilies}
+                  onToggleFamily={handleToggleFamily}
+                  onExpandAll={handleExpandAll}
+                  onCollapseAll={handleCollapseAll}
                 />
               </FilterDrawer>
 

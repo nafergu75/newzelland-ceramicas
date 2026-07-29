@@ -1,3 +1,4 @@
+import { CaretDown } from '@phosphor-icons/react'
 import type { Collection } from '../types/collections'
 
 export interface ActiveFilters {
@@ -18,6 +19,60 @@ export const EMPTY_FILTERS: ActiveFilters = {
   espesor: [],
   estilo: [],
   colores: [],
+}
+
+// Qué familias están expandidas. Vive en el padre (CollectionsPage), no
+// dentro de este componente: se renderiza dos veces a la vez (sidebar +
+// drawer móvil) y si el estado fuera interno, expandir "Formato" en el
+// drawer no se reflejaría en el sidebar — quedarían desincronizados.
+export type ExpandedFamilies = Record<keyof ActiveFilters, boolean>
+
+const EXPANDED_STORAGE_KEY = 'collections-filtros-expandido'
+
+export const ALL_EXPANDED: ExpandedFamilies = {
+  material: true,
+  tipo: true,
+  formatos: true,
+  acabados: true,
+  espesor: true,
+  estilo: true,
+  colores: true,
+}
+
+export const ALL_COLLAPSED: ExpandedFamilies = {
+  material: false,
+  tipo: false,
+  formatos: false,
+  espesor: false,
+  acabados: false,
+  estilo: false,
+  colores: false,
+}
+
+// Material y Tipo son los filtros más usados: abiertos por defecto en
+// desktop. En móvil arrancan todos colapsados — es la pantalla pequeña la
+// que más se beneficia de no scrollear cinco acordeones abiertos de golpe.
+function familiasPorDefecto(): ExpandedFamilies {
+  const esMovil = typeof window !== 'undefined' && window.innerWidth < 1024
+  return esMovil ? ALL_COLLAPSED : { ...ALL_COLLAPSED, material: true, tipo: true }
+}
+
+export function cargarFamiliasExpandidas(): ExpandedFamilies {
+  try {
+    const guardado = localStorage.getItem(EXPANDED_STORAGE_KEY)
+    if (guardado) return { ...familiasPorDefecto(), ...JSON.parse(guardado) }
+  } catch {
+    // localStorage no disponible o JSON corrupto: se ignora, se usa el default.
+  }
+  return familiasPorDefecto()
+}
+
+export function guardarFamiliasExpandidas(estado: ExpandedFamilies): void {
+  try {
+    localStorage.setItem(EXPANDED_STORAGE_KEY, JSON.stringify(estado))
+  } catch {
+    // Cuota de localStorage llena o modo privado: no es crítico, se ignora.
+  }
 }
 
 // Rangos fijos de espesor (mm) — ver spec, sección "Espesor: filtro por rango".
@@ -99,6 +154,10 @@ interface CollectionsFiltersProps {
   activeFilters: ActiveFilters
   onToggle: (categoria: keyof ActiveFilters, valor: string) => void
   onClear: () => void
+  expandedFamilies: ExpandedFamilies
+  onToggleFamily: (categoria: keyof ActiveFilters) => void
+  onExpandAll: () => void
+  onCollapseAll: () => void
 }
 
 export default function CollectionsFilters({
@@ -108,9 +167,14 @@ export default function CollectionsFilters({
   activeFilters,
   onToggle,
   onClear,
+  expandedFamilies,
+  onToggleFamily,
+  onExpandAll,
+  onCollapseAll,
 }: CollectionsFiltersProps) {
   const hasActiveFilters =
     search.trim() !== '' || Object.values(activeFilters).some((arr) => arr.length > 0)
+  const todoExpandido = Object.values(expandedFamilies).every(Boolean)
 
   const secciones: Array<{ titulo: string; categoria: keyof ActiveFilters; opciones: FilterOption[] }> = [
     { titulo: 'Material', categoria: 'material', opciones: contarMateriales(collections) },
@@ -124,6 +188,13 @@ export default function CollectionsFilters({
 
   return (
     <div className="collections-filters">
+      <div className="collections-filters-header">
+        <h2>Filtros</h2>
+        <button type="button" className="collections-filters-toggle-all" onClick={todoExpandido ? onCollapseAll : onExpandAll}>
+          {todoExpandido ? 'Colapsar todo' : 'Expandir todo'}
+        </button>
+      </div>
+
       <div className="collections-filters-search">
         <label htmlFor="buscar-serie">Buscar serie</label>
         <input
@@ -135,24 +206,46 @@ export default function CollectionsFilters({
         />
       </div>
 
-      {secciones.map((seccion) => (
-        <div className="collections-filters-section" key={seccion.categoria}>
-          <h3>{seccion.titulo}</h3>
-          <div className="collections-filters-options">
-            {seccion.opciones.map((opcion) => (
-              <label key={opcion.value} className="collections-filters-checkbox">
-                <input
-                  type="checkbox"
-                  checked={activeFilters[seccion.categoria].includes(opcion.value)}
-                  onChange={() => onToggle(seccion.categoria, opcion.value)}
-                />
-                <span>{opcion.value}</span>
-                <span className="collections-filters-count">({opcion.count})</span>
-              </label>
-            ))}
+      {secciones.map((seccion) => {
+        const expandida = expandedFamilies[seccion.categoria]
+        const activos = activeFilters[seccion.categoria].length
+        return (
+          <div className="collections-filters-section" key={seccion.categoria}>
+            <button
+              type="button"
+              className="collections-filters-section-header"
+              onClick={() => onToggleFamily(seccion.categoria)}
+              aria-expanded={expandida}
+            >
+              <span className="collections-filters-section-title">
+                {seccion.titulo}
+                {activos > 0 && <span className="collections-filters-badge">{activos}</span>}
+              </span>
+              <CaretDown
+                size={16}
+                weight="bold"
+                className={`collections-filters-chevron ${expandida ? 'is-expanded' : ''}`}
+              />
+            </button>
+
+            <div className={`collections-filters-options-wrap ${expandida ? 'is-expanded' : ''}`}>
+              <div className="collections-filters-options">
+                {seccion.opciones.map((opcion) => (
+                  <label key={opcion.value} className="collections-filters-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={activeFilters[seccion.categoria].includes(opcion.value)}
+                      onChange={() => onToggle(seccion.categoria, opcion.value)}
+                    />
+                    <span>{opcion.value}</span>
+                    <span className="collections-filters-count">({opcion.count})</span>
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
 
       {hasActiveFilters && (
         <button type="button" className="secondary collections-filters-clear" onClick={onClear}>
