@@ -276,7 +276,7 @@
       "id": "brando",
       "nombre": "Brando",
       "descripcion": "Porcelánico · 60x60",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brando/ambientes/brando-ambiente-01",
+      "imagen": "/series/brando-ambiente-01.jpg",
       "formatos": [
         "60x60"
       ],
@@ -303,7 +303,7 @@
       "id": "brandon",
       "nombre": "Brandon",
       "descripcion": "Porcelánico · 60x120",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/brandon/ambientes/brandon-ambiente-01",
+      "imagen": "/series/brandon-ambiente-01.jpg",
       "formatos": [
         "60x120"
       ],
@@ -1319,7 +1319,7 @@
       "id": "magnum",
       "nombre": "Magnum",
       "descripcion": "Porcelánico · 90x90",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/magnum/ambientes/magnum-ambiente-01",
+      "imagen": "/series/magnum-ambiente-01.jpg",
       "formatos": [
         "90x90"
       ],
@@ -1403,7 +1403,7 @@
       "id": "metro",
       "nombre": "Metro",
       "descripcion": "Pasta Roja · 10x20",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/metro/ambientes/metro-ambiente-01",
+      "imagen": "/series/metro-ambiente-01.jpg",
       "formatos": [
         "10x20"
       ],
@@ -1750,7 +1750,7 @@
       "id": "pobla-c3",
       "nombre": "Pobla c3",
       "descripcion": "Porcelánico · 33,3x33,3",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/pobla-c3/ambientes/pobla-c3-ambiente-01",
+      "imagen": "/series/pobla-c3-ambiente-01.jpg",
       "formatos": [
         "33,3x33,3"
       ],
@@ -1866,7 +1866,7 @@
       "id": "ritz",
       "nombre": "Ritz",
       "descripcion": "Pasta Roja, Porcelánico · 30x60, 60x60",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/ritz/ambientes/ritz-ambiente-01",
+      "imagen": "/series/ritz-ambiente-01.jpg",
       "formatos": [
         "30x60",
         "60x60"
@@ -1995,7 +1995,7 @@
       "id": "silos-c3-cotto-provenzal",
       "nombre": "Silos c3/cotto provenzal",
       "descripcion": "Gres · 33,3x33,3",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/silos-c3-cotto-provenzal/ambientes/silos-c3-cotto-provenzal-ambiente-01",
+      "imagen": "/series/silos-c3-cotto-provenzal-ambiente-01.jpg",
       "formatos": [
         "33,3x33,3"
       ],
@@ -2021,7 +2021,7 @@
       "id": "sonora",
       "nombre": "Sonora",
       "descripcion": "Porcelánico · 60x60",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/sonora/ambientes/sonora-ambiente-01",
+      "imagen": "/series/sonora-ambiente-01.jpg",
       "formatos": [
         "60x60"
       ],
@@ -2185,7 +2185,7 @@
       "id": "tea",
       "nombre": "Tea",
       "descripcion": "Porcelánico · 22,5x90",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/tea/ambientes/tea-ambiente-01",
+      "imagen": "/series/tea-ambiente-01.jpg",
       "formatos": [
         "22,5x90"
       ],
@@ -2269,7 +2269,7 @@
       "id": "timber",
       "nombre": "Timber",
       "descripcion": "Pasta Roja · 30x60",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/timber/ambientes/timber-ambiente-01",
+      "imagen": "/series/timber-ambiente-01.jpg",
       "formatos": [
         "30x60"
       ],
@@ -2518,7 +2518,7 @@
       "id": "walter-light-grey",
       "nombre": "Walter light grey",
       "descripcion": "Porcelánico · 60x120",
-      "imagen": "https://res.cloudinary.com/dtqgkmije/image/upload/f_auto,q_auto,cs_srgb/practika/series/walter-light-grey/ambientes/walter-light-grey-ambiente-01",
+      "imagen": "/series/walter-light-grey-ambiente-01.jpg",
       "formatos": [
         "60x120"
       ],

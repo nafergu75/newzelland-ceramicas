@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CaretLeft, CaretRight, ArrowRight } from '@phosphor-icons/react'
+import ImageWithFallback from './ImageWithFallback'
 import '../styles/components.css'
 
 /* ============================================================
@@ -124,7 +125,7 @@ export default function HeroCarousel({ slides = HERO_SLIDES }: { slides?: HeroSl
           aria-label={`${i + 1} de ${slides.length}: ${slide.eyebrow}`}
           aria-hidden={i !== index}
         >
-          <img
+          <ImageWithFallback
             src={slide.image}
             alt={`${slide.eyebrow} con la serie ${slide.title.split(',')[0]}`}
             loading={i === 0 ? 'eager' : 'lazy'}

@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import HeroCarousel from '../components/HeroCarousel'
 import SeriesCard from '../components/SeriesCard'
 import MosaicTile from '../components/MosaicTile'
+import ImageWithFallback from '../components/ImageWithFallback'
 import { useReveal } from '../hooks/useReveal'
 import { series, getSerieById } from '../data/catalog'
 import '../styles/components.css'
@@ -44,7 +45,7 @@ export default function HomePage() {
         {/* 3 · Banda editorial: materialidad y origen */}
         <section className="editorial-band">
           <div ref={editorial.ref} className={`editorial-inner reveal ${editorial.visible ? 'is-visible' : ''}`}>
-            <img
+            <ImageWithFallback
               src={getSerieById('morella')?.imagen ?? series[1].imagen}
               alt="Detalle de acabado cerámico"
               loading="lazy"
