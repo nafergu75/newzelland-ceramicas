@@ -1053,6 +1053,124 @@
   }
 }
 
+/* ---------- MODAL SELECTOR DE FORMATO ----------
+   Se abre desde el "quick add" de la tarjeta de catálogo (compact) cuando
+   una serie tiene más de un formato con tarifa: sin esto se añadía
+   siempre el primer formato sin preguntar. */
+.format-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(34, 48, 60, 0.5); /* --ink a 50% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100; /* por encima del toast del carrito */
+  padding: var(--space-4);
+}
+
+.format-modal {
+  background-color: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-xl);
+  width: min(92vw, 440px);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+}
+
+.format-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.format-modal-header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.format-modal-close {
+  background: none;
+  border: none;
+  color: var(--stone);
+  cursor: pointer;
+  padding: var(--space-1);
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.format-modal-close:hover {
+  color: var(--ink);
+}
+
+.format-modal-options {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.format-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-input);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.format-option:hover {
+  border-color: var(--stone);
+}
+
+.format-option.is-selected {
+  border-color: var(--accent);
+  background-color: rgba(32, 98, 126, 0.06); /* --accent muy tenue */
+}
+
+.format-option input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.format-option-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.format-option-nombre {
+  margin: 0 0 2px 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.format-option-meta {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--stone);
+}
+
+.format-option-precio {
+  margin: 0;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.format-modal-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.format-modal-actions button {
+  flex: 1;
+}
+
 /* ---------- FORMULARIOS ---------- */
 .contact-form {
   max-width: 600px;
@@ -1232,3 +1350,168 @@
 }
 
 /* Animaciones de entrada: ver animations.css */
+
+/* ---------- FILTROS DE /collections (sidebar + drawer) ---------- */
+
+.collections-layout {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+}
+
+.collections-layout-sidebar {
+  display: none;
+}
+
+.collections-layout-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .collections-layout-sidebar {
+    display: block;
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--space-8);
+  }
+}
+
+.collections-mobile-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .collections-mobile-filter-btn {
+    display: none;
+  }
+}
+
+.collections-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.collections-filters-search label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--ink);
+}
+
+.collections-filters-search input {
+  width: 100%;
+}
+
+.collections-filters-section h3 {
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+  margin: 0 0 var(--space-3) 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.collections-filters-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.collections-filters-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--ink);
+}
+
+.collections-filters-checkbox input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.collections-filters-count {
+  margin-left: auto;
+  color: var(--stone);
+  font-size: var(--font-size-xs);
+}
+
+.collections-filters-clear {
+  width: 100%;
+}
+
+/* ---------- Drawer de filtros (móvil) ---------- */
+
+.filter-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(34, 48, 60, 0.5);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.filter-drawer-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .filter-drawer-overlay {
+    display: none;
+  }
+}
+
+.filter-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: min(85vw, 340px);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-xl);
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+  overflow-y: auto;
+}
+
+.filter-drawer-overlay.is-open .filter-drawer {
+  transform: translateX(0);
+}
+
+.filter-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+
+.filter-drawer-header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.filter-drawer-header button {
+  background: none;
+  border: none;
+  color: var(--stone);
+  cursor: pointer;
+  line-height: 0;
+}
+
+.filter-drawer-body {
+  padding: var(--space-6);
+}
