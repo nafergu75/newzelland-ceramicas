@@ -84,15 +84,24 @@ Las variables creadas por CLI quedan marcadas como *Sensitive*: `vercel env pull
 devuelve `[SENSITIVE]` en lugar del valor. Es intencionado; para comprobar a qué
 rama apuntan, mira la consola de Neon.
 
-## Base de datos nueva: crear `users` y `orders` primero
+## Base de datos nueva: se autocura al desplegar
 
-Antes de nada, en una base de datos virgen hay que crear esas dos tablas a
-mano: no tienen `ensureXTable()` y su ausencia rompe en cascada el resto del
-esquema (login incluido). Ver [DB_SCHEMA.md](DB_SCHEMA.md) para el detalle.
+No hay que ejecutar nada a mano. Apunta `DATABASE_URL` a la base vacía,
+despliega, y `initializeDatabaseSchema()` crea las 10 tablas en el primer
+arranque en frío. En los logs verás:
+
+```
+Esquema listo: 10/10 tablas.
+```
+
+Detalle del orden y de por qué importa, en [DB_SCHEMA.md](DB_SCHEMA.md).
+
+Lo único que sigue siendo manual es dar de alta un administrador, porque una
+base nueva no tiene usuarios y sin uno con `role='admin'` no se entra al panel:
 
 ```bash
  export DATABASE_URL='postgresql://...'
-NODE_PATH=api/node_modules node scripts/create-users-table.js
+ ADMIN_EMAIL='tu@correo.com' ADMIN_PASSWORD='...' NODE_PATH=api/node_modules node scripts/create-admin-user.js
 unset DATABASE_URL
 ```
 

@@ -116,6 +116,59 @@ pool.on('error', (err) => {
   console.error('Database connection error:', err);
 });
 
+// `users` y `orders` son la raíz del esquema: casi todas las demás tablas
+// declaran `user_id INTEGER REFERENCES users(id)`, y ensureAccountTables()
+// hace `ALTER TABLE orders` dando por hecho que existe. Antes no tenían
+// ensure*() porque en la BD de desarrollo las había creado el backend Express
+// antiguo (backend/src/db/migrations.ts, ya sin desplegar); contra una BD
+// nueva eso rompía en cascada y el síntoma era un `relation "users" does not
+// exist` al hacer login. Mismo esquema que scripts/create-users-table.js.
+//
+// OJO: los ids son INTEGER, no UUID. El migrations.ts antiguo usa UUID y es
+// incompatible con todas las claves ajenas de este fichero.
+async function ensureUsersTable() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password_hash VARCHAR(255) NOT NULL,
+        phone VARCHAR(20),
+        empresa VARCHAR(255),
+        accepts_marketing BOOLEAN DEFAULT FALSE,
+        email_verified BOOLEAN DEFAULT FALSE,
+        role VARCHAR(50) DEFAULT 'customer',
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW(),
+        direccion JSONB
+      );
+    `);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);`);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);`);
+  } catch (error) {
+    console.error('Error creando tabla users:', error.message);
+  }
+}
+
+async function ensureOrdersTable() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS orders (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        status VARCHAR(50) DEFAULT 'pending',
+        total NUMERIC(10,2) NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);`);
+  } catch (error) {
+    console.error('Error creando tabla orders:', error.message);
+  }
+}
+
 async function ensureCatalogDownloadsTable() {
   try {
     await pool.query(`
@@ -289,11 +342,6 @@ async function ensureLeadsTables() {
   }
 }
 
-// Encadenadas: las columnas nuevas solo se añaden una vez la tabla existe
-// (en una BD nueva, CREATE TABLE y ALTER TABLE en paralelo tendrían carrera).
-ensureCatalogDownloadsTable().then(() => ensureCatalogDownloadsTrackingColumns());
-ensureLeadsTables();
-
 async function ensureProjectsTable() {
   try {
     await pool.query(`
@@ -329,7 +377,7 @@ async function ensureProjectsTable() {
   }
 }
 
-ensureProjectsTable();
+
 
 // ============================================
 // COLLECTIONS: catálogo de series, migrado desde catalogo.json.
@@ -379,7 +427,7 @@ async function ensureCollectionsTable() {
   }
 }
 
-ensureCollectionsTable();
+
 
 // ============================================
 // MI CUENTA: pedidos/envíos/tickets/perfil.
@@ -435,7 +483,79 @@ async function ensureAccountTables() {
   }
 }
 
-ensureAccountTables();
+// ============================================
+// INICIALIZACIÓN DEL ESQUEMA
+// ============================================
+//
+// Autocura el esquema: apuntar DATABASE_URL a una BD vacía (otra rama de Neon,
+// un entorno nuevo) y desplegar basta para que se cree todo. Es idempotente
+// —todo es CREATE TABLE / CREATE INDEX / ADD COLUMN IF NOT EXISTS— así que
+// re-ejecutarlo en cada arranque en frío no cuesta nada ni pisa datos.
+//
+// El orden es obligatorio, no estético: antes se lanzaban en paralelo y sin
+// await, y contra una BD nueva las que dependen de `users` u `orders` perdían
+// la carrera, fallaban, y como cada ensure*() captura su propio error, el API
+// arrancaba igual con el esquema a medias.
+
+const TABLAS_ESPERADAS = [
+  'users', 'orders', 'catalog_downloads', 'contacts', 'quote_requests',
+  'partners', 'projects', 'collections', 'support_tickets',
+  'support_ticket_messages',
+];
+
+async function initializeDatabaseSchema() {
+  const pasos = [
+    // Raíz: el resto del esquema las referencia con user_id INTEGER.
+    ['users', ensureUsersTable],
+    ['orders', ensureOrdersTable],
+    // Las columnas de tracking son un ALTER: la tabla debe existir antes.
+    ['catalog_downloads', ensureCatalogDownloadsTable],
+    ['catalog_downloads (tracking)', ensureCatalogDownloadsTrackingColumns],
+    ['leads', ensureLeadsTables],
+    ['projects', ensureProjectsTable],
+    ['collections', ensureCollectionsTable],
+    // Amplía `orders` por ALTER y crea las tablas de soporte.
+    ['mi cuenta', ensureAccountTables],
+  ];
+
+  for (const [nombre, fn] of pasos) {
+    try {
+      await fn();
+    } catch (error) {
+      // Las ensure*() ya capturan lo suyo; esto solo cubre un fallo inesperado
+      // fuera de su try/catch. No se relanza: tumbar el módulo dejaría sin
+      // servicio también a las rutas que no tocan base de datos.
+      console.error(`Fallo inesperado inicializando "${nombre}":`, error.message);
+    }
+  }
+
+  // Como cada ensure*() se traga sus errores, un esquema incompleto pasaría
+  // desapercibido. Este recuento deja constancia explícita en los logs de qué
+  // falta, en vez de descubrirlo cuando un endpoint reviente en producción.
+  try {
+    const { rows } = await pool.query(
+      `SELECT table_name FROM information_schema.tables
+       WHERE table_schema = 'public' AND table_name = ANY($1)`,
+      [TABLAS_ESPERADAS]
+    );
+    const existentes = rows.map((r) => r.table_name);
+    const faltan = TABLAS_ESPERADAS.filter((t) => !existentes.includes(t));
+
+    if (faltan.length === 0) {
+      console.log(`Esquema listo: ${existentes.length}/${TABLAS_ESPERADAS.length} tablas.`);
+    } else {
+      console.error(`Esquema INCOMPLETO. Faltan ${faltan.length}: ${faltan.join(', ')}`);
+    }
+  } catch (error) {
+    console.error('No se pudo verificar el esquema:', error.message);
+  }
+}
+
+// Se lanza al cargar el módulo (una vez por arranque en frío, no por petición)
+// y se guarda la promesa: el middleware de más abajo la espera, de modo que
+// ninguna petición se atiende con el esquema a medio crear. Ya resuelta,
+// esperarla es prácticamente gratis.
+const esquemaListo = initializeDatabaseSchema();
 
 // ============================================
 // MIDDLEWARE
@@ -444,6 +564,18 @@ ensureAccountTables();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// Espera a que el esquema esté creado antes de atender nada. Solo bloquea en
+// el primer arranque en frío; después `esquemaListo` ya está resuelta y esto
+// es un await sobre una promesa cumplida.
+app.use(async (req, res, next) => {
+  try {
+    await esquemaListo;
+  } catch (error) {
+    console.error('Inicialización del esquema fallida:', error.message);
+  }
+  next();
+});
 
 // Debug middleware
 app.use((req, res, next) => {

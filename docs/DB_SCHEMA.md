@@ -1,43 +1,54 @@
 # Esquema de base de datos
 
-## Cómo se crean las tablas
+## Autocuración del esquema
 
-`api/index.js` crea sus tablas al arrancar mediante funciones `ensureXTable()`
-que ejecutan `CREATE TABLE IF NOT EXISTS`. Se invocan sin `await` al cargar el
-módulo y **capturan sus propios errores**, limitándose a hacer `console.error`.
+`api/index.js` crea todo su esquema solo. Apuntar `DATABASE_URL` a una base de
+datos vacía (otra rama de Neon, un entorno nuevo) y desplegar es suficiente:
+**no hay que ejecutar ningún script a mano**.
 
-Eso tiene una consecuencia importante: **si una de esas funciones falla, el API
-sigue arrancando como si nada**. El fallo solo se descubre cuando algo intenta
-usar la tabla que no llegó a crearse.
+De ello se encarga `initializeDatabaseSchema()`, que llama en orden a las ocho
+funciones `ensureXTable()`. Todo son `CREATE TABLE` / `CREATE INDEX` /
+`ADD COLUMN` con `IF NOT EXISTS`, así que repetirlo en cada arranque en frío no
+cuesta nada ni pisa datos existentes.
 
-## Dos tablas que el código da por existentes
+La promesa se guarda en `esquemaListo` y un middleware la espera antes de
+atender cualquier petición: así ninguna llega con el esquema a medio crear.
+Solo bloquea en el primer arranque en frío; después es un `await` sobre una
+promesa ya resuelta.
 
-`users` y `orders` **no tienen `ensureXTable()`**. El código asume que ya están,
-porque en la base de datos de desarrollo las había creado el backend Express
-antiguo (`backend/src/db/migrations.ts`, hoy sin desplegar).
+### Por qué el orden importa
 
-En una base de datos nueva eso provoca un fallo en cascada:
+Las `ensure*()` se lanzaban antes **en paralelo y sin `await`**, y cada una
+captura su propio error limitándose a un `console.error`. Contra una base de
+datos nueva eso rompía en cascada sin que se notara:
 
-- Casi todas las demás tablas declaran `user_id INTEGER REFERENCES users(id)`.
-  Sin `users`, sus `ensure*()` fallan.
-- `ensureAccountTables()` empieza con `ALTER TABLE orders ADD COLUMN ...`.
-  Sin `orders`, lanza antes de llegar a crear `support_tickets` y
-  `support_ticket_messages`.
+- `users` y `orders` no tenían `ensure*()` — se daban por creadas porque en
+  desarrollo las hizo el backend Express antiguo (`backend/src/db/migrations.ts`,
+  hoy sin desplegar).
+- Casi todas las demás declaran `user_id INTEGER REFERENCES users(id)`: sin
+  `users`, fallaban.
+- `ensureAccountTables()` empieza con `ALTER TABLE orders ADD COLUMN ...`: sin
+  `orders`, lanzaba antes de crear `support_tickets` y `support_ticket_messages`.
 
-Síntoma típico: `relation "users" does not exist` al intentar hacer login,
-con el resto de la web aparentemente funcionando.
+El API arrancaba igual, con el esquema a medias, y el síntoma aparecía mucho
+después: `relation "users" does not exist` al intentar hacer login.
 
-**Solución:** crear ambas antes del primer arranque.
+Ahora la secuencia es `users` → `orders` → resto, y al terminar se compara con
+`TABLAS_ESPERADAS` y se deja constancia en los logs:
 
-```bash
- export DATABASE_URL='postgresql://...'
-NODE_PATH=api/node_modules node scripts/create-users-table.js
-unset DATABASE_URL
+```
+Esquema listo: 10/10 tablas.
 ```
 
-El script es idempotente y crea `users` y `orders` en el orden correcto. Tras
-ejecutarlo, en el siguiente arranque en frío los `ensure*()` restantes
-encuentran sus dependencias y completan el esquema solos.
+Si algo faltara, en su lugar aparece `Esquema INCOMPLETO. Faltan N: ...`, para
+enterarse por los logs y no porque un endpoint reviente en producción.
+
+### El script manual sigue existiendo
+
+[`scripts/create-users-table.js`](../scripts/create-users-table.js) hace lo
+mismo para `users` y `orders` desde fuera del API. Ya no hace falta en un
+despliegue normal; sirve para preparar una base de datos antes de desplegar,
+o para depurar sin levantar el backend.
 
 ### Cuidado con `backend/src/db/migrations.ts`
 
