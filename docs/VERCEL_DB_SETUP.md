@@ -84,6 +84,18 @@ Las variables creadas por CLI quedan marcadas como *Sensitive*: `vercel env pull
 devuelve `[SENSITIVE]` en lugar del valor. Es intencionado; para comprobar a qué
 rama apuntan, mira la consola de Neon.
 
+## Base de datos nueva: crear `users` y `orders` primero
+
+Antes de nada, en una base de datos virgen hay que crear esas dos tablas a
+mano: no tienen `ensureXTable()` y su ausencia rompe en cascada el resto del
+esquema (login incluido). Ver [DB_SCHEMA.md](DB_SCHEMA.md) para el detalle.
+
+```bash
+ export DATABASE_URL='postgresql://...'
+NODE_PATH=api/node_modules node scripts/create-users-table.js
+unset DATABASE_URL
+```
+
 ## Sincronizar datos con producción
 
 Las bases de datos local y de producción son independientes. Tras editar
