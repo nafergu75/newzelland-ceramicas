@@ -1,0 +1,2136 @@
+[
+  {
+    "slug": "alpina",
+    "nombre": "ALPINA",
+    "colores": [
+      {
+        "nombre": "ALPINA-HAYA-23X120",
+        "slug": "alpina-haya-23x120",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/colores/ea02598f-a78e-4693-93d9-fc02f698ffa1/regular/alpina-haya-23x120-19bf94d4-5a6f-4287-b8d3-97c93c5f6513.jpg"
+      },
+      {
+        "nombre": "TEKA",
+        "slug": "teka",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/alpina/colores/ea02598f-a78e-4693-93d9-fc02f698ffa1/regular/teka-c0991975-28f2-42d6-9160-9c975079a4eb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "aneto",
+    "nombre": "ANETO",
+    "colores": [
+      {
+        "nombre": "Arena",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/colores/90093db6-6c89-419a-ab5c-c557eb1fc80d/regular/arena-907e5c3d-52c6-4b64-968c-446d58bff9f0.jpg"
+      },
+      {
+        "nombre": "Beige",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/colores/90093db6-6c89-419a-ab5c-c557eb1fc80d/regular/beige-03094267-26b3-4174-a1cf-30ee4fec39fa.jpg"
+      },
+      {
+        "nombre": "Cuero",
+        "slug": "cuero",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/colores/90093db6-6c89-419a-ab5c-c557eb1fc80d/regular/cuero-0fe935a4-bde4-4b51-96e0-2584f9f0b0f7.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/aneto/colores/90093db6-6c89-419a-ab5c-c557eb1fc80d/regular/gris-b0e4b071-54df-4ef4-8164-32ee8b10f54c.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "ardesia-c3",
+    "nombre": "ARDESIA C3",
+    "colores": [
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ardesia-c3/colores/b8a93ce4-f692-47c4-956b-53d04a644afc/regular/white-baf1b9d6-765a-45bf-ad1c-2dc545ef3c8b.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ardesia-c3/colores/b8a93ce4-f692-47c4-956b-53d04a644afc/regular/grey-1e7738c8-9a41-4a2b-ad95-3d4dcf15ffb4.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ardesia-c3/colores/b8a93ce4-f692-47c4-956b-53d04a644afc/regular/natural-ad2115f5-8e50-4759-a978-97c72e7a2380.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "atlas",
+    "nombre": "ATLAS",
+    "colores": [
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/colores/1beda00e-d953-4f15-81b5-d3149ee6b086/regular/natural-36dea74c-99da-4adf-ba52-ef934301ba16.jpg"
+      },
+      {
+        "nombre": "MIEL",
+        "slug": "miel",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/colores/1beda00e-d953-4f15-81b5-d3149ee6b086/regular/miel-4d494aa1-9c22-47af-bad5-6fe01420c53b.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/colores/1beda00e-d953-4f15-81b5-d3149ee6b086/regular/gris-fb42fc93-5955-417c-a416-81b9be3f2bb5.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/atlas/colores/1beda00e-d953-4f15-81b5-d3149ee6b086/regular/blanco-f77c35aa-73b9-4ab3-a523-0793500acea7.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "bali-c3",
+    "nombre": "BALI C3",
+    "colores": [
+      {
+        "nombre": "BALI 1",
+        "slug": "bali-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-1-000ad06b-bcbc-4a48-856a-3efa1f193963.jpg"
+      },
+      {
+        "nombre": "BALI 2",
+        "slug": "bali-2",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-2-e9014b90-8d5f-43e7-831b-e46aabaf8f87.jpg"
+      },
+      {
+        "nombre": "BALI 4",
+        "slug": "bali-4",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-4-c606a95e-bd58-47f5-a3ac-e0b67e22cecb.jpg"
+      },
+      {
+        "nombre": "BALI 5",
+        "slug": "bali-5",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-5-921d9b92-9f9f-4024-aa08-96c9179f87b6.jpg"
+      },
+      {
+        "nombre": "BALI-6",
+        "slug": "bali-6",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-6-9fa0740d-b929-422f-9d11-a2c3ee98709a.jpg"
+      },
+      {
+        "nombre": "AZUL",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali-c3/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/azul-b9f22b66-71ff-4569-93dc-6a2a63ab4a68.jpg"
+      },
+      {
+        "nombre": "VERDE",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali-c3/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/verde-617ea430-0c3e-4575-85e2-e3ae0c933c82.jpg"
+      },
+      {
+        "nombre": "BALI 3",
+        "slug": "bali-3",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bali/colores/af57a243-092f-4011-a5ca-77b92bde6a2f/regular/bali-3-6f504bec-d381-4f21-8438-ced051bd5eba.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "berna",
+    "nombre": "BERNA",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/colores/d04b80c4-488e-4daf-9961-89387119bda7/regular/blanco-ff017c8f-0177-4954-9ad8-05e5873dbaee.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/colores/d04b80c4-488e-4daf-9961-89387119bda7/regular/gris-8917694e-3510-4252-a76c-cb01fbf84aba.jpg"
+      },
+      {
+        "nombre": "VERDE",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/colores/d04b80c4-488e-4daf-9961-89387119bda7/regular/verde-cb38561a-d59f-4710-b8f2-ec9f7a20fe0a.jpg"
+      },
+      {
+        "nombre": "AZUL",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/berna/colores/d04b80c4-488e-4daf-9961-89387119bda7/regular/azul-b7ba53d5-2506-47d3-a95c-1a31efebb02f.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "blancos",
+    "nombre": "BLANCOS",
+    "colores": [
+      {
+        "nombre": "MATE",
+        "slug": "mate",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/blancos/colores/c1b75e57-29b6-4fe5-a86e-ae0b2ad57157/regular/mate-02f6a909-1cc5-445b-96b8-f86e02bda0cd.jpg"
+      },
+      {
+        "nombre": "BRILLO",
+        "slug": "brillo",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/blancos/colores/c1b75e57-29b6-4fe5-a86e-ae0b2ad57157/regular/brillo-7d5ddb34-d3be-48eb-bb18-43eeed006b87.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "bosco",
+    "nombre": "BOSCO",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bosco/colores/312a2b4b-3cc4-4c36-9328-f587b2b5fa09/regular/beige-539b33b7-8d0c-482f-bef1-4f1f6bc9bd65.jpg"
+      },
+      {
+        "nombre": "CALDERA",
+        "slug": "caldera",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bosco/colores/312a2b4b-3cc4-4c36-9328-f587b2b5fa09/regular/caldera-8383b59e-536c-41a8-a97d-a1ca9553693e.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/bosco/colores/312a2b4b-3cc4-4c36-9328-f587b2b5fa09/regular/gris-565fe65b-d510-4b87-9d5b-a172feb25f34.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "brando",
+    "nombre": "BRANDO",
+    "colores": [
+      {
+        "nombre": "BLANC",
+        "slug": "blanc",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/colores/b53f1358-f756-49d4-9437-cb9b9f9a4f5a/regular/blanc-e7e09bad-4bce-42b9-a6bd-0f5037142b0f.jpg"
+      },
+      {
+        "nombre": "CLAIR",
+        "slug": "clair",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/colores/b53f1358-f756-49d4-9437-cb9b9f9a4f5a/regular/clair-72bfcddc-2db8-45d4-9bd3-7006867c0bcf.jpg"
+      },
+      {
+        "nombre": "FONCE",
+        "slug": "fonce",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/colores/b53f1358-f756-49d4-9437-cb9b9f9a4f5a/regular/fonce-9b88b138-0bfd-4cbb-ba1e-c6a16f03fecc.jpg"
+      },
+      {
+        "nombre": "OMBRE",
+        "slug": "ombre",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brando/colores/b53f1358-f756-49d4-9437-cb9b9f9a4f5a/regular/ombre-27389d0f-71f2-4531-98c9-804222844802.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "brandon",
+    "nombre": "BRANDON",
+    "colores": [
+      {
+        "nombre": "GREEN",
+        "slug": "green",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brandon/colores/095ad31c-aba2-4a51-afe4-cb572c52a64c/regular/green-d7b31856-da35-491d-8c63-48128228857f.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "brick",
+    "nombre": "BRICK",
+    "colores": [
+      {
+        "nombre": "MARRON",
+        "slug": "marron",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brick/colores/cbd5c196-ae56-4488-9c4a-2e5c8fc96153/regular/marron-eb03102a-1f73-4d1b-9e89-0f2e4b788bd1.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brick/colores/cbd5c196-ae56-4488-9c4a-2e5c8fc96153/regular/beige-4b7978be-258e-497d-8ea0-9a6e5e4ce2c4.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/brick/colores/cbd5c196-ae56-4488-9c4a-2e5c8fc96153/regular/gris-38f19be1-7c34-4f89-9e30-d4d94df04357.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "calacata",
+    "nombre": "CALACATA",
+    "colores": [
+      {
+        "nombre": "CALACATA",
+        "slug": "calacata",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/calacata/colores/7aee8542-444c-42dd-918e-0de4eb172278/regular/calacata-f4e1930f-f240-4740-9242-899b02fb07b2.jpg"
+      },
+      {
+        "nombre": "CALACATA",
+        "slug": "calacata",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/calacata/colores/982b183e-df0a-4f55-a129-d3bed2546b27/regular/calacata-654f02c2-ddf3-4658-b5e1-f5029dad08fe.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "carlotta-silver",
+    "nombre": "CARLOTTA SILVER",
+    "colores": [
+      {
+        "nombre": "CARLOTTA SILVER",
+        "slug": "carlotta-silver",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carlotta-silver/colores/b392bf5d-987a-489c-b4e0-ddcc614b8578/regular/carlotta-silver-9bd6bfa7-289c-4062-87eb-66cd7c7ad8a2.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "carrara",
+    "nombre": "CARRARA",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/1b617eb4-9c3c-4b1e-8161-8a9ebfc8a268/regular/blanco-52e4388b-a146-425e-9628-07ad876855a5.jpg"
+      },
+      {
+        "nombre": "CARRARA NEGRO 20X60",
+        "slug": "carrara-negro-20x60",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/1b617eb4-9c3c-4b1e-8161-8a9ebfc8a268/regular/carrara-negro-20x60-6586dcbb-dc9f-40d3-baf7-99978278ffeb.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/e62c717c-0884-4b8f-b710-585fc8587ea3/regular/blanco-652f0a6a-a0ca-4f02-8925-d0c2b308d20f.jpg"
+      },
+      {
+        "nombre": "NEGRO",
+        "slug": "negro",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/e62c717c-0884-4b8f-b710-585fc8587ea3/regular/negro-f849f12c-16df-4b1d-b442-ec674ae1d26a.jpg"
+      },
+      {
+        "nombre": "CARRARA",
+        "slug": "carrara",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/dfa5acc5-d76d-407b-ab42-93db486b6dba/regular/carrara-1ce82b72-7d63-4ea2-a2a7-d5a97390a626.jpg"
+      },
+      {
+        "nombre": "CARRARA",
+        "slug": "carrara",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/carrara/colores/a0cc6acb-6d46-417b-8df1-c75f7dfaaa5f/regular/carrara-875d1803-7e64-4d10-a648-9b90c479415d.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "ceppo-di-gre",
+    "nombre": "CEPPO DI GRE",
+    "colores": [
+      {
+        "nombre": "COLD",
+        "slug": "cold",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/colores/1e87d70c-3667-446b-a74f-fdfbf1586b89/regular/cold-a59d8a02-bac3-4431-96b3-1dc02b504e07.jpg"
+      },
+      {
+        "nombre": "WARM",
+        "slug": "warm",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/colores/1e87d70c-3667-446b-a74f-fdfbf1586b89/regular/warm-36dd780e-8def-4844-ae6d-d9924423d129.jpg"
+      },
+      {
+        "nombre": "COLD",
+        "slug": "cold",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/colores/b0497737-09cd-41ad-804e-5ce6c48fb092/regular/cold-35632073-c721-4a0b-b632-6903602e9621.jpg"
+      },
+      {
+        "nombre": "WARM",
+        "slug": "warm",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ceppo-di-gre/colores/b0497737-09cd-41ad-804e-5ce6c48fb092/regular/warm-8ab0103c-8782-4f79-ac6e-42c5d17ca0d5.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "cober",
+    "nombre": "COBER",
+    "colores": [
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/6ea84f71-db49-4b68-ab38-eab1aae7c5f7/regular/sand-f61b945e-57b6-4f33-a259-637de604f67f.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/6ea84f71-db49-4b68-ab38-eab1aae7c5f7/regular/white-6e8de143-5d3b-4c61-8b28-368ca7eb1beb.jpg"
+      },
+      {
+        "nombre": "PEARL",
+        "slug": "pearl",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/1fa81859-2ec1-4bcd-ab19-7e9443f39848/regular/pearl-efa6aff2-4da3-4e8d-9135-09bf0f379b23.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/1fa81859-2ec1-4bcd-ab19-7e9443f39848/regular/sand-d33a0b16-5b1d-486c-b027-927bdbb916cd.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/1fa81859-2ec1-4bcd-ab19-7e9443f39848/regular/white-0155b5cc-2411-479c-bea2-7a827ef5c04f.jpg"
+      },
+      {
+        "nombre": "PEARL",
+        "slug": "pearl",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/47e031ae-6f5a-4147-88b3-8bd5959a8b11/regular/pearl-3d45cd12-0b34-4a49-bfa2-bc0f26dd231b.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/47e031ae-6f5a-4147-88b3-8bd5959a8b11/regular/sand-96e6c607-b15b-4ac9-a2d4-3d88ce5741ff.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/cober/colores/47e031ae-6f5a-4147-88b3-8bd5959a8b11/regular/white-47573d26-b887-4679-8c10-4f3ec2c9992b.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "concrete",
+    "nombre": "CONCRETE",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/colores/86157752-ed6b-430c-87aa-6dcdb47fd7c0/regular/beige-67554476-0531-4605-8d49-f1a585f4177a.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/colores/86157752-ed6b-430c-87aa-6dcdb47fd7c0/regular/gris-c5008029-ccb7-4883-9559-7df2dee8081e.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/colores/86157752-ed6b-430c-87aa-6dcdb47fd7c0/regular/marfil-ed1b7131-a1d3-4a69-839a-fda5a2333ddc.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/concrete/colores/86157752-ed6b-430c-87aa-6dcdb47fd7c0/regular/perla-021f0d95-981e-45ae-a66e-ec585f30b7bb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "crema-marfil",
+    "nombre": "CREMA MARFIL",
+    "colores": [
+      {
+        "nombre": "CREMA MARFIL",
+        "slug": "crema-marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/crema-marfil/colores/8a262ff1-f16e-44af-a767-9239b6fc3eb4/regular/crema-marfil-5455d462-c264-4cc6-815e-3c054cb20169.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "curia-c3",
+    "nombre": "CURIA C3",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/colores/ae313e97-47c6-4e76-878b-3bf96547fceb/regular/blanco-11e77b14-798f-4ef4-8313-73244b209db6.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/colores/ae313e97-47c6-4e76-878b-3bf96547fceb/regular/gris-d3432338-e6ac-4198-bcc3-d9e9f1ba70f8.jpg"
+      },
+      {
+        "nombre": "HAYA",
+        "slug": "haya",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/colores/ae313e97-47c6-4e76-878b-3bf96547fceb/regular/haya-d94e9efa-b455-4353-aa40-089ca4cb0112.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/colores/ae313e97-47c6-4e76-878b-3bf96547fceb/regular/roble-3abc0df8-9ff7-44b5-b40d-5ca0723f1e59.jpg"
+      },
+      {
+        "nombre": "WENGUE",
+        "slug": "wengue",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/curia-c3/colores/ae313e97-47c6-4e76-878b-3bf96547fceb/regular/wengue-61c82972-ffa7-42e4-aae4-2d1becf7c829.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "diamond",
+    "nombre": "DIAMOND",
+    "colores": [
+      {
+        "nombre": "DIAMOND",
+        "slug": "diamond",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/diamond/colores/3fc893e7-cdf9-4807-86f2-f2a859cfee25/regular/diamond-a101e9f1-b3e0-4139-816a-16d8f12c1e42.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "eden",
+    "nombre": "EDEN",
+    "colores": [
+      {
+        "nombre": "GOLD",
+        "slug": "gold",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/colores/a45a3eab-0b6e-45f9-be22-6061f7f538c4/regular/gold-446bce0a-a5dd-4785-afb5-5359b54532a0.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/colores/a45a3eab-0b6e-45f9-be22-6061f7f538c4/regular/white-43f3e4f7-aad6-4033-91d6-be975a30d47f.jpg"
+      },
+      {
+        "nombre": "CARRARA BLANCO",
+        "slug": "carrara-blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/colores/0172c2f7-95be-41fb-bbc4-d482e4c78fde/regular/carrara-blanco-ff2378b4-f831-4f66-836b-0646fd5b830d.jpg"
+      },
+      {
+        "nombre": "CARRARA GOLD",
+        "slug": "carrara-gold",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/eden/colores/0172c2f7-95be-41fb-bbc4-d482e4c78fde/regular/carrara-gold-c54c4142-2bcc-4533-a5d9-deccfc7cc968.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "elvis",
+    "nombre": "ELVIS",
+    "colores": [
+      {
+        "nombre": "ELVIS",
+        "slug": "elvis",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/elvis/colores/357226d6-f268-4016-89d2-ef297f22cc53/regular/elvis-55a14905-1f3c-4352-a020-7485d07c93b5.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "enate",
+    "nombre": "ENATE",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/colores/2b2fabb9-d084-4d8d-a385-9c8fa6c424e6/regular/blanco-a72614fb-97d2-43dd-a3ca-61b7dee657c3.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/colores/2b2fabb9-d084-4d8d-a385-9c8fa6c424e6/regular/gris-01b0b4e4-7d08-478a-a568-e27535b66122.jpg"
+      },
+      {
+        "nombre": "HAYA",
+        "slug": "haya",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/colores/2b2fabb9-d084-4d8d-a385-9c8fa6c424e6/regular/haya-d3692bf6-394a-4460-99ee-8216b88d3d4c.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enate/colores/2b2fabb9-d084-4d8d-a385-9c8fa6c424e6/regular/roble-e8c1e385-9e68-4cdd-90a2-d4b558eea54d.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "enjoy",
+    "nombre": "ENJOY",
+    "colores": [
+      {
+        "nombre": "AZUL",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/colores/41115b8e-87eb-4251-9b17-a9d9247c3a5c/regular/azul-48e95149-456a-4e2d-bb2f-6f4b965da70b.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/colores/41115b8e-87eb-4251-9b17-a9d9247c3a5c/regular/blanco-f3e61ba3-b931-4e23-9dfc-6457288e7838.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/colores/41115b8e-87eb-4251-9b17-a9d9247c3a5c/regular/gris-ce0841db-70a0-4538-8428-8b8c248af9de.jpg"
+      },
+      {
+        "nombre": "VERDE",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/enjoy/colores/41115b8e-87eb-4251-9b17-a9d9247c3a5c/regular/verde-c5c5e673-a351-4421-876f-8c611998ffed.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "forest",
+    "nombre": "FOREST",
+    "colores": [
+      {
+        "nombre": "ARENA",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/colores/055e8486-59f6-4f38-bcc7-fcaf2b587609/regular/arena-0431dd29-1937-4207-ab61-f71b2c4dccf4.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/colores/055e8486-59f6-4f38-bcc7-fcaf2b587609/regular/gris-5fd682f6-2ff4-4f8f-9ef0-0e941a278551.jpg"
+      },
+      {
+        "nombre": "NOGAL",
+        "slug": "nogal",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/colores/055e8486-59f6-4f38-bcc7-fcaf2b587609/regular/nogal-defc5eca-3a56-48f7-8f96-c90e134a7c1f.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/colores/055e8486-59f6-4f38-bcc7-fcaf2b587609/regular/blanco-84edbcf3-0398-4173-949a-b8335c94b725.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/forest/colores/055e8486-59f6-4f38-bcc7-fcaf2b587609/regular/roble-88dab568-8ee0-4e30-a9b1-ae2b5615fb71.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "foresta",
+    "nombre": "FORESTA",
+    "colores": [
+      {
+        "nombre": "FORESTA",
+        "slug": "foresta",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/foresta/colores/169ecd12-7834-4981-88f3-4fcd80ff4c3e/regular/foresta-939d0e67-bc08-44d9-9360-d6ae238e42f2.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "fresno",
+    "nombre": "FRESNO",
+    "colores": [
+      {
+        "nombre": "ARENA 1",
+        "slug": "arena-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/arena-1-e26d6e8a-a287-4e9d-99e4-26f84c6848fe.jpg"
+      },
+      {
+        "nombre": "ARENA 2",
+        "slug": "arena-2",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/arena-2-6592b103-fc36-4bbd-8d16-b847be5db40a.jpg"
+      },
+      {
+        "nombre": "ARENA 3",
+        "slug": "arena-3",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/arena-3-be99872f-76de-4221-bd14-ee403f6628dc.jpg"
+      },
+      {
+        "nombre": "GRIS 1",
+        "slug": "gris-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/gris-1-53938bcf-43ce-4de1-ad43-e8a2571f294e.jpg"
+      },
+      {
+        "nombre": "GRIS 2",
+        "slug": "gris-2",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/gris-2-d255690a-ac35-40e6-82e7-cf9de660c652.jpg"
+      },
+      {
+        "nombre": "GRIS 3",
+        "slug": "gris-3",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fresno/colores/48913b6d-5c94-4705-b8d4-f1dd7d0b3647/regular/gris-3-f2826978-f183-4f84-a21e-bcce0831c839.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "fusta",
+    "nombre": "FUSTA",
+    "colores": [
+      {
+        "nombre": "HAYA",
+        "slug": "haya",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/colores/95a8a33d-fb09-48ce-bf63-4e63aa665388/regular/haya-1c559051-ec77-4633-a9e2-7f4991d7976a.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/colores/95a8a33d-fb09-48ce-bf63-4e63aa665388/regular/roble-08b17b02-675d-48f1-b634-267bbcd55ed9.jpg"
+      },
+      {
+        "nombre": "SMOKE",
+        "slug": "smoke",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/colores/95a8a33d-fb09-48ce-bf63-4e63aa665388/regular/smoke-839d9f0f-63e9-4148-b584-49cfc508f1f2.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/colores/95a8a33d-fb09-48ce-bf63-4e63aa665388/regular/blanco-833f3115-39c5-4604-8cd4-3f98062e97ea.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/fusta/colores/95a8a33d-fb09-48ce-bf63-4e63aa665388/regular/gris-0ee6c3ae-b528-4d3e-b201-d1345ea81356.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "garden",
+    "nombre": "GARDEN",
+    "colores": [
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/adef250c-9c25-4749-841e-55dc95444d37/regular/marfil-e4b13108-1f52-41df-b25d-4e4de95727ba.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/adef250c-9c25-4749-841e-55dc95444d37/regular/white-5ad0cb8c-0b2e-4c9b-87ae-39af726f6bc6.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/adef250c-9c25-4749-841e-55dc95444d37/regular/grey-ededfdc7-d51b-44ae-9d97-db4c63d8085c.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/693a9f7b-1265-4dc7-b137-ce9cc1e9b94a/regular/grey-1d2efd95-cbe4-4b42-b3e6-d14048c007f2.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/693a9f7b-1265-4dc7-b137-ce9cc1e9b94a/regular/marfil-8c1d6163-e129-4bf3-88f9-675e7b0542bd.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/garden/colores/693a9f7b-1265-4dc7-b137-ce9cc1e9b94a/regular/white-0b080aa0-5ddf-4bb7-8de6-79580a872d6d.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "haina",
+    "nombre": "HAINA",
+    "colores": [
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/colores/fa20dcac-ad06-4188-ac1c-c0b7b4503ca3/regular/perla-21779e93-e285-4250-a21f-81a86a6486f7.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/colores/fa20dcac-ad06-4188-ac1c-c0b7b4503ca3/regular/gris-0ad9a6cc-c5de-4512-987d-094d7bfdcf59.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/colores/fa20dcac-ad06-4188-ac1c-c0b7b4503ca3/regular/marfil-69b5fb5d-a6b1-40d1-a69b-de216fc95e86.jpg"
+      },
+      {
+        "nombre": "MARRON",
+        "slug": "marron",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/haina/colores/fa20dcac-ad06-4188-ac1c-c0b7b4503ca3/regular/marron-7c178968-4825-4a48-b7d4-30714db8942e.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "hidraulicos",
+    "nombre": "HIDRÁULICOS",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/hidraulicos/colores/a05c3317-4899-4431-b2bd-dc6a2a8d380c/regular/beige-16805cb3-4b95-45b2-b84d-3c9f213db235.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "inca",
+    "nombre": "INCA",
+    "colores": [
+      {
+        "nombre": "CUERO",
+        "slug": "cuero",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/inca/colores/1f5606ae-2e94-42a8-95e3-e8889a09b319/regular/cuero-18488880-4863-4396-8714-42027ac5c62c.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/inca/colores/1f5606ae-2e94-42a8-95e3-e8889a09b319/regular/gris-35a6f218-f92d-4f97-b1bf-ab064fea1722.jpg"
+      },
+      {
+        "nombre": "MIEL",
+        "slug": "miel",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/inca/colores/1f5606ae-2e94-42a8-95e3-e8889a09b319/regular/miel-e7234f20-2d5d-459b-b0e8-6414c45e758b.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "irati",
+    "nombre": "IRATI",
+    "colores": [
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/colores/e5a1c398-f5e6-4a3e-b1be-edea0c9f0464/regular/marfil-8b0a5d98-b0ad-466e-8d0d-c75fa361c29e.jpg"
+      },
+      {
+        "nombre": "MARRON",
+        "slug": "marron",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/colores/e5a1c398-f5e6-4a3e-b1be-edea0c9f0464/regular/marron-6f65d6b3-b4b8-4ce4-8942-8cab52374dd8.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/colores/e5a1c398-f5e6-4a3e-b1be-edea0c9f0464/regular/perla-02fef53d-e925-40d5-a4b5-64decd0c8674.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/irati/colores/e5a1c398-f5e6-4a3e-b1be-edea0c9f0464/regular/gris-ea7f340e-b47c-444b-b680-2eb233762c11.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "jaca",
+    "nombre": "JACA",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/jaca/colores/c9218bf3-0b2f-48f5-873b-e80f654da925/regular/beige-07043cfb-1106-4898-b2cc-f151b1028357.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/jaca/colores/c9218bf3-0b2f-48f5-873b-e80f654da925/regular/gris-6cae55b9-64cd-42e9-b326-8aa85af73f45.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "kamen",
+    "nombre": "KAMEN",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/colores/a2975c9d-f9dd-4fc3-86d8-98b3925be527/regular/beige-62604019-bb4a-4d37-83dc-a3b64d690f87.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/colores/a2975c9d-f9dd-4fc3-86d8-98b3925be527/regular/gris-a8227efc-b007-4bf3-85f7-c8b0f3fbfee4.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/colores/60c2710b-f321-474e-828a-67306aed08b9/regular/beige-582b44d2-ab93-47cc-b5a4-f1a32549143c.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kamen/colores/60c2710b-f321-474e-828a-67306aed08b9/regular/gris-fb1d52ee-dce8-4310-a6c8-def6d2cc987c.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "kaster",
+    "nombre": "KASTER",
+    "colores": [
+      {
+        "nombre": "GRAFITO",
+        "slug": "grafito",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/fcce25f3-a2d1-41e9-b7b5-e3d776fe0a2a/regular/grafito-93f4f1e7-1913-45ac-9d78-68667775e521.jpg"
+      },
+      {
+        "nombre": "CACAO",
+        "slug": "cacao",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/fcce25f3-a2d1-41e9-b7b5-e3d776fe0a2a/regular/cacao-4431aae7-d6ba-4294-b44c-1b552bc4a880.jpg"
+      },
+      {
+        "nombre": "ARENA",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/fcce25f3-a2d1-41e9-b7b5-e3d776fe0a2a/regular/arena-076f77dc-0699-4848-8482-c9b7e3ccc75e.jpg"
+      },
+      {
+        "nombre": "SENDRA",
+        "slug": "sendra",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/fcce25f3-a2d1-41e9-b7b5-e3d776fe0a2a/regular/sendra-b08bbbab-55b9-4278-8c10-34dfb350f28c.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/fcce25f3-a2d1-41e9-b7b5-e3d776fe0a2a/regular/gris-3f49a021-414c-49fb-ae8b-c86fb44b7777.jpg"
+      },
+      {
+        "nombre": "GRAFITO",
+        "slug": "grafito",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/ce997314-09d0-4596-a853-e6d09f3d9b77/regular/grafito-c780b349-e5b2-4baf-aab2-71e2bae5101d.jpg"
+      },
+      {
+        "nombre": "CACAO",
+        "slug": "cacao",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/ce997314-09d0-4596-a853-e6d09f3d9b77/regular/cacao-8ca4151f-6794-4d85-8a7b-22ee2ff1736c.jpg"
+      },
+      {
+        "nombre": "SENDRA",
+        "slug": "sendra",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/ce997314-09d0-4596-a853-e6d09f3d9b77/regular/sendra-0f50d68f-ed1c-4265-b72f-4e39e1370bef.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/ce997314-09d0-4596-a853-e6d09f3d9b77/regular/gris-2c2d7e8f-442a-4ef6-99c5-068493582287.jpg"
+      },
+      {
+        "nombre": "ARENA",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kaster/colores/ce997314-09d0-4596-a853-e6d09f3d9b77/regular/arena-fc4774af-31f6-47d2-9668-9c272f93373b.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "keops",
+    "nombre": "KEOPS",
+    "colores": [
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/colores/ced904e7-9e05-4fd8-b392-acdd88501e8e/regular/marfil-13632ba5-37ff-417d-ae66-7518a7670358.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/colores/ced904e7-9e05-4fd8-b392-acdd88501e8e/regular/perla-435d36c9-e534-4b23-b603-fad27a443699.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/colores/aa2b1371-5ae0-4766-8e62-a83477e8f9ab/regular/perla-ce93fc6d-b65b-4f8a-8b9a-a84792941abd.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keops/colores/aa2b1371-5ae0-4766-8e62-a83477e8f9ab/regular/marfil-6106a76e-83ac-4885-a6e7-9fd03e0023c7.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "keyburn-c3",
+    "nombre": "KEYBURN C3",
+    "colores": [
+      {
+        "nombre": "BLACK",
+        "slug": "black",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keyburn-c3/colores/b49d71ee-f5cc-457f-9208-f9443e9bf25d/regular/black-15a2c0d2-c253-4ae0-acb0-a5513ba7f5ed.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keyburn-c3/colores/b49d71ee-f5cc-457f-9208-f9443e9bf25d/regular/grey-5e6b5dfc-5f6f-477f-9f86-5572b8bb2fa0.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/keyburn-c3/colores/b49d71ee-f5cc-457f-9208-f9443e9bf25d/regular/white-fcbfd662-bb33-4f0e-b5fe-475f4cb59e6e.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "kite",
+    "nombre": "KITE",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/7bae66ef-7ff5-4d09-9d63-4e1e6e0d0a43/regular/beige-4a25789e-1712-48df-88c3-bea10b215f6e.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/7bae66ef-7ff5-4d09-9d63-4e1e6e0d0a43/regular/gris-6a5d9fb2-9553-4292-ad0e-9545b9911eb3.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/7bae66ef-7ff5-4d09-9d63-4e1e6e0d0a43/regular/marfil-1af3e4b3-61cc-45e1-8065-8b75fc656bc1.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/7bae66ef-7ff5-4d09-9d63-4e1e6e0d0a43/regular/perla-947717a1-9a86-4a56-b93a-fcb8b646a768.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/43b7484b-e545-47c3-b374-16aae9b399b1/regular/beige-66aada0c-dbb8-4377-86d3-2d943d3d72d1.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/43b7484b-e545-47c3-b374-16aae9b399b1/regular/gris-d788e39b-6d63-4aff-9030-c72d290ce5ff.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/43b7484b-e545-47c3-b374-16aae9b399b1/regular/marfil-e9c4c1d7-552a-4a0a-978b-723b3aa4008d.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kite/colores/43b7484b-e545-47c3-b374-16aae9b399b1/regular/perla-5507dbda-1449-481e-ba8f-90510b403840.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "koral",
+    "nombre": "KORAL",
+    "colores": [
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/koral/colores/cd780f4e-ae9f-4f8b-a91b-0d4a630b22d9/regular/grey-2251d7ae-a07b-4231-ad3d-cf8eeecdf30f.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/koral/colores/ec2aab95-ae39-402a-8551-26dca54ceaa0/regular/grey-23357ec3-6826-4945-a034-18053177dc1c.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "kronos",
+    "nombre": "KRONOS",
+    "colores": [
+      {
+        "nombre": "GRAFITO",
+        "slug": "grafito",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/colores/bc562f09-d9ae-4ae3-9bc7-d4da6a6355ec/regular/grafito-e563bc4e-8762-44a2-b560-7848b59b28bc.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/colores/bc562f09-d9ae-4ae3-9bc7-d4da6a6355ec/regular/grey-628a2c7c-d8e7-479e-a3ad-60a55bd05cf3.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/colores/bc562f09-d9ae-4ae3-9bc7-d4da6a6355ec/regular/marfil-da28efaf-d156-4b76-a052-e31fa08cbe17.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/colores/bc562f09-d9ae-4ae3-9bc7-d4da6a6355ec/regular/white-25f65d87-f0a4-42ad-b4b6-6033f49bb65e.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/kronos/colores/bc562f09-d9ae-4ae3-9bc7-d4da6a6355ec/regular/beige-5b55a0b1-ef9b-4bcd-8549-927dbf474f75.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "land-kaster-c3",
+    "nombre": "LAND KASTER C3",
+    "colores": [
+      {
+        "nombre": "Coal",
+        "slug": "coal",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/a01ab17d-ce39-4312-9cf5-dc0d38b4303a/regular/coal-065ac5d9-409a-46f1-b88f-36844ca04be9.jpg"
+      },
+      {
+        "nombre": "Grey",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/a01ab17d-ce39-4312-9cf5-dc0d38b4303a/regular/grey-4b0f3500-e17b-48fc-aa2e-96ea601feba5.jpg"
+      },
+      {
+        "nombre": "Sand",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/a01ab17d-ce39-4312-9cf5-dc0d38b4303a/regular/sand-dffe1175-395e-465f-bf7b-4b22902018fe.jpg"
+      },
+      {
+        "nombre": "White",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/a01ab17d-ce39-4312-9cf5-dc0d38b4303a/regular/white-a5ceecce-ffc9-4478-87e3-bcf0da0a83dc.jpg"
+      },
+      {
+        "nombre": "Coal",
+        "slug": "coal",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/2ba8f7c2-b5fc-4b2e-a6a2-a1b58e1cc331/regular/coal-62a362bd-3284-4677-bc29-2ba2a6bfe56b.jpg"
+      },
+      {
+        "nombre": "Grey",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/2ba8f7c2-b5fc-4b2e-a6a2-a1b58e1cc331/regular/grey-283c9743-ff8d-4a12-8b5b-096c21fbb36a.jpg"
+      },
+      {
+        "nombre": "Sand",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/2ba8f7c2-b5fc-4b2e-a6a2-a1b58e1cc331/regular/sand-ad999c42-0850-4dfa-a0f9-1476e3a72a2e.jpg"
+      },
+      {
+        "nombre": "White",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/2ba8f7c2-b5fc-4b2e-a6a2-a1b58e1cc331/regular/white-84a33220-7314-4719-9c37-4d0da65dba9f.jpg"
+      },
+      {
+        "nombre": "Grey",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/c6b1f973-a3a9-48cc-ae15-8376bd77e745/regular/grey-4ce4beae-9af6-4776-9c6d-f473153ee606.jpg"
+      },
+      {
+        "nombre": "Sand",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/land-kaster-c3/colores/c6b1f973-a3a9-48cc-ae15-8376bd77e745/regular/sand-ef15dd88-7796-41bb-b670-4e477da623d2.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "legend",
+    "nombre": "LEGEND",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/aae5d6b8-1e5e-40e6-a6dc-109a4d162536/regular/beige-ae5a7f51-43d9-45e9-8a95-908e2d1d3793.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/aae5d6b8-1e5e-40e6-a6dc-109a4d162536/regular/gris-507b9b86-e1b5-4a97-b216-6f13c0b8205a.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/aae5d6b8-1e5e-40e6-a6dc-109a4d162536/regular/marfil-f63c9e96-69e9-4426-bf63-e2332e4e2138.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/aae5d6b8-1e5e-40e6-a6dc-109a4d162536/regular/perla-c9642a53-2071-4306-993b-150d1513c9f3.jpg"
+      },
+      {
+        "nombre": "MARFIL",
+        "slug": "marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/cf6b71e9-4acc-456d-a5bf-167b077d770d/regular/marfil-32607577-1ec3-4dfd-b93b-82d3d8581406.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/legend/colores/cf6b71e9-4acc-456d-a5bf-167b077d770d/regular/perla-b3767a42-b710-4f95-b6d8-2747abf9fdbc.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "life",
+    "nombre": "LIFE",
+    "colores": [
+      {
+        "nombre": "Azul",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/colores/e14ccadc-cfa7-4112-8ee2-31f65cf379a4/regular/azul-0a00e5b5-9b44-469d-9379-d51524f344fa.jpg"
+      },
+      {
+        "nombre": "Blanco",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/colores/e14ccadc-cfa7-4112-8ee2-31f65cf379a4/regular/blanco-000952d7-bce9-4bda-8097-6dd3816b6ab6.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/colores/e14ccadc-cfa7-4112-8ee2-31f65cf379a4/regular/gris-87fe9d76-a795-4fe2-aaaa-a9913ce28c3f.jpg"
+      },
+      {
+        "nombre": "Verde",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/life/colores/e14ccadc-cfa7-4112-8ee2-31f65cf379a4/regular/verde-c81881f9-91f0-4410-94d5-66c2a0662656.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "magnum",
+    "nombre": "MAGNUM",
+    "colores": [
+      {
+        "nombre": "PLOMO",
+        "slug": "plomo",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/colores/c6c7564e-8839-4c2d-ad9e-5aa146bfbf76/regular/plomo-873c385b-6b2a-4443-a63f-b39377a3348f.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/colores/c6c7564e-8839-4c2d-ad9e-5aa146bfbf76/regular/white-3eda4e70-6a89-415a-a945-7ba2aa2da602.jpg"
+      },
+      {
+        "nombre": "BONE",
+        "slug": "bone",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/colores/c6c7564e-8839-4c2d-ad9e-5aa146bfbf76/regular/bone-be13445a-d13f-45b1-8e55-40681e8ec5c5.jpg"
+      },
+      {
+        "nombre": "CENIZA",
+        "slug": "ceniza",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/magnum/colores/c6c7564e-8839-4c2d-ad9e-5aa146bfbf76/regular/ceniza-9b0e3192-4825-4265-9266-237bfec35046.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "masip",
+    "nombre": "MASIP",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/masip/colores/8b88f15a-7a80-4686-ae7e-44a683c2b7a5/regular/blanco-8a341296-2eec-4be6-8312-e3ebf41ccab8.jpg"
+      },
+      {
+        "nombre": "CREMA",
+        "slug": "crema",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/masip/colores/8b88f15a-7a80-4686-ae7e-44a683c2b7a5/regular/crema-6b0a403f-a5e0-4ab3-a61a-47723b4c9c64.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/masip/colores/8b88f15a-7a80-4686-ae7e-44a683c2b7a5/regular/gris-e4ce00b2-f389-42cc-aa7c-bf36b5bada74.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "melissa",
+    "nombre": "MELISSA",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/550b8d21-d757-402c-a543-186d7e200f00/regular/beige-1db16483-219b-4f77-a885-72f725104289.jpg"
+      },
+      {
+        "nombre": "COTTO",
+        "slug": "cotto",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/550b8d21-d757-402c-a543-186d7e200f00/regular/cotto-7b6b26d8-4e8b-43dd-aa73-ca81c234a0d7.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/550b8d21-d757-402c-a543-186d7e200f00/regular/gris-8266188f-9236-4db9-b9d5-c83d30c02df4.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/0b49a1b6-1466-4b16-ab57-615381eec6ff/regular/beige-b40e22e0-d8ad-4fae-a62a-efde4834ea9f.jpg"
+      },
+      {
+        "nombre": "COTTO",
+        "slug": "cotto",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/0b49a1b6-1466-4b16-ab57-615381eec6ff/regular/cotto-33604017-38ff-4bc6-82d8-e567ca00d591.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/melissa/colores/0b49a1b6-1466-4b16-ab57-615381eec6ff/regular/gris-a936065f-850e-42c5-ae65-b0e4a21618df.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "metro",
+    "nombre": "METRO",
+    "colores": [
+      {
+        "nombre": "VERDE",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/verde-5914bc3c-85ee-439a-a143-84c555abb959.jpg"
+      },
+      {
+        "nombre": "ALGA",
+        "slug": "alga",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/alga-53ca5c5d-927a-4421-8f22-5e35ca862a4e.jpg"
+      },
+      {
+        "nombre": "CELESTE",
+        "slug": "celeste",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/celeste-696f3ae4-ef55-4d42-8553-0de4c951249b.jpg"
+      },
+      {
+        "nombre": "ROSA",
+        "slug": "rosa",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/rosa-e85b6db4-d0c4-408e-8ec6-3649223087ed.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/perla-50fa130e-fe30-4e94-bd24-ec535ccf2a87.jpg"
+      },
+      {
+        "nombre": "SAGE",
+        "slug": "sage",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/sage-352afbdb-ab84-426c-a675-5271d4ce01e1.jpg"
+      },
+      {
+        "nombre": "NEGRO",
+        "slug": "negro",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/negro-db5934d1-299a-4422-8557-55467e153a9d.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/gris-02def807-3aa8-43c7-ba6c-2903bb8800aa.jpg"
+      },
+      {
+        "nombre": "CREMA",
+        "slug": "crema",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/crema-071d69ac-16bf-4d51-8bed-164fa9f8effa.jpg"
+      },
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/blanco-4d8b6b23-771f-406c-a757-aa68bf67404a.jpg"
+      },
+      {
+        "nombre": "COBALTO",
+        "slug": "cobalto",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/cobalto-80c23d46-9941-4e7c-a11b-cbba836764d7.jpg"
+      },
+      {
+        "nombre": "CARRARA",
+        "slug": "carrara",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/carrara-8422d985-3793-4f96-ab8c-2a2243d68dbf.jpg"
+      },
+      {
+        "nombre": "FUEGO",
+        "slug": "fuego",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/fuego-5f9dad82-a232-427e-9813-194d50bd5f37.jpg"
+      },
+      {
+        "nombre": "MARENGO",
+        "slug": "marengo",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/marengo-a3f19362-faa1-4c99-9acd-1fb0632721c6.jpg"
+      },
+      {
+        "nombre": "CREMA MARFIL",
+        "slug": "crema-marfil",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/crema-marfil-443f99c6-6e72-49b6-b81d-05d6981131b0.jpg"
+      },
+      {
+        "nombre": "BLANCO MATE",
+        "slug": "blanco-mate",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/metro/colores/ef28273c-4bc9-43ce-8af3-0b418115fc5b/regular/blanco-mate-678dd30d-25ce-4aeb-b9d1-bcae347782eb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "mijas",
+    "nombre": "MIJAS",
+    "colores": [
+      {
+        "nombre": "CELESTE",
+        "slug": "celeste",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mijas/colores/789bde15-4967-4197-83fc-852d801c8a2b/regular/celeste-223a7634-74fa-42a7-a06f-7ec31bfb0e70.jpg"
+      },
+      {
+        "nombre": "IVORY",
+        "slug": "ivory",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mijas/colores/789bde15-4967-4197-83fc-852d801c8a2b/regular/ivory-32f64540-b38e-4ef2-a93f-42be019d6b6f.jpg"
+      },
+      {
+        "nombre": "AZUL",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mijas/colores/789bde15-4967-4197-83fc-852d801c8a2b/regular/azul-908c8129-025c-4237-93e1-26ace5ba00bb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "mogan",
+    "nombre": "MOGAN",
+    "colores": [
+      {
+        "nombre": "HONEY",
+        "slug": "honey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/colores/71a62202-8201-4ff1-b921-049f009f648c/regular/honey-166eccc8-3dcc-4aaa-acdf-03238b615ae0.jpg"
+      },
+      {
+        "nombre": "NUT",
+        "slug": "nut",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/colores/71a62202-8201-4ff1-b921-049f009f648c/regular/nut-cc16e939-c143-4a09-aa09-a38ea038692f.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/colores/71a62202-8201-4ff1-b921-049f009f648c/regular/natural-dc763ba8-f77f-4de3-b457-0214e2d422e5.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mogan/colores/71a62202-8201-4ff1-b921-049f009f648c/regular/grey-b7cdef0c-6fc7-4db7-a7bf-499046cdc9f9.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "morella",
+    "nombre": "MORELLA",
+    "colores": [
+      {
+        "nombre": "Arena",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/morella/colores/ae9d55fe-383f-4e7b-bf4d-0a3ba91e4a50/regular/arena-05f4719d-9758-4b63-b298-a63b7f5a989d.jpg"
+      },
+      {
+        "nombre": "Beige",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/morella/colores/ae9d55fe-383f-4e7b-bf4d-0a3ba91e4a50/regular/beige-5f34e31e-ccd5-466b-a7d2-e9208bf78241.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/morella/colores/ae9d55fe-383f-4e7b-bf4d-0a3ba91e4a50/regular/gris-452f0521-91d0-47cd-9192-67f3907a8c9a.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "mulhacen",
+    "nombre": "MULHACÉN",
+    "colores": [
+      {
+        "nombre": "Arena",
+        "slug": "arena",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mulhacen/colores/725ba4a9-0af6-43be-ba56-af0a8dd0c54f/regular/arena-5d4d3a27-4093-4acd-8bbd-8fed73854237.jpg"
+      },
+      {
+        "nombre": "Beige",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mulhacen/colores/725ba4a9-0af6-43be-ba56-af0a8dd0c54f/regular/beige-cb79f3c6-1e2b-47c6-9a78-73933d4b635b.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/mulhacen/colores/725ba4a9-0af6-43be-ba56-af0a8dd0c54f/regular/gris-0292a921-aeb5-4f9c-82ca-717173887789.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "murano",
+    "nombre": "MURANO",
+    "colores": [
+      {
+        "nombre": "Azul",
+        "slug": "azul",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/d37af75a-05c7-4cad-9cb7-8a7d7a1d4ffc/regular/azul-6257d3c0-d620-41a2-8850-fbde63b360fa.jpg"
+      },
+      {
+        "nombre": "Blanco",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/d37af75a-05c7-4cad-9cb7-8a7d7a1d4ffc/regular/blanco-da221080-7ca6-4868-9eab-cd2d4310e105.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/d37af75a-05c7-4cad-9cb7-8a7d7a1d4ffc/regular/gris-c0dc749a-1ae5-47a2-9823-f207aed0737c.jpg"
+      },
+      {
+        "nombre": "Verde",
+        "slug": "verde",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/d37af75a-05c7-4cad-9cb7-8a7d7a1d4ffc/regular/verde-1ad48e39-5dbe-47c6-9881-2d63f527ef56.jpg"
+      },
+      {
+        "nombre": "MURANO-AZUL-PA05-45X45",
+        "slug": "murano-azul-pa05-45x45",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/c453a37e-a0da-405b-99b6-d36556af2b9e/regular/murano-azul-pa05-45x45-61e76526-a032-4338-8d15-456b39f84ca2.jpg"
+      },
+      {
+        "nombre": "MURANO-BLANCO-45X45",
+        "slug": "murano-blanco-45x45",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/c453a37e-a0da-405b-99b6-d36556af2b9e/regular/murano-blanco-45x45-99a59508-4445-4b9e-92f7-f721b24fd4ec.jpg"
+      },
+      {
+        "nombre": "MURANO-GRIS-45X45",
+        "slug": "murano-gris-45x45",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/c453a37e-a0da-405b-99b6-d36556af2b9e/regular/murano-gris-45x45-d01dbc0a-c207-4c84-847a-9fc8e343bc6a.jpg"
+      },
+      {
+        "nombre": "MURANO-VERDE-45X45",
+        "slug": "murano-verde-45x45",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/murano/colores/c453a37e-a0da-405b-99b6-d36556af2b9e/regular/murano-verde-45x45-7da40266-112e-4c00-a01b-ce2ac3799558.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "napoli",
+    "nombre": "NAPOLI",
+    "colores": [
+      {
+        "nombre": "DARK",
+        "slug": "dark",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/napoli/colores/59378f58-9c52-4634-9ccb-b4fda04c012b/regular/dark-2036e7d1-22b6-464a-818c-044f487d326d.jpg"
+      },
+      {
+        "nombre": "DARK",
+        "slug": "dark",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/napoli/colores/4c65b3df-2baa-41e5-9eda-68c5a94c29e9/regular/dark-5c988b9c-97b9-4787-a5a4-d17b03406882.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "pietra-serena",
+    "nombre": "PIETRA SERENA",
+    "colores": [
+      {
+        "nombre": "LIGHT",
+        "slug": "light",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/42a32351-bbd2-459b-bbdf-819b16982f7c/regular/light-ff5d7855-cdbd-4b24-8aab-efd4b6c56846.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/42a32351-bbd2-459b-bbdf-819b16982f7c/regular/sand-d677d48a-c511-469c-94cc-1a4056b00af4.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/80a2f31a-cdc4-4c99-956c-6dbf2d66f1ae/regular/grey-729cf480-a0bc-48c4-bb85-c6bb1bc3a99f.jpg"
+      },
+      {
+        "nombre": "LIGHT",
+        "slug": "light",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/80a2f31a-cdc4-4c99-956c-6dbf2d66f1ae/regular/light-fc5b85af-b8b5-406d-9a83-4f1446c5e366.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/80a2f31a-cdc4-4c99-956c-6dbf2d66f1ae/regular/sand-b4d8856d-b913-4796-baf0-e0f7f051a6a5.jpg"
+      },
+      {
+        "nombre": "TAUPE",
+        "slug": "taupe",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/80a2f31a-cdc4-4c99-956c-6dbf2d66f1ae/regular/taupe-fd3c1342-ea04-4661-ab72-a4dfa116d8c2.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/63a64990-1053-437b-b9f1-7fd983655b68/regular/grey-88a3043f-3a46-46a6-a1ef-310a92f128ee.jpg"
+      },
+      {
+        "nombre": "LIGHT",
+        "slug": "light",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/63a64990-1053-437b-b9f1-7fd983655b68/regular/light-871741f6-493e-4e44-b143-e4274347634c.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/63a64990-1053-437b-b9f1-7fd983655b68/regular/sand-b88ca765-1eab-4083-b885-bfe7b5aab398.jpg"
+      },
+      {
+        "nombre": "TAUPE",
+        "slug": "taupe",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/63a64990-1053-437b-b9f1-7fd983655b68/regular/taupe-46782e17-fd5d-45da-9f7c-c163d29428da.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/00e405dd-bd06-4b61-a22f-dd6124d0cd90/regular/grey-6292ea1c-9222-40a5-b936-1849afbabd68.jpg"
+      },
+      {
+        "nombre": "LIGHT",
+        "slug": "light",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/00e405dd-bd06-4b61-a22f-dd6124d0cd90/regular/light-8e55f338-2bb6-46c9-8ee1-43fa7000a177.jpg"
+      },
+      {
+        "nombre": "SAND",
+        "slug": "sand",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pietra-serena/colores/00e405dd-bd06-4b61-a22f-dd6124d0cd90/regular/sand-b9259c65-9dce-4428-8b74-a4bbf93f41e0.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "pinada",
+    "nombre": "PINADA",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/colores/b6522b16-72b7-487e-9e79-f49757d96e6d/regular/blanco-9c1f2924-87df-4a2a-aea5-93b51c50eca9.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/colores/b6522b16-72b7-487e-9e79-f49757d96e6d/regular/natural-b1f6dda9-d21b-49cf-9496-941c92070234.jpg"
+      },
+      {
+        "nombre": "HAYA",
+        "slug": "haya",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/colores/b6522b16-72b7-487e-9e79-f49757d96e6d/regular/haya-91516fea-b866-4196-bf3a-e6b5e7d2d26e.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pinada/colores/b6522b16-72b7-487e-9e79-f49757d96e6d/regular/gris-62e6247d-d65e-43a6-b3ca-e2ed2fd6e44e.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "pizarra",
+    "nombre": "PIZARRA",
+    "colores": [
+      {
+        "nombre": "Azabache",
+        "slug": "azabache",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/colores/b8cabbe9-173b-44a0-9d6f-d96b8782d746/regular/azabache-f054750c-2e21-443c-be8f-a7c78fb1676d.jpg"
+      },
+      {
+        "nombre": "Canteiza",
+        "slug": "canteiza",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/colores/b8cabbe9-173b-44a0-9d6f-d96b8782d746/regular/canteiza-c4a36caf-5dfd-4152-ad54-00262cd9e7e9.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/colores/b8cabbe9-173b-44a0-9d6f-d96b8782d746/regular/gris-880118f7-7b54-4be3-9cce-3072c9a0cac3.jpg"
+      },
+      {
+        "nombre": "Oxido",
+        "slug": "oxido",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pizarra/colores/b8cabbe9-173b-44a0-9d6f-d96b8782d746/regular/oxido-5ed4bc69-ea6a-4574-a354-ab734d3497a7.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "pobla-c3",
+    "nombre": "POBLA C3",
+    "colores": [
+      {
+        "nombre": "IRON",
+        "slug": "iron",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pobla-c3/colores/12492304-bf7b-4b77-984b-6d609545ddbd/regular/iron-a52bcd07-14b6-4450-a5e4-88858fb88131.jpg"
+      },
+      {
+        "nombre": "COTTO",
+        "slug": "cotto",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pobla-c3/colores/12492304-bf7b-4b77-984b-6d609545ddbd/regular/cotto-01b0a20e-ecfb-4904-bd48-afd6baa7f9d5.jpg"
+      },
+      {
+        "nombre": "PAJA",
+        "slug": "paja",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/pobla-c3/colores/12492304-bf7b-4b77-984b-6d609545ddbd/regular/paja-e8103f32-3401-4bcf-987d-34b485438b4a.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "polaris",
+    "nombre": "POLARIS",
+    "colores": [
+      {
+        "nombre": "Polaris",
+        "slug": "polaris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/polaris/colores/8e0a6169-1b39-465c-9511-4f46fc284bad/regular/polaris-60430730-060f-4dd1-b899-493ef9dfd0ae.jpg"
+      },
+      {
+        "nombre": "Polaris",
+        "slug": "polaris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/polaris/colores/38b698b7-c96e-4a31-a3e6-b0f239914c99/regular/polaris-f942dd37-ea7d-4196-b994-d7af5301a365.jpg"
+      },
+      {
+        "nombre": "Polaris",
+        "slug": "polaris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/polaris/colores/f01e436a-e7ff-4939-a8e3-d692b869c1d9/regular/polaris-8c48616f-a7ad-4b1a-9e15-037575a117bb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "provence",
+    "nombre": "PROVENCE",
+    "colores": [
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence/colores/77aded11-bed6-4512-97a6-40eb139d8f98/regular/grey-58ee9411-e06a-41db-9745-3a4417d2d01b.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence/colores/77aded11-bed6-4512-97a6-40eb139d8f98/regular/natural-972d9859-a7e9-4da0-be16-7c12cf003bc1.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/provence/colores/83030ead-5152-4008-94db-c0f0c3b00bd8/regular/natural-514e6d1c-1c5e-4b10-8ff8-6c8217c1a591.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "provence-c3",
+    "nombre": "PROVENCE C3",
+    "colores": []
+  },
+  {
+    "slug": "ritz",
+    "nombre": "RITZ",
+    "colores": [
+      {
+        "nombre": "Blanco",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ritz/colores/a0fad108-39c6-48c0-acb8-bbc1a7bdf358/regular/blanco-c24627e8-67a8-48ea-802e-a3f32ba19ac8.jpg"
+      },
+      {
+        "nombre": "Gris",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/ritz/colores/a0fad108-39c6-48c0-acb8-bbc1a7bdf358/regular/gris-8e72d877-4a3d-4c73-8387-4c8292e5541c.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "samario",
+    "nombre": "SAMARIO",
+    "colores": [
+      {
+        "nombre": "Samario",
+        "slug": "samario",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/samario/colores/564eb91a-4250-469d-ada5-56d841db5514/regular/samario-116bc1ca-819c-4725-ae21-65780b4bf086.jpg"
+      },
+      {
+        "nombre": "Samario",
+        "slug": "samario",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/samario/colores/d1d43fc5-4ead-437b-b2f1-bc99cb036613/regular/samario-49bde0ff-a599-4eb0-92ee-199d253102df.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "sanit-dark",
+    "nombre": "SANIT DARK",
+    "colores": [
+      {
+        "nombre": "SANIT DARK",
+        "slug": "sanit-dark",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sanit-dark/colores/7f8e8576-0c28-42d7-b550-1746f2349818/regular/sanit-dark-d18beec5-cd10-435d-b66b-c30e2e75a9d7.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "shadow",
+    "nombre": "SHADOW",
+    "colores": [
+      {
+        "nombre": "SHADOW",
+        "slug": "shadow",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shadow/colores/cec3c3eb-c9f6-4b6e-97b0-1e496dbacf4c/regular/shadow-9fbcd833-6dfd-4020-9859-0dc553f08e44.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "shiman",
+    "nombre": "SHIMAN",
+    "colores": [
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shiman/colores/8750e757-8d78-4a0d-8099-dd7a27ae6d59/regular/perla-9461a128-cc35-49e7-8174-2f0b913f32b4.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/shiman/colores/8750e757-8d78-4a0d-8099-dd7a27ae6d59/regular/white-ee032211-4a66-4a9f-bb60-2175ee0e5887.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "silos-c3-cotto-provenzal",
+    "nombre": "SILOS C3/COTTO PROVENZAL",
+    "colores": [
+      {
+        "nombre": "MAESTRE",
+        "slug": "maestre",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/silos-c3-cotto-provenzal/colores/0f670e45-3d45-45a8-ba32-1c1108a769f0/regular/maestre-96026160-fd10-4927-8804-3a40f6734a04.jpg"
+      },
+      {
+        "nombre": "MASSAI",
+        "slug": "massai",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/silos-c3-cotto-provenzal/colores/0f670e45-3d45-45a8-ba32-1c1108a769f0/regular/massai-72273ce8-dcf2-44d1-8228-6479cf8825cf.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "sonora",
+    "nombre": "SONORA",
+    "colores": [
+      {
+        "nombre": "COTTO",
+        "slug": "cotto",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/sonora/colores/50366d53-8b23-4288-82c1-068c7275c005/regular/cotto-0237293b-7be6-4922-b456-77cfa788b504.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "star",
+    "nombre": "STAR",
+    "colores": [
+      {
+        "nombre": "45X45-STAR-BLUE-1",
+        "slug": "45x45-star-blue-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/star/colores/5a2640d2-cd81-4b2d-9b5b-f983df9d71ab/regular/45x45-star-blue-1-df8b88aa-0d4c-4000-bc22-8204677e2021.jpg"
+      },
+      {
+        "nombre": "BLACK",
+        "slug": "black",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/star/colores/5a2640d2-cd81-4b2d-9b5b-f983df9d71ab/regular/black-1e357f9a-a311-47ad-b62e-96c6506e37cc.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/star/colores/5a2640d2-cd81-4b2d-9b5b-f983df9d71ab/regular/grey-eab992a7-aff6-4737-b93f-53856c4aa60d.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "tablero",
+    "nombre": "TABLERO",
+    "colores": [
+      {
+        "nombre": "OAK",
+        "slug": "oak",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/colores/b8fe0a57-f5a3-4320-bdc4-832166112f34/regular/oak-0a1ddedd-4511-4871-b274-0773f3d794ae.jpg"
+      },
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/colores/b8fe0a57-f5a3-4320-bdc4-832166112f34/regular/grey-f937a8ec-95b1-4f00-962d-d309b92e49b6.jpg"
+      },
+      {
+        "nombre": "BASEIN",
+        "slug": "basein",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/colores/b8fe0a57-f5a3-4320-bdc4-832166112f34/regular/basein-496f8ffc-b3c7-4039-a7ed-2e4b1e78e93c.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tablero/colores/b8fe0a57-f5a3-4320-bdc4-832166112f34/regular/white-83746eba-2f98-4159-8b67-9a7706d7229b.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "tadan",
+    "nombre": "TADAN",
+    "colores": [
+      {
+        "nombre": "TADAN-BLANCO-30X90",
+        "slug": "tadan-blanco-30x90",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/colores/f2ec5bae-4eb5-4f9a-8b51-3bf29b1c50a3/regular/tadan-blanco-30x90-1e5ffd1c-bea9-4494-aff2-3ccc41d9ee06.jpg"
+      },
+      {
+        "nombre": "TADAN-BONE-30X90",
+        "slug": "tadan-bone-30x90",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/colores/f2ec5bae-4eb5-4f9a-8b51-3bf29b1c50a3/regular/tadan-bone-30x90-f4fa5d3e-d151-4da0-9856-dcb092324276.jpg"
+      },
+      {
+        "nombre": "TADAN-CENIZA-30X90",
+        "slug": "tadan-ceniza-30x90",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/colores/f2ec5bae-4eb5-4f9a-8b51-3bf29b1c50a3/regular/tadan-ceniza-30x90-aa217a88-e437-489b-ad84-0687f455b312.jpg"
+      },
+      {
+        "nombre": "TADAN-CREMA-30X90",
+        "slug": "tadan-crema-30x90",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tadan/colores/f2ec5bae-4eb5-4f9a-8b51-3bf29b1c50a3/regular/tadan-crema-30x90-6dc93efd-cbee-40aa-b8d3-9aa9b0cf76b0.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "taracea",
+    "nombre": "TARACEA",
+    "colores": [
+      {
+        "nombre": "BION NATURAL",
+        "slug": "bion-natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/taracea/colores/42fbb9eb-485b-4dcb-8501-16522a56cf3e/regular/bion-natural-74a86b0b-eef8-486d-b4d2-29348b763bf4.jpg"
+      },
+      {
+        "nombre": "BION NEGRO",
+        "slug": "bion-negro",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/taracea/colores/42fbb9eb-485b-4dcb-8501-16522a56cf3e/regular/bion-negro-e4c6226d-9f37-4c3e-9589-d97a5a324a1c.jpg"
+      },
+      {
+        "nombre": "SATHA NATURAL",
+        "slug": "satha-natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/taracea/colores/42fbb9eb-485b-4dcb-8501-16522a56cf3e/regular/satha-natural-37719ffb-2eda-4290-bc42-776b0c9af6be.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "tea",
+    "nombre": "TEA",
+    "colores": [
+      {
+        "nombre": "TILO",
+        "slug": "tilo",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tea/colores/e59b2150-6fd7-4b9d-8a34-467c4a32fc58/regular/tilo-0634014a-153b-469a-8cbd-b4448722292f.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tea/colores/e59b2150-6fd7-4b9d-8a34-467c4a32fc58/regular/roble-b2982a27-09e6-4b8d-9a66-61e8e392b3da.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tea/colores/e59b2150-6fd7-4b9d-8a34-467c4a32fc58/regular/gris-b6abeb01-d654-4384-846c-ace4a18761f3.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "technikal-c2",
+    "nombre": "TECHNIKAL C2",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/technikal-c2/colores/e8f383ac-4ab0-4e8f-8e9b-d2f768f4086f/regular/blanco-462adeb7-5b54-438e-bddb-b63805ffe06f.jpg"
+      },
+      {
+        "nombre": "BLACK",
+        "slug": "black",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/technikal-c2/colores/e8f383ac-4ab0-4e8f-8e9b-d2f768f4086f/regular/black-cf4d291a-72a9-4d86-ac76-ce170152138d.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/technikal-c2/colores/e8f383ac-4ab0-4e8f-8e9b-d2f768f4086f/regular/perla-b87fde10-3aa3-42b1-9827-c59193834d2c.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "terry",
+    "nombre": "TERRY",
+    "colores": [
+      {
+        "nombre": "BIANCO",
+        "slug": "bianco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/colores/428ac50a-e4c4-4263-9a58-e52402fc7a7c/regular/bianco-2fa63633-be6a-419d-a8ae-54332f2636ae.jpg"
+      },
+      {
+        "nombre": "MIELE",
+        "slug": "miele",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/colores/428ac50a-e4c4-4263-9a58-e52402fc7a7c/regular/miele-dcd51f84-85a1-465d-baa7-1dd343310023.jpg"
+      },
+      {
+        "nombre": "NATURAL",
+        "slug": "natural",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/colores/428ac50a-e4c4-4263-9a58-e52402fc7a7c/regular/natural-b2789765-7580-428c-8071-a76e07eab5d8.jpg"
+      },
+      {
+        "nombre": "TAUPE",
+        "slug": "taupe",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/terry/colores/428ac50a-e4c4-4263-9a58-e52402fc7a7c/regular/taupe-604c7c69-dcad-4f9e-ba5b-e0be7d36f6d6.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "timber",
+    "nombre": "TIMBER",
+    "colores": [
+      {
+        "nombre": "BLANCO",
+        "slug": "blanco",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/colores/6d9ed8f8-d0c2-4142-9831-0510f9e05056/regular/blanco-493c4977-d9f0-4213-8a8c-a592bdf2cc06.jpg"
+      },
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/colores/6d9ed8f8-d0c2-4142-9831-0510f9e05056/regular/gris-ea146181-373c-43f5-a727-9c38376dcaf7.jpg"
+      },
+      {
+        "nombre": "HAYA",
+        "slug": "haya",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/colores/6d9ed8f8-d0c2-4142-9831-0510f9e05056/regular/haya-f482b7bc-7b2b-4881-8fc5-91144f547cb6.jpg"
+      },
+      {
+        "nombre": "ROBLE",
+        "slug": "roble",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/timber/colores/6d9ed8f8-d0c2-4142-9831-0510f9e05056/regular/roble-b21e7bcc-7206-48c7-9b02-ee894383ca2e.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "tokyo",
+    "nombre": "TOKYO",
+    "colores": [
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/0352650b-1e65-4c33-8e73-085e173f6160/regular/beige-e6f4e8b7-dfc8-4f5a-b2af-eaa0f09c3a0b.jpg"
+      },
+      {
+        "nombre": "GRAY",
+        "slug": "gray",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/0352650b-1e65-4c33-8e73-085e173f6160/regular/gray-12908452-60bc-46ca-bcdf-4054b9001ccb.jpg"
+      },
+      {
+        "nombre": "SILVER",
+        "slug": "silver",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/0352650b-1e65-4c33-8e73-085e173f6160/regular/silver-b670afac-974d-451d-809e-45deba90023b.jpg"
+      },
+      {
+        "nombre": "BEIGE",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/f0bcb004-4f0c-4745-b593-a63002c801bd/regular/beige-c369107a-6cb2-4a5f-82ba-542339950c20.jpg"
+      },
+      {
+        "nombre": "GRAY",
+        "slug": "gray",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/f0bcb004-4f0c-4745-b593-a63002c801bd/regular/gray-8bf7d575-9b12-429b-a530-789550f19c4a.jpg"
+      },
+      {
+        "nombre": "SILVER",
+        "slug": "silver",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tokyo/colores/f0bcb004-4f0c-4745-b593-a63002c801bd/regular/silver-4e0aecb4-65c5-4949-9eb6-9e8370065fcb.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "toledo",
+    "nombre": "TOLEDO",
+    "colores": [
+      {
+        "nombre": "GRIS",
+        "slug": "gris",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/toledo/colores/407f5bca-8e73-41f4-9bc3-ecc4d4048339/regular/gris-77634340-472c-420d-8385-cf19b841d1b5.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/toledo/colores/407f5bca-8e73-41f4-9bc3-ecc4d4048339/regular/perla-b29b4f45-6c74-4ad0-ba43-bcebdf426d47.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "torcal",
+    "nombre": "TORCAL",
+    "colores": [
+      {
+        "nombre": "Torcal 1",
+        "slug": "torcal-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/colores/64b51796-a79d-4631-8d54-aec642d84ecd/regular/torcal-1-e708d5f8-2197-4967-8174-cb829c739924.jpg"
+      },
+      {
+        "nombre": "Torcal 2",
+        "slug": "torcal-2",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/colores/64b51796-a79d-4631-8d54-aec642d84ecd/regular/torcal-2-f3c1a6eb-9c26-467a-bd0f-97e30674d43e.jpg"
+      },
+      {
+        "nombre": "Torcal 3",
+        "slug": "torcal-3",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/torcal/colores/64b51796-a79d-4631-8d54-aec642d84ecd/regular/torcal-3-e4dc8408-2a1e-4177-93fd-57217f3cf426.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "tosca",
+    "nombre": "TOSCA",
+    "colores": [
+      {
+        "nombre": "Beige",
+        "slug": "beige",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tosca/colores/ef596e49-42cd-4544-9617-39fbfdc75f40/regular/beige-3b6403e4-7c68-4d63-a427-3056ae40ae9d.jpg"
+      },
+      {
+        "nombre": "DARKD",
+        "slug": "darkd",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tosca/colores/ef596e49-42cd-4544-9617-39fbfdc75f40/regular/darkd-d4708d28-2783-48b6-b156-1a291a7245a4.jpg"
+      },
+      {
+        "nombre": "Grey",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tosca/colores/ef596e49-42cd-4544-9617-39fbfdc75f40/regular/grey-9359b66d-3512-4406-b314-253a8bce6534.jpg"
+      },
+      {
+        "nombre": "Warm",
+        "slug": "warm",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/tosca/colores/ef596e49-42cd-4544-9617-39fbfdc75f40/regular/warm-9fd03262-f32d-4cc0-bf1a-820832b3aa94.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "travertino-caliza-brillo",
+    "nombre": "TRAVERTINO CALIZA BRILLO",
+    "colores": [
+      {
+        "nombre": "Travertino",
+        "slug": "travertino",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/travertino-caliza-brillo/colores/21f3d12b-dcc6-4fe0-a9d4-6d93dbcffa5f/regular/travertino-9ab2fdd8-fe8b-4296-90bf-82547a380c2f.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "urbion",
+    "nombre": "URBION",
+    "colores": [
+      {
+        "nombre": "URBION 1",
+        "slug": "urbion-1",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-1-dc259bf6-4553-4ce1-8132-9c4c8214bf41.jpg"
+      },
+      {
+        "nombre": "URBION 2",
+        "slug": "urbion-2",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-2-ac032fc8-fa04-40f1-998b-33131d0a562d.jpg"
+      },
+      {
+        "nombre": "URBION 3",
+        "slug": "urbion-3",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-3-fd23955f-2b11-4b1c-b506-6e3d3156c935.jpg"
+      },
+      {
+        "nombre": "URBION 4",
+        "slug": "urbion-4",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-4-0e9f725b-5c41-4a21-aa11-3353ab412a6b.jpg"
+      },
+      {
+        "nombre": "URBION 5",
+        "slug": "urbion-5",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-5-21cf4bb9-da66-4390-b191-aaeda4ba4830.jpg"
+      },
+      {
+        "nombre": "URBION 6",
+        "slug": "urbion-6",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/urbion/colores/84957e9a-5c72-41db-bd7d-a336cad76aae/regular/urbion-6-c997bd23-271f-418e-9e42-2b6bfb8ebfcd.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "verdi",
+    "nombre": "VERDI",
+    "colores": [
+      {
+        "nombre": "CONCRETE",
+        "slug": "concrete",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/verdi/colores/2a9abc06-6a60-4eeb-9f4b-415bca307b5d/regular/concrete-c986bbc1-8524-4cdd-950e-12ad383df4f2.jpg"
+      },
+      {
+        "nombre": "WHITE",
+        "slug": "white",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/verdi/colores/2a9abc06-6a60-4eeb-9f4b-415bca307b5d/regular/white-783fa028-79a6-42c4-85d3-2f1558397b30.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "wahkan",
+    "nombre": "WAHKAN",
+    "colores": [
+      {
+        "nombre": "CONCRETE",
+        "slug": "concrete",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/wahkan/colores/4a12e128-f73b-440d-80d3-b53ef3f384d1/regular/concrete-e3ed56c8-5115-48c7-91b2-d028e347039a.jpg"
+      },
+      {
+        "nombre": "PERLA",
+        "slug": "perla",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/wahkan/colores/4a12e128-f73b-440d-80d3-b53ef3f384d1/regular/perla-22ba49bf-4b1e-4c45-bcbe-55ff52f9c889.jpg"
+      },
+      {
+        "nombre": "PLUMB",
+        "slug": "plumb",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/wahkan/colores/4a12e128-f73b-440d-80d3-b53ef3f384d1/regular/plumb-4ffcc1e7-2c5c-4800-957b-e112a0eb09bd.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "walter-light-grey",
+    "nombre": "WALTER LIGHT GREY",
+    "colores": [
+      {
+        "nombre": "GREY",
+        "slug": "grey",
+        "imagen": "https://pub-56a0aa1e4d184876a29371b98a5a380d.r2.dev/series/walter-light-grey/colores/e5a8a967-8aad-4dec-a495-3ae5330f6eeb/regular/grey-0b885f78-a576-466a-a029-f3f59b43f8b5.jpg"
+      }
+    ]
+  }
+]

@@ -370,6 +370,13 @@ async function ensureCollectionsTable() {
     await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_material ON collections(material);`);
     await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_estilo ON collections(estilo);`);
     await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_slug ON collections(slug);`);
+
+    // colores ya existía (solo nombres, para el filtro). colores_fotos añade
+    // la imagen real por color (extraída de Practika — mismo proveedor que
+    // ya usa todo el catálogo). JSONB en vez de tabla aparte: sigue el mismo
+    // patrón que projects.imagenes — una lista pequeña que vive con su
+    // colección, no necesita CRUD ni relaciones propias.
+    await pool.query(`ALTER TABLE collections ADD COLUMN IF NOT EXISTS colores_fotos JSONB DEFAULT '[]';`);
   } catch (error) {
     console.error('Error creando tabla collections:', error.message);
   }
@@ -1976,6 +1983,43 @@ app.get('/api/collections', async (req, res) => {
   }
 });
 
+// GET /api/collections/:slug — ficha de detalle. Incluye colores_fotos
+// (nombre+imagen por color), que la lista general no necesita y por eso
+// no se manda ahí — evita inflar esa respuesta con ~85 series completas.
+app.get('/api/collections/:slug', async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT
+        slug AS id,
+        nombre,
+        descripcion,
+        imagen_portada AS imagen,
+        material,
+        tipo,
+        formatos,
+        acabados,
+        colores,
+        colores_fotos,
+        precio_consultable,
+        acabado_corte,
+        espesor,
+        estilo,
+        especificaciones_verificadas
+      FROM collections
+      WHERE slug = $1`,
+      [req.params.slug]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Colección no encontrada' });
+    }
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error en GET /api/collections/:slug:', error);
+    res.status(500).json({ error: 'Error obteniendo la colección' });
+  }
+});
+
 // ============================================
 // ADMIN: CRUD DE COLLECTIONS
 // ============================================
@@ -2573,6 +2617,7 @@ app.get('/api', (req, res) => {
       'GET /api/catalogs/download',
       'GET /api/catalog',
       'GET /api/collections',
+      'GET /api/collections/:slug',
       'GET /api/admin/collections',
       'POST /api/admin/collections',
       'PUT /api/admin/collections/:id',
