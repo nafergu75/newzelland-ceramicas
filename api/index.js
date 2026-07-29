@@ -335,6 +335,105 @@ async function ensureProjectsTable() {
 ensureProjectsTable();
 
 // ============================================
+// COLLECTIONS: catálogo de series, migrado desde catalogo.json.
+// tipo/formatos/acabados/colores se guardan como array porque ya lo son en
+// el dato real (una serie puede ser Pavimento Y Revestimiento a la vez) —
+// forzarlos a un solo valor perdería esa información.
+// acabado_corte/espesor/estilo no tienen dato real disponible: se crean
+// con un valor genérico y `especificaciones_verificadas` marca que faltan
+// por revisar desde el admin.
+// ============================================
+
+async function ensureCollectionsTable() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS collections (
+        id SERIAL PRIMARY KEY,
+        slug VARCHAR(255) NOT NULL UNIQUE,
+        nombre VARCHAR(255) NOT NULL,
+        descripcion TEXT,
+        imagen_portada VARCHAR(500),
+        material VARCHAR(100),
+        tipo TEXT[],
+        formatos TEXT[],
+        acabados TEXT[],
+        colores TEXT[],
+        precio_consultable BOOLEAN DEFAULT TRUE,
+        acabado_corte VARCHAR(100) DEFAULT 'Rectificado',
+        espesor DECIMAL(5,2) DEFAULT 10.0,
+        estilo VARCHAR(100) DEFAULT 'Moderno',
+        especificaciones_verificadas BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_material ON collections(material);`);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_estilo ON collections(estilo);`);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_collections_slug ON collections(slug);`);
+  } catch (error) {
+    console.error('Error creando tabla collections:', error.message);
+  }
+}
+
+ensureCollectionsTable();
+
+// ============================================
+// MI CUENTA: pedidos/envíos/tickets/perfil.
+// `orders` ya existía (id, user_id, status, total, created_at, updated_at)
+// pero sin nada de lo que espera el frontend (items, dirección, tracking) —
+// se amplía aquí en vez de crear tablas paralelas. `support_tickets` y
+// `support_ticket_messages` son nuevas.
+// ============================================
+
+async function ensureAccountTables() {
+  try {
+    await pool.query(`
+      ALTER TABLE orders
+        ADD COLUMN IF NOT EXISTS items JSONB DEFAULT '[]',
+        ADD COLUMN IF NOT EXISTS direccion JSONB,
+        ADD COLUMN IF NOT EXISTS estado_envio VARCHAR(50),
+        ADD COLUMN IF NOT EXISTS codigo_seguimiento VARCHAR(100),
+        ADD COLUMN IF NOT EXISTS transportista VARCHAR(100),
+        ADD COLUMN IF NOT EXISTS enlace_tracking VARCHAR(500);
+    `);
+
+    // Dirección de perfil: no existía ninguna columna de dirección en
+    // `users` (ver el bug de "perfil bloqueado" — el frontend la esperaba
+    // y el backend nunca la tuvo). Se añade para que PATCH /account/perfil
+    // pueda guardarla de verdad, en vez de seguir mostrando "Sin especificar".
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS direccion JSONB;`);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS support_tickets (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        asunto VARCHAR(255) NOT NULL,
+        categoria VARCHAR(50) NOT NULL DEFAULT 'otro',
+        estado VARCHAR(20) NOT NULL DEFAULT 'abierto',
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_support_tickets_user ON support_tickets(user_id);`);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS support_ticket_messages (
+        id SERIAL PRIMARY KEY,
+        ticket_id INTEGER NOT NULL REFERENCES support_tickets(id) ON DELETE CASCADE,
+        remitente VARCHAR(20) NOT NULL,
+        contenido TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+    await pool.query(`CREATE INDEX IF NOT EXISTS idx_support_ticket_messages_ticket ON support_ticket_messages(ticket_id, created_at);`);
+  } catch (error) {
+    console.error('Error preparando tablas de "mi cuenta":', error.message);
+  }
+}
+
+ensureAccountTables();
+
+// ============================================
 // MIDDLEWARE
 // ============================================
 
@@ -599,33 +698,46 @@ app.get('/api/account/summary', authMiddleware, async (req, res) => {
   }
 });
 
+// Formatea una fila de `orders` al shape `Pedido` que espera el frontend
+// (frontend/src/types/account.ts). `direccion` siempre se devuelve como
+// objeto (nunca null): OrderDetail.tsx accede a pedido.direccion.calle sin
+// optional chaining, y ya hubo un crash de este tipo con el perfil.
+function serializarPedido(row) {
+  return {
+    id: String(row.id),
+    numero: `PED-${String(row.id).padStart(6, '0')}`,
+    fecha: row.created_at?.toISOString(),
+    estado: row.status,
+    total: parseFloat(row.total),
+    items: row.items || [],
+    direccion: row.direccion || { calle: '', ciudad: '', codigoPostal: '', pais: '' },
+    estadoEnvio: row.estado_envio || undefined,
+    codigoSeguimiento: row.codigo_seguimiento || undefined,
+  };
+}
+
 app.get('/api/account/pedidos', authMiddleware, async (req, res) => {
   try {
     const userId = req.user.userId;
-    const page = parseInt(req.query.page || 1);
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = 10;
     const offset = (page - 1) * limit;
 
     const result = await pool.query(
-      `SELECT id, created_at as fecha, status as estado, total
+      `SELECT id, created_at, status, total, items, direccion, estado_envio, codigo_seguimiento
        FROM orders
        WHERE user_id = $1
        ORDER BY created_at DESC
        LIMIT $2 OFFSET $3`,
       [userId, limit, offset]
     );
+    const countResult = await pool.query('SELECT COUNT(*) FROM orders WHERE user_id = $1', [userId]);
+    const total = parseInt(countResult.rows[0].count);
 
     res.json({
-      pedidos: result.rows.map(row => ({
-        id: row.id,
-        fecha: row.fecha?.toISOString(),
-        estado: row.estado,
-        total: parseFloat(row.total),
-        items: 1
-      })),
-      total: result.rows.length,
-      pagina: page,
-      por_pagina: limit
+      pedidos: result.rows.map(serializarPedido),
+      total,
+      paginas: Math.max(Math.ceil(total / limit), 1),
     });
   } catch (error) {
     console.error('Error en account/pedidos:', error);
@@ -633,11 +745,230 @@ app.get('/api/account/pedidos', authMiddleware, async (req, res) => {
   }
 });
 
+app.get('/api/account/pedidos/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const result = await pool.query(
+      `SELECT id, created_at, status, total, items, direccion, estado_envio, codigo_seguimiento
+       FROM orders WHERE id = $1 AND user_id = $2`,
+      [req.params.id, userId]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Pedido no encontrado' });
+    }
+    res.json(serializarPedido(result.rows[0]));
+  } catch (error) {
+    console.error('Error en account/pedidos/:id:', error);
+    res.status(500).json({ error: 'Error al obtener el pedido' });
+  }
+});
+
+// "Envíos" es una vista derivada de `orders`, no una tabla propia: solo se
+// consideran envío los pedidos que ya tienen datos de seguimiento (no todos
+// los pedidos han llegado a esa fase). `timeline` se deja vacío — no existe
+// ningún registro de eventos de tracking en la BD todavía, y el componente
+// ShippingStatus.tsx no llega a renderizarlo hoy.
+function serializarEnvio(row) {
+  return {
+    id: String(row.id),
+    numeroPedido: `PED-${String(row.id).padStart(6, '0')}`,
+    estado: row.estado_envio,
+    transportista: row.transportista || 'Sin asignar',
+    codigoSeguimiento: row.codigo_seguimiento || '',
+    enlaceTracking: row.enlace_tracking || undefined,
+    timeline: [],
+  };
+}
+
+app.get('/api/account/envios', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT id, estado_envio, transportista, codigo_seguimiento, enlace_tracking
+       FROM orders
+       WHERE user_id = $1 AND estado_envio IS NOT NULL
+       ORDER BY updated_at DESC`,
+      [req.user.userId]
+    );
+    res.json(result.rows.map(serializarEnvio));
+  } catch (error) {
+    console.error('Error en account/envios:', error);
+    res.status(500).json({ error: 'Error al obtener envíos' });
+  }
+});
+
+app.get('/api/account/envios/:id', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT id, estado_envio, transportista, codigo_seguimiento, enlace_tracking
+       FROM orders
+       WHERE id = $1 AND user_id = $2 AND estado_envio IS NOT NULL`,
+      [req.params.id, req.user.userId]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Envío no encontrado' });
+    }
+    res.json(serializarEnvio(result.rows[0]));
+  } catch (error) {
+    console.error('Error en account/envios/:id:', error);
+    res.status(500).json({ error: 'Error al obtener el envío' });
+  }
+});
+
+// ============================================
+// MI CUENTA: TICKETS DE SOPORTE
+// ============================================
+
+async function serializarTicket(row) {
+  const ultimoMensaje = await pool.query(
+    `SELECT created_at FROM support_ticket_messages WHERE ticket_id = $1 ORDER BY created_at DESC LIMIT 1`,
+    [row.id]
+  );
+  return {
+    id: String(row.id),
+    numero: `TCK-${String(row.id).padStart(6, '0')}`,
+    asunto: row.asunto,
+    estado: row.estado,
+    categoria: row.categoria,
+    fechaCreacion: row.created_at.toISOString(),
+    ultimaRespuesta: (ultimoMensaje.rows[0]?.created_at || row.updated_at).toISOString(),
+    // No hay tracking de "leído" implementado todavía — se devuelve 0 en
+    // vez de inventar un número, para no mostrar un dato falso en el badge.
+    respuestasNoLeidas: 0,
+  };
+}
+
+app.get('/api/account/tickets', authMiddleware, async (req, res) => {
+  try {
+    const { estado } = req.query;
+    const params = [req.user.userId];
+    let where = 'WHERE user_id = $1';
+    if (estado) {
+      params.push(estado);
+      where += ` AND estado = $${params.length}`;
+    }
+
+    const result = await pool.query(
+      `SELECT id, asunto, categoria, estado, created_at, updated_at FROM support_tickets ${where} ORDER BY updated_at DESC`,
+      params
+    );
+    res.json(await Promise.all(result.rows.map(serializarTicket)));
+  } catch (error) {
+    console.error('Error en account/tickets:', error);
+    res.status(500).json({ error: 'Error al obtener tickets' });
+  }
+});
+
+app.post('/api/account/tickets', authMiddleware, async (req, res) => {
+  try {
+    const { asunto, descripcion, categoria } = req.body;
+    if (!asunto || !descripcion) {
+      return res.status(400).json({ error: 'Datos incompletos', message: 'Asunto y descripción son obligatorios' });
+    }
+
+    const ticketResult = await pool.query(
+      `INSERT INTO support_tickets (user_id, asunto, categoria, estado) VALUES ($1, $2, $3, 'abierto') RETURNING *`,
+      [req.user.userId, asunto, categoria || 'otro']
+    );
+    const ticket = ticketResult.rows[0];
+
+    await pool.query(
+      `INSERT INTO support_ticket_messages (ticket_id, remitente, contenido) VALUES ($1, 'cliente', $2)`,
+      [ticket.id, descripcion]
+    );
+
+    res.status(201).json(await serializarTicket(ticket));
+  } catch (error) {
+    console.error('Error creando ticket:', error);
+    res.status(500).json({ error: 'Error al crear el ticket' });
+  }
+});
+
+app.get('/api/account/tickets/:id', authMiddleware, async (req, res) => {
+  try {
+    const ticketResult = await pool.query(
+      `SELECT id, asunto, categoria, estado, created_at, updated_at FROM support_tickets WHERE id = $1 AND user_id = $2`,
+      [req.params.id, req.user.userId]
+    );
+    if (ticketResult.rows.length === 0) {
+      return res.status(404).json({ error: 'Ticket no encontrado' });
+    }
+
+    const mensajesResult = await pool.query(
+      `SELECT id, remitente, contenido, created_at FROM support_ticket_messages WHERE ticket_id = $1 ORDER BY created_at ASC`,
+      [req.params.id]
+    );
+
+    res.json({
+      ticket: await serializarTicket(ticketResult.rows[0]),
+      mensajes: mensajesResult.rows.map((m) => ({
+        id: String(m.id),
+        remitente: m.remitente,
+        contenido: m.contenido,
+        fecha: m.created_at.toISOString(),
+      })),
+    });
+  } catch (error) {
+    console.error('Error en account/tickets/:id:', error);
+    res.status(500).json({ error: 'Error al obtener la conversación' });
+  }
+});
+
+app.post('/api/account/tickets/:id/mensajes', authMiddleware, async (req, res) => {
+  try {
+    const { mensaje } = req.body;
+    if (!mensaje) {
+      return res.status(400).json({ error: 'El mensaje no puede estar vacío' });
+    }
+
+    const ticketResult = await pool.query(
+      'SELECT id FROM support_tickets WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.user.userId]
+    );
+    if (ticketResult.rows.length === 0) {
+      return res.status(404).json({ error: 'Ticket no encontrado' });
+    }
+
+    await pool.query(
+      `INSERT INTO support_ticket_messages (ticket_id, remitente, contenido) VALUES ($1, 'cliente', $2)`,
+      [req.params.id, mensaje]
+    );
+    // Un mensaje nuevo del cliente reabre el hilo de cara al equipo de
+    // soporte si estaba resuelto/cerrado — no tiene sentido dejarlo
+    // marcado como resuelto cuando el cliente acaba de volver a escribir.
+    await pool.query(
+      `UPDATE support_tickets SET estado = CASE WHEN estado IN ('resuelto', 'cerrado') THEN 'en_progreso' ELSE estado END, updated_at = NOW() WHERE id = $1`,
+      [req.params.id]
+    );
+
+    res.status(201).json({ success: true });
+  } catch (error) {
+    console.error('Error respondiendo ticket:', error);
+    res.status(500).json({ error: 'Error al enviar el mensaje' });
+  }
+});
+
+// ============================================
+// MI CUENTA: PERFIL
+// ============================================
+
+function serializarPerfil(user) {
+  const [nombre, ...apellidos] = user.name.split(' ');
+  return {
+    id: user.id,
+    nombre,
+    apellidos: apellidos.join(' '),
+    email: user.email,
+    telefono: user.phone || '',
+    empresa: user.empresa || '',
+    direccion: user.direccion || undefined,
+  };
+}
+
 app.get('/api/account/perfil', authMiddleware, async (req, res) => {
   try {
     const userId = req.user.userId;
     const result = await pool.query(
-      'SELECT id, name, email, phone, empresa FROM users WHERE id = $1',
+      'SELECT id, name, email, phone, empresa, direccion FROM users WHERE id = $1',
       [userId]
     );
 
@@ -645,20 +976,41 @@ app.get('/api/account/perfil', authMiddleware, async (req, res) => {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
-    const user = result.rows[0];
-    const [nombre, ...apellidos] = user.name.split(' ');
-
-    res.json({
-      id: user.id,
-      nombre: nombre,
-      apellidos: apellidos.join(' '),
-      email: user.email,
-      telefono: user.phone || '',
-      empresa: user.empresa || ''
-    });
+    res.json(serializarPerfil(result.rows[0]));
   } catch (error) {
     console.error('Error en account/perfil:', error);
     res.status(500).json({ error: 'Error al obtener perfil' });
+  }
+});
+
+app.patch('/api/account/perfil', authMiddleware, async (req, res) => {
+  try {
+    const { nombre, apellidos, telefono, empresa, direccion } = req.body;
+    if (!nombre) {
+      return res.status(400).json({ error: 'El nombre es obligatorio' });
+    }
+    const nombreCompleto = apellidos ? `${nombre} ${apellidos}` : nombre;
+
+    const result = await pool.query(
+      `UPDATE users SET
+        name = $1,
+        phone = COALESCE($2, phone),
+        empresa = COALESCE($3, empresa),
+        direccion = COALESCE($4, direccion),
+        updated_at = NOW()
+       WHERE id = $5
+       RETURNING id, name, email, phone, empresa, direccion`,
+      [nombreCompleto, telefono || null, empresa || null, direccion ? JSON.stringify(direccion) : null, req.user.userId]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    res.json(serializarPerfil(result.rows[0]));
+  } catch (error) {
+    console.error('Error actualizando perfil:', error);
+    res.status(500).json({ error: 'Error al actualizar el perfil' });
   }
 });
 
@@ -1581,6 +1933,205 @@ app.get('/api/admin/partners/export', authMiddleware, adminMiddleware, async (re
   }
 });
 
+// GET /api/catalog – Catálogo público (mismo dato que ya se bundlea en el
+// frontend vía catalogo.json). Se expone también por HTTP para que
+// servicios externos al monorepo (ej. whatsapp-bot/, desplegado aparte)
+// puedan consultarlo sin necesitar acceso al sistema de ficheros del
+// frontend — nunca incluye api/data/catalog-fichas.json (eso sigue privado).
+app.get('/api/catalog', (req, res) => {
+  res.json(catalogoData);
+});
+
+// GET /api/collections — catálogo migrado a BD. Sin filtros de query: las
+// ~90 filas viajan completas en una respuesta y el filtrado vive en el
+// cliente (ver docs/superpowers/specs/2026-07-29-filtros-collections-design.md).
+// Alias de columnas (slug->id, imagen_portada->imagen) para que el
+// resultado sea estructuralmente compatible con el tipo `Serie` que ya
+// consumen SeriesCard/AddToCartBox — cero adaptador en el frontend.
+app.get('/api/collections', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        slug AS id,
+        nombre,
+        descripcion,
+        imagen_portada AS imagen,
+        material,
+        tipo,
+        formatos,
+        acabados,
+        colores,
+        precio_consultable,
+        acabado_corte,
+        espesor,
+        estilo,
+        especificaciones_verificadas
+      FROM collections
+      ORDER BY nombre ASC
+    `);
+    res.json({ collections: result.rows, total: result.rows.length });
+  } catch (error) {
+    console.error('Error en GET /api/collections:', error);
+    res.status(500).json({ error: 'Error obteniendo colecciones' });
+  }
+});
+
+// ============================================
+// ADMIN: CRUD DE COLLECTIONS
+// ============================================
+
+app.get('/api/admin/collections', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT id, slug, nombre, descripcion, imagen_portada, material, tipo,
+             formatos, acabados, colores, precio_consultable, acabado_corte,
+             espesor, estilo, especificaciones_verificadas, created_at, updated_at
+      FROM collections
+      ORDER BY nombre ASC
+    `);
+    res.json({ collections: result.rows, total: result.rows.length });
+  } catch (error) {
+    console.error('Error en GET /api/admin/collections:', error);
+    res.status(500).json({ error: 'Error al listar colecciones' });
+  }
+});
+
+app.post('/api/admin/collections', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const {
+      slug, nombre, descripcion, imagen_portada, material, tipo, formatos,
+      acabados, colores, precio_consultable, acabado_corte, espesor, estilo,
+      especificaciones_verificadas,
+    } = req.body;
+
+    if (!slug || !nombre) {
+      return res.status(400).json({ error: 'Datos incompletos', message: 'slug y nombre son obligatorios' });
+    }
+
+    const result = await pool.query(
+      `INSERT INTO collections (
+        slug, nombre, descripcion, imagen_portada, material, tipo, formatos,
+        acabados, colores, precio_consultable, acabado_corte, espesor, estilo,
+        especificaciones_verificadas
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+      RETURNING *`,
+      [
+        slug, nombre, descripcion || null, imagen_portada || null, material || null,
+        tipo || [], formatos || [], acabados || [], colores || [],
+        precio_consultable !== undefined ? precio_consultable : true,
+        acabado_corte || 'Rectificado', espesor || 10.0, estilo || 'Moderno',
+        especificaciones_verificadas || false,
+      ]
+    );
+    res.status(201).json({ success: true, collection: result.rows[0] });
+  } catch (error) {
+    console.error('Error en POST /api/admin/collections:', error);
+    if (error.code === '23505') {
+      return res.status(409).json({ error: 'Ya existe una colección con ese slug' });
+    }
+    res.status(500).json({ error: 'Error al crear la colección' });
+  }
+});
+
+app.put('/api/admin/collections/:id', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const {
+      nombre, descripcion, imagen_portada, material, tipo, formatos, acabados,
+      colores, precio_consultable, acabado_corte, espesor, estilo,
+      especificaciones_verificadas,
+    } = req.body;
+
+    const result = await pool.query(
+      `UPDATE collections SET
+        nombre = COALESCE($1, nombre),
+        descripcion = COALESCE($2, descripcion),
+        imagen_portada = COALESCE($3, imagen_portada),
+        material = COALESCE($4, material),
+        tipo = COALESCE($5, tipo),
+        formatos = COALESCE($6, formatos),
+        acabados = COALESCE($7, acabados),
+        colores = COALESCE($8, colores),
+        precio_consultable = COALESCE($9, precio_consultable),
+        acabado_corte = COALESCE($10, acabado_corte),
+        espesor = COALESCE($11, espesor),
+        estilo = COALESCE($12, estilo),
+        especificaciones_verificadas = COALESCE($13, especificaciones_verificadas),
+        updated_at = NOW()
+      WHERE id = $14
+      RETURNING *`,
+      [
+        nombre || null, descripcion || null, imagen_portada || null, material || null,
+        tipo || null, formatos || null, acabados || null, colores || null,
+        precio_consultable !== undefined ? precio_consultable : null,
+        acabado_corte || null, espesor !== undefined ? espesor : null, estilo || null,
+        especificaciones_verificadas !== undefined ? especificaciones_verificadas : null,
+        req.params.id,
+      ]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Colección no encontrada' });
+    }
+    res.json({ success: true, collection: result.rows[0] });
+  } catch (error) {
+    console.error('Error en PUT /api/admin/collections/:id:', error);
+    res.status(500).json({ error: 'Error al actualizar la colección' });
+  }
+});
+
+app.delete('/api/admin/collections/:id', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query('DELETE FROM collections WHERE id = $1 RETURNING id', [req.params.id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Colección no encontrada' });
+    }
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error en DELETE /api/admin/collections/:id:', error);
+    res.status(500).json({ error: 'Error al eliminar la colección' });
+  }
+});
+
+app.get('/api/admin/collections/export', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT slug, nombre, material, tipo, formatos, acabados, acabado_corte,
+             espesor, estilo, especificaciones_verificadas, created_at
+      FROM collections
+      ORDER BY nombre ASC
+    `);
+
+    const csv = toCsv(
+      result.rows.map((r) => ({
+        ...r,
+        tipo: (r.tipo || []).join(', '),
+        formatos: (r.formatos || []).join(', '),
+        acabados: (r.acabados || []).join(', '),
+      })),
+      [
+        { key: 'slug', label: 'Slug' },
+        { key: 'nombre', label: 'Nombre' },
+        { key: 'material', label: 'Material' },
+        { key: 'tipo', label: 'Tipo' },
+        { key: 'formatos', label: 'Formatos' },
+        { key: 'acabados', label: 'Acabados' },
+        { key: 'acabado_corte', label: 'Acabado de corte' },
+        { key: 'espesor', label: 'Espesor (mm)' },
+        { key: 'estilo', label: 'Estilo' },
+        { key: 'especificaciones_verificadas', label: 'Especificaciones verificadas' },
+        { key: 'created_at', label: 'Creado' },
+      ]
+    );
+
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="collections-${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.send('﻿' + csv);
+  } catch (error) {
+    console.error('Error en GET /api/admin/collections/export:', error);
+    res.status(500).json({ error: 'Error al exportar colecciones' });
+  }
+});
+
 // ============================================
 // PROJECTS / CASOS DE ÉXITO
 // ============================================
@@ -2010,8 +2561,23 @@ app.get('/api', (req, res) => {
       'GET /api/auth/me',
       'GET /api/account/summary',
       'GET /api/account/pedidos',
+      'GET /api/account/pedidos/:id',
+      'GET /api/account/envios',
+      'GET /api/account/envios/:id',
+      'GET /api/account/tickets',
+      'POST /api/account/tickets',
+      'GET /api/account/tickets/:id',
+      'POST /api/account/tickets/:id/mensajes',
       'GET /api/account/perfil',
+      'PATCH /api/account/perfil',
       'GET /api/catalogs/download',
+      'GET /api/catalog',
+      'GET /api/collections',
+      'GET /api/admin/collections',
+      'POST /api/admin/collections',
+      'PUT /api/admin/collections/:id',
+      'DELETE /api/admin/collections/:id',
+      'GET /api/admin/collections/export',
       'GET /api/projects',
       'GET /api/projects/:slug',
       'POST /api/contacts',
