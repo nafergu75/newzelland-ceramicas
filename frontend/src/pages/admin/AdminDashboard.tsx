@@ -6,6 +6,7 @@ const Customers = lazy(() => import('./sections/Customers'))
 const CustomerDetail = lazy(() => import('./sections/CustomerDetail'))
 const CatalogDownloads = lazy(() => import('./sections/CatalogDownloads'))
 const ProjectsAdmin = lazy(() => import('./sections/ProjectsAdmin'))
+const CollectionsAdmin = lazy(() => import('./sections/CollectionsAdmin'))
 const CRMDashboard = lazy(() => import('./sections/CRMDashboard'))
 const Orders = lazy(() => import('./sections/Orders'))
 const OrderDetail = lazy(() => import('./sections/OrderDetail'))
@@ -17,7 +18,7 @@ const SupportMessages = lazy(() => import('./sections/SupportMessages'))
 const MessageDetail = lazy(() => import('./sections/MessageDetail'))
 const Reports = lazy(() => import('./sections/Reports'))
 
-type ActiveSection = 'dashboard' | 'clientes' | 'cliente-detalle' | 'descargas-catalogo' | 'proyectos' | 'crm' | 'pedidos' | 'pedido-detalle' | 'facturas' | 'lector-facturas' | 'lector-ingresos' | 'lector-gastos' | 'soporte' | 'ticket-detalle' | 'reportes'
+type ActiveSection = 'dashboard' | 'clientes' | 'cliente-detalle' | 'descargas-catalogo' | 'proyectos' | 'colecciones' | 'crm' | 'pedidos' | 'pedido-detalle' | 'facturas' | 'lector-facturas' | 'lector-ingresos' | 'lector-gastos' | 'soporte' | 'ticket-detalle' | 'reportes'
 
 export default function AdminDashboard() {
   const [activeSection, setActiveSection] = useState<ActiveSection>('dashboard')
@@ -82,6 +83,7 @@ export default function AdminDashboard() {
             )}
             {activeSection === 'descargas-catalogo' && <CatalogDownloads />}
             {activeSection === 'proyectos' && <ProjectsAdmin />}
+            {activeSection === 'colecciones' && <CollectionsAdmin />}
             {activeSection === 'crm' && <CRMDashboard />}
             {activeSection === 'pedidos' && <Orders onSelectPedido={handleSelectPedido} />}
             {activeSection === 'pedido-detalle' && selectedPedidoId && (

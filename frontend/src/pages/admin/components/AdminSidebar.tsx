@@ -1,5 +1,5 @@
 import { useAuth } from '../../../context/AuthContext'
-import { SignOut, ChartLine, Users, ShoppingCart, FileText, ChatDots, FileArrowDown, Scan, DownloadSimple, Image, EnvelopeSimple } from '@phosphor-icons/react'
+import { SignOut, ChartLine, Users, ShoppingCart, FileText, ChatDots, FileArrowDown, Scan, DownloadSimple, Image, EnvelopeSimple, SquaresFour } from '@phosphor-icons/react'
 
 interface AdminSidebarProps {
   activeSection: string
@@ -14,6 +14,7 @@ export default function AdminSidebar({ activeSection, onNavigate }: AdminSidebar
     { id: 'clientes', label: 'Clientes', icon: Users },
     { id: 'descargas-catalogo', label: 'Descargas de catálogo', icon: DownloadSimple },
     { id: 'proyectos', label: 'Proyectos', icon: Image },
+    { id: 'colecciones', label: 'Colecciones', icon: SquaresFour },
     { id: 'crm', label: 'CRM / Email', icon: EnvelopeSimple },
     { id: 'pedidos', label: 'Pedidos', icon: ShoppingCart },
     { id: 'facturas', label: 'Facturas', icon: FileText },

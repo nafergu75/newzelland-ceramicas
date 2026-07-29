@@ -201,6 +201,46 @@ export const adminService = {
     const response = await api.get('/admin/crm/contacts/export', { responseType: 'blob' })
     triggerCsvDownload(response, 'crm-contactos.csv')
   },
+
+  async getAdminCollections(): Promise<{ collections: AdminCollectionRow[]; total: number }> {
+    try {
+      const response = await api.get('/admin/collections')
+      return response.data
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Error al obtener colecciones')
+    }
+  },
+
+  async crearCollection(datos: Partial<AdminCollectionRow>): Promise<AdminCollectionRow> {
+    try {
+      const response = await api.post('/admin/collections', datos)
+      return response.data.collection
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Error al crear la colección')
+    }
+  },
+
+  async actualizarCollection(id: number, datos: Partial<AdminCollectionRow>): Promise<AdminCollectionRow> {
+    try {
+      const response = await api.put(`/admin/collections/${id}`, datos)
+      return response.data.collection
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Error al actualizar la colección')
+    }
+  },
+
+  async eliminarCollection(id: number): Promise<void> {
+    try {
+      await api.delete(`/admin/collections/${id}`)
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Error al eliminar la colección')
+    }
+  },
+
+  async exportarCollectionsCsv(): Promise<void> {
+    const response = await api.get('/admin/collections/export', { responseType: 'blob' })
+    triggerCsvDownload(response, 'collections.csv')
+  },
 }
 
 function triggerCsvDownload(response: { data: Blob; headers: Record<string, unknown> }, fallbackFilename: string): void {
@@ -280,4 +320,24 @@ export interface CrmStats {
   nuevosEsteMes: number
   porOrigen: Record<string, number>
   topCampanias: Array<{ utm_campaign: string; contactos: number }>
+}
+
+export interface AdminCollectionRow {
+  id: number
+  slug: string
+  nombre: string
+  descripcion: string | null
+  imagen_portada: string | null
+  material: string | null
+  tipo: string[]
+  formatos: string[]
+  acabados: string[]
+  colores: string[]
+  precio_consultable: boolean
+  acabado_corte: string
+  espesor: number
+  estilo: string
+  especificaciones_verificadas: boolean
+  created_at: string
+  updated_at: string
 }
