@@ -50,4 +50,5 @@ venv/
 
 .vercel
 .env*
+!.env.example
 .superpowers/
