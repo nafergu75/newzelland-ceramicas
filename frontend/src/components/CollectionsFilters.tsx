@@ -7,6 +7,7 @@ export interface ActiveFilters {
   acabados: string[]
   espesor: string[]
   estilo: string[]
+  colores: string[]
 }
 
 export const EMPTY_FILTERS: ActiveFilters = {
@@ -16,6 +17,7 @@ export const EMPTY_FILTERS: ActiveFilters = {
   acabados: [],
   espesor: [],
   estilo: [],
+  colores: [],
 }
 
 // Rangos fijos de espesor (mm) — ver spec, sección "Espesor: filtro por rango".
@@ -71,7 +73,7 @@ function contarMateriales(collections: Collection[]): FilterOption[] {
     .sort((a, b) => a.value.localeCompare(b.value))
 }
 
-function contarValoresArray(collections: Collection[], campo: 'tipo' | 'formatos' | 'acabados'): FilterOption[] {
+function contarValoresArray(collections: Collection[], campo: 'tipo' | 'formatos' | 'acabados' | 'colores'): FilterOption[] {
   const counts = new Map<string, number>()
   for (const c of collections) {
     for (const valor of c[campo] || []) {
@@ -117,6 +119,7 @@ export default function CollectionsFilters({
     { titulo: 'Acabado', categoria: 'acabados', opciones: contarValoresArray(collections, 'acabados') },
     { titulo: 'Espesor', categoria: 'espesor', opciones: contarRangosEspesor(collections) },
     { titulo: 'Estilo', categoria: 'estilo', opciones: contarValoresUnicos(collections, 'estilo') },
+    { titulo: 'Color', categoria: 'colores', opciones: contarValoresArray(collections, 'colores') },
   ]
 
   return (

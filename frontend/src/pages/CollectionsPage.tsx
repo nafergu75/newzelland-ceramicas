@@ -7,9 +7,10 @@ import AddToCartBox from '../components/AddToCartBox'
 import ImageWithFallback from '../components/ImageWithFallback'
 import CollectionsFilters, { ActiveFilters, EMPTY_FILTERS, espesorEnRango, materialesDe } from '../components/CollectionsFilters'
 import FilterDrawer from '../components/FilterDrawer'
+import ColorSelector from '../components/ColorSelector'
 import { series, getSerieById } from '../data/catalog'
-import { getCollections } from '../services/collectionsService'
-import type { Collection } from '../types/collections'
+import { getCollections, getCollection } from '../services/collectionsService'
+import type { Collection, CollectionDetail, ColorFoto } from '../types/collections'
 import { useCatalogDownload } from '../hooks/useCatalogDownload'
 
 export default function CollectionsPage() {
@@ -19,9 +20,15 @@ export default function CollectionsPage() {
   const [search, setSearch] = useState('')
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>(EMPTY_FILTERS)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [collectionDetail, setCollectionDetail] = useState<CollectionDetail | null>(null)
+  const [loadingDetail, setLoadingDetail] = useState(true)
+  const [selectedColor, setSelectedColor] = useState<ColorFoto | null>(null)
   const { handleDownload, downloadingKey, downloadError } = useCatalogDownload()
 
-  const serie = slug ? getSerieById(slug) : undefined
+  // Las fichas técnica/catálogo (PDF) siguen siendo un sistema aparte
+  // (R2 firmado + tracking de descarga, ver api/index.js) que no vive en la
+  // tabla `collections` — se sigue leyendo del JSON estático solo para ese dato.
+  const serieFichas = slug ? getSerieById(slug) : undefined
 
   useEffect(() => {
     if (slug) return // vista detalle: no hace falta cargar el listado
@@ -33,6 +40,26 @@ export default function CollectionsPage() {
       .catch((error) => console.error('Error cargando colecciones:', error))
       .finally(() => {
         if (!cancelado) setLoadingCollections(false)
+      })
+    return () => {
+      cancelado = true
+    }
+  }, [slug])
+
+  useEffect(() => {
+    if (!slug) return
+    let cancelado = false
+    setLoadingDetail(true)
+    setSelectedColor(null)
+    getCollection(slug)
+      .then((data) => {
+        if (!cancelado) setCollectionDetail(data)
+      })
+      .catch(() => {
+        if (!cancelado) setCollectionDetail(null)
+      })
+      .finally(() => {
+        if (!cancelado) setLoadingDetail(false)
       })
     return () => {
       cancelado = true
@@ -80,13 +107,24 @@ export default function CollectionsPage() {
       if (activeFilters.estilo.length > 0 && !activeFilters.estilo.includes(c.estilo)) {
         return false
       }
+      if (activeFilters.colores.length > 0 && !activeFilters.colores.some((col) => c.colores.includes(col))) {
+        return false
+      }
       return true
     })
   }, [collections, search, activeFilters])
 
   // --- Vista detalle de una serie (ficha de producto) ---
   if (slug) {
-    if (!serie) {
+    if (loadingDetail) {
+      return (
+        <div style={{ padding: 'var(--space-24) var(--space-6)', textAlign: 'center' }}>
+          <p>Cargando serie...</p>
+        </div>
+      )
+    }
+
+    if (!collectionDetail) {
       return (
         <div style={{ padding: 'var(--space-24) var(--space-6)', textAlign: 'center' }}>
           <h1>Serie no encontrada</h1>
@@ -98,19 +136,24 @@ export default function CollectionsPage() {
     }
 
     const whatsappText = encodeURIComponent(
-      `Hola, me interesa la serie ${serie.nombre} (${serie.formatos.join(', ')}). ¿Podéis prepararme un presupuesto?`
+      `Hola, me interesa la serie ${collectionDetail.nombre} (${collectionDetail.formatos.join(', ')}). ¿Podéis prepararme un presupuesto?`
     )
 
     const related = series
-      .filter((s) => s.id !== serie.id && s.material.split(',')[0] === serie.material.split(',')[0])
+      .filter((s) => s.id !== collectionDetail.id && s.material.split(',')[0] === collectionDetail.material.split(',')[0])
       .slice(0, 3)
+
+    const imagenPrincipal = selectedColor?.imagen || collectionDetail.imagen
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <main style={{ flex: 1 }}>
           <div className="serie-detail">
             <div className="serie-detail-media animate-fade-in-up">
-              <ImageWithFallback src={serie.imagen} alt={`Serie ${serie.nombre} en ambiente`} />
+              <ImageWithFallback
+                src={imagenPrincipal}
+                alt={`Serie ${collectionDetail.nombre}${selectedColor ? ' en ' + selectedColor.nombre : ' en ambiente'}`}
+              />
             </div>
 
             <div className="serie-detail-info">
@@ -121,25 +164,31 @@ export default function CollectionsPage() {
                 <ArrowLeft size={14} /> Colecciones
               </Link>
 
-              <h1>{serie.nombre}</h1>
+              <h1>{collectionDetail.nombre}</h1>
               <p className="serie-meta">
-                {serie.material} · {serie.tipo.join(' y ')}
+                {collectionDetail.material} · {collectionDetail.tipo.join(' y ')}
               </p>
-              <p>{serie.descripcion}</p>
+              <p>{collectionDetail.descripcion}</p>
 
               <div className="spec-groups">
                 <div className="spec-group">
                   <h3>Formatos y acabados</h3>
-                  <p>{serie.formatos.join(', ')} cm</p>
-                  <p>{serie.acabados.join(', ')}</p>
+                  <p>{collectionDetail.formatos.join(', ')} cm</p>
+                  <p>{collectionDetail.acabados.join(', ')}</p>
                 </div>
                 <div className="spec-group">
                   <h3>Colores</h3>
-                  <p>{serie.colores.join(', ')}</p>
+                  <p>{collectionDetail.colores.join(', ')}</p>
                 </div>
               </div>
 
-              <AddToCartBox serie={serie} />
+              <ColorSelector
+                colores={collectionDetail.colores_fotos}
+                selected={selectedColor}
+                onSelect={setSelectedColor}
+              />
+
+              <AddToCartBox serie={collectionDetail} />
 
               <div className="serie-actions">
                 <a
@@ -151,24 +200,24 @@ export default function CollectionsPage() {
                   <WhatsappLogo size={18} weight="regular" />
                   Solicitar presupuesto
                 </a>
-                {serie.fichas.tecnica && (
+                {serieFichas?.fichas.tecnica && (
                   <button
                     className="secondary"
-                    onClick={() => handleDownload(serie.id, 'tecnica', serie.nombre)}
-                    disabled={downloadingKey === `${serie.id}-tecnica`}
+                    onClick={() => handleDownload(collectionDetail.id, 'tecnica', collectionDetail.nombre)}
+                    disabled={downloadingKey === `${collectionDetail.id}-tecnica`}
                   >
                     <FilePdf size={18} weight="regular" />
-                    {downloadingKey === `${serie.id}-tecnica` ? 'Descargando…' : 'Ficha técnica'}
+                    {downloadingKey === `${collectionDetail.id}-tecnica` ? 'Descargando…' : 'Ficha técnica'}
                   </button>
                 )}
-                {serie.fichas.catalogo && (
+                {serieFichas?.fichas.catalogo && (
                   <button
                     className="secondary"
-                    onClick={() => handleDownload(serie.id, 'catalogo', serie.nombre)}
-                    disabled={downloadingKey === `${serie.id}-catalogo`}
+                    onClick={() => handleDownload(collectionDetail.id, 'catalogo', collectionDetail.nombre)}
+                    disabled={downloadingKey === `${collectionDetail.id}-catalogo`}
                   >
                     <FilePdf size={18} weight="regular" />
-                    {downloadingKey === `${serie.id}-catalogo` ? 'Descargando…' : 'Catálogo'}
+                    {downloadingKey === `${collectionDetail.id}-catalogo` ? 'Descargando…' : 'Catálogo'}
                   </button>
                 )}
               </div>
