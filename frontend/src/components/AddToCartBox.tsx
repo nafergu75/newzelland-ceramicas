@@ -1,14 +1,16 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, MouseEvent } from 'react'
 import { Minus, Plus, ShoppingCartSimple, Check } from '@phosphor-icons/react'
 import type { Serie } from '../data/catalog'
-import { getFormatosConTarifa, desglosarPreciosConIVA } from '../data/tarifa'
+import type { Collection } from '../types/collections'
+import { getFormatosConTarifa, desglosarPreciosConIVA, TarifaProducto } from '../data/tarifa'
 import { useCart } from '../context/CartContext'
+import FormatSelectorModal from './FormatSelectorModal'
 import '../styles/components.css'
 
 const currency = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' })
 
 interface AddToCartBoxProps {
-  serie: Serie
+  serie: Serie | Collection
   /** Versión reducida para tarjetas de catálogo: solo botón + precio, sin selector de formato. */
   compact?: boolean
 }
@@ -28,6 +30,7 @@ export default function AddToCartBox({ serie, compact = false }: AddToCartBoxPro
   const [formatoIndex, setFormatoIndex] = useState(0)
   const [cajas, setCajas] = useState(1)
   const [justAdded, setJustAdded] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   // Sin precio de tarifa para ninguno de los formatos: no hay venta directa, solo consulta.
   if (formatosConTarifa.length === 0) {
@@ -46,46 +49,82 @@ export default function AddToCartBox({ serie, compact = false }: AddToCartBoxPro
   const metrosTotales = Math.round(seleccionado.metros_por_caja * cajas * 100) / 100
   const precioTotal = Math.round(seleccionado.precio_venta_caja * cajas * 100) / 100
 
-  const handleAdd = () => {
-    const { precioNeto } = desglosarPreciosConIVA(seleccionado.precio_venta_caja)
-    const precioNetoM2 = desglosarPreciosConIVA(seleccionado.precio_venta_m2).precioNeto
+  const handleAddFormato = (formato: TarifaProducto, cantidadCajas: number) => {
+    const { precioNeto } = desglosarPreciosConIVA(formato.precio_venta_caja)
+    const precioNetoM2 = desglosarPreciosConIVA(formato.precio_venta_m2).precioNeto
 
     addBoxes(
       {
-        id: seleccionado.id,
+        id: formato.id,
         serieId: serie.id,
         serieNombre: serie.nombre,
-        formato: seleccionado.formato,
-        metrosPorCaja: seleccionado.metros_por_caja,
+        formato: formato.formato,
+        metrosPorCaja: formato.metros_por_caja,
         precioVentaCaja: precioNeto,                              // Precio NETO
-        precioVentaCajaBruto: seleccionado.precio_venta_caja,     // Precio BRUTO (para mostrar)
+        precioVentaCajaBruto: formato.precio_venta_caja,          // Precio BRUTO (para mostrar)
         precioVentaM2: precioNetoM2,                              // Precio/m² NETO
       },
-      cajas
+      cantidadCajas
     )
     setJustAdded(true)
     window.setTimeout(() => setJustAdded(false), 1600)
   }
 
+  const handleAdd = () => handleAddFormato(seleccionado, cajas)
+
   if (compact) {
+    // Con un único formato se añade directamente (comportamiento de siempre).
+    // Con varios, el quick-add no tiene sitio para un selector inline —
+    // antes añadía el primer formato sin preguntar, ahora abre el modal.
+    const handleQuickAddClick = (e: MouseEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (formatosConTarifa.length > 1) {
+        setModalOpen(true)
+      } else {
+        handleAddFormato(seleccionado, 1)
+      }
+    }
+
     return (
-      <button
-        type="button"
-        className="quick-add-btn"
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          handleAdd()
-        }}
-        aria-label={`Añadir una caja de ${serie.nombre} ${seleccionado.formato} al carrito`}
-        title="Añadir 1 caja al carrito"
-      >
-        {justAdded ? <Check size={18} weight="bold" /> : <ShoppingCartSimple size={18} weight="regular" />}
-        <span className="quick-add-text">
-          <span className="quick-add-label">{justAdded ? 'Añadido' : 'Añadir caja'}</span>
-          <span className="quick-add-price">{currency.format(seleccionado.precio_venta_caja)} / caja</span>
-        </span>
-      </button>
+      <>
+        <button
+          type="button"
+          className="quick-add-btn"
+          onClick={handleQuickAddClick}
+          aria-label={
+            formatosConTarifa.length > 1
+              ? `Elegir formato de ${serie.nombre} y añadir al carrito`
+              : `Añadir una caja de ${serie.nombre} ${seleccionado.formato} al carrito`
+          }
+          title={formatosConTarifa.length > 1 ? 'Elegir formato' : 'Añadir 1 caja al carrito'}
+        >
+          {justAdded ? <Check size={18} weight="bold" /> : <ShoppingCartSimple size={18} weight="regular" />}
+          <span className="quick-add-text">
+            <span className="quick-add-label">
+              {justAdded ? 'Añadido' : formatosConTarifa.length > 1 ? 'Elegir formato' : 'Añadir caja'}
+            </span>
+            <span className="quick-add-price">
+              {formatosConTarifa.length > 1
+                ? `Desde ${currency.format(Math.min(...formatosConTarifa.map((f) => f.precio_venta_caja)))} / caja`
+                : `${currency.format(seleccionado.precio_venta_caja)} / caja`}
+            </span>
+          </span>
+        </button>
+
+        {formatosConTarifa.length > 1 && (
+          <FormatSelectorModal
+            isOpen={modalOpen}
+            serieNombre={serie.nombre}
+            formatos={formatosConTarifa}
+            onClose={() => setModalOpen(false)}
+            onConfirm={(formato) => {
+              handleAddFormato(formato, 1)
+              setModalOpen(false)
+            }}
+          />
+        )}
+      </>
     )
   }
 

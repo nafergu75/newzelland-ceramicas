@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Serie } from '../data/catalog'
+import type { Collection } from '../types/collections'
 import { useReveal } from '../hooks/useReveal'
 import AddToCartBox from './AddToCartBox'
+import ImageWithFallback from './ImageWithFallback'
 import '../styles/components.css'
 
 interface SeriesCardProps {
-  serie: Serie
+  serie: Serie | Collection
   delay?: number
 }
 
@@ -21,10 +23,12 @@ export default function SeriesCard({ serie, delay = 0 }: SeriesCardProps) {
     >
       <Link to={`/collections/${serie.id}`} className="product-card-link">
         <div className="product-image">
-          <img
+          <ImageWithFallback
             src={serie.imagen}
             alt={`Serie ${serie.nombre}, ambiente`}
             loading="lazy"
+            width={400}
+            height={300}
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
           />
           <span className="collection-badge">{serie.material.split(',')[0]}</span>
