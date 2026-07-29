@@ -38,12 +38,33 @@ interface FilterOption {
   count: number
 }
 
-function contarValoresUnicos(collections: Collection[], campo: 'material' | 'estilo' | 'acabado_corte'): FilterOption[] {
+// `material` a veces llega como string compuesto (ej. "Gres, Pasta Roja,
+// Porcelánico") en vez de un único valor limpio — así está en el dato
+// real. Se trocea igual que hacía el filtro antiguo (`.split(',')[0]`),
+// pero contando TODAS las partes, no solo la primera, para que filtrar
+// por "Gres" también encuentre esas series compuestas.
+export function materialesDe(collection: Collection): string[] {
+  return (collection.material || '').split(',').map((v) => v.trim()).filter(Boolean)
+}
+
+function contarValoresUnicos(collections: Collection[], campo: 'estilo' | 'acabado_corte'): FilterOption[] {
   const counts = new Map<string, number>()
   for (const c of collections) {
     const valor = c[campo]
     if (!valor) continue
     counts.set(valor, (counts.get(valor) || 0) + 1)
+  }
+  return Array.from(counts.entries())
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => a.value.localeCompare(b.value))
+}
+
+function contarMateriales(collections: Collection[]): FilterOption[] {
+  const counts = new Map<string, number>()
+  for (const c of collections) {
+    for (const valor of materialesDe(c)) {
+      counts.set(valor, (counts.get(valor) || 0) + 1)
+    }
   }
   return Array.from(counts.entries())
     .map(([value, count]) => ({ value, count }))
@@ -90,7 +111,7 @@ export default function CollectionsFilters({
     search.trim() !== '' || Object.values(activeFilters).some((arr) => arr.length > 0)
 
   const secciones: Array<{ titulo: string; categoria: keyof ActiveFilters; opciones: FilterOption[] }> = [
-    { titulo: 'Material', categoria: 'material', opciones: contarValoresUnicos(collections, 'material') },
+    { titulo: 'Material', categoria: 'material', opciones: contarMateriales(collections) },
     { titulo: 'Tipo', categoria: 'tipo', opciones: contarValoresArray(collections, 'tipo') },
     { titulo: 'Formato', categoria: 'formatos', opciones: contarValoresArray(collections, 'formatos') },
     { titulo: 'Acabado', categoria: 'acabados', opciones: contarValoresArray(collections, 'acabados') },

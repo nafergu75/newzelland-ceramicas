@@ -1,38 +1,88 @@
 import { useParams, Link } from 'react-router-dom'
-import { useMemo, useState } from 'react'
-import { ArrowLeft, FilePdf, WhatsappLogo } from '@phosphor-icons/react'
+import { useEffect, useMemo, useState } from 'react'
+import { ArrowLeft, FilePdf, WhatsappLogo, Sliders } from '@phosphor-icons/react'
 import Footer from '../components/Footer'
 import SeriesCard from '../components/SeriesCard'
 import AddToCartBox from '../components/AddToCartBox'
+import ImageWithFallback from '../components/ImageWithFallback'
+import CollectionsFilters, { ActiveFilters, EMPTY_FILTERS, espesorEnRango, materialesDe } from '../components/CollectionsFilters'
+import FilterDrawer from '../components/FilterDrawer'
 import { series, getSerieById } from '../data/catalog'
+import { getCollections } from '../services/collectionsService'
+import type { Collection } from '../types/collections'
 import { useCatalogDownload } from '../hooks/useCatalogDownload'
 
 export default function CollectionsPage() {
   const { slug } = useParams<{ slug: string }>()
+  const [collections, setCollections] = useState<Collection[]>([])
+  const [loadingCollections, setLoadingCollections] = useState(true)
   const [search, setSearch] = useState('')
-  const [material, setMaterial] = useState('')
+  const [activeFilters, setActiveFilters] = useState<ActiveFilters>(EMPTY_FILTERS)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const { handleDownload, downloadingKey, downloadError } = useCatalogDownload()
 
   const serie = slug ? getSerieById(slug) : undefined
 
-  const materials = useMemo(
-    () => [...new Set(series.map((s) => s.material.split(',')[0].trim()))].sort(),
-    []
-  )
+  useEffect(() => {
+    if (slug) return // vista detalle: no hace falta cargar el listado
+    let cancelado = false
+    getCollections()
+      .then((data) => {
+        if (!cancelado) setCollections(data)
+      })
+      .catch((error) => console.error('Error cargando colecciones:', error))
+      .finally(() => {
+        if (!cancelado) setLoadingCollections(false)
+      })
+    return () => {
+      cancelado = true
+    }
+  }, [slug])
 
-  const filteredSeries = useMemo(() => {
-    let result = series
-    if (material) {
-      result = result.filter((s) => s.material.split(',')[0].trim() === material)
-    }
-    if (search.trim()) {
-      const q = search.trim().toLowerCase()
-      result = result.filter(
-        (s) => s.nombre.toLowerCase().includes(q) || s.material.toLowerCase().includes(q)
-      )
-    }
-    return result
-  }, [search, material])
+  const handleToggleFilter = (categoria: keyof ActiveFilters, valor: string) => {
+    setActiveFilters((prev) => {
+      const actual = prev[categoria]
+      const actualizado = actual.includes(valor)
+        ? actual.filter((v) => v !== valor)
+        : [...actual, valor]
+      return { ...prev, [categoria]: actualizado }
+    })
+  }
+
+  const handleClearFilters = () => {
+    setActiveFilters(EMPTY_FILTERS)
+    setSearch('')
+  }
+
+  const filteredCollections = useMemo(() => {
+    return collections.filter((c) => {
+      if (search.trim()) {
+        const q = search.trim().toLowerCase()
+        if (!c.nombre.toLowerCase().includes(q) && !c.material.toLowerCase().includes(q)) {
+          return false
+        }
+      }
+      if (activeFilters.material.length > 0 && !activeFilters.material.some((m) => materialesDe(c).includes(m))) {
+        return false
+      }
+      if (activeFilters.tipo.length > 0 && !activeFilters.tipo.some((t) => c.tipo.includes(t))) {
+        return false
+      }
+      if (activeFilters.formatos.length > 0 && !activeFilters.formatos.some((f) => c.formatos.includes(f))) {
+        return false
+      }
+      if (activeFilters.acabados.length > 0 && !activeFilters.acabados.some((a) => c.acabados.includes(a))) {
+        return false
+      }
+      if (activeFilters.espesor.length > 0 && !activeFilters.espesor.some((rango) => espesorEnRango(c.espesor, rango))) {
+        return false
+      }
+      if (activeFilters.estilo.length > 0 && !activeFilters.estilo.includes(c.estilo)) {
+        return false
+      }
+      return true
+    })
+  }, [collections, search, activeFilters])
 
   // --- Vista detalle de una serie (ficha de producto) ---
   if (slug) {
@@ -60,7 +110,7 @@ export default function CollectionsPage() {
         <main style={{ flex: 1 }}>
           <div className="serie-detail">
             <div className="serie-detail-media animate-fade-in-up">
-              <img src={serie.imagen} alt={`Serie ${serie.nombre} en ambiente`} />
+              <ImageWithFallback src={serie.imagen} alt={`Serie ${serie.nombre} en ambiente`} />
             </div>
 
             <div className="serie-detail-info">
@@ -149,63 +199,74 @@ export default function CollectionsPage() {
     )
   }
 
-  // --- Vista listado con búsqueda y filtro por material ---
+  // --- Vista listado con sidebar de filtros ---
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <main style={{ flex: 1 }}>
         <section className="hero-section plain">
           <div className="hero-content">
             <h1>Colecciones</h1>
-            <p>{series.length} series de cerámica y porcelánico. Filtra por material o busca por nombre.</p>
+            <p>{collections.length || series.length} series de cerámica y porcelánico. Filtra por material, tipo, formato y más.</p>
           </div>
         </section>
 
         <section className="section">
           <div className="container">
-            <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
-              <input
-                type="text"
-                placeholder="Buscar serie por nombre"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{ maxWidth: '320px' }}
-                aria-label="Buscar serie"
-              />
-              <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center' }}>
-                <button
-                  className={material === '' ? undefined : 'secondary'}
-                  onClick={() => setMaterial('')}
-                  style={{ padding: 'var(--space-2) var(--space-4)', fontSize: 'var(--font-size-sm)' }}
-                >
-                  Todos
-                </button>
-                {materials.map((m) => (
-                  <button
-                    key={m}
-                    className={material === m ? undefined : 'secondary'}
-                    onClick={() => setMaterial(material === m ? '' : m)}
-                    style={{ padding: 'var(--space-2) var(--space-4)', fontSize: 'var(--font-size-sm)' }}
-                  >
-                    {m}
-                  </button>
-                ))}
+            <button
+              type="button"
+              className="secondary collections-mobile-filter-btn"
+              onClick={() => setDrawerOpen(true)}
+            >
+              <Sliders size={16} weight="bold" />
+              Filtros
+            </button>
+
+            <div className="collections-layout">
+              <aside className="collections-layout-sidebar">
+                <CollectionsFilters
+                  collections={collections}
+                  search={search}
+                  onSearchChange={setSearch}
+                  activeFilters={activeFilters}
+                  onToggle={handleToggleFilter}
+                  onClear={handleClearFilters}
+                />
+              </aside>
+
+              <FilterDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <CollectionsFilters
+                  collections={collections}
+                  search={search}
+                  onSearchChange={setSearch}
+                  activeFilters={activeFilters}
+                  onToggle={handleToggleFilter}
+                  onClear={handleClearFilters}
+                />
+              </FilterDrawer>
+
+              <div className="collections-layout-main">
+                {loadingCollections ? (
+                  <p>Cargando colecciones...</p>
+                ) : (
+                  <>
+                    <div className="grid grid-cols-3">
+                      {filteredCollections.map((c) => (
+                        <SeriesCard key={c.id} serie={c} />
+                      ))}
+                    </div>
+
+                    {filteredCollections.length === 0 && (
+                      <div style={{ textAlign: 'center', padding: 'var(--space-16) 0' }}>
+                        <p>No hay resultados para tu búsqueda.</p>
+                        <button className="secondary" onClick={handleClearFilters}>
+                          Limpiar filtros
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             </div>
-
-            <div className="grid grid-cols-3">
-              {filteredSeries.map((s) => (
-                <SeriesCard key={s.id} serie={s} />
-              ))}
-            </div>
-
-            {filteredSeries.length === 0 && (
-              <div style={{ textAlign: 'center', padding: 'var(--space-16) 0' }}>
-                <p>No hay resultados para tu búsqueda.</p>
-                <button className="secondary" onClick={() => { setSearch(''); setMaterial('') }}>
-                  Limpiar filtros
-                </button>
-              </div>
-            )}
           </div>
         </section>
       </main>
