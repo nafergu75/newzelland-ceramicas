@@ -1,20 +1,24 @@
 // Diagnostica qué series de `collections` tienen `imagen_portada` rota
-// (vacía, o URL que no responde 200). Solo lee, no modifica nada.
+// (URL que no responde 200, fichero local inexistente) y cuáles están
+// pendientes de foto real. Solo lee, no modifica nada.
 //
-// Ejecutar (necesita pg/dotenv, que solo están en api/node_modules):
-//   NODE_PATH=api/node_modules node scripts/check-broken-images.js
+// CÓMO USAR (necesita pg/dotenv, que solo están en api/node_modules):
+//
+//   Contra la BD local (lee .env, comportamiento por defecto):
+//     NODE_PATH=api/node_modules node scripts/check-broken-images.js
+//
+//   Contra la BD de producción (sin escribir la credencial en ningún fichero):
+//     DATABASE_URL='postgres://user:pass@host:5432/db?sslmode=require' \
+//       NODE_PATH=api/node_modules node scripts/check-broken-images.js
+//
+// DATABASE_URL tiene prioridad sobre las DB_* del .env. No commitees nunca
+// un .env con la cadena de producción (.gitignore ya cubre .env*).
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const { Pool } = require('pg');
+const { buildPoolConfig, describeTarget } = require('../api/db-config');
 
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT || '5432', 10),
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-});
+const pool = new Pool(buildPoolConfig());
 
 const fs = require('fs');
 const path = require('path');
@@ -45,6 +49,8 @@ async function comprobarUrl(url) {
 }
 
 async function main() {
+  console.log(`Conectando a: ${describeTarget()}`);
+
   const { rows } = await pool.query(
     `SELECT id, nombre, slug, imagen_portada FROM collections ORDER BY nombre`
   );

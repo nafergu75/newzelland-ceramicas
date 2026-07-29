@@ -7,24 +7,30 @@
 // tarea: bigas / new-calacatta / stahl-c3 quedan fuera, requieren decisión
 // manual porque no hay match seguro en el catálogo de Practika).
 //
-// Ejecutar:
-//   NODE_PATH=api/node_modules node scripts/fix-portada-sin-imagen.js
+// CÓMO USAR (necesita pg/dotenv, que solo están en api/node_modules):
+//
+//   Contra la BD local (lee .env, comportamiento por defecto):
+//     NODE_PATH=api/node_modules node scripts/fix-portada-sin-imagen.js
+//
+//   Contra la BD de producción (sin escribir la credencial en ningún fichero):
+//     DATABASE_URL='postgres://user:pass@host:5432/db?sslmode=require' \
+//       NODE_PATH=api/node_modules node scripts/fix-portada-sin-imagen.js
+//
+// DATABASE_URL tiene prioridad sobre las DB_* del .env. Es idempotente: se
+// puede re-ejecutar sin efectos secundarios. No commitees nunca un .env con
+// la cadena de producción (.gitignore ya cubre .env*).
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const { Pool } = require('pg');
+const { buildPoolConfig, describeTarget } = require('../api/db-config');
 
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT || '5432', 10),
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-});
+const pool = new Pool(buildPoolConfig());
 
 const SLUGS = ['bosco', 'jaca', 'legend', 'polaris'];
 
 async function main() {
+  console.log(`Conectando a: ${describeTarget()}`);
+
   for (const slug of SLUGS) {
     const { rows } = await pool.query(
       `SELECT slug, colores_fotos FROM collections WHERE slug = $1`,
