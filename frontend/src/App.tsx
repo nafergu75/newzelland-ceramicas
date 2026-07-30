@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { ReactNode, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { ReactNode, useEffect, useState } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import { captureAttribution } from './utils/attribution'
@@ -28,6 +28,8 @@ import CartPage from './pages/CartPage'
 import PackingPage from './pages/PackingPage'
 import TrabajaConNosotrosPage from './pages/TrabajaConNosotrosPage'
 import InvoiceReader from './pages/admin/sections/InvoiceReader'
+import CeramicoButton from './components/CeramicoButton'
+import CeramicoWidget from './components/CeramicoWidget'
 
 /**
  * Las rutas protegidas se montan SIEMPRE y deciden en render-time con el
@@ -64,6 +66,13 @@ function AdminRoute({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  const [ceramicoOpen, setCeramicoOpen] = useState(false)
+  const location = useLocation()
+  const currentPage = location.pathname
+  const currentSeriesSlug = location.pathname.startsWith('/collections/')
+    ? location.pathname.split('/').pop()
+    : undefined
+
   useEffect(() => {
     captureAttribution()
   }, [])
@@ -81,6 +90,17 @@ export default function App() {
           {/* Header global: visible en TODAS las páginas */}
           <Header />
           <CartToast />
+          {import.meta.env.VITE_CERAMICO_ENABLED === 'true' && (
+            <>
+              <CeramicoButton onClick={() => setCeramicoOpen(true)} />
+              <CeramicoWidget
+                isOpen={ceramicoOpen}
+                onClose={() => setCeramicoOpen(false)}
+                currentSeriesSlug={currentSeriesSlug}
+                currentPage={currentPage}
+              />
+            </>
+          )}
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
