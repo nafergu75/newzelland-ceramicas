@@ -16,6 +16,7 @@ const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const crmService = require('./services/crmService');
 const emailTemplates = require('./services/emailTemplates');
+const { ceramicoAnswer } = require('./ceramico-ai');
 
 // Load environment variables
 dotenv.config();
@@ -2146,6 +2147,47 @@ app.get('/api/collections/:slug', async (req, res) => {
   } catch (error) {
     console.error('Error en GET /api/collections/:slug:', error);
     res.status(500).json({ error: 'Error obteniendo la colección' });
+  }
+});
+
+// POST /api/ceramico — Chatbot endpoint para Cerámico
+// Reutiliza el pipeline IA para responder preguntas sobre catálogo y transporte.
+app.post('/api/ceramico', async (req, res) => {
+  // Verificar si Cerámico está habilitado.
+  if (process.env.CERAMICO_ENABLED !== 'true') {
+    return res.status(503).json({ error: 'Cerámico está desactivado.' });
+  }
+
+  try {
+    const { question, context } = req.body;
+
+    // Validar pregunta.
+    if (!question || typeof question !== 'string' || question.trim().length === 0) {
+      return res.status(400).json({
+        error: 'La pregunta no puede estar vacía.',
+      });
+    }
+
+    // Construir contexto con valores seguros.
+    const ceramicoContext = {
+      currentSeriesSlug: context?.currentSeriesSlug,
+      page: context?.page,
+      postalCode: context?.postalCode,
+    };
+
+    // Llamar al pipeline IA.
+    const answer = await ceramicoAnswer(question, ceramicoContext);
+
+    // Devolver respuesta + código postal actual (para que el frontend lo mantenga).
+    res.json({
+      answer,
+      postalCode: context?.postalCode || null,
+    });
+  } catch (error) {
+    console.error('Error en POST /api/ceramico:', error);
+    res.status(500).json({
+      error: 'No he podido responder ahora mismo. Vuelve a intentarlo en unos minutos.',
+    });
   }
 });
 
