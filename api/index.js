@@ -16,11 +16,16 @@ const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const crmService = require('./services/crmService');
 const emailTemplates = require('./services/emailTemplates');
-const { ceramicoAnswer } = require('./ceramico-ai');
 
-// Load environment variables
+// Load environment variables FIRST
 dotenv.config();
 dotenv.config({ path: '.env.local' });
+
+// Load ceramic-ai AFTER environment variables are set
+const { ceramicoAnswer } = require('./ceramico-ai');
+
+// Load Fase 5 - Export functionality
+const { exportConversation, getExportStatus } = require('./routes/ceramicoExport');
 
 const app = express();
 
@@ -2173,10 +2178,13 @@ app.post('/api/ceramico', async (req, res) => {
       currentSeriesSlug: context?.currentSeriesSlug,
       page: context?.page,
       postalCode: context?.postalCode,
+      conversationHistory: Array.isArray(context?.conversationHistory)
+        ? context.conversationHistory
+        : [],
     };
 
     // Llamar al pipeline IA.
-    const answer = await ceramicoAnswer(question, ceramicoContext);
+    const answer = await ceramicoAnswer(question, ceramicoContext, pool);
 
     // Devolver respuesta + código postal actual (para que el frontend lo mantenga).
     res.json({
@@ -2190,6 +2198,16 @@ app.post('/api/ceramico', async (req, res) => {
     });
   }
 });
+
+// ============================================
+// FASE 5: EXPORTACIÓN DE CONVERSACIONES
+// ============================================
+
+// POST /api/ceramico/export — Exportar conversación a PDF o Email
+app.post('/api/ceramico/export', exportConversation);
+
+// GET /api/ceramico/export/:conversationId/status — Obtener estado de exportación
+app.get('/api/ceramico/export/:conversationId/status', getExportStatus);
 
 // ============================================
 // ADMIN: CRUD DE COLLECTIONS

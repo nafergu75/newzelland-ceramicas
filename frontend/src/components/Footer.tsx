@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { InstagramLogo, TiktokLogo } from '@phosphor-icons/react'
 import { series } from '../data/catalog'
 import '../styles/components.css'
+
+// TODO: Reemplazar con las URLs reales de Instagram y TikTok cuando se tengan las credenciales
+const SOCIAL_LINKS = {
+  instagram: 'https://instagram.com/newzelland-ceramicas',
+  tiktok: 'https://tiktok.com/@newzelland',
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -51,12 +58,38 @@ export default function Footer() {
           </p>
           <p>Onda, Castellón</p>
         </div>
+
+        <div className="footer-section">
+          <h3>Síguenos</h3>
+          <div className="footer-social-links">
+            <a
+              href={SOCIAL_LINKS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Síguenos en Instagram"
+            >
+              <InstagramLogo size={24} weight="fill" />
+            </a>
+            <a
+              href={SOCIAL_LINKS.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              title="Síguenos en TikTok"
+            >
+              <TiktokLogo size={24} weight="fill" />
+            </a>
+          </div>
+        </div>
       </div>
 
       <div className="footer-bottom">
         <p>&copy; {currentYear} Newzeland Cerámicas. Todos los derechos reservados.</p>
         <div className="footer-links">
-          <Link to="/faq">Aviso legal</Link>
+          <Link to="/aviso-legal">Aviso legal</Link>
+          <Link to="/politica-de-privacidad">Política de privacidad</Link>
+          <Link to="/politica-de-cookies">Política de cookies</Link>
         </div>
       </div>
     </footer>

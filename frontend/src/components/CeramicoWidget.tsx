@@ -15,6 +15,29 @@ interface CeramicoWidgetProps {
   currentPage?: string;
 }
 
+// Convierte texto plano de Claude (párrafos + líneas "- ") en bloques legibles.
+function formatMessage(text: string) {
+  return text.split('\n').map((line, i) => {
+    const trimmed = line.trim();
+    if (trimmed === '') {
+      return <div key={i} style={{ height: '8px' }} />;
+    }
+    if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+      return (
+        <div key={i} style={{ display: 'flex', gap: '6px', margin: '2px 0' }}>
+          <span>•</span>
+          <span>{trimmed.replace(/^[-•]\s*/, '')}</span>
+        </div>
+      );
+    }
+    return (
+      <p key={i} style={{ margin: '0 0 6px 0' }}>
+        {trimmed}
+      </p>
+    );
+  });
+}
+
 export default function CeramicoWidget({
   isOpen,
   onClose,
@@ -31,7 +54,22 @@ export default function CeramicoWidget({
   const [inputValue, setInputValue] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [hasShownWelcome, setHasShownWelcome] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Mostrar mensaje de bienvenida cuando se abre automáticamente
+  useEffect(() => {
+    if (isOpen && !hasShownWelcome) {
+      setMessages([
+        {
+          id: '0',
+          role: 'assistant',
+          text: '👋 ¿Hola! ¿Tienes alguna duda? Soy Cerámico, tu asistente de catálogo. Puedo ayudarte con:\n\n✨ Series, formatos y acabados disponibles\n📦 Información sobre transporte\n💬 Cualquier pregunta sobre nuestros productos\n\n¿En qué puedo ayudarte?',
+        },
+      ]);
+      setHasShownWelcome(true);
+    }
+  }, [isOpen, hasShownWelcome]);
 
   // Auto-scroll a último mensaje.
   useEffect(() => {
@@ -51,6 +89,11 @@ export default function CeramicoWidget({
       text: inputValue,
     };
 
+    // Historial previo a este mensaje, para que el backend mantenga el hilo.
+    const conversationHistory = messages
+      .slice(-10)
+      .map((m) => ({ role: m.role, content: m.text }));
+
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
@@ -62,6 +105,7 @@ export default function CeramicoWidget({
           currentSeriesSlug,
           page: currentPage,
           postalCode: postalCode || undefined,
+          conversationHistory,
         },
       });
 
@@ -126,24 +170,25 @@ export default function CeramicoWidget({
           display: 'flex',
           flexDirection: 'column',
           backgroundColor: 'var(--surface)',
-          borderRadius: 'var(--radius-card)',
           boxShadow: 'var(--shadow-lg)',
           animation: 'slideInUp 300ms ease-out',
           ...(isMobile
             ? {
                 bottom: 0,
-                left: 0,
-                right: 0,
+                left: '16px',
+                right: '16px',
                 top: 'auto',
-                width: '100%',
-                height: '90vh',
+                width: 'auto',
+                height: '78vh',
                 borderRadius: '16px 16px 0 0',
               }
             : {
                 bottom: '104px',
                 right: '24px',
-                width: '380px',
-                height: '65vh',
+                width: '330px',
+                height: '58vh',
+                maxHeight: '470px',
+                borderRadius: 'var(--radius-card)',
               }),
         }}
       >
@@ -234,7 +279,7 @@ export default function CeramicoWidget({
                   wordWrap: 'break-word',
                 }}
               >
-                {msg.text}
+                {msg.role === 'assistant' ? formatMessage(msg.text) : msg.text}
               </div>
             </div>
           ))}

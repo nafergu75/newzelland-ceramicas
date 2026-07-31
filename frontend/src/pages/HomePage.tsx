@@ -5,6 +5,7 @@ import HeroCarousel from '../components/HeroCarousel'
 import SeriesCard from '../components/SeriesCard'
 import MosaicTile from '../components/MosaicTile'
 import ImageWithFallback from '../components/ImageWithFallback'
+import ClientCases from '../components/ClientCases'
 import { useReveal } from '../hooks/useReveal'
 import { series, getSerieById } from '../data/catalog'
 import '../styles/components.css'
@@ -105,6 +106,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* 6 · Casos reales de clientes satisfechos */}
+        <ClientCases />
       </main>
 
       <Footer />

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { ReactNode, useEffect, useState } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
@@ -16,7 +16,9 @@ import QuoteRequestPage from './pages/QuoteRequestPage'
 import PartnerRegisterPage from './pages/PartnerRegisterPage'
 import FAQPage from './pages/FAQPage'
 import DownloadsPage from './pages/DownloadsPage'
-import PrivacyPage from './pages/PrivacyPage'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import LegalNotice from './pages/LegalNotice'
+import CookiePolicy from './pages/CookiePolicy'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
@@ -77,22 +79,22 @@ export default function App() {
     captureAttribution()
   }, [])
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCeramicoOpen(true)
+    }, 30000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <AuthProvider>
       <CartProvider>
-        {/*
-          basename = BASE_URL de Vite: '/' en Vercel (dominio raíz),
-          '/newzelland-ceramicas/' en GitHub Pages (subdirectorio del repo).
-          Sin esto, al servir desde un subdirectorio React Router no
-          reconoce ninguna ruta y la app queda en blanco.
-        */}
-        <Router basename={import.meta.env.BASE_URL}>
-          {/* Header global: visible en TODAS las páginas */}
-          <Header />
+        {/* Header global: visible en TODAS las páginas */}
+        <Header />
           <CartToast />
           {import.meta.env.VITE_CERAMICO_ENABLED === 'true' && (
             <>
-              <CeramicoButton onClick={() => setCeramicoOpen(true)} />
+              <CeramicoButton onClick={() => setCeramicoOpen(true)} isOpen={ceramicoOpen} />
               <CeramicoWidget
                 isOpen={ceramicoOpen}
                 onClose={() => setCeramicoOpen(false)}
@@ -119,7 +121,14 @@ export default function App() {
             <Route path="/partner-register" element={<Navigate to="/registro-profesionales" replace />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/downloads" element={<DownloadsPage />} />
-            <Route path="/privacidad" element={<PrivacyPage />} />
+
+            {/* Páginas legales */}
+            <Route path="/aviso-legal" element={<LegalNotice />} />
+            <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
+            <Route path="/politica-de-cookies" element={<CookiePolicy />} />
+            {/* Ruta legacy para privacidad */}
+            <Route path="/privacidad" element={<Navigate to="/politica-de-privacidad" replace />} />
+
             {/* Catálogo y Colecciones eran la misma vista duplicada; unificado en /collections */}
             <Route path="/catalog" element={<Navigate to="/collections" replace />} />
             <Route path="/packing" element={<PackingPage />} />
@@ -164,7 +173,6 @@ export default function App() {
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </Router>
       </CartProvider>
     </AuthProvider>
   )

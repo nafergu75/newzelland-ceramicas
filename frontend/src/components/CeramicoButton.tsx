@@ -1,50 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChatCircleText } from '@phosphor-icons/react';
 
 interface CeramicoButtonProps {
   onClick: () => void;
+  isOpen?: boolean;
 }
 
-export default function CeramicoButton({ onClick }: CeramicoButtonProps) {
+export default function CeramicoButton({ onClick, isOpen = false }: CeramicoButtonProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <button
-      onClick={onClick}
-      title="Cerámico · Pregunta sobre el catálogo y el transporte"
-      aria-label="Abrir Cerámico, asistente de catálogo"
-      style={{
-        position: 'fixed',
-        bottom: '24px',
-        right: '24px',
-        zIndex: 50,
-        width: '56px',
-        height: '56px',
-        borderRadius: '50%',
-        border: 'none',
-        backgroundColor: 'var(--accent)',
-        color: 'var(--on-accent)',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: 'var(--shadow-md)',
-        transition: 'all var(--transition-base)',
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-          'var(--accent-strong)';
-        (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.08)';
-        (e.currentTarget as HTMLButtonElement).style.boxShadow =
-          'var(--shadow-lg)';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-          'var(--accent)';
-        (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)';
-        (e.currentTarget as HTMLButtonElement).style.boxShadow =
-          'var(--shadow-md)';
-      }}
-    >
-      <ChatCircleText size={28} weight="fill" />
-    </button>
+    <>
+      <style>{`
+        @keyframes ceramico-pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb, 59, 130, 246), 0.7); }
+          50% { box-shadow: 0 0 0 10px rgba(var(--accent-rgb, 59, 130, 246), 0); }
+        }
+      `}</style>
+      <button
+        onClick={onClick}
+        title="Cerámico · Asistente de catálogo"
+        aria-label="Abrir Cerámico, asistente de catálogo"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          position: 'fixed',
+          bottom: '32px',
+          right: '32px',
+          zIndex: 50,
+          width: '72px',
+          height: '72px',
+          borderRadius: '50%',
+          border: 'none',
+          backgroundColor: 'var(--accent)',
+          color: 'var(--on-accent)',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: isHovered
+            ? '0 12px 24px rgba(0, 0, 0, 0.2)'
+            : '0 8px 16px rgba(0, 0, 0, 0.15)',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: isHovered ? 'scale(1.12) translateY(-4px)' : 'scale(1)',
+          animation: !isOpen ? 'ceramico-pulse 2s infinite' : 'none',
+        }}
+      >
+        <ChatCircleText
+          size={44}
+          weight="fill"
+          style={{
+            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+          }}
+        />
+      </button>
+    </>
   );
 }
