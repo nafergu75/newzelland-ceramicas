@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const path = require('path');
+const fs = require('fs');
 const { Readable } = require('stream');
 const { UAParser } = require('ua-parser-js');
 const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
@@ -2840,7 +2841,25 @@ app.get('/api', (req, res) => {
   });
 });
 
+// ============================================
+// FRONTEND ESTÁTICO
+// En Render un único servicio sirve API + SPA, así que Express tiene que
+// entregar frontend/dist. En Vercel este bloque queda inerte: vercel.json
+// enruta los estáticos por su cuenta y esa carpeta no viaja en el bundle
+// de la función, así que hasFrontendBuild es false y todo sigue igual.
+// ============================================
+
+const FRONTEND_DIST = path.join(__dirname, '..', 'frontend', 'dist');
+const hasFrontendBuild = fs.existsSync(path.join(FRONTEND_DIST, 'index.html'));
+
+if (hasFrontendBuild) {
+  app.use(express.static(FRONTEND_DIST));
+}
+
 app.get('/', (req, res) => {
+  if (hasFrontendBuild) {
+    return res.sendFile(path.join(FRONTEND_DIST, 'index.html'));
+  }
   res.json({ message: 'Newzelland Cerámicas API' });
 });
 
@@ -2849,6 +2868,12 @@ app.get('/', (req, res) => {
 // ============================================
 
 app.use((req, res) => {
+  // Rutas del SPA (/collections, /admin, ...): devolver index.html para que
+  // react-router resuelva en cliente. /api/* siempre responde JSON.
+  if (hasFrontendBuild && req.method === 'GET' && !req.path.startsWith('/api')) {
+    return res.sendFile(path.join(FRONTEND_DIST, 'index.html'));
+  }
+
   res.status(404).json({
     error: 'Not Found',
     path: req.path,

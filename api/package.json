@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "API para Newzelland Cerámicas",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
     "@aws-sdk/client-s3": "^3.1096.0",
