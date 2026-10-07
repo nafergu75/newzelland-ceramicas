@@ -62,6 +62,7 @@ ANTHROPIC_API_KEY=sk-ant-api03-[TU_CLAVE]
 DATABASE_URL=[COPIA_DE_NEON]
 DATABASE_URL_UNPOOLED=[COPIA_DE_NEON]
 NODE_ENV=production
+JWT_SECRET=[botón "Generate" de Render; mínimo 32 caracteres, el API no arranca sin ella]
 ```
 
 **Para obtener DATABASE_URL:**

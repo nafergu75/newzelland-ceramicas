@@ -42,6 +42,7 @@ Una vez que el repositorio está conectado:
 CERAMICO_ENABLED=true
 VITE_CERAMICO_ENABLED=true
 NODE_ENV=production
+JWT_SECRET=[botón "Generate" de Render; mínimo 32 caracteres, el API no arranca sin ella]
 ```
 
 4. **Para ANTHROPIC_API_KEY:**

@@ -22,6 +22,27 @@ const emailTemplates = require('./services/emailTemplates');
 dotenv.config();
 dotenv.config({ path: '.env.local' });
 
+// ============================================
+// JWT_SECRET — obligatorio, sin valor por defecto
+// ============================================
+// Antes cada llamada hacía `process.env.JWT_SECRET || 'secret'`. Si la
+// variable faltaba en el entorno, el API firmaba y validaba las sesiones con
+// una palabra que está escrita en un repositorio público: cualquiera podía
+// fabricarse un token {role:'admin'} y entrar en /api/admin/*, que expone
+// clientes, presupuestos y exports CSV con datos personales.
+//
+// Se comprueba al cargar el módulo, antes de montar nada: vale más que el
+// despliegue falle de forma ruidosa a que arranque abierto en silencio.
+// El valor nunca se registra ni se devuelve en ninguna respuesta.
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  throw new Error(
+    'JWT_SECRET es obligatorio y debe tener al menos 32 caracteres. ' +
+    'Defínelo como variable de entorno del servicio; nunca en el repositorio.'
+  );
+}
+
 // Load ceramic-ai AFTER environment variables are set
 const { ceramicoAnswer } = require('./ceramico-ai');
 
@@ -601,7 +622,7 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
@@ -757,7 +778,7 @@ app.post('/api/auth/login', async (req, res) => {
     // Generar token
     const token = jwt.sign(
       { userId: user.id, role: user.role },
-      process.env.JWT_SECRET || 'secret',
+      JWT_SECRET,
       { expiresIn: '7d' }
     );
 
